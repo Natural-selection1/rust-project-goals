@@ -8,7 +8,7 @@
 | Roadmap          | Project Zero                                                                                                                |
 | Tracking issue   | [rust-lang/rust-project-goals#630]                                                                                          |
 | Zulip channel    |                                                                                                                             |
-| [types] champion | @lcnr                                                                                                                       |
+| [types] champion |z @lcnr                                                                                                                       |
 
 ## Summary
 
