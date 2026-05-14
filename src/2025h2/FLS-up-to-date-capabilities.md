@@ -1,7 +1,7 @@
 # Develop the capabilities to keep the FLS up to date
 
 | Metadata             |                                    |
-| :--                  | :--                                |
+| :------------------- | :--------------------------------- |
 | Point of contact     | @PLeVasseur                        |
 | Status               | Proposed                           |
 | Tracking issue       | [rust-lang/rust-project-goals#391] |
@@ -9,7 +9,6 @@
 | [bootstrap] champion | @kobzol                            |
 | [lang] champion      | @nikomatsakis                      |
 | [spec] champion      | @PLeVasseur                        |
-
 
 ## Summary
 
@@ -47,13 +46,13 @@ The shiny future we are working towards is to ensure that we have the capability
 
 **Owner:** @PLeVasseur will champion this project goal.
 
-| Task                               | Owner(s) or team(s)            | Notes                           |
-|------------------------------------|--------------------------------|---------------------------------|
-| Discussion and moral support       | ![Team][] [spec], [lang]       |                                 |
-| Adjust tooling, as needed          | @PLeVasseur                    | Pete to find appropriate person |
-| Standard reviews                   | ![Team][] [lang],[opsem], [types], [bootstrap] | For any process changes, document updates and/or tooling integration     |
-| Continued updates for the FLS | Contributors from Ferrous Systems and others TBD               |                                 |
-| Review of updates to the FLS | `t-spec` and contributors from Ferrous Systems                |                                 |
+| Task                          | Owner(s) or team(s)                              | Notes                                                                |
+| ----------------------------- | ------------------------------------------------ | -------------------------------------------------------------------- |
+| Discussion and moral support  | ![Team][] [spec], [lang]                         |                                                                      |
+| Adjust tooling, as needed     | @PLeVasseur                                      | Pete to find appropriate person                                      |
+| Standard reviews              | ![Team][] [lang],[opsem], [types], [bootstrap]   | For any process changes, document updates and/or tooling integration |
+| Continued updates for the FLS | Contributors from Ferrous Systems and others TBD |                                                                      |
+| Review of updates to the FLS  | `t-spec` and contributors from Ferrous Systems   |                                                                      |
 
 ## Frequently asked questions
 

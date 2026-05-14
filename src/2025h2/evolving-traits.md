@@ -1,7 +1,7 @@
 # Evolving trait hierarchies
 
 | Metadata         |                                    |
-| :--              | :--                                |
+| :--------------- | :--------------------------------- |
 | Point of contact | @cramertj                          |
 | Status           | Proposed                           |
 | Flagship         | Unblocking dormant traits          |
@@ -10,14 +10,13 @@
 | [lang] champion  | @cramertj                          |
 | [types] champion | @oli-obk                           |
 
-
 ## Summary
 
 Unblock the evolution of key trait hierarchies:
 
-* Adding [`Receiver`](https://doc.rust-lang.org/std/ops/trait.Receiver.html)
+- Adding [`Receiver`](https://doc.rust-lang.org/std/ops/trait.Receiver.html)
   as a supertrait of [`Deref`](https://doc.rust-lang.org/std/ops/trait.Deref.html).
-* Allow the `tower::Service` trait to be split into a non-`Sync` supertrait and a
+- Allow the `tower::Service` trait to be split into a non-`Sync` supertrait and a
   `Sync` (thread-safe) subtrait.
 
 The design should incorporate the feedback from the
@@ -84,6 +83,7 @@ pub trait Iterator {
 #### Missing or misnamed parent trait items
 
 Note that, unlike `Deref` and `Receiver`, the names and signatures of the associated items in `LendingIterator` do not match those in `Iterator`. For existing `Iterator` types to implement `LendingIterator`, some bridge code between the two implementations must exist.
+
 ### Conceptual supertrait: relaxed bounds
 
 A common practice in the `async` world is to use [the `trait_variant` crate](https://docs.rs/trait-variant/latest/trait_variant/) to make two versions of a trait, one with `Send` bounds on the futures, and one without:
@@ -114,12 +114,14 @@ Today's solutions include:
 ### Add a supertrait
 
 #### Pros
-* Matches the conceptual pattern between the traits: one clearly implies the other.
-* The "standard" Rust way of doing things.
+
+- Matches the conceptual pattern between the traits: one clearly implies the other.
+- The "standard" Rust way of doing things.
 
 #### Cons
-* Breaking change.
-* Requires implementors to split out the implementation into separate `impl` blocks for each trait.
+
+- Breaking change.
+- Requires implementors to split out the implementation into separate `impl` blocks for each trait.
 
 ### Add a blanket impl
 
@@ -140,11 +142,12 @@ impl<T: Subtrait> Supertrait for T {
 ```
 
 #### Pros
-* Backwards compatible to introduce `Supertrait`
+
+- Backwards compatible to introduce `Supertrait`
 
 #### Cons
 
-* Middleware impls are impossible! We'd like to write:
+- Middleware impls are impossible! We'd like to write:
 
 ```rust
 struct Middeware<T>(T);
@@ -157,8 +160,9 @@ impl<T: Subtrait> Subtrait for Middleware<T> { ... }
 but this overlaps with the blanket impl, and is rejected by the Rust compiler! This is a critical issue for `async` bridge APIs such as tower's `Service` trait, which wants to provide wrappers which implement the `trait_variant`-style `Send`-able when the underlying type implements the `Send` version (see [these notes from a previous design meeting](https://hackmd.io/rmN25qziSHKT4kv-ZC8QPw)).
 
 Other nits:
-* The directionality of the impl is less clear.
-* Every shared item has two names: `<T as Supertrait>::Item` and `<T as Subtrait>::Item`. Relatedly, the bridge impl must exist even if items are identical.
+
+- The directionality of the impl is less clear.
+- Every shared item has two names: `<T as Supertrait>::Item` and `<T as Subtrait>::Item`. Relatedly, the bridge impl must exist even if items are identical.
 
 ### Provide no bridging
 
@@ -176,19 +180,19 @@ impl Subtrait for T { ... }
 
 #### Pros
 
-* Backwards compatible
-* Middleware can be written to bridge either impl
+- Backwards compatible
+- Middleware can be written to bridge either impl
 
 #### Cons
 
-* Requires duplication
-* Requires users to restate bounds
-* Existing code which implements `Subtrait` cannot be used as `Supertrait`, so APIs which require `Subtrait` cannot be relaxed to `Supertrait`
+- Requires duplication
+- Requires users to restate bounds
+- Existing code which implements `Subtrait` cannot be used as `Supertrait`, so APIs which require `Subtrait` cannot be relaxed to `Supertrait`
 
 ### The next 6 months
 
 In the next six months, we aim to ship a solution which addresses the `Service` and `Receiver` use-cases
-by allowing trait impls to implement supertraits *if* the impl itself contains a definition of an item
+by allowing trait impls to implement supertraits _if_ the impl itself contains a definition of an item
 from the supertrait.
 
 Traits will have to opt their impls into this behavior, possibly through the use of a keyword.
@@ -249,17 +253,17 @@ implementations.
 
 For definitions for terms used above, see the [About > Team Asks](https://rust-lang.github.io/rust-project-goals/about/team_asks.html) page.
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.

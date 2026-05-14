@@ -1,10 +1,10 @@
 # Reduce clones and unwraps, support partial borrows
 
-| Metadata |              |
-| -------- | ------------ |
+| Metadata         |              |
+| ---------------- | ------------ |
 | Point of contact | @jkelleyrtp  |
-| Status   | Not accepted |
-| Zulip channel  | N/A                                |
+| Status           | Not accepted |
+| Zulip channel    | N/A          |
 
 ## Motivation
 
@@ -128,7 +128,7 @@ impl Baz {
 
 While this code is similar to the original snippet, it no longer compiles. Because `self.name` borrows `Self`, we can't call `self.push` without running into lifetime conflicts. However, semantically, we haven't violated the borrow checker - both `push` and `name` read and write different fields of the struct.
 
-Interestingly, Rust's disjoint capture mechanism for closures, *can* perform the same operation *and* compile.
+Interestingly, Rust's disjoint capture mechanism for closures, _can_ perform the same operation _and_ compile.
 
 ```rust
 let mut modify_something =  || s.name = "modified".to_string();
@@ -143,18 +143,21 @@ This is a very frequent papercut for both beginner and experienced Rust programm
 
 As part of the "higher level Rust" effort, we want to reduce the frequency of this papercut, making it easier for developers to model and iterate on their program architecture.
 
-For example, a syntax-free approach to solving this problem might be simply turning on disjoint capture for *private methods only*. Alternatively, we could implement a syntax or attribute that allows developers to explicitly opt in to the partial borrow system. Again, we don't want to necessarily prescribe a solution here, but the best outcome would be a solution that reduces mental overhead with as little new syntax as possible.
+For example, a syntax-free approach to solving this problem might be simply turning on disjoint capture for _private methods only_. Alternatively, we could implement a syntax or attribute that allows developers to explicitly opt in to the partial borrow system. Again, we don't want to necessarily prescribe a solution here, but the best outcome would be a solution that reduces mental overhead with as little new syntax as possible.
+
 ### The "shiny future" we are working towards
 
 A "high level Rust" would be a Rust that has a strong focus on iteration speed. Developers would benefit from Rust's performance, safety, and reliability guarantees without the current status quo of long compile times, verbose code, and program architecture limitations.
 
 A "high level" Rust would:
+
 - Compile quickly, even for fresh builds
 - Be terse in the common case
 - Produce performant programs even in debug mode
 - Provide language shortcuts to get to running code faster
 
 In our "shiny future," an aspiring genomics researcher would:
+
 - be able to quickly jump into a new project
 - add powerful dependencies with little compile-time cost
 - use various procedural macros with little compile-time cost
@@ -196,7 +199,7 @@ The work here is proposed by @jkelleyrtp on behalf of Dioxus Labs. We have fundi
 | `.unwrap()` problem      | @jkelleyrtp + tbd   |       |
 | Named/Optional arguments | @jkelleyrtp + tbd   |       |
 
-* The ![Team][] badge indicates a requirement where Team support is needed.
+- The ![Team][] badge indicates a requirement where Team support is needed.
 
 [Not funded]: https://img.shields.io/badge/Not%20yet%20funded-red
 [Approved]: https://img.shields.io/badge/Approved-green
@@ -216,11 +219,11 @@ The work here is proposed by @jkelleyrtp on behalf of Dioxus Labs. We have fundi
 
 ### Outputs
 
-*Final outputs that will be produced*
+_Final outputs that will be produced_
 
 ### Milestones
 
-*Milestones you will reach along the way*
+_Milestones you will reach along the way_
 
 ## Frequently asked questions
 
@@ -235,12 +238,14 @@ We will have made significant process, but we won't be done. We have identified 
 Another common criticism of Rust in prototype-heavy programming subfields is its pervasive verbosity - especially when performing rather simple or innocuous transformations. Admittedly, even as experienced Rust programmers, we find ourselves bogged down by the noisiness of various language constructs. In our opinion, the single biggest polluter of prototype Rust codebase is the need to call `.unwrap()` everywhere. While yes, many operations can fail and it's a good idea to handle errors, we've generally found that `.unwrap()` drastically hinders development in higher level paradigms.
 
 Whether it be simple operations like getting the last item from a vec:
+
 ```rust
 let items = vec![1,2,3,4];
 let last = items.last().unwrap();
 ```
 
 Or slightly more involved operations like fetching from a server:
+
 ```rust
 let res = Client::new()
 	.unwrap()
@@ -259,9 +264,9 @@ It's clear that `.unwrap()` plays a large role in the early steps of every Rust 
 
 A "higher level Rust" would be a Rust that enables programmers to quickly prototype their solution, iterating on architecture and functionality before finally deciding to "productionize" their code. In today's Rust this is equivalent to replacing `.unwrap()` with proper error handling (or `.expect()`), adding documentation, and adding tests.
 
-Programmers generally understand the difference between prototype code and production code - they don't necessarily need to be so strongly reminded that their code is prototype code by forcing a verbose `.unwrap()` at every corner. In many ways, Rust today feels hostile to prototype code. We believe that a "higher level Rust" should be *welcoming* to prototype code. The easier it is for developers to write prototype code, the more code will likely convert to production code. Prototype code by design is the first step to production code.
+Programmers generally understand the difference between prototype code and production code - they don't necessarily need to be so strongly reminded that their code is prototype code by forcing a verbose `.unwrap()` at every corner. In many ways, Rust today feels hostile to prototype code. We believe that a "higher level Rust" should be _welcoming_ to prototype code. The easier it is for developers to write prototype code, the more code will likely convert to production code. Prototype code by design is the first step to production code.
 
-When this topic comes up, folks will invariably bring up `Result` plus `?` as a solution. In practice, we've not found it to be a suitable bandaid. Adopting question mark syntax requires you to change the signatures of your code at every turn. While prototyping you can no longer think in terms of `A -> B` but now you need to think of every `A -> B?` as a potentially fallible operation. The final production-ready iteration of your code will likely not be fallible in every method, forcing yet another level of refactoring. Plus, question mark syntax tends to bubble errors *without* line information, generally making it difficult to locate *where* the error is occurring in the first place. And finally, question mark syntax doesn't work on `Option<T>`, meaning `.unwrap()` or pattern matching are the only valid options.
+When this topic comes up, folks will invariably bring up `Result` plus `?` as a solution. In practice, we've not found it to be a suitable bandaid. Adopting question mark syntax requires you to change the signatures of your code at every turn. While prototyping you can no longer think in terms of `A -> B` but now you need to think of every `A -> B?` as a potentially fallible operation. The final production-ready iteration of your code will likely not be fallible in every method, forcing yet another level of refactoring. Plus, question mark syntax tends to bubble errors _without_ line information, generally making it difficult to locate _where_ the error is occurring in the first place. And finally, question mark syntax doesn't work on `Option<T>`, meaning `.unwrap()` or pattern matching are the only valid options.
 
 ```rust
 let items = vec![1,2,3,4];
@@ -282,12 +287,14 @@ let res = Client::new()!
 	.json::<DogApi>()
 	.await!;
 ```
+
 A "higher level Rust" would provide similar affordances to prototype code that it provides to production code. All production code was once prototype code. Today's Rust makes it harder to write prototype code than it does production code. This language-level opinion is seemingly unique to Rust and arguably a major factor in why Rust has seen slower adoption in higher level programming paradigms.
+
 #### Named and Optional Arguments or Partial Defaults (Contentious)
 
 Beyond `.clone()` and `.unwrap()`, the next biggest polluter for "high level" Rust code tends to be the lack of a way to properly supply optional arguments to various operations. This has received lots of discussion already and we don't want to belabor the point anymore than it already has.
 
-The main thing we want to add here is that we believe the builder pattern is *not* a great solution for this problem, especially during prototyping and in paradigms where iteration time is important.
+The main thing we want to add here is that we believe the builder pattern is _not_ a great solution for this problem, especially during prototyping and in paradigms where iteration time is important.
 
 ```rust
 struct PlotCfg {
@@ -326,11 +333,13 @@ impl PlotCfg {
 ```
 
 A solution to this problem could in any number of forms:
+
 - Partial Defaults to structs
 - Named and optional function arguments
 - Anonymous structs
 
 We don't want to specify any particular solution:
+
 - Partial defaults simply feel like an extension of the language
 - Named function arguments would be a very welcome change for many high-level interfaces
 - Anonymous structs would be useful outside of replacing builders

@@ -1,11 +1,11 @@
 # Const traits
 
-| Metadata       |                                             |
-| ---            | ---                                         |
-| Point of contact | @fee1-dead                                |
-| Status         | Accepted                                    |
-| Tracking issue | [rust-lang/rust-project-goals#106]          |
-| Zulip channel  | [#t-compiler/project-const-traits][channel] |
+| Metadata         |                                             |
+| ---------------- | ------------------------------------------- |
+| Point of contact | @fee1-dead                                  |
+| Status           | Accepted                                    |
+| Tracking issue   | [rust-lang/rust-project-goals#106]          |
+| Zulip channel    | [#t-compiler/project-const-traits][channel] |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/419616-t-compiler.2Fproject-const-traits
 
@@ -29,15 +29,16 @@ There are also language features that require the use of traits, such as iterati
 ### The next six months
 
 In 2024, we plan to:
-* Finish experimenting with an effects-based desugaring for ensuring correctness of const code with trait bounds
-* Land a relatively stable implementation of const traits
-* Make all [UI tests] pass.
+
+- Finish experimenting with an effects-based desugaring for ensuring correctness of const code with trait bounds
+- Land a relatively stable implementation of const traits
+- Make all [UI tests] pass.
 
 [UI tests]: https://github.com/rust-lang/rust/blob/master/tests/ui/rfcs/rfc-2632-const-trait-impl/
 
 ### The "shiny future" we are working towards
 
-We're working towards enabling developers to do more things in general within a `const` context. Const traits is a blocker for many future possibilities (see also the const eval [feature skill tree]) including heap operations in const contexts. 
+We're working towards enabling developers to do more things in general within a `const` context. Const traits is a blocker for many future possibilities (see also the const eval [feature skill tree]) including heap operations in const contexts.
 
 [feature skill tree]: https://rust-lang.github.io/const-eval/skill_tree.html
 
@@ -51,14 +52,14 @@ None.
 
 This section defines the specific work items that are planned and who is expected to do them. It should also include what will be needed from Rust teams.
 
-* Subgoal:
-    * Describe the work to be done and use `↳` to mark "subitems".
-* Owner(s) or team(s):
-    * List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
-    * If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
-* Status:
-    * List ![Help wanted][] if there is an owner but they need support, for example funding.
-    * Other needs (e.g., complete, in FCP, etc) are also fine.
+- Subgoal:
+  - Describe the work to be done and use `↳` to mark "subitems".
+- Owner(s) or team(s):
+  - List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
+  - If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
+- Status:
+  - List ![Help wanted][] if there is an owner but they need support, for example funding.
+  - Other needs (e.g., complete, in FCP, etc) are also fine.
 
 | Task                         | Owner(s) or team(s)                 | Notes |
 | ---------------------------- | ----------------------------------- | ----- |
@@ -69,4 +70,4 @@ This section defines the specific work items that are planned and who is expecte
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._

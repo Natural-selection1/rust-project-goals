@@ -1,11 +1,12 @@
 # Implement "merged doctests" to save doctest time
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @GuillaumeGomez                    |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#111] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#111] |
+| Zulip channel    | N/A                                |
+
 @GuillaumeGomez: https://github.com/GuillaumeGomez
 
 ## Motivation
@@ -16,9 +17,9 @@ Most of the time in doctests is spent in compilation. Merging doctests and compi
 
 ### The next six months
 
-* Finish reviewing the [pull request](https://github.com/rust-lang/rust/pull/126245)
-* Run crater with the feature enabled by default.
-* Merge it.
+- Finish reviewing the [pull request](https://github.com/rust-lang/rust/pull/126245)
+- Run crater with the feature enabled by default.
+- Merge it.
 
 ### The "shiny future" we are working towards
 

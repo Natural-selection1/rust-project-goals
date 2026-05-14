@@ -1,7 +1,7 @@
 # Immobile types and guaranteed destructors
 
 | Metadata              |                                                                                                      |
-| :--                   | :--                                                                                                  |
+| :-------------------- | :--------------------------------------------------------------------------------------------------- |
 | Point of contact      | @jackh726                                                                                            |
 | Status                | Accepted                                                                                             |
 | What and why          | Let types opt out of being moved or forgotten, enabling scoped spawn, async drop, and pin-by-default |
@@ -14,7 +14,6 @@
 | [types] champion      | @lcnr                                                                                                |
 | [lang] champion       | @jackh726                                                                                            |
 
-
 ## Summary
 
 We propose to introduce new traits that describe what operations are possible on a type. Today Rust assumes all types can be moved (relocated in memory) and forgotten (via `mem::forget`). We will introduce traits like `Move` and `Forget` that make these capabilities explicit, allowing types to opt out. This follows the precedent set by the [Sized hierarchy work](./scalable-vectors.md), which relaxes the assumption that all types have a compile-time-known size. We will implement MVPs in the compiler, write RFCs, and validate viability through real-world testing in the Linux Kernel.
@@ -25,7 +24,7 @@ We propose to introduce new traits that describe what operations are possible on
 
 Rust has historically assumed that all values can be moved (relocated in memory) and forgotten (via `mem::forget`, without running destructors). These assumptions are baked into the language: assignment moves values, and `mem::forget` is safe. But some types need to opt out of these capabilities:
 
-**Immobile types:** A lot of async futures want to be self-referential, but self-referential types can't be safely moved. The current solution is `Pin`, which encodes immovability as a property of *places* rather than *types*. This leads to significant complexity. As [The Safe Pinned Initialization Problem](https://rust-for-linux.com/the-safe-pinned-initialization-problem) describes, `Pin` struggles to safely encode self-referential types in systems like the Linux kernel.
+**Immobile types:** A lot of async futures want to be self-referential, but self-referential types can't be safely moved. The current solution is `Pin`, which encodes immovability as a property of _places_ rather than _types_. This leads to significant complexity. As [The Safe Pinned Initialization Problem](https://rust-for-linux.com/the-safe-pinned-initialization-problem) describes, `Pin` struggles to safely encode self-referential types in systems like the Linux kernel.
 
 **Guaranteed destructors:** Some types need their destructors to run. A `Transaction` type might require `commit()` or `rollback()` before cleanup. A scoped task handle must join before the scope exits. But `mem::forget` is safe, so Rust can't guarantee destructors run. This blocks patterns like safe scoped spawn for async, where the spawned task borrows from the parent scope.
 
@@ -74,14 +73,13 @@ Let types opt out of being relocated in memory, encoding immovability as a type 
 
 Explore letting types opt out of `mem::forget`, enabling patterns like safe scoped spawn for async.
 
-| Task                                             | Owner(s)         | Notes                                                                                                                              |
-| ------------------------------------------------ | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Design exploration for guaranteed destructors    | @nikomatsakis    | Explore trait hierarchy options and interaction with existing features                                                             |
-
+| Task                                          | Owner(s)      | Notes                                                                  |
+| --------------------------------------------- | ------------- | ---------------------------------------------------------------------- |
+| Design exploration for guaranteed destructors | @nikomatsakis | Explore trait hierarchy options and interaction with existing features |
 
 What is concretely out of scope for this year is anything related to changing or
 updating the `Future` trait. This is the only stable trait in Rust which depends
-on `Pin`, and would need a migration story to be able to use `Move`. However depending on `Pin` is not the only shortcoming `Future` has ([1] + [2] +  10 more issues), and so fixing the `Future` trait is best treated as a standalone project.
+on `Pin`, and would need a migration story to be able to use `Move`. However depending on `Pin` is not the only shortcoming `Future` has ([1] + [2] + 10 more issues), and so fixing the `Future` trait is best treated as a standalone project.
 
 [1]: https://blog.yoshuawuyts.com/the-waker-allocation-problem/
 [2]: https://blog.yoshuawuyts.com/gen-auto-trait-problem/
@@ -103,9 +101,9 @@ The [Sized hierarchy](./scalable-vectors.md) work establishes the pattern: Rust 
 
 This work is an alternative to [Project Goal 2025H2: Continue Experimentation with Pin Ergonomics](https://github.com/rust-lang/rust-project-goals/blob/main/src/2025h2/pin-ergonomics.md), which includes the following extensions:
 
- - A new item family `pin` in lvalues, e.g. `&pin x`, `&pin mut x`, `&pin const x`.
- - A one-off overload of Rust's `Drop` trait, e.g. `fn drop(&pin mut self)`.
- - A new item kind `pin` in patterns, e.g. `&pin <pat>`.
+- A new item family `pin` in lvalues, e.g. `&pin x`, `&pin mut x`, `&pin const x`.
+- A one-off overload of Rust's `Drop` trait, e.g. `fn drop(&pin mut self)`.
+- A new item kind `pin` in patterns, e.g. `&pin <pat>`.
 
 Notably this work does not solve [pin's duplicate definition
 problem](https://blog.yoshuawuyts.com/why-pin/), meaning that even with these extentions we still end up with `Trait` and `PinnedTrait` variants of existing

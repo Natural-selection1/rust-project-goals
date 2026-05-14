@@ -1,13 +1,12 @@
 # Interactive cargo-tree: TUI for Cargo's dependency graph visualization
 
-| Metadata             |                                    |
-| :--                  | :--                                |
-| Point of contact     | @orhun                             |
-| Status               | Accepted                           |
-| Tracking issue       | [rust-lang/rust-project-goals#642] |
+| Metadata              |                                    |
+| :-------------------- | :--------------------------------- |
+| Point of contact      | @orhun                             |
+| Status                | Accepted                           |
+| Tracking issue        | [rust-lang/rust-project-goals#642] |
 | Other tracking issues | [#11213], [#15473]                 |
-| Zulip channel        | [TUI for Cargo]                    |
-
+| Zulip channel         | [TUI for Cargo]                    |
 
 ## Summary
 

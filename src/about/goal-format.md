@@ -9,36 +9,36 @@ Each project goal is a single markdown file with a standard structure: a metadat
 Every goal begins with a `# Title` heading followed by a metadata table:
 
 ```markdown
-| Metadata         |                          |
-|:-----------------|--------------------------|
-| Point of contact | @username                |
-| Status           | Proposed                 |
+| Metadata         |           |
+| :--------------- | --------- |
+| Point of contact | @username |
+| Status           | Proposed  |
 ```
 
 The recognized fields are:
 
-| Field | Required? | Notes |
-|-------|-----------|-------|
-| **Point of contact** | Yes | A single GitHub username like `@ghost`. This person is responsible for driving the goal and providing status updates. |
-| **Status** | Yes | One of `Proposed`, `Accepted`, or `Not accepted`. |
-| **Short title** | No | A shorter display name. Defaults to the `#` heading if omitted. |
-| **What and why** | No | A readable one-liner used in roadmap table cells. If omitted, the first sentence of the Summary section is used instead. |
-| **Tracking issue** | If Accepted | Must reference an issue in the rust-project-goals repository, e.g. `rust-lang/rust-project-goals#274`. Required for accepted goals; leave blank or omit for proposed goals. |
-| **Other tracking issues** | No | Additional issue references in other repositories, e.g. `rust-lang/rust#44874`. |
-| **Zulip channel** | No | A link to the relevant Zulip stream for discussion. |
-| **Roadmap** | No | The name of a roadmap theme this goal belongs to, e.g. `Rust for Linux`. Can appear multiple times if the goal spans several roadmaps. |
-| **Highlight** | No | A category name for the highlights page. Can appear multiple times. |
-| **Needs** | No | Signals that the goal needs something to proceed. Use `Contributor` (someone to do the work) or `Funding` (financial support). Can appear multiple times. |
-| **Timespan** | No | Overrides the default goal period, e.g. `2026-2027` for multi-year goals. |
-| **\[team\] champion** | No | The champion for a specific team, e.g. `[lang] champion \| @someone`. Medium and Large team asks require a champion. |
-| **Teams** | *Auto-injected* | Filled in automatically from team asks. Do not add this row yourself. |
-| **Task owners** | *Auto-injected* | Filled in automatically from work item tables. Do not add this row yourself. |
+| Field                     | Required?       | Notes                                                                                                                                                                       |
+| ------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Point of contact**      | Yes             | A single GitHub username like `@ghost`. This person is responsible for driving the goal and providing status updates.                                                       |
+| **Status**                | Yes             | One of `Proposed`, `Accepted`, or `Not accepted`.                                                                                                                           |
+| **Short title**           | No              | A shorter display name. Defaults to the `#` heading if omitted.                                                                                                             |
+| **What and why**          | No              | A readable one-liner used in roadmap table cells. If omitted, the first sentence of the Summary section is used instead.                                                    |
+| **Tracking issue**        | If Accepted     | Must reference an issue in the rust-project-goals repository, e.g. `rust-lang/rust-project-goals#274`. Required for accepted goals; leave blank or omit for proposed goals. |
+| **Other tracking issues** | No              | Additional issue references in other repositories, e.g. `rust-lang/rust#44874`.                                                                                             |
+| **Zulip channel**         | No              | A link to the relevant Zulip stream for discussion.                                                                                                                         |
+| **Roadmap**               | No              | The name of a roadmap theme this goal belongs to, e.g. `Rust for Linux`. Can appear multiple times if the goal spans several roadmaps.                                      |
+| **Highlight**             | No              | A category name for the highlights page. Can appear multiple times.                                                                                                         |
+| **Needs**                 | No              | Signals that the goal needs something to proceed. Use `Contributor` (someone to do the work) or `Funding` (financial support). Can appear multiple times.                   |
+| **Timespan**              | No              | Overrides the default goal period, e.g. `2026-2027` for multi-year goals.                                                                                                   |
+| **\[team\] champion**     | No              | The champion for a specific team, e.g. `[lang] champion \| @someone`. Medium and Large team asks require a champion.                                                        |
+| **Teams**                 | _Auto-injected_ | Filled in automatically from team asks. Do not add this row yourself.                                                                                                       |
+| **Task owners**           | _Auto-injected_ | Filled in automatically from work item tables. Do not add this row yourself.                                                                                                |
 
 **Multiple-value fields:** `Roadmap`, `Highlight`, and `Needs` support multiple values by repeating the row:
 
 ```markdown
-| Roadmap          | Rust for Linux           |
-| Roadmap          | Beyond the &             |
+| Roadmap | Rust for Linux |
+| Roadmap | Beyond the & |
 ```
 
 ### Summary
@@ -61,11 +61,11 @@ The `## Work items over the next year` section describes the concrete work to be
 **Task tables** list specific work items with ownership:
 
 ```markdown
-| Task                     | Owner(s)      | Notes |
-|--------------------------|---------------|-------|
-| Publish and merge RFC    | @username     |       |
-| Implement the feature    | @alice, @bob  |       |
-| Write documentation      | ![Help Wanted][] |    |
+| Task                  | Owner(s)         | Notes |
+| --------------------- | ---------------- | ----- |
+| Publish and merge RFC | @username        |       |
+| Implement the feature | @alice, @bob     |       |
+| Write documentation   | ![Help Wanted][] |       |
 ```
 
 - **Owner(s)** should be GitHub usernames prefixed with `@`
@@ -83,7 +83,7 @@ For example, the [Full Const Generics](../2026/const-generics.md) goal uses subg
 Support structs, tuples, arrays in const generics.
 
 | Task                                        | Owner(s) | Notes |
-|---------------------------------------------|----------|-------|
+| ------------------------------------------- | -------- | ----- |
 | Publish and merge `adt_const_params` RFC    | @BoxyUwU |       |
 | Model `adt_const_params` in a-mir-formality | @BoxyUwU |       |
 | Stabilize `adt_const_params`                | @BoxyUwU |       |
@@ -93,31 +93,31 @@ Support structs, tuples, arrays in const generics.
 Support associated constants and generic parameters in expressions.
 
 | Task                                           | Owner(s) | Notes |
-|------------------------------------------------|----------|-------|
+| ---------------------------------------------- | -------- | ----- |
 | Finish `min_generic_const_args` implementation | @BoxyUwU |       |
 | Prototype "full" generic const args            | @BoxyUwU |       |
 ```
 
-You can also have a task table at the top level *and* subgoals — tasks before the first `####` heading belong to the goal as a whole.
+You can also have a task table at the top level _and_ subgoals — tasks before the first `####` heading belong to the goal as a whole.
 
 **Subgoal metadata:** Each subgoal can optionally include its own metadata table to override or extend the parent goal's metadata:
 
-| Field | Effect |
-|-------|--------|
-| **Roadmap** | Additional roadmap theme(s), combined with the parent goal's themes |
-| **Timespan** | Overrides the parent goal's timespan for this subgoal |
-| **What and why** | Overrides the parent goal's description for this subgoal |
+| Field            | Effect                                                              |
+| ---------------- | ------------------------------------------------------------------- |
+| **Roadmap**      | Additional roadmap theme(s), combined with the parent goal's themes |
+| **Timespan**     | Overrides the parent goal's timespan for this subgoal               |
+| **What and why** | Overrides the parent goal's description for this subgoal            |
 
 ```markdown
 #### My subgoal
 
-| Metadata    |                     |
-|-------------|---------------------|
-| Roadmap     | Some other roadmap  |
-| What and why| Specific description for this workstream |
+| Metadata     |                                          |
+| ------------ | ---------------------------------------- |
+| Roadmap      | Some other roadmap                       |
+| What and why | Specific description for this workstream |
 
 | Task        | Owner(s) | Notes |
-|-------------|----------|-------|
+| ----------- | -------- | ----- |
 | Do the work | @owner   |       |
 ```
 
@@ -128,10 +128,10 @@ If no subgoal `What and why` is provided, the first sentence of the subgoal's pr
 The `## Team asks` section specifies what support the goal needs from Rust teams:
 
 ```markdown
-| Team       | Support level | Notes                          |
-|------------|---------------|--------------------------------|
-| [lang]     | Large         | Stabilization decisions        |
-| [compiler] | Small         | Reviews                        |
+| Team       | Support level | Notes                   |
+| ---------- | ------------- | ----------------------- |
+| [lang]     | Large         | Stabilization decisions |
+| [compiler] | Small         | Reviews                 |
 ```
 
 **Support levels:**
@@ -159,13 +159,13 @@ Goal files live in the milestone directory (e.g. `src/2026/`) and should have a 
 Choose names carefully — they appear in tables, summaries, and roadmaps throughout the site.
 
 - **Goal title** (the `#` heading) should name the overall theme:
-  *"Full Const Generics"*, *"Arbitrary Self Types"*, *"Stabilize and model Polonius Alpha"*
+  _"Full Const Generics"_, _"Arbitrary Self Types"_, _"Stabilize and model Polonius Alpha"_
 
 - **Subgoal titles** (`####` headings under work items) should identify specific actionable deliverables:
-  *"ADT const params"*, *"Min generic const arguments"*, *"Stabilize polonius alpha"*
+  _"ADT const params"_, _"Min generic const arguments"_, _"Stabilize polonius alpha"_
 
 - **"What and why"** metadata gives a more readable description for roadmap tables:
-  *"Permit structs/enums to be used as the value of a const generic parameter"*
+  _"Permit structs/enums to be used as the value of a const generic parameter"_
 
 The goal title is the brand; subgoals are the deliverables; "What and why" is the elevator pitch.
 
@@ -175,6 +175,6 @@ Use `####` subgoals when:
 
 - **You have distinct pieces of work** that you want tracked and cited separately. Subgoals appear as separate entries in roadmap tables and can have their own metadata, so if different workstreams belong on different roadmaps, subgoals let you express that.
 
-- **Your goal has a broad, multi-year theme** and you want to identify the precise actions you'll be taking *this year*. For example, a goal titled "Full Const Generics" is a long-running effort — the subgoals "ADT const params" and "Min generic const arguments" name exactly what's being delivered in the current goal period.
+- **Your goal has a broad, multi-year theme** and you want to identify the precise actions you'll be taking _this year_. For example, a goal titled "Full Const Generics" is a long-running effort — the subgoals "ADT const params" and "Min generic const arguments" name exactly what's being delivered in the current goal period.
 
 If your goal has a single workstream with a straightforward set of tasks, a flat task table under `## Work items over the next year` is simpler and perfectly fine.

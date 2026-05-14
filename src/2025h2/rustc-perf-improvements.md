@@ -1,7 +1,7 @@
 # rustc-perf improvements
 
 | Metadata            |                                                          |
-| :--                 | :--                                                      |
+| :------------------ | :------------------------------------------------------- |
 | Point of contact    | @Jamesbarford                                            |
 | Status              | Proposed                                                 |
 | Zulip channel       | [#project-goals/2025h1/rustc-perf-improvements][channel] |
@@ -11,8 +11,8 @@
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/478771-project-goals.2F2025h1.2Frustc-perf-improvements
 
-*This goal will be primarily worked on by @Jamesbarford, but @davidtwco or
-@Kobzol can always be contacted for updates.*
+_This goal will be primarily worked on by @Jamesbarford, but @davidtwco or
+@Kobzol can always be contacted for updates._
 
 ## Summary
 
@@ -59,14 +59,14 @@ This period is a continuation of the previous six months, during which
 meaningful progress was made in beginning the implementation of a new system
 for rustc-perf.
 
-* Switch the default collector to the new AX-42, initially running on the
+- Switch the default collector to the new AX-42, initially running on the
   legacy non-parallel system.
-* Enable benchmarking to run in parallel across multiple collectors.
-* Continue expanding test coverage for the new distributed rustc-perf
+- Enable benchmarking to run in parallel across multiple collectors.
+- Continue expanding test coverage for the new distributed rustc-perf
   infrastructure to reduce the risk of future regressions.
-* Build a status page to display the health of each collector.
-* Add support for benchmarking on AArch64 as a separate architecture.
-* Enhance perf.rust-lang.org to display performance data from multiple
+- Build a status page to display the health of each collector.
+- Add support for benchmarking on AArch64 as a separate architecture.
+- Enhance perf.rust-lang.org to display performance data from multiple
   collectors, with the ability to compare results within a given configuration
   (not across different configurations).
 
@@ -79,7 +79,7 @@ further goals.
 ## Ownership and team asks
 
 | Task                                          | Owner(s) or team(s)    | Notes                                           |
-|-----------------------------------------------|------------------------|-------------------------------------------------|
+| --------------------------------------------- | ---------------------- | ----------------------------------------------- |
 | Discussion and moral support                  | ![Team][] [infra]      |                                                 |
 | Improve rustc-perf implementation work        | @Jamesbarford, @Kobzol |                                                 |
 | Standard reviews                              | ![Team][] [infra]      |                                                 |
@@ -92,36 +92,36 @@ further goals.
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically
+- _Discussion and moral support_ is the lowest level offering, basically
   committing the team to nothing but good vibes and general support for this
   endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document,
+- _Author RFC_ and _Implementation_ means actually writing the code, document,
   whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and
+- _Design meeting_ means holding a synchronous meeting to review a proposal and
   provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy
   matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in
   the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding
+- _Stabilizations_ means reviewing a stabilization and report and deciding
   whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs
   are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to
-  nominated issues, with the expectation that there will be *some* response from
+- _Prioritized nominations_ refers to prioritized lang-team response to
+  nominated issues, with the expectation that there will be _some_ response from
   the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals)
+- _Dedicated review_ means identifying an individual (or group of individuals)
   who will review the changes, as they're expected to require significant
   context.
-* Other kinds of decisions:
-    * [Lang team experiments][experiment] are used to add nightly features that
-      do not yet have an RFC. They are limited to trusted contributors and are
-      used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)][mcp] is used to propose a 'larger
-      than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)][acp] describes a change to the
-      standard library.
+- Other kinds of decisions:
+  - [Lang team experiments][experiment] are used to add nightly features that
+    do not yet have an RFC. They are limited to trusted contributors and are
+    used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)][mcp] is used to propose a 'larger
+    than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)][acp] describes a change to the
+    standard library.
 
 [experiment]: https://lang-team.rust-lang.org/how_to/experiment.html
 [mcp]: https://forge.rust-lang.org/compiler/mcp.html

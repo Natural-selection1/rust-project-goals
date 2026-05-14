@@ -11,6 +11,7 @@
 
 | [compiler] champion | @SparrowLi |
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/187679-t-compiler.2Fwg-parallel-rustc/
+
 ## Summary
 
 Continue with stabilization and performance improvements to parallel front-end, continuing from the [2025h1 goal](https://rust-lang.github.io/rust-project-goals/2025h1/parallel-front-end.html).
@@ -50,6 +51,7 @@ The current parallelization front end can already reduce the overall compilation
 ## Design axioms
 
 The parallel front end should be:
+
 - safe: Ensure the safe and correct execution of the compilation process
 - consistent: The compilation result should be consistent with that in single thread by default
 - maintainable: The implementation should be easy to maintain and extend, and not cause confusion to developers who are not familiar with it.
@@ -67,6 +69,7 @@ The parallel front end should be:
 | Discussion and moral support | ![Team][] [compiler] |       |
 
 ## Frequently asked questions
+
 [ICE]: https://github.com/rust-lang/rust/issues?q=is%3Aopen+label%3AWG-compiler-parallel+ice
 [deadlock]: https://github.com/rust-lang/rust/issues?q=is%3Aopen+label%3AWG-compiler-parallel+deadlock
 [test]: https://github.com/rust-lang/rust/issues/118698

@@ -1,11 +1,12 @@
 # Use annotate-snippets for rustc diagnostic output
 
 | Metadata         |                                    |
-|:-----------------|------------------------------------|
+| :--------------- | ---------------------------------- |
 | Point of contact | @Muscraft                          |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#123] |
 | Zulip channel    | N/A                                |
+
 ## Summary
 
 Switch to annotate-snippets for rendering rustc's output, with no loss of functionality or visual regressions.
@@ -33,7 +34,7 @@ The outputs of rustc and cargo are fully using annotate-snippets, with no regres
 
 - **Match rustc's output**: The output of annotate-snippets should match rustc, modulo reasonable non-significant divergences
 - **Works for Cargo (and other tools)**: annotate-snippets is meant to be used by any project that would like "Rust-style" output, so it should be designed to work with any project, not just rustc.
-[da]: https://rust-lang.github.io/rust-project-goals/about/design_axioms.html
+  [da]: https://rust-lang.github.io/rust-project-goals/about/design_axioms.html
 
 ## Ownership and team asks
 
@@ -42,7 +43,7 @@ The outputs of rustc and cargo are fully using annotate-snippets, with no regres
 ### Reach output parity of rustc/annotate-snippets
 
 | Task                              | Owner(s) or team(s) | Notes |
-|-----------------------------------|---------------------|-------|
+| --------------------------------- | ------------------- | ----- |
 | add suggestions                   | @Muscraft           |       |
 | Port a subset of rustc's UI tests | @Muscraft           |       |
 | address divergences               | @Muscraft           |       |
@@ -50,7 +51,7 @@ The outputs of rustc and cargo are fully using annotate-snippets, with no regres
 ### Initial use of annotate-snippets
 
 | Task                                       | Owner(s) or team(s) | Notes |
-|--------------------------------------------|---------------------|-------|
+| ------------------------------------------ | ------------------- | ----- |
 | update annotate-snippets to latest version |                     |       |
 | teach cargo to pass annotate-snippets flag | @estebank           |       |
 | add ui test mode comparing new output      |                     |       |
@@ -59,7 +60,7 @@ The outputs of rustc and cargo are fully using annotate-snippets, with no regres
 ### Production use of annotate-snippets
 
 | Task                                     | Owner(s) or team(s)  | Notes                          |
-|------------------------------------------|----------------------|--------------------------------|
+| ---------------------------------------- | -------------------- | ------------------------------ |
 | switch default rustc output              |                      |                                |
 | release notes                            |                      |                                |
 | switch ui tests to only check new output |                      |                                |
@@ -68,12 +69,13 @@ The outputs of rustc and cargo are fully using annotate-snippets, with no regres
 ### Standard reviews
 
 | Task             | Owner(s) or team(s)  | Notes |
-|------------------|----------------------|-------|
+| ---------------- | -------------------- | ----- |
 | Standard reviews | ![Team][] [compiler] |       |
 
 ### Top-level Rust blog post inviting feedback
 
 | Task                                       | Owner(s) or team(s) | Notes |
-|--------------------------------------------|---------------------|-------|
+| ------------------------------------------ | ------------------- | ----- |
 | Top-level Rust blog post inviting feedback |                     |       |
+
 [cargo-lints]: https://github.com/rust-lang/cargo/issues/12235

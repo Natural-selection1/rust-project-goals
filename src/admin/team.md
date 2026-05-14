@@ -11,17 +11,17 @@ Our mission is to focus the Rust programming language efforts by running and adm
 
 Team members perform some subset of the following roles:
 
-* Attending short sync meetings.
-* When preparing a new goal slate:
-    * Advertising the goal program to teams and soliciting participation
-    * Reviewing incoming goal proposals for quality and accuracy
-    * Seeking feedback on behalf of outsiders' goals
-    * Authoring the RFC and hounding team leads to check their boxes
-    * Deciding which goals to propose as roadmap goals.
-* During the year:
-    * Authoring round-up blog posts highlighting progress
-    * Updating and maintaining the web-site
-    * Checking in with the goal points of contact that are not reporting progress to see if they need help
+- Attending short sync meetings.
+- When preparing a new goal slate:
+  - Advertising the goal program to teams and soliciting participation
+  - Reviewing incoming goal proposals for quality and accuracy
+  - Seeking feedback on behalf of outsiders' goals
+  - Authoring the RFC and hounding team leads to check their boxes
+  - Deciding which goals to propose as roadmap goals.
+- During the year:
+  - Authoring round-up blog posts highlighting progress
+  - Updating and maintaining the web-site
+  - Checking in with the goal points of contact that are not reporting progress to see if they need help
 
 ## Role of the lead
 

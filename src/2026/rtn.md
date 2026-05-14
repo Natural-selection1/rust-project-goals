@@ -1,7 +1,7 @@
 # Prepare TAIT + RTN for stabilization
 
 | Metadata         |                                                                                                    |
-| :--              | :--                                                                                                |
+| :--------------- | :------------------------------------------------------------------------------------------------- |
 | Point of contact | @traviscross                                                                                       |
 | Status           | Accepted                                                                                           |
 | What and why     | Name opaque types and bound async return types so `async fn` in traits works with `Send` and `dyn` |
@@ -11,7 +11,6 @@
 | Zulip channel    | [#wg-async][channel]                                                                               |
 | [lang] champion  | @traviscross                                                                                       |
 | [types] champion | @lcnr                                                                                              |
-
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/187312-wg-async/
 
@@ -146,17 +145,17 @@ We're looking to mentor one or more contributors on this goal. The work spans la
 
 ### Work items over the next year
 
-| Task                                     | Owner(s)      | Notes                                      |
-|------------------------------------------|---------------|--------------------------------------------|
-| Research lang-side requirements for TAIT | @traviscross  | What's needed before RTN/TAIT can stabilize |
-| Update stabilization report              |               | Address concerns from closed PR            |
-| RFC for RTN on async closures            | @traviscross, @nikomatsakis | `F(..): Send` syntax, explore design space |
-| Implement RTN for async closures         |               | After RFC acceptance                       |
+| Task                                     | Owner(s)                    | Notes                                       |
+| ---------------------------------------- | --------------------------- | ------------------------------------------- |
+| Research lang-side requirements for TAIT | @traviscross                | What's needed before RTN/TAIT can stabilize |
+| Update stabilization report              |                             | Address concerns from closed PR             |
+| RFC for RTN on async closures            | @traviscross, @nikomatsakis | `F(..): Send` syntax, explore design space  |
+| Implement RTN for async closures         |                             | After RFC acceptance                        |
 
 ## Team asks
 
-| Team    | Support level | Notes                                         |
-|---------|---------------|-----------------------------------------------|
+| Team    | Support level | Notes                                          |
+| ------- | ------------- | ---------------------------------------------- |
 | [lang]  | Medium        | RFC review, design discussions                 |
 | [types] | Medium        | Stabilization report review, TAIT interactions |
 
@@ -173,6 +172,7 @@ The concern is that stabilizing RTN could lock in behaviors that would conflict 
 ### How does this relate to the "Just add async" roadmap?
 
 RTN is the key to making async fn in traits usable in practice. Without it, trait authors must choose between:
+
 - Using `async fn` but preventing generic code from requiring `Send`
 - Using explicit `-> impl Future<Output=T> + Send` but losing the ergonomics of `async fn`
 

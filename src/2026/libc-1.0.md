@@ -1,13 +1,12 @@
 # libc 1.0 release readiness
 
 | Metadata              |                                                                      |
-| :--                   | :--                                                                  |
+| :-------------------- | :------------------------------------------------------------------- |
 | Point of contact      | @JohnTitor                                                           |
 | Status                | Accepted                                                             |
 | Tracking issue        | [rust-lang/rust-project-goals#657]                                   |
 | Other tracking issues | [rust-lang/libc#3248](https://github.com/rust-lang/libc/issues/3248) |
 | Zulip channel         | N/A                                                                  |
-
 
 ## Summary
 
@@ -34,7 +33,7 @@ We also have to triage the [polls on Zulip](https://rust-lang.zulipchat.com/#nar
 ### Work items over the next year
 
 | Task                                                            | Owner(s)             | Notes |
-| ----------------------------------------------------------------|----------------------|-------|
+| --------------------------------------------------------------- | -------------------- | ----- |
 | Define MSRV and platform-support policies                       | @JohnTitor @tgross35 |       |
 | Address remaining breaking changes listed in the tracking issue | @JohnTitor @tgross35 |       |
 | Triage polls on Zulip                                           | @JohnTitor @tgross35 |       |

@@ -1,16 +1,16 @@
 # Ergonomic ref-counting
 
-| Metadata         |                                               |
-|:-----------------|-----------------------------------------------|
-| Point of contact | @nikomatsakis                                 |
-| Status           | Accepted                                      |
+| Metadata         |                                                                                                |
+| :--------------- | ---------------------------------------------------------------------------------------------- |
+| Point of contact | @nikomatsakis                                                                                  |
+| Status           | Accepted                                                                                       |
 | What and why     | A `Share` trait for clone-as-alias types and `move($expr)` for precise closure capture control |
-| Needs            | Contributor                                   |
-| Roadmap          | [Just add async](./roadmap-just-add-async.md) |
-| Tracking issue   | [rust-lang/rust-project-goals#107]            |
-| Highlight        | Async and ergonomic RC                         |
-| Zulip channel    | N/A                                           |
-| [lang] champion  | @nikomatsakis                                 |
+| Needs            | Contributor                                                                                    |
+| Roadmap          | [Just add async](./roadmap-just-add-async.md)                                                  |
+| Tracking issue   | [rust-lang/rust-project-goals#107]                                                             |
+| Highlight        | Async and ergonomic RC                                                                         |
+| Zulip channel    | N/A                                                                                            |
+| [lang] champion  | @nikomatsakis                                                                                  |
 
 ## Summary
 
@@ -39,9 +39,9 @@ These two features make working with ref-counted data more ergonomic while still
 
 ### Design axioms
 
-* **Low-level enough for a kernel, usable enough for a GUI.** Solutions should make low-level details visible for those who need them while being ergonomic enough for high-level applications.
+- **Low-level enough for a kernel, usable enough for a GUI.** Solutions should make low-level details visible for those who need them while being ergonomic enough for high-level applications.
 
-* **Semantic over operational.** Traits should be defined by what they *mean*, not just what they *cost*. `Share` means "creates an alias," not "is cheap to clone."
+- **Semantic over operational.** Traits should be defined by what they _mean_, not just what they _cost_. `Share` means "creates an alias," not "is cheap to clone."
 
 #### The `Share` trait
 
@@ -97,32 +97,32 @@ tokio::spawn(async {
 
 A trait that identifies types where cloning creates an alias to the same underlying value, like `Arc`, `Rc`, and shared references.
 
-| Task                                            | Owner(s)      | Notes                          |
-| ----------------------------------------------- | ------------- | ------------------------------ |
-| RFC for `Share` trait                           | @nikomatsakis | Define semantics, stdlib impls |
-| Implement `Share` trait                         | @spastorino, @TaKO8Ki |                         |
-| Prepare stabilization PR for `Share` trait      | @spastorino, @TaKO8Ki |                         |
+| Task                                       | Owner(s)              | Notes                          |
+| ------------------------------------------ | --------------------- | ------------------------------ |
+| RFC for `Share` trait                      | @nikomatsakis         | Define semantics, stdlib impls |
+| Implement `Share` trait                    | @spastorino, @TaKO8Ki |                                |
+| Prepare stabilization PR for `Share` trait | @spastorino, @TaKO8Ki |                                |
 
 #### Support `move(...)` expressions in closures
 
 Precise control over what closures capture and when, eliminating the need for awkward clone-into-temporary patterns.
 
-| Task                                            | Owner(s)      | Notes                          |
-| ----------------------------------------------- | ------------- | ------------------------------ |
-| RFC for move expressions                        | @nikomatsakis | Closure desugaring semantics   |
-| Implement move expressions                      | @spastorino, @TaKO8Ki |                         |
-| Prepare reference changes                       | @nikomatsakis |                                |
-| Prepare stabilization PR for `move` expressions | @spastorino, @TaKO8Ki |                         |
+| Task                                            | Owner(s)              | Notes                        |
+| ----------------------------------------------- | --------------------- | ---------------------------- |
+| RFC for move expressions                        | @nikomatsakis         | Closure desugaring semantics |
+| Implement move expressions                      | @spastorino, @TaKO8Ki |                              |
+| Prepare reference changes                       | @nikomatsakis         |                              |
+| Prepare stabilization PR for `move` expressions | @spastorino, @TaKO8Ki |                              |
 
 **Target:** Working prototypes on nightly by summer 2026.
 
 ## Team asks
 
-| Team        | Support level | Notes   |
-| ----------- | ------------- | ------- |
-| [compiler]  | Small         | Reviews |
-| [lang]      | Medium        |         |
-| [lang-docs] | Small         |         |
+| Team        | Support level | Notes                               |
+| ----------- | ------------- | ----------------------------------- |
+| [compiler]  | Small         | Reviews                             |
+| [lang]      | Medium        |                                     |
+| [lang-docs] | Small         |                                     |
 | [libs-api]  | Small         | Reviews of RFC and API surface area |
 
 ## Frequently asked questions
@@ -137,11 +137,11 @@ The goal has taken a long journey:
 
 **2025H2:** Through design meetings, the RustConf Unconf, and extensive blogging, we explored the design space more deeply. Key realizations emerged:
 
-* **Semantic over operational:** Rather than defining a trait by "what is cheap to clone" (operational), we should focus on "what does cloning mean" (semantic). When you clone an `Arc`, you get a second *handle to the same value*—this "entanglement" is the key property.
+- **Semantic over operational:** Rather than defining a trait by "what is cheap to clone" (operational), we should focus on "what does cloning mean" (semantic). When you clone an `Arc`, you get a second _handle to the same value_—this "entanglement" is the key property.
 
-* **Explicit can be ergonomic:** After conversations with Josh Triplett, we concluded that some applications genuinely need to track where aliases are created. The goal should be making explicit code ergonomic, not making everything implicit.
+- **Explicit can be ergonomic:** After conversations with Josh Triplett, we concluded that some applications genuinely need to track where aliases are created. The goal should be making explicit code ergonomic, not making everything implicit.
 
-* **Move expressions generalize nicely:** The `move($expr)` syntax elegantly extends Rust's existing closure model rather than adding a parallel system.
+- **Move expressions generalize nicely:** The `move($expr)` syntax elegantly extends Rust's existing closure model rather than adding a parallel system.
 
 [dioxus-post]: https://dioxus.notion.site/Dioxus-Labs-High-level-Rust-5fe1f1c9c8334815ad488410d948f05e
 

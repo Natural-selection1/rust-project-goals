@@ -1,10 +1,10 @@
 # Seamless C support
 
-| Metadata | |
-| --- | --- |
+| Metadata         |               |
+| ---------------- | ------------- |
 | Point of contact | @joshtriplett |
-| Status | Not accepted |
-| Zulip channel  | N/A                                |
+| Status           | Not accepted  |
+| Zulip channel    | N/A           |
 
 ## Summary
 
@@ -77,6 +77,7 @@ call any supported C code.
 
 Once we have a C compiler integrated into Rust, we can incrementally add C
 extensions to support using Rust from C. For instance:
+
 - Support importing Rust modules and calling `extern "C"` functions from
   them, without requiring a C header file.
 - Support using `::` for scoping names.
@@ -102,7 +103,7 @@ compatible to allow using it as `CC` in a C project.
   a Rust project, or Rust code into a C project, should be trivial; it should
   be just as easy as integrating C with C++.
 
-- **This is not primarily about providing *safe* bindings.** This project will
+- **This is not primarily about providing _safe_ bindings.** This project will
   primarily make it much easier to access C bindings as unsafe interfaces.
   There will still be value in wrapping these unsafe C interfaces with safer
   Rust interfaces.
@@ -121,11 +122,11 @@ compatible to allow using it as `CC` in a C project.
 
 ### Support needed from the project
 
-* Lang team:
-  * Design meetings to discuss design changes
-  * RFC reviews
-* Compiler team:
-  * RFC review
+- Lang team:
+  - Design meetings to discuss design changes
+  - RFC reviews
+- Compiler team:
+  - RFC review
 
 ## Outputs and milestones
 

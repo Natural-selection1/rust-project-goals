@@ -1,11 +1,12 @@
 # Stabilize doc_cfg
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @GuillaumeGomez                    |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#120] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#120] |
+| Zulip channel    | N/A                                |
+
 @GuillaumeGomez: https://github.com/GuillaumeGomez
 
 ## Motivation
@@ -16,9 +17,9 @@ The `doc_cfg` features would allow to provide more information to crate users re
 
 ### The next six months
 
-* Merge the [RFC](https://github.com/rust-lang/rfcs/pull/3631).
-* Implement it.
-* Stabilize it.
+- Merge the [RFC](https://github.com/rust-lang/rfcs/pull/3631).
+- Implement it.
+- Stabilize it.
 
 ### The "shiny future" we are working towards
 
@@ -31,11 +32,11 @@ N/A
 ## Ownership and team asks
 
 **Owner:** @GuillaumeGomez
-| Task             | Owner(s) or team(s) | Notes |
+| Task | Owner(s) or team(s) | Notes |
 | ---------------- | ------------------- | ----- |
-| Implementation   | @GuillaumeGomez     |       |
-| RFC decision     | ![Team][] [rustdoc] |       |
-| Standard reviews | ![Team][] [rustdoc] |       |
+| Implementation | @GuillaumeGomez | |
+| RFC decision | ![Team][] [rustdoc] | |
+| Standard reviews | ![Team][] [rustdoc] | |
 
 ## Outputs and milestones
 

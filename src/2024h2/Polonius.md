@@ -1,11 +1,11 @@
 # Scalable Polonius support on nightly
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @lqd                               |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#118] |
-| Zulip channel  | [#t-types/polonius][channel]       |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#118] |
+| Zulip channel    | [#t-types/polonius][channel]       |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/186049-t-types.2Fpolonius
 
@@ -27,7 +27,7 @@ Some support exists on nightly, but this [older prototype][datalog] has no path 
 
 ### The next six months
 
-* Land polonius on nightly
+- Land polonius on nightly
 
 ### The "shiny future" we are working towards
 

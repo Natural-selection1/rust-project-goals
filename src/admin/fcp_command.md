@@ -1,6 +1,6 @@
 # `fcp`, create the FCP merge comment
 
-The `cargo rpg fcp` command creates an FCP comment, since the format for the project goals RFC is distinct from other RFCs. 
+The `cargo rpg fcp` command creates an FCP comment, since the format for the project goals RFC is distinct from other RFCs.
 
 To use, simply invoke the command with the directory for the goal period, e.g., something like this:
 

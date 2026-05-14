@@ -1,7 +1,7 @@
-# Assumptions on Binders 
+# Assumptions on Binders
 
 | Metadata         |                                     |
-| :--              | :--                                 |
+| :--------------- | :---------------------------------- |
 | Point of contact | @BoxyUwU                            |
 | Roadmap          | Project Zero                        |
 | Status           | Accepted                            |
@@ -9,10 +9,9 @@
 | Zulip channel    | N/A (just make a thread in t-types) |
 | [types] champion | @BoxyUwU                            |
 
-
 ## Summary
 
-Attempt to implement a version of `-Zhigher-ranked-assumptions` which works for *all* binders, not just witness types of futures.
+Attempt to implement a version of `-Zhigher-ranked-assumptions` which works for _all_ binders, not just witness types of futures.
 
 ## Motivation
 
@@ -28,16 +27,16 @@ Figure out a different impl strategy than `-Zhigher-ranked-assumptions`'s curren
 
 ### Work items over the next year
 
-| Task        | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| Figure out impl possibilities | @BoxyUwU  |       |
+| Task                             | Owner(s) | Notes |
+| -------------------------------- | -------- | ----- |
+| Figure out impl possibilities    | @BoxyUwU |       |
 | Attempt to implement a prototype | @BoxyUwU |       |
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [types]    | Medium | implementation/reviews/deciding on a design |
+| Team    | Support level | Notes                                       |
+| ------- | ------------- | ------------------------------------------- |
+| [types] | Medium        | implementation/reviews/deciding on a design |
 
 ## Frequently asked questions
 

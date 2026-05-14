@@ -1,15 +1,15 @@
 # Stabilize and model Polonius Alpha
 
-| Metadata         |                                    |
-|:-----------------|------------------------------------|
-| Point of contact | @lqd                               |
-| Status           | Accepted                           |
-| Tracking issue   | [rust-lang/rust-project-goals#118] |
-| Zulip channel    | [#t-types/polonius][channel]       |
-| [types] champion | @jackh726                          |
-| Roadmap          | The Borrow Checker Within           |
+| Metadata         |                                                                                             |
+| :--------------- | ------------------------------------------------------------------------------------------- |
+| Point of contact | @lqd                                                                                        |
+| Status           | Accepted                                                                                    |
+| Tracking issue   | [rust-lang/rust-project-goals#118]                                                          |
+| Zulip channel    | [#t-types/polonius][channel]                                                                |
+| [types] champion | @jackh726                                                                                   |
+| Roadmap          | The Borrow Checker Within                                                                   |
 | What and why     | Stabilize an improved borrow checker that accepts conditional borrows and lending iterators |
-| Highlight        | Polonius                            |
+| Highlight        | Polonius                                                                                    |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/186049-t-types.2Fpolonius
 
@@ -28,10 +28,10 @@ Stabilize the [polonius alpha][alpha] borrow checking analysis, which resolves [
 
 Polonius is an improved version of the borrow checker that resolves common limitations and which is needed to support future patterns such as lending iterators. Over the past three goal periods ([2025h1](https://rust-lang.github.io/rust-project-goals/2025h1/Polonius.html), [2025h2](https://rust-lang.github.io/rust-project-goals/2025h2/polonius.html)), we have:
 
-* Identified an actionable subset of the full polonius analysis — the "alpha" version — that handles the most impactful cases while scaling well
-* Implemented and landed a [functional prototype][alpha] on nightly that passes perf runs and crater runs
-* Significantly reduced overhead through a [lazy constraint graph rewrite](https://github.com/rust-lang/rust/pull/150551)
-* Identified the remaining phases for gradually improving precision in the future
+- Identified an actionable subset of the full polonius analysis — the "alpha" version — that handles the most impactful cases while scaling well
+- Implemented and landed a [functional prototype][alpha] on nightly that passes perf runs and crater runs
+- Significantly reduced overhead through a [lazy constraint graph rewrite](https://github.com/rust-lang/rust/pull/150551)
+- Identified the remaining phases for gradually improving precision in the future
 
 The alpha analysis is now at the point where stabilization is the natural next step. There is one known soundness issue remaining (related to dead regions outlived by opaque types), and we need to expand testing, validate performance on real-world code, and prepare the documentation and stabilization report.
 
@@ -82,25 +82,25 @@ During the preview period, we will also evaluate and address diagnostics quality
 
 Fix remaining issues, validate on real-world code, and ship a stable improved borrow checker.
 
-| Task | Owner(s) | Notes |
-| ---- | -------- | ----- |
-| Fix soundness issue with opaque types and dead regions | @lqd, @tiif | @tiif's [trait-system-refactor-initiative#159](https://github.com/rust-lang/trait-system-refactor-initiative/issues/159) is a pre-requisite for a borrowck fix |
-| Expand test coverage | @lqd | We've started doing this during the previous goal period, e.g. from open fixed-by-polonius issues in [#145053](https://github.com/rust-lang/rust/pull/145053) |
-| Enable polonius testing on CI | @lqd | |
-| Ship nightly preview behind feature gate | @lqd | With blog post / call for testing |
-| Validate performance on real-world code | @lqd, @amandasystems | |
-| Address diagnostics feedback from preview | @lqd | |
-| Write stabilization report | @lqd | |
-| Write rustc dev guide documentation | @lqd, @amandasystems | |
+| Task                                                   | Owner(s)             | Notes                                                                                                                                                          |
+| ------------------------------------------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fix soundness issue with opaque types and dead regions | @lqd, @tiif          | @tiif's [trait-system-refactor-initiative#159](https://github.com/rust-lang/trait-system-refactor-initiative/issues/159) is a pre-requisite for a borrowck fix |
+| Expand test coverage                                   | @lqd                 | We've started doing this during the previous goal period, e.g. from open fixed-by-polonius issues in [#145053](https://github.com/rust-lang/rust/pull/145053)  |
+| Enable polonius testing on CI                          | @lqd                 |                                                                                                                                                                |
+| Ship nightly preview behind feature gate               | @lqd                 | With blog post / call for testing                                                                                                                              |
+| Validate performance on real-world code                | @lqd, @amandasystems |                                                                                                                                                                |
+| Address diagnostics feedback from preview              | @lqd                 |                                                                                                                                                                |
+| Write stabilization report                             | @lqd                 |                                                                                                                                                                |
+| Write rustc dev guide documentation                    | @lqd, @amandasystems |                                                                                                                                                                |
 
 #### Extend formality for Polonius alpha
 
 Build a formal model of borrow checking in a-mir-formality and upstream it into the Rust reference.
 
-| Task | Owner(s) | Notes |
-| ---- | -------- | ----- |
-| Build formal model in a-mir-formality | @tiif, @lqd, @nikomatsakis | Validate against rustc implementation |
-| Upstream borrow checking specification into Rust reference | @tiif, @lqd | Ties to [experimental language specification](./experimental-language-specification.md) goal |
+| Task                                                       | Owner(s)                   | Notes                                                                                        |
+| ---------------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------- |
+| Build formal model in a-mir-formality                      | @tiif, @lqd, @nikomatsakis | Validate against rustc implementation                                                        |
+| Upstream borrow checking specification into Rust reference | @tiif, @lqd                | Ties to [experimental language specification](./experimental-language-specification.md) goal |
 
 ### The "shiny future" we are working towards
 
@@ -108,17 +108,17 @@ Stable support for the polonius alpha analysis, followed by gradually improving 
 
 ## Design axioms
 
-* **Don't let perfect be the enemy of good.** The alpha analysis doesn't handle every case the full polonius model could, but it handles the most common and impactful cases. Shipping this subset sooner is better than waiting for a complete solution.
+- **Don't let perfect be the enemy of good.** The alpha analysis doesn't handle every case the full polonius model could, but it handles the most common and impactful cases. Shipping this subset sooner is better than waiting for a complete solution.
 
-* **Prove it formally.** Building a formal model in a-mir-formality and using it as an oracle gives us confidence that the implementation matches the intended semantics, and produces a specification that lives on as documentation.
+- **Prove it formally.** Building a formal model in a-mir-formality and using it as an oracle gives us confidence that the implementation matches the intended semantics, and produces a specification that lives on as documentation.
 
-* **Accept bounded cost.** We are willing to accept a compile-time overhead of 10–20% for the expressiveness gains polonius provides. Unbounded cost is not acceptable, but modest cost is a reasonable trade-off.
+- **Accept bounded cost.** We are willing to accept a compile-time overhead of 10–20% for the expressiveness gains polonius provides. Unbounded cost is not acceptable, but modest cost is a reasonable trade-off.
 
 ## Team asks
 
-| Team       | Support level | Notes                                                                            |
-|------------|---------------|----------------------------------------------------------------------------------|
-| [types]    | Large         | Design review, stabilization decision, reviews from @jackh726 and @matthewjasper |
+| Team    | Support level | Notes                                                                            |
+| ------- | ------------- | -------------------------------------------------------------------------------- |
+| [types] | Large         | Design review, stabilization decision, reviews from @jackh726 and @matthewjasper |
 
 ### Support needed from the project
 

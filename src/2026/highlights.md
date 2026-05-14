@@ -2,13 +2,13 @@
 
 There are a total of (((#GOALS))) planned for this year. That's a lot! You can see the complete list, but to help you get a handle on it, we've selected a few to highlight. These are goals that will be stabilizing this year or which we think people will be particularly excited to learn about.
 
-**Important:** You have to understand the nature of a Rust goal. Rust is an open-source project, which means that progress only happens when contributors come and *make* it happen. When the Rust project declares a goal, that means that (a) contributors, who we call the *task owners*, have said they want to do the work and (b) members of the Rust team members have promised to support them. Sometimes those task owners are volunteers, sometimes they are paid by a company, and sometimes they supported by grants. But no matter which category they are, if they ultimately are not able to do the work (say, because something else comes up that is higher priority for them in their lives), then the goal won't happen. That's ok, there's always next year!
+**Important:** You have to understand the nature of a Rust goal. Rust is an open-source project, which means that progress only happens when contributors come and _make_ it happen. When the Rust project declares a goal, that means that (a) contributors, who we call the _task owners_, have said they want to do the work and (b) members of the Rust team members have promised to support them. Sometimes those task owners are volunteers, sometimes they are paid by a company, and sometimes they supported by grants. But no matter which category they are, if they ultimately are not able to do the work (say, because something else comes up that is higher priority for them in their lives), then the goal won't happen. That's ok, there's always next year!
 
-## Running Rust scripts will get more convenient with *cargo script*
+## Running Rust scripts will get more convenient with _cargo script_
 
 (((HIGHLIGHT TABLE: Cargo script)))
 
-*People involved: (((HIGHLIGHT CREDITS: Cargo script)))*
+_People involved: (((HIGHLIGHT CREDITS: Cargo script)))_
 
 ---
 
@@ -31,15 +31,15 @@ fn main() {
 }
 ```
 
-and run it with `cargo my_ip.rs`.  Or, thanks to the `#!` line, you can just run `./my_ip.rs`.
+and run it with `cargo my_ip.rs`. Or, thanks to the `#!` line, you can just run `./my_ip.rs`.
 
 This feature makes good use of [one of the things we found when doing our research for the Vision Doc](https://blog.rust-lang.org/2025/12/19/what-do-people-love-about-rust/#but-what-they-love-is-the-sense-of-empowerment-and-versatility): that people love Rust not only because it helps them build foundational software, but because it's a expressive and productive enough that "you can write everything from the top to the bottom of your stack in it" (-- Rust expert and consultant focused on embedded and real-time systems). Until now, the fly in the ointment was that packaging up a Rust package required several files and required people to do a separate compilation step. Cargo script solves that problem.
 
-## The borrow checker will be more flexible with *Polonius alpha*
+## The borrow checker will be more flexible with _Polonius alpha_
 
 (((HIGHLIGHT TABLE: Polonius)))
 
-*People involved: (((HIGHLIGHT CREDITS: Polonius)))*
+_People involved: (((HIGHLIGHT CREDITS: Polonius)))_
 
 ---
 
@@ -67,11 +67,11 @@ Under Polonius Alpha, this code compiles.
 
 Polonius Alpha is part of a larger roadmap called [the Borrow-Checker Within](./roadmap-borrow-checker-within.md) that we expect to be driving over the next few years. This year, another part of that work is including Polonius Alpha in [a-mir-formality](https://github.com/rust-lang/a-mir-formality/), the [types team's](https://rust-lang.org/governance/teams/compiler/#team-types) (in-progress) specification for how the Rust type system works. As part of another goal, we are planning to [integrate a-mir-formality into the Rust reference](./a-mir-formality.md). This would make Polonius the first version of the borrow checker whose behavior is specified outside of the Rust compiler.
 
-## Change const evaluation to support *traits*, and *reflection*, allow *structs/enums* as const parameter types
+## Change const evaluation to support _traits_, and _reflection_, allow _structs/enums_ as const parameter types
 
 (((HIGHLIGHT TABLE: Const and reflection)))
 
-*People involved: (((HIGHLIGHT CREDITS: Const and reflection)))*
+_People involved: (((HIGHLIGHT CREDITS: Const and reflection)))_
 
 ---
 
@@ -112,7 +112,7 @@ Finally, we're beginning early experimental work on compile-time reflection — 
 
 (((HIGHLIGHT TABLE: Async and ergonomic RC)))
 
-*People involved: (((HIGHLIGHT CREDITS: Async and ergonomic RC)))*
+_People involved: (((HIGHLIGHT CREDITS: Async and ergonomic RC)))_
 
 ---
 
@@ -139,7 +139,7 @@ We also plan to cut a "practical path" to support [invoking async fns through `d
 
 (((HIGHLIGHT TABLE: Try, never, extern types)))
 
-*People involved: (((HIGHLIGHT CREDITS: Try, never, extern types)))*
+_People involved: (((HIGHLIGHT CREDITS: Try, never, extern types)))_
 
 ---
 
@@ -156,7 +156,7 @@ fn read_list(path: PathBuf) -> TracedResult<Vec<i32>> {
 
 No more choosing between readable error handling and useful diagnostics.
 
-The [never type `!`](./stabilize-never-type.md) has been unstable for *ten years*. It represents computations that never produce a value — like functions that always panic or loop forever. The final blockers are being resolved, and stabilization is in sight.
+The [never type `!`](./stabilize-never-type.md) has been unstable for _ten years_. It represents computations that never produce a value — like functions that always panic or loop forever. The final blockers are being resolved, and stabilization is in sight.
 
 Finally, the [Sized trait hierarchy](./scalable-vectors.md) work will stabilize a richer set of sizing traits, which unblocks [extern types](https://github.com/rust-lang/rfcs/pull/1861) — another long-requested feature. Today, `?Sized` conflates "unsized but has metadata" with "truly sizeless." The new hierarchy distinguishes these cases. This same work is also laying the foundation for scalable vector support (Arm SVE), where vector sizes depend on the CPU rather than being fixed at compile time.
 
@@ -164,7 +164,7 @@ Finally, the [Sized trait hierarchy](./scalable-vectors.md) work will stabilize 
 
 (((HIGHLIGHT TABLE: Custom pointer types)))
 
-*People involved: (((HIGHLIGHT CREDITS: Custom pointer types)))*
+_People involved: (((HIGHLIGHT CREDITS: Custom pointer types)))_
 
 ---
 
@@ -185,7 +185,7 @@ let bio = person.biometrics(); // just works
 
 [Reborrow traits](https://rust-lang.github.io/rust-project-goals/2026/reborrow-traits.html) allow custom pointers to be reborrowed, just like mutable references. When working with Pin, for example, you should no longer have to call `pinned_ref.as_mut()` to fix lifetime issues.
 
-We are also continuing our experimental work to support [custom field projections](./field-projections.md) — accessing fields *through* a smart pointer. Today, `&x.field` gives you `&Field`, but there's no equivalent for `NonNull`, `Pin`, or custom pointer types. The field projections design is exploring a "virtual places" approach that would make this work generically. The goal for this year is a compiler experiment on nightly and draft RFCs, with the [beyond-refs wiki](https://rust-lang.github.io/beyond-refs/) documenting the design space.
+We are also continuing our experimental work to support [custom field projections](./field-projections.md) — accessing fields _through_ a smart pointer. Today, `&x.field` gives you `&Field`, but there's no equivalent for `NonNull`, `Pin`, or custom pointer types. The field projections design is exploring a "virtual places" approach that would make this work generically. The goal for this year is a compiler experiment on nightly and draft RFCs, with the [beyond-refs wiki](https://rust-lang.github.io/beyond-refs/) documenting the design space.
 
 These goals spun out from the ongoing work to support the needs of the [Rust for Linux](./roadmap-rust-for-linux.md) project and are part of the [Beyond the `&`](./roadmap-beyond-the-ampersand.md) roadmap.
 
@@ -193,7 +193,7 @@ These goals spun out from the ongoing work to support the needs of the [Rust for
 
 (((HIGHLIGHT TABLE: Build-std)))
 
-*People involved: (((HIGHLIGHT CREDITS: Build-std)))*
+_People involved: (((HIGHLIGHT CREDITS: Build-std)))_
 
 ---
 
@@ -205,10 +205,10 @@ An unstable `-Zbuild-std` flag has existed for a while, but this new design — 
 
 (((HIGHLIGHT TABLE: Next-generation trait solver)))
 
-*People involved: (((HIGHLIGHT CREDITS: Next-generation trait solver)))*
+_People involved: (((HIGHLIGHT CREDITS: Next-generation trait solver)))_
 
 ---
 
 This year, the Rust types team plans to stabilize the [next-generation trait solver](./next-solver.md). This solver is a ground-up rewrite of the core engine that decides whether types satisfy trait bounds, normalizes associated types, and more. The types team has been working on it since late 2022, and it already powers coherence checking as of Rust 1.84. The goal for this year is to stabilize it for use across all of Rust and remove the old implementation.
 
-This goal may not *sound* like it's going to impact your life, but finishing the new solver unblocks a *lot* of stuff. To start, it allows us to make progress on the [Project Zero](./roadmap-project-zero.md) roadmap, which aims to fix every known type system soundness bug. It also unblocks long-desired features like implied bounds, cyclic trait matching, and features needed by the [Just add async](./roadmap-just-add-async.md) roadmap.
+This goal may not _sound_ like it's going to impact your life, but finishing the new solver unblocks a _lot_ of stuff. To start, it allows us to make progress on the [Project Zero](./roadmap-project-zero.md) roadmap, which aims to fix every known type system soundness bug. It also unblocks long-desired features like implied bounds, cyclic trait matching, and features needed by the [Just add async](./roadmap-just-add-async.md) roadmap.

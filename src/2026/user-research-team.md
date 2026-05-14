@@ -1,12 +1,11 @@
 # Establish a User Research Team
 
 | Metadata         |                                    |
-| :--              | :--                                |
+| :--------------- | :--------------------------------- |
 | Point of contact | @nikomatsakis                      |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#632] |
 | Zulip channel    | [#vision-doc-2025][channel]        |
-
 
 ## Summary
 
@@ -30,19 +29,19 @@ Over time, the team would build up a collection of raw data - interviews, survey
 
 ### Work items over the next year
 
-| Task                                           | Owner(s)                 | Notes                                     |
-| ---------------------------------------------- | ------------------------ | ----------------------------------------- |
-| Draft team charter defining scope and approach | Vision Doc effort members |                                           |
-| Recruit initial team members                   | Vision Doc effort members | Looking for user research experience      |
-| Establish data sharing protocols               | User Research Team       | Balance privacy with team access          |
-| Create infrastructure for distributing findings| User Research Team       | How findings reach other teams            |
-| Conduct first targeted research study          | User Research Team       | Demonstrate value with concrete output    |
+| Task                                            | Owner(s)                  | Notes                                  |
+| ----------------------------------------------- | ------------------------- | -------------------------------------- |
+| Draft team charter defining scope and approach  | Vision Doc effort members |                                        |
+| Recruit initial team members                    | Vision Doc effort members | Looking for user research experience   |
+| Establish data sharing protocols                | User Research Team        | Balance privacy with team access       |
+| Create infrastructure for distributing findings | User Research Team        | How findings reach other teams         |
+| Conduct first targeted research study           | User Research Team        | Demonstrate value with concrete output |
 
 ## Team asks
 
 | Team                 | Support level | Notes                                                |
 | -------------------- | ------------- | ---------------------------------------------------- |
-| [leadership-council] | Small        | Org decision to establish team, ongoing coordination |
+| [leadership-council] | Small         | Org decision to establish team, ongoing coordination |
 
 ## Frequently asked questions
 

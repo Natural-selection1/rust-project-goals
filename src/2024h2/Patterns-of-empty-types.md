@@ -1,11 +1,12 @@
 # Patterns of empty types
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @Nadrieril                         |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#115] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#115] |
+| Zulip channel    | N/A                                |
+
 ## Summary
 
 Introduce an RFC for never patterns or other solutions for patterns involving uninhabited types.
@@ -21,6 +22,7 @@ This is particularly salient as the never type `!` is planned to be stabilized i
 ### The status quo
 
 Empty types are used commonly to indicate cases that can't happen, e.g. in error-generic interfaces:
+
 ```rust
 impl TryFrom<X> for Y {
     type Error = Infallible;
@@ -38,7 +40,9 @@ let new_ast = match ast.map_nodes::<!>(|node| node) {
     Err(never) => match never {},
 }
 ```
+
 and conditional compilation:
+
 ```rust
 pub struct PoisonError<T> {
     guard: T,
@@ -86,22 +90,22 @@ I (@Nadrieril) am putting forward my own contribution for driving this forward, 
 implementation sides. I am an experienced compiler contributor and have been driving this forward
 already for several months.
 
-* I expect to be authoring one RFC, on never patterns (unless it gets rejected and we need
+- I expect to be authoring one RFC, on never patterns (unless it gets rejected and we need
   a different approach).
-    * The feature may require one design meeting.
-* Implementation work is 80% done, which leaves about 80% more to do. This will require reviews from
+  - The feature may require one design meeting.
+- Implementation work is 80% done, which leaves about 80% more to do. This will require reviews from
   the compiler team, but not more than the ordinary.
-| Task                         | Owner(s) or team(s)  | Notes |
-| ---------------------------- | -------------------- | ----- |
-| Author RFC                   | @Nadrieril           |       |
-| Implementation               | @Nadrieril           |       |
-| Standard reviews             | ![Team][] [compiler] |       |
-| Discussion and moral support | ![Team][] [lang]     |       |
-| Author stabilization report  | Goal owner           |       |
+  | Task | Owner(s) or team(s) | Notes |
+  | ---------------------------- | -------------------- | ----- |
+  | Author RFC | @Nadrieril | |
+  | Implementation | @Nadrieril | |
+  | Standard reviews | ![Team][] [compiler] | |
+  | Discussion and moral support | ![Team][] [lang] | |
+  | Author stabilization report | Goal owner | |
 
 Note:
 
-* RFC decisions, Design Meetings, and Stabilizaton decisions were intentionally not included in the above list of asks. The [lang] team is not sure it can commit to completing those reviews on a reasonable timeline.
+- RFC decisions, Design Meetings, and Stabilizaton decisions were intentionally not included in the above list of asks. The [lang] team is not sure it can commit to completing those reviews on a reasonable timeline.
 
 ## Frequently asked questions
 

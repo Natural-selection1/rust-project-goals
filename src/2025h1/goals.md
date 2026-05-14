@@ -14,7 +14,7 @@ Flagship goals represent the goals expected to have the broadest overall impact.
 
 ## Other goals
 
-These are the other proposed goals. 
+These are the other proposed goals.
 
 **Invited goals.** Some goals of the goals below are "invited goals", meaning that for that goal to happen we need someone to step up and serve as an owner. To find the invited goals, look for the ![Help wanted][] badge in the table below. Invited goals have reserved capacity for teams and a mentor, so if you are someone looking to help Rust progress, they are a great way to get involved.
 

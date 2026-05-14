@@ -1,12 +1,12 @@
 # Organize Rust All-Hands 2025
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @m-ou-se                           |
-| Status             | Accepted                           |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @m-ou-se                           |
+| Status           | Accepted                           |
 | Flagship         | Yes                                |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#263] |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#263] |
 
 ## Summary
 
@@ -55,48 +55,48 @@ Repeating an event tends to be much easier than organising one from scratch.
 **Owner:** Mara
 
 | Task                                      | Owner(s) or team(s)            | Notes                                                             |
-|-------------------------------------------|--------------------------------|-------------------------------------------------------------------|
+| ----------------------------------------- | ------------------------------ | ----------------------------------------------------------------- |
 | Pick the dates                            | [RustNL], [leadership-council] | ![Complete][]                                                     |
 | Allocate funds                            | ![Team][] [leadership-council] | ![Complete][] for event                                           |
 | Allocate funds                            | Rust Foundation                | ![Complete][] for travel                                          |
 | Book the venue                            | [RustNL]                       | ![Complete][]                                                     |
 | Catering / snacks / food / drinks         | [RustNL]                       | ![Complete][]                                                     |
-| [Register] for the Rust All-Hands 2025    | *every project member*         | Majority already signed up!                                       |
+| [Register] for the Rust All-Hands 2025    | _every project member_         | Majority already signed up!                                       |
 | Send out conformations/tickets            | @m-ou-se                       |                                                                   |
 | Send out detailed information             | @m-ou-se                       |                                                                   |
 | Answer logistical questions               | @m-ou-se                       |                                                                   |
 | Interface between project and RustNL      | @m-ou-se                       |                                                                   |
 | Make hotel reservations                   | [RustNL]                       | In progress                                                       |
-| Book hotel                                | *all participants*             | RustNL will provide suggestions                                   |
-| Book travel                               | *all participants*             |                                                                   |
+| Book hotel                                | _all participants_             | RustNL will provide suggestions                                   |
+| Book travel                               | _all participants_             |                                                                   |
 | Miscellaneous                             | ![Team][] [leadership-council] | Prepare one or two plenary sessions                               |
-| Submit talks for the "Rust Project Track" | *project members*              | Possibility to give talks at the conference before the all-hands. |
+| Submit talks for the "Rust Project Track" | _project members_              | Possibility to give talks at the conference before the all-hands. |
 | Moderation / safety                       | [RustNL] and moderator team    |                                                                   |
 | Accessibility and covid safety            | [RustNL]                       |                                                                   |
-| Come to the Rust All-Hands 2025           | *all participants*             |                                                                   |
+| Come to the Rust All-Hands 2025           | _all participants_             |                                                                   |
 | Reimburse travel costs                    | Rust Foundation                |                                                                   |
 
 ### Team swag
 
 | Task          | Owner(s) or team(s)            | Notes                                          |
-|---------------|--------------------------------|------------------------------------------------|
+| ------------- | ------------------------------ | ---------------------------------------------- |
 | Miscellaneous | ![Team][] [leadership-council] | Decide on team swag; suggestions very welcome! |
 | Acquire swag  | [RustNL]                       |                                                |
 
 ### Make plans for what to do at the all-hands
 
 | Task                                     | Owner(s) or team(s)        | Notes                                          |
-|------------------------------------------|----------------------------|------------------------------------------------|
-| Gather input from your teams             | *team leads* (or delegate) |                                                |
-| Provide input for planning team          | *team leads* (or delegate) |                                                |
-| Make an agenda for your team's room      | *team leads* (or delegate) |                                                |
+| ---------------------------------------- | -------------------------- | ---------------------------------------------- |
+| Gather input from your teams             | _team leads_ (or delegate) |                                                |
+| Provide input for planning team          | _team leads_ (or delegate) |                                                |
+| Make an agenda for your team's room      | _team leads_ (or delegate) |                                                |
 | Coordinate the overall process           | Planning team              | Small group of 2-3 people. Volunteers welcome! |
 | Make a room plan (after gathering input) | Planning team              |                                                |
 
 ### Organise an optional "pre all-hands day"
 
 | Task                    | Owner(s) or team(s) | Notes                                                               |
-|-------------------------|---------------------|---------------------------------------------------------------------|
+| ----------------------- | ------------------- | ------------------------------------------------------------------- |
 | Organisation            | @m-ou-se, [RustNL]  | An optional day without an agenda, with space for social activities |
 | Acquire gifts (secret!) | @m-ou-se            | ![Complete][]                                                       |
 
@@ -113,7 +113,7 @@ Me too!
 
 @jackh726 asked:
 
->  The key challenge here is going to be scheduling meetings for teams with overlapping membership. Likely it'll probably make sense to stagger team meetings such that there are blocks of time with very few overlaps of "official" meetings (with the acknowledgement that maybe that means during those times the parallelism goes down).
+> The key challenge here is going to be scheduling meetings for teams with overlapping membership. Likely it'll probably make sense to stagger team meetings such that there are blocks of time with very few overlaps of "official" meetings (with the acknowledgement that maybe that means during those times the parallelism goes down).
 
 @m-ou-se answered:
 

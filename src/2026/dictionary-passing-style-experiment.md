@@ -1,7 +1,7 @@
 # Dictionary Passing Style Experiment
 
 | Metadata         |                                                                                                                             |
-| :--              | :--                                                                                                                         |
+| :--------------- | :-------------------------------------------------------------------------------------------------------------------------- |
 | Point of contact | @Nadrieril                                                                                                                  |
 | Status           | Accepted                                                                                                                    |
 | What and why     | Experiment with converting where-clauses to use dictionary passing style, avoiding many implementation bugs by construction |
@@ -9,7 +9,6 @@
 | Tracking issue   | [rust-lang/rust-project-goals#630]                                                                                          |
 | Zulip channel    |                                                                                                                             |
 | [types] champion | @lcnr                                                                                                                       |
-
 
 ## Summary
 
@@ -35,14 +34,14 @@ We intend to work towards an initial experimental implementation and document is
 
 ### Work items over the next year
 
-| Task        | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| Work towards a working unstable implementation | @Nadrieril  |       |
+| Task                                           | Owner(s)   | Notes |
+| ---------------------------------------------- | ---------- | ----- |
+| Work towards a working unstable implementation | @Nadrieril |       |
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [types]    | Medium        | Review and discussions                  |
+| Team    | Support level | Notes                  |
+| ------- | ------------- | ---------------------- |
+| [types] | Medium        | Review and discussions |
 
 ## Frequently asked questions

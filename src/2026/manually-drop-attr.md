@@ -1,7 +1,7 @@
 # Control over Drop semantics
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @thunderseethe                     |
 | Status              | Accepted                           |
 | Needs               | Funding                            |
@@ -10,7 +10,6 @@
 | [lang] champion     | @Nadrieril                         |
 | [opsem] champion    | @CAD97                             |
 | [compiler] champion | @oli-obk                           |
-
 
 ## Summary
 
@@ -124,12 +123,12 @@ impl Destruct for UringState {
 
 ## Team asks
 
-| Team       | Support level | Notes                     |
-|------------|---------------|---------------------------|
-| [compiler] | Medium        | Implementation reviews (@oli-obk will review Proposal 2)    |
-| [lang]     | Medium        | Vibe check and RFC review |
-| [opsem]    | Small         |                           |
-| [types]    | Small         |                           |
+| Team       | Support level | Notes                                                    |
+| ---------- | ------------- | -------------------------------------------------------- |
+| [compiler] | Medium        | Implementation reviews (@oli-obk will review Proposal 2) |
+| [lang]     | Medium        | Vibe check and RFC review                                |
+| [opsem]    | Small         |                                                          |
+| [types]    | Small         |                                                          |
 
 ## Frequently asked questions
 

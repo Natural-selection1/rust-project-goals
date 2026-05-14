@@ -1,15 +1,15 @@
 # Reborrow traits
 
-| Metadata         |                                    |
-| :--------------- | ---------------------------------- |
-| Point of contact | @aapoalas                          |
-| Status           | Accepted                           |
+| Metadata         |                                                                                                 |
+| :--------------- | ----------------------------------------------------------------------------------------------- |
+| Point of contact | @aapoalas                                                                                       |
+| Status           | Accepted                                                                                        |
 | What and why     | Extend automatic reborrowing to user-defined types like `Pin<&mut T>` and custom smart pointers |
-| Timespan         | 2026-2027                          |
-| Roadmap          | Beyond the `&`                     |
-| Tracking issue   | [rust-lang/rust-project-goals#399] |
-| Zulip channel    | [#t-lang/custom-refs][channel]     |
-| [lang] champion  | @tmandry                           |
+| Timespan         | 2026-2027                                                                                       |
+| Roadmap          | Beyond the `&`                                                                                  |
+| Tracking issue   | [rust-lang/rust-project-goals#399]                                                              |
+| Zulip channel    | [#t-lang/custom-refs][channel]                                                                  |
+| [lang] champion  | @tmandry                                                                                        |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/522311-t-lang.2Fcustom-refs
 
@@ -38,26 +38,27 @@ This year we continue iteration on the traits based on user feedback, focusing o
 1. **RFC** - The [draft RFC](https://github.com/aapoalas/rfcs/blob/autoreborrow-traits/text/0000-autoreborrow-traits.md) should be refined and rewritten based on implementation experience, and landed within this project goal.
 
 The fundamental design philosophy remains:
+
 - Reborrowing is "a memory copy with added lifetime analysis" - no user code is run.
-- The traits must achieve *true* reborrowing where derived values can be returned from the function.
+- The traits must achieve _true_ reborrowing where derived values can be returned from the function.
 - Performance cost must be trivial as reborrowing is performed at every coercion site.
 - Prevent abuse - `CoerceShared` must not slide into the realm of a generic `Coerce` trait.
 
 ### Work items over the next year
 
-| Task                                          | Owner(s)  | Notes |
-| --------------------------------------------- | --------- | ----- |
-| Land first implementation PR to nightly       | @aapoalas |       |
-| Solicit wide feedback on the feature          | @aapoalas |       |
-| Continue experiment based on experience       | @aapoalas |       |
-| Rewrite the RFC                               | @aapoalas |       |
+| Task                                    | Owner(s)  | Notes |
+| --------------------------------------- | --------- | ----- |
+| Land first implementation PR to nightly | @aapoalas |       |
+| Solicit wide feedback on the feature    | @aapoalas |       |
+| Continue experiment based on experience | @aapoalas |       |
+| Rewrite the RFC                         | @aapoalas |       |
 
 ## Team asks
 
-| Team       | Support level | Notes                                         |
-| ---------- | ------------- | --------------------------------------------- |
-| [lang]     | Medium        | Continued experiment support, design feedback |
-| [compiler] | Small         | Standard reviews for trait implementation PRs |
+| Team       | Support level | Notes                                                                      |
+| ---------- | ------------- | -------------------------------------------------------------------------- |
+| [lang]     | Medium        | Continued experiment support, design feedback                              |
+| [compiler] | Small         | Standard reviews for trait implementation PRs                              |
 | [types]    | Small         | Review work on the type system is expected to be trivial and feature-gated |
 
 ## Frequently asked questions

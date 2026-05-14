@@ -1,14 +1,13 @@
 # AArch64 Pointer Authentication using aarch64-unknown-linux-pauthtest target on Linux ELF platforms
 
 | Metadata             |                                                 |
-| :--                  | :--                                             |
+| :------------------- | :---------------------------------------------- |
 | Point of contact     | @jchlanda                                       |
 | [compiler] champion  | @davidtwco                                      |
 | Status               | Accepted                                        |
 | Other tracking issue | https://github.com/rust-lang/rust/issues/148640 |
 | Zulip channel        | N/A                                             |
 | Tracking issue       | [rust-lang/rust-project-goals#618]              |
-
 
 ## Summary
 
@@ -138,7 +137,7 @@ This goal can be logically divided into three stages:
    pointers from within Rust as well as providing properly signed `extern "C"`
    Rust functions to be called from pauth-enabled C code. Additional security
    features such as signing return addresses, init/fini entries, GOT table
-   entries would also be part of the task.  It would require developing a
+   entries would also be part of the task. It would require developing a
    signing scheme - as each combination of signing parameters introduces a risk
    of ABI breakage. The task is focusing on AArch64 Linux based systems using ELF
    file format.
@@ -163,18 +162,18 @@ Same as above but for C++ interop.
 
 Provide pointer authentication support for native Rust code.
 
-| Task                                         | Owner(s)   | Notes |
-| -------------------------------------------- | ---------- | ----- |
-| `aarch64-unknown-linux-pauthtest` PAC target | @jchlanda  |       |
-| PAC C interop                                | @jchlanda  |       |
-| PAC C++ interop                              | @jchlanda  |       |
-| PAC native Rust support                      | @jchlanda  |       |
+| Task                                         | Owner(s)  | Notes |
+| -------------------------------------------- | --------- | ----- |
+| `aarch64-unknown-linux-pauthtest` PAC target | @jchlanda |       |
+| PAC C interop                                | @jchlanda |       |
+| PAC C++ interop                              | @jchlanda |       |
+| PAC native Rust support                      | @jchlanda |       |
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [compiler] | Small         | Design discussions, PR review           |
+| Team       | Support level | Notes                         |
+| ---------- | ------------- | ----------------------------- |
+| [compiler] | Small         | Design discussions, PR review |
 
 ## Frequently asked questions
 

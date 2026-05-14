@@ -4,7 +4,7 @@ This page lists the (((#GOALS))) project goals accepted for 2024h2.
 
 ## Flagship goals
 
-Flagship goals represent the goals expected to have the broadest overall impact. 
+Flagship goals represent the goals expected to have the broadest overall impact.
 
 (((FLAGSHIP GOALS)))
 

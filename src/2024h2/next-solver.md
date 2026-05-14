@@ -1,19 +1,20 @@
 # Next-generation trait solver
 
-| Metadata       |                                           |
-|----------------|-------------------------------------------|
-| Point of contact | @lcnr                                   |
-| Status         | Accepted                                  |
-| Tracking issue | [rust-lang/rust-project-goals#113]        |
-| Zulip channel  | [#t-types/trait-system-refactor][channel] |
+| Metadata         |                                           |
+| ---------------- | ----------------------------------------- |
+| Point of contact | @lcnr                                     |
+| Status           | Accepted                                  |
+| Tracking issue   | [rust-lang/rust-project-goals#113]        |
+| Zulip channel    | [#t-types/trait-system-refactor][channel] |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/364551-t-types.2Ftrait-system-refactor
+
 ## Summary
 
 In the next 6 months we plan to extend the next-generation trait solver as follows:
 
 - stabilize the use of the next-generation trait solver in coherence checking
-- use the new implementation in rustdoc and lints where applicable 
+- use the new implementation in rustdoc and lints where applicable
 - share the solver with rust-analyser
 - successfully bootstrap the compiler when exclusively using the new implementation and run crater
 
@@ -30,7 +31,7 @@ Fixing these issues in the existing implementation is prohibitively difficult as
 ### The next six months
 
 - stabilize the use of the next-generation trait solver in coherence checking
-- use the new implementation in rustdoc and lints where applicable 
+- use the new implementation in rustdoc and lints where applicable
 - share the solver with rust-analyser
 - successfully bootstrap the compiler when exclusively using the new implementation and run crater
 
@@ -44,10 +45,11 @@ Fixing these issues in the existing implementation is prohibitively difficult as
 ## Design axioms
 
 In order of importance, the next-generation trait solver should be:
+
 - sound: the new trait solver is sound and its design enables us to fix all known type system unsoundnesses
 - backwards-compatible: the breakage caused by the switch to the new solver should be minimal
-- maintainable: the implementation is maintainable, extensible, and approachable to new contributors 
-- performant: the implementation is efficient, improving compile-times 
+- maintainable: the implementation is maintainable, extensible, and approachable to new contributors
+- performant: the implementation is efficient, improving compile-times
 
 [da]: ../about/design_axioms.md
 
@@ -58,13 +60,13 @@ In order of importance, the next-generation trait solver should be:
 Add'l implementation work: @compiler-errors
 
 | Task                         | Owner(s) or team(s) | Notes |
-|------------------------------|---------------------|-------|
+| ---------------------------- | ------------------- | ----- |
 | Discussion and moral support | ![Team][] [types]   |       |
 
 ### Stabilize next-generation solver in coherence
 
 | Task                   | Owner(s) or team(s)       | Notes |
-|------------------------|---------------------------|-------|
+| ---------------------- | ------------------------- | ----- |
 | Implementation         | @lcnr, @compiler-errors   |       |
 | Standard reviews       | ![Team][] [types]         |       |
 | Standard reviews       | ![Team][] [rust-analyzer] |       |
@@ -73,19 +75,20 @@ Add'l implementation work: @compiler-errors
 ### Support next-generation solver in rust-analyzer
 
 | Task                                | Owner(s) or team(s)       | Notes |
-|-------------------------------------|---------------------------|-------|
+| ----------------------------------- | ------------------------- | ----- |
 | Implementation (library side)       | owner and others          |       |
 | Implementation (rust-analyzer side) | TBD                       |       |
 | Standard reviews                    | ![Team][] [types]         |       |
 | Standard reviews                    | ![Team][] [rust-analyzer] |       |
+
 ### Support needed from the project
 
-* [Types] team
-    * review design decisions
-    * provide technical feedback and suggestion
-* [rust-analyzer] team
-    * contribute to integration in Rust Analyzer
-    * provide technical feedback to the design of the API
+- [Types] team
+  - review design decisions
+  - provide technical feedback and suggestion
+- [rust-analyzer] team
+  - contribute to integration in Rust Analyzer
+  - provide technical feedback to the design of the API
 
 ## Outputs and milestones
 
@@ -99,6 +102,6 @@ See next few steps :3
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._
 
 [unsoundnesses]: https://github.com/orgs/rust-lang/projects/44

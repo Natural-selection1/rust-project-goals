@@ -27,5 +27,5 @@ Giving someone ownership of a goal is an act of faith — it means that we consi
 
 The [project goal template](../TEMPLATE.md) includes a number of elements designed to increase trust:
 
-* The "shiny future" and [design axioms](./design_axioms.md) give a "preview" of how owner is thinking about the problem and the way that tradeoffs will be resolved.
-* The milestones section indicates the rough order in which they will approach the problem.
+- The "shiny future" and [design axioms](./design_axioms.md) give a "preview" of how owner is thinking about the problem and the way that tradeoffs will be resolved.
+- The milestones section indicates the rough order in which they will approach the problem.

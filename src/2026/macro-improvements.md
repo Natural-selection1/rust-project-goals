@@ -1,13 +1,12 @@
 # Declarative (`macro_rules!`) macro improvements
 
 | Metadata         |                                    |
-| :--              | :--                                |
+| :--------------- | :--------------------------------- |
 | Point of contact | @joshtriplett                      |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#629] |
 | Zulip channel    | #t-lang                            |
 | [lang] champion  | @joshtriplett                      |
-
 
 ## Summary
 
@@ -111,7 +110,7 @@ future editions, or within future macro constructs such as `macro fn`.
 - Incremental improvements are often preferable to a ground-up rewrite. The
   ecosystem can adopt incremental improvements incrementally, and give feedback
   that inspires further incremental improvements.
-- There should never be a capability that *requires* using a proc macro.
+- There should never be a capability that _requires_ using a proc macro.
 - The most obvious and simplest way to write a macro should handle all cases a
   user might expect to be able to write. Where possible, macros should
   automatically support new syntax variations of existing constructs, without
@@ -127,22 +126,22 @@ future editions, or within future macro constructs such as `macro fn`.
 
 ## Work items over the next year
 
-| Task        | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| Write user documentation for attribute and derive macros | @joshtriplett | |
-| Write careful caveats for crate users to discourage demands for rapid adoption | @joshtriplett | |
-| Write announcement blog post for attribute and derive macros | @joshtriplett | Will include references to the two previous items |
-| Stabilize attribute and derive macros | @joshtriplett | I do not anticipate this requiring additional design meetings. |
-| Further experiments on macro metavariable expressions and macro fragment fields | @joshtriplett | |
-| Preliminary design for new `macro fn` mechanism | @joshtriplett | |
-| Design for how `macro fn` and `macro_rules!` can interoperate syntactically | @joshtriplett | |
-| Collaborate with ongoing work on `comptime` and reflection | @joshtriplett | |
+| Task                                                                            | Owner(s)      | Notes                                                          |
+| ------------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------- |
+| Write user documentation for attribute and derive macros                        | @joshtriplett |                                                                |
+| Write careful caveats for crate users to discourage demands for rapid adoption  | @joshtriplett |                                                                |
+| Write announcement blog post for attribute and derive macros                    | @joshtriplett | Will include references to the two previous items              |
+| Stabilize attribute and derive macros                                           | @joshtriplett | I do not anticipate this requiring additional design meetings. |
+| Further experiments on macro metavariable expressions and macro fragment fields | @joshtriplett |                                                                |
+| Preliminary design for new `macro fn` mechanism                                 | @joshtriplett |                                                                |
+| Design for how `macro fn` and `macro_rules!` can interoperate syntactically     | @joshtriplett |                                                                |
+| Collaborate with ongoing work on `comptime` and reflection                      | @joshtriplett |                                                                |
 
 ## Team asks
 
-| Team       | Support level | Notes                                                                            |
-| ---------- | ------------- | -------------------------------------------------------------------------------- |
-| [lang]     | Medium        | This is a stabilization, but we have previously explored the design in detail, and it's simple and straightforward. It should be able to take place asynchronously. Nonetheless, I can upgrade this to "Large" if people believe it rises to that level. |
+| Team   | Support level | Notes                                                                                                                                                                                                                                                    |
+| ------ | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [lang] | Medium        | This is a stabilization, but we have previously explored the design in detail, and it's simple and straightforward. It should be able to take place asynchronously. Nonetheless, I can upgrade this to "Large" if people believe it rises to that level. |
 
 ## Frequently asked questions
 
@@ -182,7 +181,7 @@ recreate the Rust parser (or depend on such a reimplementation).
 
 ### Does `comptime` or reflection subsume this?
 
-No, `comptime` and reflection *complement* this.
+No, `comptime` and reflection _complement_ this.
 
 A `comptime` system would get part of the way to running Rust code at macro
 evaluation time, but would require additional work to run at that point in the

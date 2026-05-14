@@ -1,11 +1,12 @@
 # Explore sandboxed build scripts
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @weihanglo                         |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#108] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#108] |
+| Zulip channel    | N/A                                |
+
 ## Summary
 
 Explore different strategies for sandboxing build script executions in Cargo.
@@ -60,12 +61,12 @@ and discuss the potential common interface for Cargo to configure them.
 
 ### The next 6 months
 
-* Look at prior art in this domain, especially for potential blockers and challenges.
-* Prototype on sandboxing build scripts.
+- Look at prior art in this domain, especially for potential blockers and challenges.
+- Prototype on sandboxing build scripts.
   Currently looking at [WebAssembly System Interface (WASI)](WASI) and [Cackle].
-* Provide a way to opt-in sandboxed build scripts for Cargo packages,
+- Provide a way to opt-in sandboxed build scripts for Cargo packages,
   and design a configurable interface to grant permissions to each crate.
-* Based on the results of those experiments,
+- Based on the results of those experiments,
   consider whether the implementation should be a third-party Cargo plugin first,
   or make it into Cargo as an unstable feature (with a proper RFC).
 
@@ -76,14 +77,14 @@ and discuss the potential common interface for Cargo to configure them.
 
 These could become future goals if this one succeeds:
 
-* The sandboxed build script feature will be opted-in at first when stabilized.
+- The sandboxed build script feature will be opted-in at first when stabilized.
   By the next Edition, sandboxed build scripts will be on by default,
   hardening the supply chain security.
-* Cargo users only need to learn one interface for both sandboxed proc-macros and build scripts.
+- Cargo users only need to learn one interface for both sandboxed proc-macros and build scripts.
   The configuration for build scripts will also cover the needs for sandboxed proc-macros,
-* Crates.io and the [`cargo info`] command display the permission requirements of a crate,
+- Crates.io and the [`cargo info`] command display the permission requirements of a crate,
   helping developers choose packages based on different security level needs.
-* The runtime of the sandbox environment is swappable,
+- The runtime of the sandbox environment is swappable,
   enabling the potential support of remote execution without waiting for a first-party solution.
   It also opens a door to hermetic builds.
 
@@ -93,34 +94,34 @@ These could become future goals if this one succeeds:
 
 In order of importance, a sandboxed build script feature should provide the following properties:
 
-* **Restrict runtime file system and network access, as well as process spawning,**
+- **Restrict runtime file system and network access, as well as process spawning,**
   unless allowed explicitly.
-* **Cross-platform supports.**
+- **Cross-platform supports.**
   Cargo is guaranteed to work on [tier 1] platforms.
   This is not a must have for experiments,
   but is a requirement for stabilization.
-* **Ensure `-sys` crates can be built within the sandbox.**
+- **Ensure `-sys` crates can be built within the sandbox.**
   Probing and building from system libraries is the major use case of build scripts.
   We should support it as a first-class citizen.
-* **Declarative configuration interface to grant permissions to packages.**
+- **Declarative configuration interface to grant permissions to packages.**
   A declarative configuration helps us analyze permissions granted more easily,
   without running the actual code.
-* **Don't block the build when the sandboxed feature is off.**
+- **Don't block the build when the sandboxed feature is off.**
   The crates.io ecosystem shouldn't rely on the interface to **successfully** build things.
   That would hurt the integration with other external build systems.
   It should work as if it is an extra layer of security scanning.
-* **Room for supporting different sandbox runtimes and strategies.**
+- **Room for supporting different sandbox runtimes and strategies.**
   This is for easier integration into external build systems,
   as well as faster iteration for experimenting with new ideas.
 
 Currently out of scope:
 
-* Terminal user interface.
-* Pre-built build script binaries.
-* Hermetic builds, though this extension should be considered.
-* Support for all tier 2 with-host-tools platforms.
+- Terminal user interface.
+- Pre-built build script binaries.
+- Hermetic builds, though this extension should be considered.
+- Support for all tier 2 with-host-tools platforms.
   As an experiment, we follow what the chosen sandbox runtime provides us.
-* On-par build times.
+- On-par build times.
   The build time is expected to be impacted because build script artifacts are going to build for the sandbox runtime.
   This prevents an optimization that when "host" and "target" platforms are the same,
   Cargo tries to share artifacts between build scripts and applications.
@@ -132,14 +133,14 @@ Currently out of scope:
 **Owner:** @weihanglo, though I also welcome someone else to take ownership of it.
 I would be happy to support them as a Cargo maintainer.
 
-| Task                                       | Owner(s) or team(s)  | Notes       |
-| ------------------------------------------ | -------------------- | ----------- |
-| Design                                     | @weihanglo           | (or mentee) |
-| Discussion and moral support               | ![Team][] [cargo]    |             |
-| Security reviews                           | ![Help wanted][]     |             |
-| Standard reviews                           | ![Team][] [cargo]    |             |
-| Miscellaneous | ![Team][] [compiler] | Collaboration with GSoC proc-macro project |
-| Summary of experiments or RFC              | @weihanglo           | (or mentee) |
+| Task                          | Owner(s) or team(s)  | Notes                                      |
+| ----------------------------- | -------------------- | ------------------------------------------ |
+| Design                        | @weihanglo           | (or mentee)                                |
+| Discussion and moral support  | ![Team][] [cargo]    |                                            |
+| Security reviews              | ![Help wanted][]     |                                            |
+| Standard reviews              | ![Team][] [cargo]    |                                            |
+| Miscellaneous                 | ![Team][] [compiler] | Collaboration with GSoC proc-macro project |
+| Summary of experiments or RFC | @weihanglo           | (or mentee)                                |
 
 > For security reviews,
 > I'd like assistance from experts in security domains.
@@ -160,11 +161,11 @@ As the work here is mostly experiments and prototyping,
 based on the results,
 the outputs could be:
 
-* A report about why these methods have failed to provide a proper sandboxed environment for build scripts in Cargo,
+- A report about why these methods have failed to provide a proper sandboxed environment for build scripts in Cargo,
   plus some other areas worth exploring in the future.
-* A configurable sandboxed environment for build scripts landed as an unstable feature in Cargo,
+- A configurable sandboxed environment for build scripts landed as an unstable feature in Cargo,
   or provided via crates.io as a third-party plugin for faster experimenting iteration.
-* An RFC proposing a sandboxed build script design to the Rust project.
+- An RFC proposing a sandboxed build script design to the Rust project.
 
 ### Milestones
 

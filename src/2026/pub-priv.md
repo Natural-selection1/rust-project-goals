@@ -1,24 +1,24 @@
 # Stabilize public/private dependencies
 
-| Metadata         |                                                                                  |
-|:-----------------|----------------------------------------------------------------------------------|
-| Point of contact | @epage                                                                           |
-| Status           | Accepted                                                                         |
-| Needs            | Contributor                                                                      |
-| Tracking issue   | [rust-lang/rust-project-goals#272]                                               |
-| Zulip channel    | N/A (an existing stream can be re-used or new streams can be created on request) |
-| [compiler] champion | @petrochenkov |
-
+| Metadata            |                                                                                  |
+| :------------------ | -------------------------------------------------------------------------------- |
+| Point of contact    | @epage                                                                           |
+| Status              | Accepted                                                                         |
+| Needs               | Contributor                                                                      |
+| Tracking issue      | [rust-lang/rust-project-goals#272]                                               |
+| Zulip channel       | N/A (an existing stream can be re-used or new streams can be created on request) |
+| [compiler] champion | @petrochenkov                                                                    |
 
 ## Summary
 
-Implement and stabilize the MVP of public dependencies described in [RFC #3516]. Public dependencies allow crates to declare dependencies whose types are *meant* to be exposed in the public API.
+Implement and stabilize the MVP of public dependencies described in [RFC #3516]. Public dependencies allow crates to declare dependencies whose types are _meant_ to be exposed in the public API.
 
 **Needs contributor:** This goal needs a contributor to work with the compiler team on identifying and implementing the minimal lint subset needed for stabilization. The work spans rustc (lint implementation) and Cargo (dependency metadata). Estimated time commitment: TBD.
 
 ## Motivation
 
 This will allow users to tell Rustc and Cargo what dependencies are private
+
 - Help users catch ways they unexpectedly expose their implementation details
 - Help tooling better identify what all constitutes an API
 - Speed up `cargo doc` by only building dependencies you can access
@@ -43,9 +43,9 @@ Work with [compiler] to identify a minimal subset of functionality for what the 
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [cargo]    | Small         |                                         |
+| Team       | Support level | Notes                         |
+| ---------- | ------------- | ----------------------------- |
+| [cargo]    | Small         |                               |
 | [compiler] | Medium        | Design discussions, PR review |
 
 ## Frequently asked questions

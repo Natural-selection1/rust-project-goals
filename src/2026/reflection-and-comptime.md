@@ -1,20 +1,19 @@
 # reflection and comptime
 
-| Metadata             |                                    |
-|:---------------------|:-----------------------------------|
-| Point of contact     | @oli-obk                           |
-| Status               | Accepted                           |
+| Metadata             |                                                                                              |
+| :------------------- | :------------------------------------------------------------------------------------------- |
+| Point of contact     | @oli-obk                                                                                     |
+| Status               | Accepted                                                                                     |
 | What and why         | Compile-time type reflection via `const fn` so `serialize(&my_struct)` works without derives |
-| Timespan             | 2026-2028                          |
-| Roadmap              | Constify all the things            |
-| Tracking issue       | [rust-lang/rust-project-goals#406] |
-| Other Tracking issue | [rust-lang/rust#142577]            |
-| Highlight            | Const and reflection               |
-| Zulip channel        | N/A                                |
-| [compiler] champion  | @oli-obk                           |
-| [lang] champion      | @scottmcm                          |
-| [libs-api] champion  | @joshtriplett                      |
-
+| Timespan             | 2026-2028                                                                                    |
+| Roadmap              | Constify all the things                                                                      |
+| Tracking issue       | [rust-lang/rust-project-goals#406]                                                           |
+| Other Tracking issue | [rust-lang/rust#142577]                                                                      |
+| Highlight            | Const and reflection                                                                         |
+| Zulip channel        | N/A                                                                                          |
+| [compiler] champion  | @oli-obk                                                                                     |
+| [lang] champion      | @scottmcm                                                                                    |
+| [libs-api] champion  | @joshtriplett                                                                                |
 
 ## Summary
 
@@ -41,8 +40,9 @@ If this experiment is successful, crates like `bevy` will be able to "just work"
 just to get the `bevy_reflect` information built at compile-time. Crates like `bevy_reflect` and `facet` will still exist, but only as different libraries with different goals and methods for exposing reflection information.
 
 Furthermore it opens up new possibilities of reflection-like behaviour by
-* specializing serialization on specific formats (e.g. serde won't support changing serialization depending on the serializer  https://github.com/serde-rs/serde/issues/2877),
-* specializing trait impl method bodies to have more performant code paths for specific types, groups of types or shapes (e.g. based on the layout) of types.
+
+- specializing serialization on specific formats (e.g. serde won't support changing serialization depending on the serializer https://github.com/serde-rs/serde/issues/2877),
+- specializing trait impl method bodies to have more performant code paths for specific types, groups of types or shapes (e.g. based on the layout) of types.
 
 I consider reflection orthogonal to derives as they solve similar problems from different directions. Reflection lets you write the logic that processes your types in a way very similar to dynamic languages, by inspecting values' types during the execution of the reflection code, while derives generate the code that processes types ahead of time. Proc macros derives have historically been shown to be fairly hard to debug and bootstrap from scratch (we should totally also improve proc macro workflows). While reflection can get similarly complex fast, it allows for a more dynamic approach where you can easily debug the state your are in, as you do not have to pair the derive logic with the consumer logic (e.g. a serializer) and are instead directly writing just the consumer logic.
 
@@ -50,13 +50,12 @@ Reflection often is not as efficient as derives, as the derives can generate the
 
 #### Design axioms
 
-* Prefer procedural const-eval code over associated const based designs (see also "why not uwuflection" in the FAQ).
-    * We picked `const fn` in general evaluation over associated const based designs that are equally expressive but are essentially a DSL
-* Ensure privacy is upheld, modulo things like `size_of` exposing whether new private fields have been added
-    * This is important to ensure that we cannot break abstractions. We will experiment with allowing const items in the same module to access private fields even if the access is in a comptime fn defined in another crate. Or with a comptime fn defined in the same module of a private field accessing that private field even if called in a const item outside of it.
-* Avoid new semver hazards and document any if unavoidable.
-    * e.g. do not expose private fields, methods, or types
-
+- Prefer procedural const-eval code over associated const based designs (see also "why not uwuflection" in the FAQ).
+  - We picked `const fn` in general evaluation over associated const based designs that are equally expressive but are essentially a DSL
+- Ensure privacy is upheld, modulo things like `size_of` exposing whether new private fields have been added
+  - This is important to ensure that we cannot break abstractions. We will experiment with allowing const items in the same module to access private fields even if the access is in a comptime fn defined in another crate. Or with a comptime fn defined in the same module of a private field accessing that private field even if called in a const item outside of it.
+- Avoid new semver hazards and document any if unavoidable.
+  - e.g. do not expose private fields, methods, or types
 
 #### The "shiny future" we are working towards
 
@@ -70,15 +69,14 @@ A new type kind is supported every week, with open PRs for hard ones like Adts a
 
 Open PRs:
 
-* [Add very basic "comptime" fn implementation rust#148820](https://github.com/rust-lang/rust/pull/148820)
-* [Remove 'static requirement on try_as_dyn rust#150161](https://github.com/rust-lang/rust/pull/150161)
-
+- [Add very basic "comptime" fn implementation rust#148820](https://github.com/rust-lang/rust/pull/148820)
+- [Remove 'static requirement on try_as_dyn rust#150161](https://github.com/rust-lang/rust/pull/150161)
 
 ### What we propose to do about it
 
-* add an attribute for `const fn` that prevents them from being called from runtime code or `const fn` without the attribute
-    * See the FAQ for why we need `#[rustc_comptime] const fn() {}` declarations
-* add basic datastructures to libcore that represent common information about types and the APIs to obtain that information
+- add an attribute for `const fn` that prevents them from being called from runtime code or `const fn` without the attribute
+  - See the FAQ for why we need `#[rustc_comptime] const fn() {}` declarations
+- add basic datastructures to libcore that represent common information about types and the APIs to obtain that information
 
 ### Work items over the next year
 
@@ -87,7 +85,7 @@ Open PRs:
 Implement and validate `#[compile_time_only]` attribute for `const fn` that enables type reflection without runtime overhead.
 
 | Task                                                     | Owner(s) | Notes |
-|----------------------------------------------------------|----------|-------|
+| -------------------------------------------------------- | -------- | ----- |
 | Continue the experiment (land open PRs)                  | @oli-obk | [^1]  |
 | Add more fields to `Type` and variants to `TypeKind`     | @oli-obk |       |
 | Restrict information from structs outside current module | @oli-obk |       |
@@ -98,12 +96,11 @@ Implement and validate `#[compile_time_only]` attribute for `const fn` that enab
 ## Team asks
 
 | Team       | Support level | Notes                                                    |
-|------------|---------------|--------------------------------------------------------- |
+| ---------- | ------------- | -------------------------------------------------------- |
 | [compiler] | Medium        | Standard reviews                                         |
 | [lang]     | Large         | Design meeting, experiment                               |
 | [libs-api] | Medium        | Reviews                                                  |
 | [types]    | Small         | General discussion on any additional type-system changes |
-
 
 ## Frequently asked questions
 
@@ -134,7 +131,7 @@ See https://soasis.org/posts/a-mirror-for-rust-a-plan-for-generic-compile-time-i
 
 #### Structural processing
 
-it makes procedural processing of type information very hard. E.g. to get the 3rd element of a tuple you need to 
+it makes procedural processing of type information very hard. E.g. to get the 3rd element of a tuple you need to
 
 ```rust
 <introwospect_type::<YourType> as FieldDescriptor<3>>
@@ -154,14 +151,14 @@ in order to use uwuflection in types in generic code you need to either write in
 
 zig's approach to comptime from a very high level is effectively
 
-* generate AST for all source files
-* pick the `main` function and start compiling it and looking for what it needs to be compiled
-* if a comptime function call is found, look only for what code that needs to compile, compile it and produce the resulting code of the comptime function
-* continue the main compilation, which may now invoke the generated code and start compiling that
+- generate AST for all source files
+- pick the `main` function and start compiling it and looking for what it needs to be compiled
+- if a comptime function call is found, look only for what code that needs to compile, compile it and produce the resulting code of the comptime function
+- continue the main compilation, which may now invoke the generated code and start compiling that
 
 we do not experiment with this approach at this time, because the compiler is not set up in a way to permit proc macros from accessing type information from the current crate.
 While there are ongoing refactorings that go into the direction of potentially allowing more of that in the future, that future seems to be more than 5 years away at my best guess.
 
-* the compiler is not set up to add AST nodes while type information is already available. It possibly never will, and it would be an immense amount of work to get there. I'm doing lots of refactorings that would need to be done for sth like that anyway, even if the goal is just better incremental and general compilar architecture.
-* there are too many open language questions about it that we haven't even started to discuss
-* a hacky comptime reflection prototype that works for just tuples and that works with regular const eval exists right now, so pursueing the definitely possible implementation will pay off in a shorter term.
+- the compiler is not set up to add AST nodes while type information is already available. It possibly never will, and it would be an immense amount of work to get there. I'm doing lots of refactorings that would need to be done for sth like that anyway, even if the goal is just better incremental and general compilar architecture.
+- there are too many open language questions about it that we haven't even started to discuss
+- a hacky comptime reflection prototype that works for just tuples and that works with regular const eval exists right now, so pursueing the definitely possible implementation will pay off in a shorter term.

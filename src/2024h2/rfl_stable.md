@@ -1,7 +1,7 @@
 # Resolve the biggest blockers to Linux building on stable Rust
 
 | Metadata         |                                    |
-|------------------|------------------------------------|
+| ---------------- | ---------------------------------- |
 | Short title      | Rust-for-Linux                     |
 | Point of contact | @nikomatsakis                      |
 | Status           | Accepted                           |
@@ -15,15 +15,15 @@
 
 Stabilize unstable features required by Rust for Linux project including
 
-* Stable support for RFL's customized ARC type
-* Labeled goto in inline assembler and extended `offset_of!` support
-* RFL on Rust CI
-* Pointers to statics in constants
+- Stable support for RFL's customized ARC type
+- Labeled goto in inline assembler and extended `offset_of!` support
+- RFL on Rust CI
+- Pointers to statics in constants
 
 ## Motivation
 
 The [experimental support for Rust development in the Linux kernel][RFL.com] is a watershed moment for Rust, demonstrating to the world that Rust is indeed capable of targeting all manner of low-level systems applications. And yet today that support rests on a [number of unstable features][RFL#2], blocking the effort from ever going beyond experimental status. For 2024H2 we will work to close the largest gaps that block support.
- 
+
 [RFL.com]: https://rust-for-linux.com/
 [RFL#2]: https://github.com/Rust-for-Linux/linux/issues/2
 
@@ -44,21 +44,21 @@ Longer term, having Rust in the Linux kernel is an opportunity to expose more C 
 
 For deeper background, please refer to these materials:
 
-* The article on the latest Maintainer Summit: [Committing to Rust for kernel code](https://lwn.net/Articles/952029/)
-* The [LWN index on articles related to Rust in the kernel](https://lwn.net/Kernel/Index/#Development_tools-Rust)
-* [The latest status update at LPC](https://www.youtube.com/watch?v=qvlgIaYrd3g).
-* [Linus talking about Rust](https://www.youtube.com/watch?v=OvuEYtkOH88&t=335s).
-* [Rust in the linux kernel, by Alice Ryhl](https://www.youtube.com/watch?v=CEznkXjYFb4)
-* [Using Rust in the binder driver, by Alice Ryhl](https://www.youtube.com/watch?v=Kt3hpvMZv8o)
+- The article on the latest Maintainer Summit: [Committing to Rust for kernel code](https://lwn.net/Articles/952029/)
+- The [LWN index on articles related to Rust in the kernel](https://lwn.net/Kernel/Index/#Development_tools-Rust)
+- [The latest status update at LPC](https://www.youtube.com/watch?v=qvlgIaYrd3g).
+- [Linus talking about Rust](https://www.youtube.com/watch?v=OvuEYtkOH88&t=335s).
+- [Rust in the linux kernel, by Alice Ryhl](https://www.youtube.com/watch?v=CEznkXjYFb4)
+- [Using Rust in the binder driver, by Alice Ryhl](https://www.youtube.com/watch?v=Kt3hpvMZv8o)
 
 ### The next six months
 
 The RFL project has a [tracking issue][rfl2] listing the unstable features that they rely upon. After discussion with the RFL team, we identified the following subgoals as the ones most urgent to address in 2024. Closing these issues gets us within striking distance of being able to build the RFL codebase on stable Rust.
 
-* Stable support for RFL's customized ARC type
-* Labeled goto in inline assembler and extended `offset_of!` support
-* RFL on Rust CI ([done now!])
-* Pointers to statics in constants
+- Stable support for RFL's customized ARC type
+- Labeled goto in inline assembler and extended `offset_of!` support
+- RFL on Rust CI ([done now!])
+- Pointers to statics in constants
 
 #### Stable support for RFL's customized ARC type
 
@@ -71,10 +71,10 @@ The RFL project needs to integrate with the Kernel's existing reference counting
 To achieve these goals they've created their own variant of [`Arc`][arclk] (hereafter denoted as `rfl::Arc`),
 but this type cannot be used as idiomatically as the `Arc` type found in `libstd` without two features:
 
-* The ability to be used in methods (e.g., `self: rfl::Arc<Self>`), aka "arbitrary self types", specified in [RFC #3519].
-* The ability to be coerce to dyn types like `rfl::Arc<dyn Trait>` and then support invoking methods on `Trait` through dynamic dispatch.
-    * This requires the use of two unstable traits, `CoerceUnsized` and `DynDispatch`, neither of which are close to stabilization.
-    * However, [RFC #3621] provides for a "shortcut" -- a stable interface using `derive` that expands to those traits, leaving room to evolve the underlying details.
+- The ability to be used in methods (e.g., `self: rfl::Arc<Self>`), aka "arbitrary self types", specified in [RFC #3519].
+- The ability to be coerce to dyn types like `rfl::Arc<dyn Trait>` and then support invoking methods on `Trait` through dynamic dispatch.
+  - This requires the use of two unstable traits, `CoerceUnsized` and `DynDispatch`, neither of which are close to stabilization.
+  - However, [RFC #3621] provides for a "shortcut" -- a stable interface using `derive` that expands to those traits, leaving room to evolve the underlying details.
 
 Our goal for 2024 is to close those gaps, most likely by implementing and stabilizing [RFC #3519] and [RFC #3621].
 
@@ -132,23 +132,23 @@ Looking further afield, possible future work includes more ergonomic versions of
 
 ## Design axioms
 
-* **First, do no harm.** If we want to make a good first impression on kernel developers, the minimum we can do is fit comfortably within their existing workflows so that people not using Rust don't have to do extra work to support it. So long as Linux relies on unstable features, users will have to ensure they have the correct version of Rust installed, which means imposing labor on all Kernel developers.
-* **Don't let perfect be the enemy of good.** The primary goal is to offer stable support for the particular use cases that the Linux kernel requires. Wherever possible we aim to stabilize features completely, but if necessary, we can try to stabilize a subset of functionality that meets the kernel developers' needs while leaving other aspects unstable.
+- **First, do no harm.** If we want to make a good first impression on kernel developers, the minimum we can do is fit comfortably within their existing workflows so that people not using Rust don't have to do extra work to support it. So long as Linux relies on unstable features, users will have to ensure they have the correct version of Rust installed, which means imposing labor on all Kernel developers.
+- **Don't let perfect be the enemy of good.** The primary goal is to offer stable support for the particular use cases that the Linux kernel requires. Wherever possible we aim to stabilize features completely, but if necessary, we can try to stabilize a subset of functionality that meets the kernel developers' needs while leaving other aspects unstable.
 
 ## Ownership and team asks
 
 Here is a detailed list of the work to be done and who is expected to do it. This table includes the work to be done by owners and the work to be done by Rust teams (subject to approval by the team in an RFC/FCP).
 
-* The ![Team][] badge indicates a requirement where Team support is needed.
+- The ![Team][] badge indicates a requirement where Team support is needed.
 
 | Task                       | Owner(s) or team(s)          | Notes |
-|----------------------------|------------------------------|-------|
+| -------------------------- | ---------------------------- | ----- |
 | Overall program management | @nikomatsakis, @joshtriplett |       |
 
 ### Arbitrary self types v2
 
 | Task                   | Owner(s) or team(s)  | Notes                     |
-|------------------------|----------------------|---------------------------|
+| ---------------------- | -------------------- | ------------------------- |
 | ~~author RFC~~         |                      | ![Complete][] [RFC #3519] |
 | ~~RFC decision~~       | ~~[lang]~~           | ![Complete][]             |
 | Implementation         |                      |                           |
@@ -158,7 +158,7 @@ Here is a detailed list of the work to be done and who is expected to do it. Thi
 ### Derive smart pointer
 
 | Task                        | Owner(s) or team(s) | Notes         |
-|-----------------------------|---------------------|---------------|
+| --------------------------- | ------------------- | ------------- |
 | ~~author RFC~~              |                     | [RFC #3621]   |
 | RFC decision                | ![Team][] [lang]    | ![Complete][] |
 | Implementation              | @dingxiangfei2009   |               |
@@ -168,7 +168,7 @@ Here is a detailed list of the work to be done and who is expected to do it. Thi
 ### `asm_goto`
 
 | Task                             | Owner(s) or team(s) | Notes         |
-|----------------------------------|---------------------|---------------|
+| -------------------------------- | ------------------- | ------------- |
 | ~~implementation~~               |                     | ![Complete][] |
 | Real-world usage in Linux kernel | @Darksonn           |               |
 | Extend to cover full RFC         |                     |               |
@@ -178,7 +178,7 @@ Here is a detailed list of the work to be done and who is expected to do it. Thi
 ### RFL on Rust CI
 
 | Task               | Owner(s) or team(s)  | Notes                   |
-|--------------------|----------------------|-------------------------|
+| ------------------ | -------------------- | ----------------------- |
 | ~~implementation~~ |                      | ![Complete][] [#125209] |
 | Policy draft       |                      |                         |
 | Policy decision    | ![Team][] [compiler] |                         |
@@ -186,23 +186,24 @@ Here is a detailed list of the work to be done and who is expected to do it. Thi
 ### Pointers to static in constants
 
 | Task                   | Owner(s) or team(s) | Notes |
-|------------------------|---------------------|-------|
+| ---------------------- | ------------------- | ----- |
 | Stabilization report   |                     |       |
 | Stabilization decision | ![Team][] [lang]    |       |
+
 ### Support needed from the project
 
-* Lang team:
-    * Prioritize RFC and any related design questions (e.g., the unresolved questions)
+- Lang team:
+  - Prioritize RFC and any related design questions (e.g., the unresolved questions)
 
 ## Outputs and milestones
 
 ### Outputs
 
-*Final outputs that will be produced*
+_Final outputs that will be produced_
 
 ### Milestones
 
-*Milestones you will reach along the way*
+_Milestones you will reach along the way_
 
 ## Frequently asked questions
 

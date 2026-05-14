@@ -1,12 +1,14 @@
 # "Stabilizable" prototype for expanded const generics
 
 | Metadata         |                                    |
-|:-----------------|------------------------------------|
+| :--------------- | ---------------------------------- |
 | Point of contact | @BoxyUwU                           |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#100] |
 | Zulip channel    | [#project-const-generics][channel] |
+
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/260443-project-const-generics/
+
 ## Summary
 
 Experiment with a new `min_generic_const_args` implementation to address challenges found with the existing approach to supporting generic parameters in const generic arguments.
@@ -19,7 +21,8 @@ Experiment with a new `min_generic_const_args` implementation to address challen
 
 A large amount of rust users run into the `min_const_generics` limitation that it is not legal to use generic parameters with const generics. It is generally a bad user experience to hit a wall where a feature is unfinished, and this limitation also prevents patterns that are highly desirable. We have always intended to lift this restriction since stabilizing `min_const_generics` but we did not know how.
 
-It is possible to use generic parameters with const generics by using `feature(generic_const_exprs)`. Unfortunately this feature has a number of fundamental issues that are hard to solve and as a result is *very* broken. It being so broken results in two main issues:
+It is possible to use generic parameters with const generics by using `feature(generic_const_exprs)`. Unfortunately this feature has a number of fundamental issues that are hard to solve and as a result is _very_ broken. It being so broken results in two main issues:
+
 - When users hit a wall with `min_const_generics` they cannot reach for the `generic_const_exprs` feature because it is either broken or has no path to stabilization.
 - In the compiler, to work around the fundamental issues with `generic_const_exprs`, we have a number of hacks which negatively affect the quality of the codebase and the general experience of contributing to the type system.
 
@@ -32,15 +35,16 @@ In the past 6 months preliminary refactors were made to allow actually implement
 ### The "shiny future" we are working towards
 
 The larger plan with const generics (but not this project-goal) is to bring feature-parity with type generics for const generics:
+
 - Arbitrary types can be used in const generics instead of just: integers, floats, bool and char.
-    - implemented under `feature(adt_const_params)` and is relatively close to stabilization
+  - implemented under `feature(adt_const_params)` and is relatively close to stabilization
 - Generic parameters are allowed to be used in const generic arguments (e.g. `Foo<{ <T as Trait>::ASSOC_CONST }>`).
 - Users can specify `_` as the argument to a const generic, allowing inferring the value just like with types.
-    - implemented under `feature(generic_arg_infer)` and is relatively close to stabilization
+  - implemented under `feature(generic_arg_infer)` and is relatively close to stabilization
 - Associated const items can introduce generic parameters to bring feature parity with type aliases
-    - implemented under `feature(generic_const_items)`, needs a bit of work to finish it. Becomes significantly more important *after* implementing `min_generic_const_args`
+  - implemented under `feature(generic_const_items)`, needs a bit of work to finish it. Becomes significantly more important _after_ implementing `min_generic_const_args`
 - Introduce associated const equality bounds, e.g. `T: Trait<ASSOC = N>` to bring feature parity with associated types
-    - implemented under `feature(associated_const_equality)`, blocked on allowing generic parameters in const generic arguments
+  - implemented under `feature(associated_const_equality)`, blocked on allowing generic parameters in const generic arguments
 
 Allowing generic parameters to be used in const generic arguments is the only part of const generics that requires significant amounts of work while also having significant benefit. Everything else is already relatively close to the point of stabilization. I chose to specify this goal to be for implementing `min_generic_const_args` over "stabilize the easy stuff" as I would like to know whether the implementation of `min_generic_const_args` will surface constraints on the other features that may not be possible to easily fix in a backwards compatible manner. Regardless I expect these features will still progress while `min_generic_const_args` is being implemented.
 
@@ -57,14 +61,14 @@ Allowing generic parameters to be used in const generic arguments is the only pa
 
 This section defines the specific work items that are planned and who is expected to do them. It should also include what will be needed from Rust teams.
 
-* Subgoal:
-    * Describe the work to be done and use `↳` to mark "subitems".
-* Owner(s) or team(s):
-    * List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
-    * If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
-* Status:
-    * List ![Help wanted][] if there is an owner but they need support, for example funding.
-    * Other needs (e.g., complete, in FCP, etc) are also fine.
+- Subgoal:
+  - Describe the work to be done and use `↳` to mark "subitems".
+- Owner(s) or team(s):
+  - List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
+  - If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
+- Status:
+  - List ![Help wanted][] if there is an owner but they need support, for example funding.
+  - Other needs (e.g., complete, in FCP, etc) are also fine.
 
 | Task                         | Owner(s) or team(s)       | Notes |
 | ---------------------------- | ------------------------- | ----- |

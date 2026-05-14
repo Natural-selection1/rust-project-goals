@@ -2,8 +2,8 @@
 
 > **NOTE:** This is a sample section you can use as a starting point.
 >
-> * Copy and paste the markdown below into the [main README](../../README.md).
-> * Replace `YYYYHN` with `2222h1` or whatever.
+> - Copy and paste the markdown below into the [main README](../../README.md).
+> - Replace `YYYYHN` with `2222h1` or whatever.
 >
 > (Note that the links on this page are relative to the main README, not its current location.)
 

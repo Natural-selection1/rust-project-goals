@@ -1,14 +1,13 @@
 # Redesigning `super let`: Flexible Temporary Lifetime Extension
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @dianne                            |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#648] |
 | Zulip channel       | N/A                                |
 | [lang] champion     | @traviscross                       |
 | [compiler] champion | @dianne                            |
-
 
 ## Summary
 
@@ -17,6 +16,7 @@ I aim to meet with the language team to discuss redesigning the `super let` feat
 ## Motivation
 
 `super let` has three main avenues of design, each with their own motivations:
+
 - It fills an expressiveness gap in API design space: by enabling temporaries borrowed in the result values of macros to be lifetime-extended, it becomes possible to assign the macro result to a variable with a `let` statement and use it later. A concrete example of this is `format_args!`. This allows for writing more natural code, treating these macros more like ordinary syntax.
 - It provides an explicit syntax for temporary lifetime extension. Although too-short-lived temporaries in hand-written code can have their scopes extended manually by assigning them to variables, a `super let`-like temporary scoping feature has the potential to improve ergonomics.
 - It has the potential to provide convenient syntax for common cases of in-place initialization, particularly on-stack pinned initialization. Emplacing into a temporary guarantees no external references to it exist, which can serve as part of a proof of pinnedness. Temporary lifetime extension then provides a way to control the lifetime of the initialized place.
@@ -41,10 +41,10 @@ Making it easier to extend the lifetimes of temporaries opens up the possibility
 
 ## Team asks
 
-| Team       | Support level    | Notes                                   |
-| ---------- | -------------    | --------------------------------------- |
-| [compiler] | medium  |  |
-| [lang]     | large            | Would need a design meeting and RFC review. |
-| [libs]     | small   | Since `super let` affects the standard library, the library team should be on-board with any new directions it takes. Additionally, library team review may be required for changes to `pin!`'s implementation. |
+| Team       | Support level | Notes                                                                                                                                                                                                           |
+| ---------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [compiler] | medium        |                                                                                                                                                                                                                 |
+| [lang]     | large         | Would need a design meeting and RFC review.                                                                                                                                                                     |
+| [libs]     | small         | Since `super let` affects the standard library, the library team should be on-board with any new directions it takes. Additionally, library team review may be required for changes to `pin!`'s implementation. |
 
 ## Frequently asked questions

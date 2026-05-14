@@ -1,12 +1,11 @@
 # Stabilize Cargo's linting system
 
 | Metadata         |                                                                                  |
-| :--              | :--                                                                              |
+| :--------------- | :------------------------------------------------------------------------------- |
 | Point of contact | @epage                                                                           |
 | Status           | Accepted                                                                         |
 | Tracking issue   | [rust-lang/rust-project-goals#650]                                               |
 | Zulip channel    | N/A (an existing stream can be re-used or new streams can be created on request) |
-
 
 ## Summary
 
@@ -30,6 +29,7 @@ we collected a good number of issues that would benefit from having one.
 ### What we propose to do about it
 
 This comes in two parts ([#12235](https://github.com/rust-lang/cargo/issues/12235)):
+
 - Polish the linting system to be up to the quality of rustc and clippy
 - Implement an initial batch of lints to serve as examples for future lints, vet our design, and provide a motivation for stabilization and use
 
@@ -42,21 +42,21 @@ See [the Cargo docs](https://doc.rust-lang.org/nightly/cargo/reference/lints.htm
 
 ### Work items over the next year
 
-| Task        | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| Unused dependencies lint | *epage*  |       |
-| Integrate with warning, error reporting and control | *epage*  |       |
-| Document lint contribution process | *epage*  |       |
-| Misc polish | *epage*  |       |
+| Task                                                | Owner(s) | Notes |
+| --------------------------------------------------- | -------- | ----- |
+| Unused dependencies lint                            | _epage_  |       |
+| Integrate with warning, error reporting and control | _epage_  |       |
+| Document lint contribution process                  | _epage_  |       |
+| Misc polish                                         | _epage_  |       |
 
 See [#12235](https://github.com/rust-lang/cargo/issues/12235) for more details
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [cargo]    | Small         | Code reviews and maybe a design discussion or two |
+| Team       | Support level | Notes                                                                                                                 |
+| ---------- | ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [cargo]    | Small         | Code reviews and maybe a design discussion or two                                                                     |
 | [compiler] | Small         | Review our initial batch of lints to ensure they provide an example of adapting the existing lint guidelines to Cargo |
-| [clippy] | Small           | Review our initial batch of lints to ensure they provide an example of adapting the existing lint guidelines to Cargo |
+| [clippy]   | Small         | Review our initial batch of lints to ensure they provide an example of adapting the existing lint guidelines to Cargo |
 
 ## Frequently asked questions

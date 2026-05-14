@@ -1,12 +1,14 @@
 # Next-generation trait solver
 
 | Metadata         |                                           |
-|:-----------------|-------------------------------------------|
+| :--------------- | ----------------------------------------- |
 | Point of contact | @lcnr                                     |
 | Status           | Accepted                                  |
 | Tracking issue   | [rust-lang/rust-project-goals#113]        |
 | Zulip channel    | [#t-types/trait-system-refactor][channel] |
+
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/364551-t-types.2Ftrait-system-refactor
+
 ## Summary
 
 Continue work towards the stabilization of `-Znext-solver=globally`, collecting and resolving remaining blockers. Extend its use in lints and rustdoc.
@@ -24,16 +26,17 @@ Fixing these issues in the existing implementation is prohibitively difficult as
 ### The next six months
 
 - resolve remaining issues affecting our compile-time benchmarks
-    - fix the failing tests by 'properly' resolving the underlying issues
-        - `wg-grammar`
-        - `projection-caching`
-        - `nalgebra-0.33.0`
-    - improve performance
-        - avoid exponential performance hits in all benchmarks
-        - get most benchmarks to be neutral or improvements
+  - fix the failing tests by 'properly' resolving the underlying issues
+    - `wg-grammar`
+    - `projection-caching`
+    - `nalgebra-0.33.0`
+  - improve performance
+    - avoid exponential performance hits in all benchmarks
+    - get most benchmarks to be neutral or improvements
 - go through the most popular crates on crates.io and fix any encountered issues
 - move additional lints and rustdoc to use the new solver by default
 - publicly ask for testing of `-Znext-solver=globally` once that's useful
+
 ### The "shiny future" we are working towards
 
 - we are able to remove the existing trait solver implementation and significantly cleanup the type system in general, e.g. removing most `normalize` in the caller by handling unnormalized types in the trait system
@@ -44,10 +47,11 @@ Fixing these issues in the existing implementation is prohibitively difficult as
 ## Design axioms
 
 In order of importance, the next-generation trait solver should be:
+
 - sound: the new trait solver is sound and its design enables us to fix all known type system unsoundnesses
 - backwards-compatible: the breakage caused by the switch to the new solver should be minimal
-- maintainable: the implementation is maintainable, extensible, and approachable to new contributors 
-- performant: the implementation is efficient, improving compile-times 
+- maintainable: the implementation is maintainable, extensible, and approachable to new contributors
+- performant: the implementation is efficient, improving compile-times
 
 [da]: ../about/design_axioms.md
 
@@ -58,7 +62,7 @@ In order of importance, the next-generation trait solver should be:
 Add'l implementation work: @compiler-errors
 
 | Task                         | Owner(s) or team(s)     | Notes                      |
-|------------------------------|-------------------------|----------------------------|
+| ---------------------------- | ----------------------- | -------------------------- |
 | Discussion and moral support | ![Team][] [types]       |                            |
 | Implementation               | @lcnr, @compiler-errors |                            |
 | Standard reviews             | ![Team][] [types]       |                            |
@@ -66,9 +70,9 @@ Add'l implementation work: @compiler-errors
 
 ### Support needed from the project
 
-* [Types] team
-    * review design decisions
-    * provide technical feedback and suggestion
+- [Types] team
+  - review design decisions
+  - provide technical feedback and suggestion
 
 ## Outputs and milestones
 
@@ -82,6 +86,6 @@ See next few steps :3
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._
 
 [unsoundnesses]: https://github.com/orgs/rust-lang/projects/44

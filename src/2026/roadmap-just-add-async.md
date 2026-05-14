@@ -1,7 +1,7 @@
 # Just add async
 
 | Metadata         |                                                                                                  |
-|:-----------------|--------------------------------------------------------------------------------------------------|
+| :--------------- | ------------------------------------------------------------------------------------------------ |
 | Short title      | Just add async                                                                                   |
 | What and why     | Patterns that work in sync Rust should work in async Rust — traits, closures, drop, scoped tasks |
 | Point of contact | @nikomatsakis                                                                                    |
@@ -22,11 +22,11 @@ Despite this success, async Rust is widely seen as qualitatively harder than syn
 
 The problem isn't async concepts themselves. Developers understand concurrency (well, mostly). The problem is that **patterns which work in sync Rust don't transfer to async**:
 
-* **Traits:** `async fn` in traits is stable, but you can't use `&dyn Trait` with async methods, and there's no way to require that an impl returns a `Send` future.
-* **Closures:** Async closures are stable, but compiler bugs frequently report invalid `Send` errors, and the trait limitations above make them hard to use in practice.
-* **Recursion:** In sync Rust, recursion just works. In async Rust, it requires arcane signatures with explicit lifetimes, `Box`, `dyn Future`, and `Pin`.
-* **Scoped patterns:** Sync Rust has `std::thread::scope` for borrowing into spawned threads. Async spawn APIs require `'static`, forcing `Arc` everywhere.
-* **Drop:** Destructors are sync-only. Resources that need async cleanup (database connections, network sessions) can't clean up properly in `Drop`.
+- **Traits:** `async fn` in traits is stable, but you can't use `&dyn Trait` with async methods, and there's no way to require that an impl returns a `Send` future.
+- **Closures:** Async closures are stable, but compiler bugs frequently report invalid `Send` errors, and the trait limitations above make them hard to use in practice.
+- **Recursion:** In sync Rust, recursion just works. In async Rust, it requires arcane signatures with explicit lifetimes, `Box`, `dyn Future`, and `Pin`.
+- **Scoped patterns:** Sync Rust has `std::thread::scope` for borrowing into spawned threads. Async spawn APIs require `'static`, forcing `Arc` everywhere.
+- **Drop:** Destructors are sync-only. Resources that need async cleanup (database connections, network sessions) can't clean up properly in `Drop`.
 
 Each issue has workarounds. But the workarounds require knowledge that doesn't transfer from sync Rust, and the compiler doesn't guide you to them. The result: developers who would otherwise build a network service in Rust hit these walls and wonder if it's worth the trouble.
 
@@ -34,11 +34,11 @@ The ecosystem is waiting too. Libraries like Tower remain on 0.x because they ca
 
 ### Design axioms
 
-* **Sync patterns should transfer.** If a pattern works in sync Rust, it should work in async Rust. When async requires something extra, the compiler should guide you there.
+- **Sync patterns should transfer.** If a pattern works in sync Rust, it should work in async Rust. When async requires something extra, the compiler should guide you there.
 
-* **Server-first, but not server-only.** We focus on server and application use cases to ship complete workflows now. But designs should leave space for users with stricter requirements. Features that allocate today can be extended with custom allocators or in-place initialization later. We're not closing doors, we're opening the first one.
+- **Server-first, but not server-only.** We focus on server and application use cases to ship complete workflows now. But designs should leave space for users with stricter requirements. Features that allocate today can be extended with custom allocators or in-place initialization later. We're not closing doors, we're opening the first one.
 
-* **Unblock the ecosystem, enable experimentation.** The goal isn't just language features. It's enabling libraries like Tower to ship stable APIs, and creating space for exploration of harder problems (in-place initialization, structured concurrency) without blocking on them. Ship end-to-end workflows that work today while leaving room for the designs to evolve.
+- **Unblock the ecosystem, enable experimentation.** The goal isn't just language features. It's enabling libraries like Tower to ship stable APIs, and creating space for exploration of harder problems (in-place initialization, structured concurrency) without blocking on them. Ship end-to-end workflows that work today while leaving room for the designs to evolve.
 
 ### What we are shooting for
 
@@ -46,8 +46,8 @@ Patterns that work in sync Rust should work in async Rust without requiring work
 
 ### How we get there
 
-| Goal | Timespan | What and why |
-| --- | --- | --- |
+| Goal                               | Timespan | What and why |
+| ---------------------------------- | -------- | ------------ |
 | (((ROADMAP ROWS: Just add async))) |
 
 The 2026 goals are largely independent. **RTN** enables generic async code and is already RFC'd, waiting on trait solver work. **AFIDT / `.box` notation** enables dyn dispatch for async traits. **Ergonomic ref-counting** addresses closure capture pain that's amplified by async's `'static` spawn requirements. **Immobile types and guaranteed destructors** enables scoped spawn and async drop by letting types opt out of being moved or forgotten. RTN and AFIDT share a dependency on the next-generation trait solver, which is being worked on separately.
@@ -62,7 +62,7 @@ Accepting this roadmap means agreeing that:
 2. **This direction is right.** Closing these gaps so "Just add async" works is the right goal.
 3. **Server-first is the right prioritization.** We ship end-to-end workflows for server/application environments first, with designs that leave space for stricter requirements later.
 
-It does *not* mean agreeing to specific syntax (like `.box`) or implementation details. Those will be decided in individual goal RFCs.
+It does _not_ mean agreeing to specific syntax (like `.box`) or implementation details. Those will be decided in individual goal RFCs.
 
 ### What about async iterators / streams?
 

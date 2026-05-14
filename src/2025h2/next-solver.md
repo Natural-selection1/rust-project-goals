@@ -7,9 +7,10 @@
 | Flagship         | Unblocking dormant traits                 |
 | Tracking issue   | [rust-lang/rust-project-goals#113]        |
 | Zulip channel    | [#t-types/trait-system-refactor][channel] |
-| [types] champion | @lcnr |
+| [types] champion | @lcnr                                     |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/364551-t-types.2Ftrait-system-refactor
+
 ## Summary
 
 Continue work towards the stabilization of `-Znext-solver=globally`, collecting and resolving remaining blockers. Extend its use in lints and rustdoc.
@@ -27,10 +28,10 @@ Fixing these issues in the existing implementation is prohibitively difficult as
 ### The next six months
 
 - finish and merge in-flight opaque types changes: [#139587](https://github.com/rust-lang/rust/pull/139587) and [#140497](https://github.com/rust-lang/rust/pull/140497)
-    - decide and document inference guidance for unconstrained opaques in the defining scope
+  - decide and document inference guidance for unconstrained opaques in the defining scope
 - continue work on performance
-    - fix last known exponential slowdown when reevaluating goals due to changed provisional results
-    - get all benchmarks to be neutral or improvements
+  - fix last known exponential slowdown when reevaluating goals due to changed provisional results
+  - get all benchmarks to be neutral or improvements
 - fix remaining minor issues from user reports, crater, and our test suite
 - move additional lints and rustdoc to use the new solver by default
 - document the new solver and work on the stabilization report
@@ -46,10 +47,11 @@ Fixing these issues in the existing implementation is prohibitively difficult as
 ## Design axioms
 
 In order of importance, the next-generation trait solver should be:
+
 - sound: the new trait solver is sound and its design enables us to fix all known type system unsoundnesses
 - backwards-compatible: the breakage caused by the switch to the new solver should be minimal
-- maintainable: the implementation is maintainable, extensible, and approachable to new contributors 
-- performant: the implementation is efficient, improving compile-times 
+- maintainable: the implementation is maintainable, extensible, and approachable to new contributors
+- performant: the implementation is efficient, improving compile-times
 
 [da]: ../about/design_axioms.md
 
@@ -68,9 +70,9 @@ Add'l implementation work: @compiler-errors
 
 ### Support needed from the project
 
-* [Types] team
-    * review design decisions
-    * provide technical feedback and suggestion
+- [Types] team
+  - review design decisions
+  - provide technical feedback and suggestion
 
 ## Outputs and milestones
 
@@ -80,6 +82,6 @@ See next few steps :3 while we don't expect to fully stabilize the new solver th
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._
 
 [unsoundnesses]: https://github.com/orgs/rust-lang/projects/44

@@ -1,7 +1,7 @@
 # Stabilize concrete type specialization
 
 | Metadata              |                                    |
-| :--                   | :--                                |
+| :-------------------- | :--------------------------------- |
 | Point of contact      | @tmandry                           |
 | Status                | Accepted                           |
 | Needs                 | Funding                            |
@@ -11,7 +11,6 @@
 | Other tracking issues | rust-lang/rust#31844               |
 | [lang] champion       | @tmandry                           |
 | [types] champion      | @jackh726                          |
-
 
 ## Summary
 
@@ -37,22 +36,21 @@ Given that specialization is largely blocked on design work to address known sou
 
 ### Work items over the next year
 
-| Task                         | Owner(s) | Notes  |
-| --------------------------   | --------- | ----- |
+| Task                         | Owner(s)  | Notes |
+| ---------------------------- | --------- | ----- |
 | Survey use cases             | @jackh726 |       |
 | Triage open issues           | @jackh726 |       |
 | Prepare design document      | @jackh726 |       |
 | Model in a-mir-formality     | @jackh726 |       |
 | Implement and iterate design | @jackh726 |       |
 
-
 ## Team asks
 
-| Team       | Support level | Notes |
-| ---------- | ------------- | ----- |
-| [lang]     | Medium        | Review design document |
-| [types]    | Large         | Review design document |
-| [libs]     | Small         |       |
-| [opsem]    | Small         |       |
+| Team    | Support level | Notes                  |
+| ------- | ------------- | ---------------------- |
+| [lang]  | Medium        | Review design document |
+| [types] | Large         | Review design document |
+| [libs]  | Small         |                        |
+| [opsem] | Small         |                        |
 
 ## Frequently asked questions

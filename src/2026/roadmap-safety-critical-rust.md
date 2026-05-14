@@ -1,7 +1,7 @@
 # Safety-Critical Rust
 
 | Metadata         |                                                                                                                              |
-|:-----------------|------------------------------------------------------------------------------------------------------------------------------|
+| :--------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Short title      | Safety-Critical Rust                                                                                                         |
 | What and why     | MC/DC coverage, a specification that tracks stable releases, and `unsafe` documentation — the evidence safety assessors need |
 | Point of contact | @PLeVasseur                                                                                                                  |
@@ -16,34 +16,34 @@ Make Rust viable for certified safety-critical systems by delivering coverage, s
 
 Engineers building software under functional safety standards need auditable evidence and predictable tooling. The major standards families include:
 
-| Domain | Standards |
-|--------|-----------|
-| Automotive | [ISO 26262][iso-26262] |
-| Aerospace | [DO-178C][do-178c], [DO-333][do-333] (formal methods) |
-| Industrial | [IEC 61508][iec-61508], [IEC 61511][iec-61511] (process), [IEC 62061][iec-62061] (machinery) |
-| Medical devices | [IEC 62304][iec-62304] |
-| Railway | [EN 50128][en-50128], [EN 50716][en-50716] |
-| Nuclear | [IEC 60880][iec-60880], [IEC 61513][iec-61513] |
-| Space | [ECSS-E-ST-40C][ecss-e-st-40c], [ECSS-Q-ST-80C][ecss-q-st-80c] |
-| Agriculture/Forestry | [ISO 25119][iso-25119] |
+| Domain               | Standards                                                                                    |
+| -------------------- | -------------------------------------------------------------------------------------------- |
+| Automotive           | [ISO 26262][iso-26262]                                                                       |
+| Aerospace            | [DO-178C][do-178c], [DO-333][do-333] (formal methods)                                        |
+| Industrial           | [IEC 61508][iec-61508], [IEC 61511][iec-61511] (process), [IEC 62061][iec-62061] (machinery) |
+| Medical devices      | [IEC 62304][iec-62304]                                                                       |
+| Railway              | [EN 50128][en-50128], [EN 50716][en-50716]                                                   |
+| Nuclear              | [IEC 60880][iec-60880], [IEC 61513][iec-61513]                                               |
+| Space                | [ECSS-E-ST-40C][ecss-e-st-40c], [ECSS-Q-ST-80C][ecss-q-st-80c]                               |
+| Agriculture/Forestry | [ISO 25119][iso-25119]                                                                       |
 
 This includes OEMs, suppliers, integrators, and toolchain vendors. Safety cases must reference a specification for the language being used, and the toolchain must produce evidence that assessors accept.
 
 What these teams need most:
 
-* **Coverage tooling.** [MC/DC][mcdc] reports that assessors accept.
-* **A specification that tracks stable releases.** So safety cases can reference current language features via the [FLS][fls].
-* **Continued progress on `unsafe` documentation.** The [Reference][rust-reference], [Rustonomicon][rustonomicon], and [standard library docs][std-docs] have improved substantially over the years, but gaps remain for common patterns.
-* **Stable foundations.** Product lifetimes of 10-20 years require confidence in toolchain support and MSRV conventions.
+- **Coverage tooling.** [MC/DC][mcdc] reports that assessors accept.
+- **A specification that tracks stable releases.** So safety cases can reference current language features via the [FLS][fls].
+- **Continued progress on `unsafe` documentation.** The [Reference][rust-reference], [Rustonomicon][rustonomicon], and [standard library docs][std-docs] have improved substantially over the years, but gaps remain for common patterns.
+- **Stable foundations.** Product lifetimes of 10-20 years require confidence in toolchain support and MSRV conventions.
 
 Teams at SIL 2 and ASIL B are [shipping Rust today][vision-doc]. These deliverables reduce the workarounds they need and create a path to higher integrity levels — enabling certification evidence, qualified toolchains, mixed-language integration with well-defined `unsafe` contracts, and long-lived products with stable MSRV and documentation baselines.
 
 ### Design axioms
 
-* **Evidence first.** Prioritize deliverables that produce audit-ready evidence.
-* **Use standard tooling.** Improve rustc, Clippy, and core docs rather than forks.
-* **Ship a ladder.** Foundations first, with an explicit path to higher integrity levels.
-* **Document safety contracts.** `unsafe` patterns must have normative, citable guidance.
+- **Evidence first.** Prioritize deliverables that produce audit-ready evidence.
+- **Use standard tooling.** Improve rustc, Clippy, and core docs rather than forks.
+- **Ship a ladder.** Foundations first, with an explicit path to higher integrity levels.
+- **Document safety contracts.** `unsafe` patterns must have normative, citable guidance.
 
 ### What we are shooting for
 
@@ -51,8 +51,8 @@ A capability ladder that unlocks Rust at increasing safety-integrity levels — 
 
 ### How we get there
 
-| Goal | Timespan | What and why |
-| --- | --- | --- |
+| Goal                                     | Timespan | What and why |
+| ---------------------------------------- | -------- | ------------ |
 | (((ROADMAP ROWS: Safety-Critical Rust))) |
 
 The goals form a coherent evidence chain across three tiers. The **foundation** tier (ASIL A/B, SIL 1/2, DO-178C Level C) delivers stable branch/DC coverage baselines and predictable [FLS][fls] releases, plus initial safety-critical linting to enforce [Safety-Critical Rust Consortium][scrc] coding standards. The **intermediate** tier (ASIL C, SIL 3, DO-178C Level B) adds normative `unsafe` pattern documentation and expanded lint coverage, with coordination for mixed-language interop and async runtime patterns. The **highest integrity** tier (ASIL D, SIL 4, DO-178C Level A) targets [MC/DC][mcdc] coverage in rustc and formal-methods coordination toward contracts, semantics documentation, and verified tooling.

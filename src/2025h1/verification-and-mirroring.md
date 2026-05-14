@@ -1,16 +1,16 @@
 # Secure quorum-based cryptographic verification and mirroring for crates.io
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Short title        | Crates.io mirroring                |
-| Point of contact   | @walterhpearce                     |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#271] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Short title      | Crates.io mirroring                |
+| Point of contact | @walterhpearce                     |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#271] |
 
 ## Summary
 
-Within 6 months, we will work towards consensus with Rust teams on an RFC for cryptographic verification and mirroring of releases and crates.io, and provide *experimental* infrastructure demonstrating the ability to mirror crates.io and verify downloads from a mirror. This will include a proof of concept for a secure chain-of-trust to the Rust Project, via a quorum-based mechanism, and methods to verify singular Rust crates, their singular index entries, as well as the index and the artifacts as a whole.
+Within 6 months, we will work towards consensus with Rust teams on an RFC for cryptographic verification and mirroring of releases and crates.io, and provide _experimental_ infrastructure demonstrating the ability to mirror crates.io and verify downloads from a mirror. This will include a proof of concept for a secure chain-of-trust to the Rust Project, via a quorum-based mechanism, and methods to verify singular Rust crates, their singular index entries, as well as the index and the artifacts as a whole.
 
 This consensus will include a clear policy for the threat models we should protect against, and a clear demonstration that the proposed infrastructure secures against those threats.
 
@@ -35,6 +35,7 @@ We would like to have a experimental out-of-band version of a signing pipeline f
 This goal shall include a series of educational materials (ex: blog posts, broken-down RFC components, or other materials) which discuss the history of artifact signing, current crate and release security, and the driving goals behind requiring cryptographic verification of Rust Project artifacts and why we have come to this solution. We hope to provide this material to interested parties across the project, with project-team-specific materials, to help drive consensus to this solution. These materials will not assume background knowledge of TUF or the TUF specification, and will provide motivation for the selection of TUF over other possibilities. These materials shall be crafted by the project team (@walterhpearce & @joshtriplett)
 
 We are requesting the following activities from Rust Project teams:
+
 - Leadership Council:
   - Review of threat models, policy decision on whether those are the correct threat models to target, general approval about the use of a quorum to address those threat models.
 - Cargo Team:
@@ -67,6 +68,7 @@ We also wish to implement technical items for this goal.
 - We will have integrated signing into a TUF repository for crates published to crates.io; this may be accomplished in collaboration with crates.io or out-of-band via the new updates RSS feed.
 
 - Finally, we'll provide some method for end users to verify these signatures as an external cargo subcommand & rustup fork for proof-of-concept
+
 ### The "shiny future" we are working towards
 
 After this next six months, we will continue working to bring the experimental infrastructure into production.
@@ -83,37 +85,37 @@ The project choosing to adopt this strategy and infrastructure will require ongo
 
 ## Ownership and team asks
 
-| Task                                              | Owner(s) or team(s) | Notes |
-|---------------------------------------------------|---------------------|-------|
-| Inside Rust blog post about proof-of-concept | @walterhpearce      |       |
-| Series of documents (RFC components or Inside Rust blog posts) | @walterhpearce, @joshtriplett     |       |
-| Policy decision | ![Team][] [leadership-council]      | 1 hour synchronously discussing the threat models, policy, and quorum mechanism. Note: The ask from the Leadership Council is not a detailed exploration of *how* we address these threat models; rather, this will be a presentation of the threat models and a policy decision that the project cares about those threat models, along with the specific explanation of why a quorum is desirable to address those threat models.      |
-| Design meeting | ![Team][] [cargo]      | 1 hour Overall Design and threat model |
-| Design meeting | ![Team][] [cargo]      | 1 hour General design/implementation for index verification |
-| Dedicated reviewer | ![Team][] [cargo]      | 1 hour Design for novel incremental download mechanism for bandwidth conservation |
-| Design meeting | ![Team][] [crates-io]      | 1 hour Overall Design, threat model, and discussion of key management and quorums |
-| Design meeting | ![Team][] [crates-io]      | 1 hour General design/implementation for automated index signing |
-| Design meeting | ![Team][] [infra]      | 3 hours of design and threat model discussion. Specific production infrastructure setup will come at a later time after the initial proof of concept. |
-| Discussion and moral support | ![Team][] [release]      | Asynchronous discussion of the release team's role in the chain of trust, and preliminary approval of an experimental proof of concept. Approximately ~1 hour of total time across the 6-month period. |
+| Task                                                           | Owner(s) or team(s)            | Notes                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| -------------------------------------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Inside Rust blog post about proof-of-concept                   | @walterhpearce                 |                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Series of documents (RFC components or Inside Rust blog posts) | @walterhpearce, @joshtriplett  |                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Policy decision                                                | ![Team][] [leadership-council] | 1 hour synchronously discussing the threat models, policy, and quorum mechanism. Note: The ask from the Leadership Council is not a detailed exploration of _how_ we address these threat models; rather, this will be a presentation of the threat models and a policy decision that the project cares about those threat models, along with the specific explanation of why a quorum is desirable to address those threat models. |
+| Design meeting                                                 | ![Team][] [cargo]              | 1 hour Overall Design and threat model                                                                                                                                                                                                                                                                                                                                                                                              |
+| Design meeting                                                 | ![Team][] [cargo]              | 1 hour General design/implementation for index verification                                                                                                                                                                                                                                                                                                                                                                         |
+| Dedicated reviewer                                             | ![Team][] [cargo]              | 1 hour Design for novel incremental download mechanism for bandwidth conservation                                                                                                                                                                                                                                                                                                                                                   |
+| Design meeting                                                 | ![Team][] [crates-io]          | 1 hour Overall Design, threat model, and discussion of key management and quorums                                                                                                                                                                                                                                                                                                                                                   |
+| Design meeting                                                 | ![Team][] [crates-io]          | 1 hour General design/implementation for automated index signing                                                                                                                                                                                                                                                                                                                                                                    |
+| Design meeting                                                 | ![Team][] [infra]              | 3 hours of design and threat model discussion. Specific production infrastructure setup will come at a later time after the initial proof of concept.                                                                                                                                                                                                                                                                               |
+| Discussion and moral support                                   | ![Team][] [release]            | Asynchronous discussion of the release team's role in the chain of trust, and preliminary approval of an experimental proof of concept. Approximately ~1 hour of total time across the 6-month period.                                                                                                                                                                                                                              |
 
 ### Quorum-based cryptographic infrastructure (RFC 3724)
 
-| Task                                  | Owner(s) or team(s)                     | Notes                                                                                                                       |
-|---------------------------------------|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| Further revisions to RFC              | @walterhpearce, @joshtriplett           |                                                                                                                             |
-| Implementation and proof-of-concept deployment | @walterhpearce    |                                                                                                                             |
+| Task                                           | Owner(s) or team(s)           | Notes |
+| ---------------------------------------------- | ----------------------------- | ----- |
+| Further revisions to RFC                       | @walterhpearce, @joshtriplett |       |
+| Implementation and proof-of-concept deployment | @walterhpearce                |       |
 
 ### Definitions
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.

@@ -1,11 +1,12 @@
 # Survey tools suitability for Std safety verification
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @celinval                          |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#126] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#126] |
+| Zulip channel    | N/A                                |
+
 ## Summary
 
 Instrument a fork of the standard library (the [verify-rust-std] repository) with safety contracts,
@@ -13,7 +14,7 @@ and employ existing verification tools to verify the standard library.
 
 ## Motivation
 
-The Rust Standard Library is the foundation of portable Rust software. It provides efficient implementations 
+The Rust Standard Library is the foundation of portable Rust software. It provides efficient implementations
 and safe abstractions for the most common general purpose programming data structures and operations.
 For doing so, they perform unsafe operations internally.
 
@@ -110,23 +111,23 @@ to provide performant abstractions.
 ## Design axioms
 
 - **No runtime penalty**: Instrumentation must not affect the standard library runtime behavior, including performance.
-- **Automated Verification**: Our goal is to verify the standard library implementation. Given how quickly the standard 
-library code evolves, automated verification is needed to ensure new changes preserve the properties previously verified.
-- **Contract as code**: Keeping the contract language and specification as close as possible to Rust syntax and 
-semantics will lower the barrier for users to understand and be able to write their own contracts.
+- **Automated Verification**: Our goal is to verify the standard library implementation. Given how quickly the standard
+  library code evolves, automated verification is needed to ensure new changes preserve the properties previously verified.
+- **Contract as code**: Keeping the contract language and specification as close as possible to Rust syntax and
+  semantics will lower the barrier for users to understand and be able to write their own contracts.
 
 ## Ownership and team asks
 
 **Owner:** @celinval
 
-| Task                               | Owner(s) or team(s)  | Notes                                                                 |
-|------------------------------------|----------------------|-----------------------------------------------------------------------|
-| Discussion and moral support       | ![Team][] [libs][]   |                                                                       |
-| Standard reviews                    | ![Team][] [libs][]   | We would like to contribute upstream the contracts added to the fork. |
-| Problem proposals                  | Help Wanted          |                                                                       |
-| Fork maintenance                   | @celinval, @jaisnan  |                                                                       |
-| Fork PR Reviews                    | [Own Committee]      | We are gathering a few contributors with expertise knowledge.         |
-| Instrumentation and verification   | Help Wanted          |                                                                       |
+| Task                             | Owner(s) or team(s) | Notes                                                                 |
+| -------------------------------- | ------------------- | --------------------------------------------------------------------- |
+| Discussion and moral support     | ![Team][] [libs][]  |                                                                       |
+| Standard reviews                 | ![Team][] [libs][]  | We would like to contribute upstream the contracts added to the fork. |
+| Problem proposals                | Help Wanted         |                                                                       |
+| Fork maintenance                 | @celinval, @jaisnan |                                                                       |
+| Fork PR Reviews                  | [Own Committee]     | We are gathering a few contributors with expertise knowledge.         |
+| Instrumentation and verification | Help Wanted         |                                                                       |
 
 [Own Committee]: https://github.com/model-checking/verify-rust-std/blob/main/.github/pull_requests.toml#L4
 
@@ -134,13 +135,13 @@ semantics will lower the barrier for users to understand and be able to write th
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Standard reviews* refers to reviews for PRs against the Rust repository; these PRs are not expected to be unduly large or complicated.
-* *Problem proposals* refers to creating a scoped task that involves verifying a chunk of the standard library. 
-* *Fork PR reviews* means a group of individuals who will review the changes made to the fork, as they're expected to require significant context.
-Besides contracts, these changes may include extra harnesses, lemmas, ghost-code.
-* *Fork maintenance* means configuring CI, performing periodic fork update from upstream, tool integration.
-* *Instrumentation and verification* is the work of specifying contracts, invariants, and verifying a specific part of
-the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Standard reviews_ refers to reviews for PRs against the Rust repository; these PRs are not expected to be unduly large or complicated.
+- _Problem proposals_ refers to creating a scoped task that involves verifying a chunk of the standard library.
+- _Fork PR reviews_ means a group of individuals who will review the changes made to the fork, as they're expected to require significant context.
+  Besides contracts, these changes may include extra harnesses, lemmas, ghost-code.
+- _Fork maintenance_ means configuring CI, performing periodic fork update from upstream, tool integration.
+- _Instrumentation and verification_ is the work of specifying contracts, invariants, and verifying a specific part of
+  the standard library.
 
 ## Frequently asked questions

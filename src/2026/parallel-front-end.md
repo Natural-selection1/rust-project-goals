@@ -25,7 +25,7 @@ We recently fixed (in rust-lang/rust#151509) a major issue related to race condi
 
 The inconstancy of query cycle errors between parallel and serial compilers is another point we should pay attention to.
 
-Furthermore, we do not yet have robust [testing] mechanisms to guarantee correctness and consistence of the  parallel front-end. we'll therefore dedicate focused effort toward on a new test suite for parallel front-end.
+Furthermore, we do not yet have robust [testing] mechanisms to guarantee correctness and consistence of the parallel front-end. we'll therefore dedicate focused effort toward on a new test suite for parallel front-end.
 
 In addition, we need to document and enhance the support of surrounding tools for the parallel frontend, such as rustc-perf and Cargo.
 
@@ -44,20 +44,20 @@ Performance improvement would be long-term work. We are considering potential me
 
 ### Work items over the next year
 
-| Task                         | Owner(s) or team(s)  | Notes |
-| ---------------------------- | -------------------- | ----- |
-| Issue Resolving              | @wg-parallel-rustc   |       |
-| Building the test suit       | @ywxt                |       |
-| Tools supporting             | @ywxt                |       |
-| Stabilization report         | @SparrowLii          |       |
-| Discussion and moral support | @wg-parallel-rustc   |       |
+| Task                         | Owner(s) or team(s) | Notes |
+| ---------------------------- | ------------------- | ----- |
+| Issue Resolving              | @wg-parallel-rustc  |       |
+| Building the test suit       | @ywxt               |       |
+| Tools supporting             | @ywxt               |       |
+| Stabilization report         | @SparrowLii         |       |
+| Discussion and moral support | @wg-parallel-rustc  |       |
 
 ## Team asks
 
-| Team       | Support level | Notes |
-| ---------- | ------------- | ----- |
-| [wg-parallel-rustc]    |     Large      |   Discussion and Implementation    |
-| [compiler] |      Small         |  Code Reviews     |
+| Team                | Support level | Notes                         |
+| ------------------- | ------------- | ----------------------------- |
+| [wg-parallel-rustc] | Large         | Discussion and Implementation |
+| [compiler]          | Small         | Code Reviews                  |
 
 ## Frequently asked questions
 

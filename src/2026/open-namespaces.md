@@ -1,7 +1,7 @@
 # Implement Open Rust Namespace Support
 
 | Metadata         |                                                                                  |
-|:-----------------|----------------------------------------------------------------------------------|
+| :--------------- | -------------------------------------------------------------------------------- |
 | Point of contact | @epage                                                                           |
 | Status           | Accepted                                                                         |
 | Needs            | Contributor                                                                      |
@@ -35,9 +35,9 @@ This covers multiple teams and needs a lot of coordination to balance the needs 
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [cargo]    | Small         |                                         |
-| [compiler] | Small         | Design discussions, PR review           |
+| Team       | Support level | Notes                         |
+| ---------- | ------------- | ----------------------------- |
+| [cargo]    | Small         |                               |
+| [compiler] | Small         | Design discussions, PR review |
 
 ## Frequently asked questions

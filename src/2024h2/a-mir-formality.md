@@ -1,11 +1,11 @@
 # Testing infra + contributors for a-mir-formality
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @nikomatsakis                      |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#122] |
-| Zulip channel  | [#t-types/formality][channel]      |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#122] |
+| Zulip channel    | [#t-types/formality][channel]      |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/402470-t-types.2Fformality
 
@@ -13,8 +13,8 @@
 
 The goal for a-mir-formality this year is to bootstrap it as a live, maintained project:
 
-* Achieve 2 regular contributors from T-types in addition to @nikomatsakis
-* Support fuzz testing and/or the ability to test against rustc
+- Achieve 2 regular contributors from T-types in addition to @nikomatsakis
+- Support fuzz testing and/or the ability to test against rustc
 
 ## Motivation
 
@@ -26,8 +26,8 @@ Most communication and definition of Rust's type/trait system today takes place 
 
 The goal for a-mir-formality this year is to bootstrap it as a live, maintained project:
 
-* Achieve 2 regular contributors from T-types in addition to @nikomatsakis
-* Support fuzz testing and/or the ability to test against rustc
+- Achieve 2 regular contributors from T-types in addition to @nikomatsakis
+- Support fuzz testing and/or the ability to test against rustc
 
 ### The "shiny future" we are working towards
 
@@ -38,10 +38,10 @@ We also envision it being tested both through fuzzing and by comparing its resul
 
 ## Design axioms
 
-* **Designed for exploration and extension by ordinary Rust developers.** Editing and maintaining formality should not require a PhD. We prefer lightweight formal methods over strong static proof.
-* **Focused on the Rust's static checking.** There are many things that a-mir-formality could model. We are focused on those things that we need to evaluate Rust's static checks. This includes the type system and trait system.
-* **Clarity over efficiency.** Formality's codebase is only meant to scale up to small programs. Efficiency is distinctly secondary.
-* **The compiler approximates a-mir-formality, a-mir-formality approximates the truth.** Rust's type system is Turing Complete and cannot be fully evaluated. We expect the compiler to have safeguards (for example, overflow detection) that may be more conservative than those imposed by a-mir-formality. In other words, formality may accept some programs the compiler cannot evaluate for practical reasons. Similarly, formality will have to make approximations relative to the "platonic ideal" of what Rust's type system would accept.
+- **Designed for exploration and extension by ordinary Rust developers.** Editing and maintaining formality should not require a PhD. We prefer lightweight formal methods over strong static proof.
+- **Focused on the Rust's static checking.** There are many things that a-mir-formality could model. We are focused on those things that we need to evaluate Rust's static checks. This includes the type system and trait system.
+- **Clarity over efficiency.** Formality's codebase is only meant to scale up to small programs. Efficiency is distinctly secondary.
+- **The compiler approximates a-mir-formality, a-mir-formality approximates the truth.** Rust's type system is Turing Complete and cannot be fully evaluated. We expect the compiler to have safeguards (for example, overflow detection) that may be more conservative than those imposed by a-mir-formality. In other words, formality may accept some programs the compiler cannot evaluate for practical reasons. Similarly, formality will have to make approximations relative to the "platonic ideal" of what Rust's type system would accept.
 
 ## Ownership and team asks
 
@@ -49,13 +49,13 @@ We also envision it being tested both through fuzzing and by comparing its resul
 
 We will require participation from at least 2 other members of T-types. Current candidates are lcnr + compiler-errors.
 
-| Task             | Owner(s) or team(s)            | Notes |
-| ---------------- | ------------------------------ | ----- |
+| Task             | Owner(s) or team(s)             | Notes |
+| ---------------- | ------------------------------- | ----- |
 | Implementation   | @nikomatsakis, lcnr, and others |       |
-| Standard reviews | ![Team][] [types]              |       |
+| Standard reviews | ![Team][] [types]               |       |
 
 ## Frequently asked questions
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._

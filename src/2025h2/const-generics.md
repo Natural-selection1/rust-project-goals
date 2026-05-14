@@ -7,6 +7,7 @@
 | Tracking issue   | [rust-lang/rust-project-goals#100] |
 | Zulip channel    | N/A                                |
 | [lang] champion  | @nikomatsakis                      |
+
 ## Summary
 
 Work towards stabilizing the remaining const generics functionality that was left out of the original `min_const_generics` feature.
@@ -14,6 +15,7 @@ Work towards stabilizing the remaining const generics functionality that was lef
 ## Motivation & Status Quo
 
 The `min_const_generics` feature was stabilized with a number of limitations, while some have since been lifted there are still some things we do not support:
+
 - Inferred arguments to const parameters (`feature(generic_arg_infer)`)
 - Const parameters with arbitrary user-defined types (`feature(adt_const_params)`)
 - Non-concrete uses of associated constants in the type system (`feature(min_generic_const_args)`/`feature(associated_const_equality)`)
@@ -23,7 +25,7 @@ When using const generics it is common to run into these limitations and be unab
 ### The next 6 months
 
 - Write a document outlining the main design decisions of `adt_const_params` and discuss it with the lang team, follow up with an RFC
-- Finish implementing the `min_generic_const_args` (mgca) feature prototype 
+- Finish implementing the `min_generic_const_args` (mgca) feature prototype
 
 ### The "shiny future" we are working towards
 
@@ -36,4 +38,4 @@ suddenly stops working as well as type generics, forcing code to be rewritten to
 | ---------------------------- | ------------------- | -------------------------------- |
 | Design meeting               | ![Team][] [lang]    | topic: `adt_const_params` design |
 | `adt_const_params` RFC draft | @BoxyUwU            |                                  |
-| Finish `mgca` prototype      | @BoxyUwU, @camelid   |                                  |
+| Finish `mgca` prototype      | @BoxyUwU, @camelid  |                                  |

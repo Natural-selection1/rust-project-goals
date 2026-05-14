@@ -41,62 +41,66 @@ Length guidance:
 > (e.g., "Beyond the `&`" or "Constify all the things").
 >
 > Roadmaps group related goals under a unifying narrative. They explain
-> *why* this collection of work matters to users, not just *what* we're building.
+> _why_ this collection of work matters to users, not just _what_ we're building.
 >
 > Unlike individual goal pages, roadmaps don't have metadata tables or
 > team asks—those live in the individual goal documents.
 
 ## Summary
 
-*One sentence describing the capability users will gain when this theme is complete.*
+_One sentence describing the capability users will gain when this theme is complete._
 
 ## Motivation
 
 ### The status quo
 
-> *Explain the high-level problem or opportunity from the user's perspective. A strong status quo section:*
-> * *Identifies the underlying limitation or gap (not individual features)*
-> * *Shows the consequences: what can't users do? what workarounds exist?*
-> * *Connects to the goals: "with X fixed, we can do Y and Z"*
+> _Explain the high-level problem or opportunity from the user's perspective. A strong status quo section:_
 >
-> *Keep it concise. The goal pages have details; this page provides the unifying narrative.*
+> - _Identifies the underlying limitation or gap (not individual features)_
+> - _Shows the consequences: what can't users do? what workarounds exist?_
+> - _Connects to the goals: "with X fixed, we can do Y and Z"_
+>
+> _Keep it concise. The goal pages have details; this page provides the unifying narrative._
 
 ### Design axioms
 
-> *List the principles guiding decisions across all goals in this theme. Design axioms come early because they frame how you read everything that follows. Good design axioms:*
-> * *Help resolve tradeoffs when they arise*
-> * *Explain the "why" behind design choices*
-> * *Are specific enough to be actionable*
+> _List the principles guiding decisions across all goals in this theme. Design axioms come early because they frame how you read everything that follows. Good design axioms:_
 >
-> *Example format:*
-> * **Axiom name.** Explanation of the principle and how it guides decisions.
+> - _Help resolve tradeoffs when they arise_
+> - _Explain the "why" behind design choices_
+> - _Are specific enough to be actionable_
+>
+> _Example format:_
+>
+> - **Axiom name.** Explanation of the principle and how it guides decisions.
 
 ### What we are shooting for
 
-> *A short, aspirational statement of the end state. What does the world look like when this roadmap is done? Keep it punchy — 1-3 sentences, not a bullet list. The details of how we get there come next.*
+> _A short, aspirational statement of the end state. What does the world look like when this roadmap is done? Keep it punchy — 1-3 sentences, not a bullet list. The details of how we get there come next._
 
 ### How we get there
 
-| Goal | Timespan | What and why |
-| --- | --- | --- |
+| Goal                           | Timespan | What and why |
+| ------------------------------ | -------- | ------------ |
 | (((ROADMAP ROWS: Theme Name))) |
 
-> *Replace "Theme Name" above with the exact name used in the `Roadmap` metadata field of your goals. The `(((ROADMAP ROWS: ...)))` directive expands into table rows for all goals tagged with this theme. Each goal's timespan defaults to its milestone year (e.g., "2026") but can be overridden with a `Timespan` metadata field in the goal document. The "What and why" column uses the goal's `What and why` metadata field, falling back to its Summary.*
+> _Replace "Theme Name" above with the exact name used in the `Roadmap` metadata field of your goals. The `(((ROADMAP ROWS: ...)))` directive expands into table rows for all goals tagged with this theme. Each goal's timespan defaults to its milestone year (e.g., "2026") but can be overridden with a `Timespan` metadata field in the goal document. The "What and why" column uses the goal's `What and why` metadata field, falling back to its Summary._
 >
-> *You can add manual rows for future work that doesn't have a goal document yet:*
+> _You can add manual rows for future work that doesn't have a goal document yet:_
 >
 > ```markdown
-> | Goal | Timespan | What and why |
-> | --- | --- | --- |
+> | Goal                           | Timespan | What and why                                              |
+> | ------------------------------ | -------- | --------------------------------------------------------- |
 > | (((ROADMAP ROWS: Theme Name))) |
-> | Async iteration / streams | Future | First-class stream support building on async fn in traits |
+> | Async iteration / streams      | Future   | First-class stream support building on async fn in traits |
 > ```
 >
-> *After the goals table, explain the sequencing and dependencies:*
-> * *What needs to happen first? What does it unblock?*
-> * *Which work items can proceed in parallel?*
-> * *What are the key blockers and how are they addressed?*
+> _After the goals table, explain the sequencing and dependencies:_
+>
+> - _What needs to happen first? What does it unblock?_
+> - _Which work items can proceed in parallel?_
+> - _What are the key blockers and how are they addressed?_
 
 ## Frequently asked questions
 
-> *Address questions that span multiple goals in the theme. Individual goal FAQs should go in those goal documents; theme FAQs address cross-cutting concerns.*
+> _Address questions that span multiple goals in the theme. Individual goal FAQs should go in those goal documents; theme FAQs address cross-cutting concerns._

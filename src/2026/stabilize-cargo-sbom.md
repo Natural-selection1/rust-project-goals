@@ -1,7 +1,7 @@
 # Stabilize Cargo SBOM precursor
 
 | Metadata              |                                                 |
-| :--                   | :--                                             |
+| :-------------------- | :---------------------------------------------- |
 | Point of contact      | @Shnatsel                                       |
 | Status                | Accepted                                        |
 | Needs                 | Contributor                                     |
@@ -9,7 +9,6 @@
 | Other tracking issues | https://github.com/rust-lang/cargo/issues/16565 |
 | Zulip channel         | N/A                                             |
 | [cargo] champion      | @weihanglo                                      |
-
 
 ## Summary
 
@@ -41,13 +40,13 @@ Inaccurate SBOMs lead to false positives on vulnerability scans and/or complianc
 
 ### Work items over the next year
 
-| Task        | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| Complete the RFC | @Shnatsel et al. |    |
-| Resolve known issues | @Shnatsel et al. |       |
+| Task                                              | Owner(s)         | Notes                                                                    |
+| ------------------------------------------------- | ---------------- | ------------------------------------------------------------------------ |
+| Complete the RFC                                  | @Shnatsel et al. |                                                                          |
+| Resolve known issues                              | @Shnatsel et al. |                                                                          |
 | convert cargo-cyclonedx to use the SBOM precursor | @Shnatsel et al. | outside the Rust Project repositories, no Rust Project mentorship needed |
-| Resolve newly uncovered issues | @Shnatsel et al. |       |
-| Stabilize the MVP | @Shnatsel et al. |       |
+| Resolve newly uncovered issues                    | @Shnatsel et al. |                                                                          |
+| Stabilize the MVP                                 | @Shnatsel et al. |                                                                          |
 
 I am in the process of applying for funding for this work, together with collaborators I'm not sure I can disclose. The amount of time we can dedicate to the project will depend on the outcome of that application. It is possible that the funding will only materialize in the second half of the year or not at all.
 
@@ -55,13 +54,13 @@ I am in the process of applying for funding for this work, together with collabo
 
 We will need:
 
- - Guidance to get the RFC finalized and accepted
- - A handful of 30-minute design meetings with someone on the Cargo team to guide fixing the implementation issues
- - Guidance on the stabilization process
+- Guidance to get the RFC finalized and accepted
+- A handful of 30-minute design meetings with someone on the Cargo team to guide fixing the implementation issues
+- Guidance on the stabilization process
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [cargo]    | Medium |                                         |
+| Team    | Support level | Notes |
+| ------- | ------------- | ----- |
+| [cargo] | Medium        |       |
 
 ## Frequently asked questions
 

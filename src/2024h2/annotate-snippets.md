@@ -1,11 +1,12 @@
 # Use annotate-snippets for rustc diagnostic output
 
 | Metadata         |                                    |
-|------------------|------------------------------------|
+| ---------------- | ---------------------------------- |
 | Point of contact | @Muscraft                          |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#123] |
 | Zulip channel    | N/A                                |
+
 ## Summary
 
 Switch to annotate-snippets for rendering rustc's output, with no loss of functionality or visual regressions.
@@ -31,39 +32,40 @@ The outputs of rustc and cargo are fully using annotate-snippets, with no regres
 
 ## Design axioms
 
-*This section is optional, but including [design axioms][da] can help you signal how you intend to balance constraints and tradeoffs (e.g., "prefer ease of use over performance" or vice versa). Teams should review the axioms and make sure they agree. [Read more about design axioms][da].*
+_This section is optional, but including [design axioms][da] can help you signal how you intend to balance constraints and tradeoffs (e.g., "prefer ease of use over performance" or vice versa). Teams should review the axioms and make sure they agree. [Read more about design axioms][da]._
+
 - **Match rustc's output**: The output of annotate-snipepts should match rustc, modulo reasonable non-significant divergences
 - **Works for Cargo (and other tools)**: annotate-snippets is meant to be used by any project that would like "Rust-style" output, so it should be designed to work with any project, not just rustc.
-[da]: https://rust-lang.github.io/rust-project-goals/about/design_axioms.html
+  [da]: https://rust-lang.github.io/rust-project-goals/about/design_axioms.html
 
 ## Ownership and team asks
 
 **Owner:** @estebank, @Muscraft
 
-*Identify a specific person or small group of people if possible, else the group that will provide the owner*
+_Identify a specific person or small group of people if possible, else the group that will provide the owner_
 
 This section defines the specific work items that are planned and who is expected to do them. It should also include what will be needed from Rust teams.
 
-* Subgoal:
-    * Describe the work to be done and use `↳` to mark "subitems".
-* Owner(s) or team(s):
-    * List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
-    * If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
-* Status:
-    * List ![Help wanted][] if there is an owner but they need support, for example funding.
-    * Other needs (e.g., complete, in FCP, etc) are also fine.
+- Subgoal:
+  - Describe the work to be done and use `↳` to mark "subitems".
+- Owner(s) or team(s):
+  - List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
+  - If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
+- Status:
+  - List ![Help wanted][] if there is an owner but they need support, for example funding.
+  - Other needs (e.g., complete, in FCP, etc) are also fine.
 
-*Adjust the table below; some common examples are shown below.*
+_Adjust the table below; some common examples are shown below._
 
 | Task                                       | Owner(s) or team(s)  | Notes |
-|--------------------------------------------|----------------------|-------|
+| ------------------------------------------ | -------------------- | ----- |
 | Standard reviews                           | ![Team][] [compiler] |       |
 | Top-level Rust blog post inviting feedback |                      |       |
 
 ### Reach output parity for rustc/annotation-snippets
 
 | Task                                          | Owner(s) or team(s) | Notes |
-|-----------------------------------------------|---------------------|-------|
+| --------------------------------------------- | ------------------- | ----- |
 | Port a subset of rustc's UI tests             | @Muscraft           |       |
 | Make list of current unnaddressed divergences | @Muscraft           |       |
 | address divergences                           | @Muscraft           |       |
@@ -71,7 +73,7 @@ This section defines the specific work items that are planned and who is expecte
 ### Initial use of annotate-snippets
 
 | Task                                       | Owner(s) or team(s) | Notes |
-|--------------------------------------------|---------------------|-------|
+| ------------------------------------------ | ------------------- | ----- |
 | update annotate-snippets to latest version |                     |       |
 | teach cargo to pass annotate-snippets flag | @estebank           |       |
 | add ui test mode comparing new output      |                     |       |
@@ -80,7 +82,7 @@ This section defines the specific work items that are planned and who is expecte
 ### Production use of annotate-snippets
 
 | Task                                     | Owner(s) or team(s)  | Notes                          |
-|------------------------------------------|----------------------|--------------------------------|
+| ---------------------------------------- | -------------------- | ------------------------------ |
 | switch default rustc output              |                      |                                |
 | release notes                            |                      |                                |
 | switch ui tests to only check new output |                      |                                |
@@ -90,6 +92,6 @@ This section defines the specific work items that are planned and who is expecte
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._
 
 [cargo-lints]: https://github.com/rust-lang/cargo/issues/12235

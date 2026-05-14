@@ -1,14 +1,15 @@
 # Rust 2024 Edition
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @traviscross                       |
-| Status         | Accepted                           |
+| Status           | Accepted                           |
 | Flagship         | Yes                                |
-| Tracking issue | [rust-lang/rust-project-goals#117] |
-| Zulip channel  | [#edition][channel]                |
+| Tracking issue   | [rust-lang/rust-project-goals#117] |
+| Zulip channel    | [#edition][channel]                |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/268952-edition
+
 ## Summary
 
 Feature complete status for Rust 2024, with final release to occur in early 2025.
@@ -42,11 +43,11 @@ The Edition will be better integrated into our release train. Nightly users will
 
 The "Edition Axioms" were [laid out in RFC #3085](https://rust-lang.github.io/rfcs/3085-edition-2021.html#guide-level-explanation):
 
-* **Editions do not split the ecosystem.** The most important rule for editions is that crates in one edition can interoperate seamlessly with crates compiled in other editions.
-* **Edition migration is easy and largely automated.** Whenever we release a new edition, we also release tooling to automate the migration. The tooling is not necessarily perfect: it may not cover all corner cases, and manual changes may still be required. 
-* **Users control when they adopt the new edition.** We recognize that many users, particularly production users, will need to schedule time to manage an Edition upgrade as part of their overall development cycle.
-* **Rust should feel like “one language”.** We generally prefer uniform behavior across all editions of Rust, so long as it can be achieved without compromising other design goals. 
-* **Editions are meant to be adopted.** We don’t force the edition on our users, but we do feel free to encourage adoption of the edition through other means.
+- **Editions do not split the ecosystem.** The most important rule for editions is that crates in one edition can interoperate seamlessly with crates compiled in other editions.
+- **Edition migration is easy and largely automated.** Whenever we release a new edition, we also release tooling to automate the migration. The tooling is not necessarily perfect: it may not cover all corner cases, and manual changes may still be required.
+- **Users control when they adopt the new edition.** We recognize that many users, particularly production users, will need to schedule time to manage an Edition upgrade as part of their overall development cycle.
+- **Rust should feel like “one language”.** We generally prefer uniform behavior across all editions of Rust, so long as it can be achieved without compromising other design goals.
+- **Editions are meant to be adopted.** We don’t force the edition on our users, but we do feel free to encourage adoption of the edition through other means.
 
 ## Ownership and team asks
 
@@ -60,21 +61,21 @@ The "Edition Axioms" were [laid out in RFC #3085](https://rust-lang.github.io/rf
 
 ## Outputs and milestones
 
-* *Owner:* @traviscross
+- _Owner:_ @traviscross
 
 ### Outputs
 
-* Edition release complete with
-    * announcement blog post
-    * edition migration guide
+- Edition release complete with
+  - announcement blog post
+  - edition migration guide
 
 ### Milestones
 
 | Date       | Version       | Edition stage           |
 | ---------- | ------------- | ----------------------- |
-| 2024-10-11 | Branch  v1.83 | Go / no go on all items |
+| 2024-10-11 | Branch v1.83  | Go / no go on all items |
 | 2024-10-17 | Release v1.82 | Rust 2024 nightly beta  |
-| 2025-01-03 | Branch  v1.85 | Cut Rust 2024 to beta   |
+| 2025-01-03 | Branch v1.85  | Cut Rust 2024 to beta   |
 | 2025-02-20 | Release v1.85 | Release Rust 2024       |
 
 ## Frequently asked questions

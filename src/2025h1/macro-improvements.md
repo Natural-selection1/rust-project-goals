@@ -1,11 +1,11 @@
 # Declarative (`macro_rules!`) macro improvements
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @joshtriplett                      |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#252] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @joshtriplett                      |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#252] |
 
 ## Summary
 
@@ -30,7 +30,7 @@ understand, and reduce the dependency supply chain of most crates.
 
 ### The status quo
 
-There are currently several capabilities that you can *only* get with a proc
+There are currently several capabilities that you can _only_ get with a proc
 macro: defining an attribute macro that you can invoke with `#[mymacro]`, or
 defining a derive macro that you can invoke with `#[derive(MyTrait)]`. In
 addition, even without the requirement to do so (e.g. using workarounds such as
@@ -111,7 +111,7 @@ could reserve such syntax in all editions.
 - Incremental improvements are often preferable to a ground-up rewrite. The
   ecosystem can adopt incremental improvements incrementally, and give feedback
   that inspires further incremental improvements.
-- There should never be a capability that *requires* using a proc macro.
+- There should never be a capability that _requires_ using a proc macro.
 - The most obvious and simplest way to write a macro should handle all cases a
   user might expect to be able to write. Where possible, macros should
   automatically support new syntax variations of existing constructs, without
@@ -126,73 +126,73 @@ could reserve such syntax in all editions.
 ## Ownership and team asks
 
 **Owner / Responsible Reporting Party:** @joshtriplett
-| Task                                   | Owner(s) or team(s)          | Notes                                                                                                           |
+| Task | Owner(s) or team(s) | Notes |
 |----------------------------------------|------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Propose discussion session at RustWeek | @joshtriplett                |                                                                                                                 |
-| Policy decision                        | ![Team][] [lang] [wg-macros] | Discussed with @eholk and @vincenzopalazzo; lang would decide whether to delegate specific matters to wg-macros |
+| Propose discussion session at RustWeek | @joshtriplett | |
+| Policy decision | ![Team][] [lang] [wg-macros] | Discussed with @eholk and @vincenzopalazzo; lang would decide whether to delegate specific matters to wg-macros |
 
 ### `macro_rules!` attributes
 
-| Task                                      | Owner(s) or team(s)      | Notes         |
-|-------------------------------------------|--------------------------|---------------|
-| Author/revise/iterate RFCs                | @joshtriplett            |               |
-| RFC decision                              | ![Team][] [lang]         |               |
-| Implementation of RFC                     | @eholk, @vincenzopalazzo |               |
-| Iterate on design as needed               | @joshtriplett            |               |
-| Inside Rust blog post on attribute macros | @joshtriplett            |               |
-| Process feedback from crate authors       | @joshtriplett            |               |
+| Task                                      | Owner(s) or team(s)      | Notes |
+| ----------------------------------------- | ------------------------ | ----- |
+| Author/revise/iterate RFCs                | @joshtriplett            |       |
+| RFC decision                              | ![Team][] [lang]         |       |
+| Implementation of RFC                     | @eholk, @vincenzopalazzo |       |
+| Iterate on design as needed               | @joshtriplett            |       |
+| Inside Rust blog post on attribute macros | @joshtriplett            |       |
+| Process feedback from crate authors       | @joshtriplett            |       |
 
 ### `macro_rules!` derives
 
-| Task                                   | Owner(s) or team(s)      | Notes                  |
-|----------------------------------------|--------------------------|------------------------|
-| Author/revise/iterate RFCs             | @joshtriplett            |                        |
-| RFC decision                           | ![Team][] [lang]         |                        |
-| Implementation of RFC                  | @eholk, @vincenzopalazzo |                        |
-| Iterate on design as needed            | @joshtriplett            |                        |
-| Inside Rust blog post on derive macros | @joshtriplett            |                        |
-| Process feedback from crate authors    | @joshtriplett            |                        |
+| Task                                   | Owner(s) or team(s)      | Notes |
+| -------------------------------------- | ------------------------ | ----- |
+| Author/revise/iterate RFCs             | @joshtriplett            |       |
+| RFC decision                           | ![Team][] [lang]         |       |
+| Implementation of RFC                  | @eholk, @vincenzopalazzo |       |
+| Iterate on design as needed            | @joshtriplett            |       |
+| Inside Rust blog post on derive macros | @joshtriplett            |       |
+| Process feedback from crate authors    | @joshtriplett            |       |
 
 ### Design and iteration for macro fragment fields
 
-| Task                                             | Owner(s) or team(s)      | Notes                  |
-|--------------------------------------------------|--------------------------|------------------------|
-| Author initial RFC                               | @joshtriplett            |                        |
-| Design meeting                                   | ![Team][] [lang]         |                        |
-| RFC decision                                     | ![Team][] [lang]         |                        |
-| Implementation of RFC                            | @eholk, @vincenzopalazzo |                        |
-| Iterate on design as needed                      | @joshtriplett            |                        |
-| Inside Rust blog post on additional capabilities | @joshtriplett            |                        |
-| Process feedback from crate authors              | @joshtriplett            |                        |
-| Support lang experiments for fragment fields     | @joshtriplett            |                        |
-| Author small RFCs for further fragment fields    | @joshtriplett            |                        |
+| Task                                             | Owner(s) or team(s)      | Notes |
+| ------------------------------------------------ | ------------------------ | ----- |
+| Author initial RFC                               | @joshtriplett            |       |
+| Design meeting                                   | ![Team][] [lang]         |       |
+| RFC decision                                     | ![Team][] [lang]         |       |
+| Implementation of RFC                            | @eholk, @vincenzopalazzo |       |
+| Iterate on design as needed                      | @joshtriplett            |       |
+| Inside Rust blog post on additional capabilities | @joshtriplett            |       |
+| Process feedback from crate authors              | @joshtriplett            |       |
+| Support lang experiments for fragment fields     | @joshtriplett            |       |
+| Author small RFCs for further fragment fields    | @joshtriplett            |       |
 
 ### Design for macro metavariable constructs
 
-| Task                            | Owner(s) or team(s)          | Notes |
-|---------------------------------|------------------------------|-------|
-| Design research and discussions | @joshtriplett                |       |
+| Task                            | Owner(s) or team(s)           | Notes |
+| ------------------------------- | ----------------------------- | ----- |
+| Design research and discussions | @joshtriplett                 |       |
 | Discussion and moral support    | ![Team][] [lang], [wg-macros] |       |
-| Author initial RFC              | @joshtriplett                |       |
+| Author initial RFC              | @joshtriplett                 |       |
 
 ### Definitions
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
 
 ## Frequently asked questions
 

@@ -8,7 +8,7 @@ Update the RFC and merge as normal
 
 ## Update the teams
 
-Run `cargo rpg teams` to prepare adjustment to the teams repository. You will need to have a checkout of the teams repository somewhere; you pass the command the path to that repo and it will make changes. You can then commit the changes and prepare a PR. 
+Run `cargo rpg teams` to prepare adjustment to the teams repository. You will need to have a checkout of the teams repository somewhere; you pass the command the path to that repo and it will make changes. You can then commit the changes and prepare a PR.
 
 This will create a `project-goal-owners` team containing all the project goal owners. It will also add people to the rust-lang repository. This may trigger them to get invites if they are not already members of the org. You should encourage them to accept those invites. If they don't take these steps you won't be able to assign them to issues and they won't be able to author updates, etc.
 

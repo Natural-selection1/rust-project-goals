@@ -1,11 +1,12 @@
 # Instrument the Rust standard library with safety contracts
 
 | Metadata         |                                    |
-|:-----------------|------------------------------------|
+| :--------------- | ---------------------------------- |
 | Point of contact | @celinval                          |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#126] |
 | Zulip channel    | N/A                                |
+
 ## Summary
 
 Finish the implementation of the contract attributes proposed in the compiler [MCP-759],
@@ -56,8 +57,8 @@ would rule out the possibility that their applications could have a safety bug.
 
 ## Design axioms
 
-- **No runtime penalty**: Instrumentation must not affect the standard library runtime behavior, including performance, 
-unless users opt-in for contract runtime checks.
+- **No runtime penalty**: Instrumentation must not affect the standard library runtime behavior, including performance,
+  unless users opt-in for contract runtime checks.
 - **Formal Verification**: Enable the verification of the standard library implementation.
 - **Contract as code**: Keeping the contract language and specification as close as possible to Rust syntax and
   semantics will lower the barrier for users to understand and be able to write their own contracts.
@@ -67,13 +68,13 @@ unless users opt-in for contract runtime checks.
 **Owner:** @celinval and @tautschnig
 
 | Task                         | Owner(s) or team(s) | Notes |
-|------------------------------|---------------------|-------|
+| ---------------------------- | ------------------- | ----- |
 | Discussion and moral support | ![Team][] [libs]    |       |
 
 ### Experimental Contract attributes
 
 | Task             | Owner(s) or team(s)  | Notes                                   |
-|------------------|----------------------|-----------------------------------------|
+| ---------------- | -------------------- | --------------------------------------- |
 | Author MCP       |                      | ![Complete][] Done already by @pnkfelix |
 | Implementation   | @celinval            | In progress.                            |
 | Standard reviews | ![Team][] [compiler] |                                         |
@@ -82,18 +83,19 @@ unless users opt-in for contract runtime checks.
 ### Standard Library Contracts
 
 | Task                       | Owner(s) or team(s)    | Notes |
-|----------------------------|------------------------|-------|
+| -------------------------- | ---------------------- | ----- |
 | Standard Library Contracts | @celinval, @tautschnig |       |
 | Writing new contracts      | ![Help wanted][]       |       |
 | Standard reviews           | ![Team][] [libs]       |       |
+
 ### Definitions
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author MCP* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author MCP_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
 
 ## Frequently asked questions
 

@@ -1,11 +1,11 @@
 # Finish the libtest json output experiment
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @epage                             |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#255] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @epage                             |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#255] |
 
 ## Summary
 
@@ -23,6 +23,7 @@ When this was fixed to require nightly,
 this helped show [how much people have come to rely on programmatic output](https://www.reddit.com/r/rust/comments/13xqhbm/announcing_rust_1700/jmji422/).
 
 Cargo could also benefit from programmatic test output to improve user interactions, including
+
 - [Wanting to run test binaries in parallel](https://github.com/rust-lang/cargo/issues/5609), like `cargo nextest`
 - [Lack of summary across all binaries](https://github.com/rust-lang/cargo/issues/4324)
 - [Noisy test output](https://github.com/rust-lang/cargo/issues/2832) (see also [#5089](https://github.com/rust-lang/cargo/issues/5089))
@@ -33,6 +34,7 @@ Cargo could also benefit from programmatic test output to improve user interacti
 - [Lack of failure when test binaries exit unexpectedly](https://github.com/rust-lang/rust/issues/87323)
 
 Most of that involves shifting responsibilities from the test harness to the test runner which has the side effects of:
+
 - Allowing more powerful experiments with custom test runners (e.g. [`cargo nextest`](https://crates.io/crates/cargo-nextest)) as they'll have more information to operate on
 - Lowering the barrier for custom test harnesses (like [`libtest-mimic`](https://crates.io/crates/libtest-mimic)) as UI responsibilities are shifted to the test runner (`cargo test`)
 
@@ -60,32 +62,32 @@ Most of that involves shifting responsibilities from the test harness to the tes
 
 ## Ownership and team asks
 
-*This section defines the specific work items that are planned and who is expected to do them. It should also include what will be needed from Rust teams. The table below shows some common sets of asks and work, but feel free to adjust it as needed. Every row in the table should either correspond to something done by a contributor or something asked of a team. For items done by a contributor, list the contributor, or ![Heap wanted][] if you don't yet know who will do it. For things asked of teams, list ![Team][] and the name of the team. The things typically asked of teams are defined in the [Definitions](#definitions) section below.*
+_This section defines the specific work items that are planned and who is expected to do them. It should also include what will be needed from Rust teams. The table below shows some common sets of asks and work, but feel free to adjust it as needed. Every row in the table should either correspond to something done by a contributor or something asked of a team. For items done by a contributor, list the contributor, or ![Heap wanted][] if you don't yet know who will do it. For things asked of teams, list ![Team][] and the name of the team. The things typically asked of teams are defined in the [Definitions](#definitions) section below._
 
-| Task                              | Owner(s) or team(s)       | Notes |
-|-----------------------------------|---------------------------|-------|
+| Task                              | Owner(s) or team(s)                            | Notes |
+| --------------------------------- | ---------------------------------------------- | ----- |
 | Discussion and moral support      | ![Team][] [testing-devex], [cargo], [libs-api] |       |
-| Prototype harness                 | @epage                    |       |
-| Prototype Cargo reporting support | @epage                    |       |
-| Write stabilization report        | @epage                    |       |
+| Prototype harness                 | @epage                                         |       |
+| Prototype Cargo reporting support | @epage                                         |       |
+| Write stabilization report        | @epage                                         |       |
 
 ### Definitions
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
 
 ## Frequently asked questions

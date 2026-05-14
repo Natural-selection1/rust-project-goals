@@ -1,12 +1,12 @@
 # Stabilize Unsafe Fields
 
-| Metadata           |                                                                                           |
-| :--                | :--                                                                                       |
-| Point of contact   | @jswrenn                                                                                  |
-| [lang] champion    | @nikomatsakis                                                                             |
-| Status             | Accepted                                                                                  |
-| Tracking issue     | [rust-lang/rust-project-goals#273]                                                        |
-| Zulip channel      | https://rust-lang.zulipchat.com/#narrow/channel/213817-t-lang/topic/unsafe.20fields.20RFC |
+| Metadata         |                                                                                           |
+| :--------------- | :---------------------------------------------------------------------------------------- |
+| Point of contact | @jswrenn                                                                                  |
+| [lang] champion  | @nikomatsakis                                                                             |
+| Status           | Accepted                                                                                  |
+| Tracking issue   | [rust-lang/rust-project-goals#273]                                                        |
+| Zulip channel    | https://rust-lang.zulipchat.com/#narrow/channel/213817-t-lang/topic/unsafe.20fields.20RFC |
 
 ## Summary
 
@@ -18,7 +18,7 @@ The absence of a mechanism for denoting the presence of library safety invariant
 
 ### The status quo
 
-Presently, Rust lacks mechanisms for denoting when fields carry library safety invariants, and for enforcing extra care around their use. Consequently, to evaluate the soundness of `unsafe` code (i.e., code which relies on safety invariants being upheld), it is not enough to check the contents of `unsafe` blocks — one must check all places (including safe contexts) in which safety invariants might be violated. (See [*The Scope of Unsafe*](https://www.ralfj.de/blog/2016/01/09/the-scope-of-unsafe.html))
+Presently, Rust lacks mechanisms for denoting when fields carry library safety invariants, and for enforcing extra care around their use. Consequently, to evaluate the soundness of `unsafe` code (i.e., code which relies on safety invariants being upheld), it is not enough to check the contents of `unsafe` blocks — one must check all places (including safe contexts) in which safety invariants might be violated. (See [_The Scope of Unsafe_](https://www.ralfj.de/blog/2016/01/09/the-scope-of-unsafe.html))
 
 For example, consider this idealized `Vec`:
 
@@ -56,33 +56,33 @@ struct Vec<T> {
 }
 ```
 
-Rust will require that usages of `unsafe` fields which could violate their safety invariants must *only* occur within `unsafe` contexts.
+Rust will require that usages of `unsafe` fields which could violate their safety invariants must _only_ occur within `unsafe` contexts.
 
 ### Work items over the next year
 
-Over the next year, we will complete tooling support, documentation, and stabilization of Unsafe Fields according to the steps documented in [*Tracking issue for RFC 3458: Unsafe fields*](rust-lang/rust/132922):
+Over the next year, we will complete tooling support, documentation, and stabilization of Unsafe Fields according to the steps documented in [_Tracking issue for RFC 3458: Unsafe fields_](rust-lang/rust/132922):
 
-| Task                                                       | Owner(s) | Notes |
-| ---------------------------------------------------------- | -------- | ----- |
-| Implement clippy support.                                  | @jswrenn |       |
-| Implement rustdoc support.                                 | @jswrenn |       |
-| Implement rustfmt support.                                 | @jswrenn |       |
-| Add Book documentation.                                    | @jswrenn |       |
-| Add Standard Library documentation.                        | @jswrenn |       |
-| Add Reference documentation.                               | @jswrenn |       |
-| Add Style Guide documentation.                             | @jswrenn |       |
-| Write Stabilization Report.                                | @jswrenn |       |
-| Stabilize                                                  | @jswrenn |       |
+| Task                                | Owner(s) | Notes |
+| ----------------------------------- | -------- | ----- |
+| Implement clippy support.           | @jswrenn |       |
+| Implement rustdoc support.          | @jswrenn |       |
+| Implement rustfmt support.          | @jswrenn |       |
+| Add Book documentation.             | @jswrenn |       |
+| Add Standard Library documentation. | @jswrenn |       |
+| Add Reference documentation.        | @jswrenn |       |
+| Add Style Guide documentation.      | @jswrenn |       |
+| Write Stabilization Report.         | @jswrenn |       |
+| Stabilize                           | @jswrenn |       |
 
 ## Team asks
 
-| Team       | Support level | Notes                                           |
-| ---------- | ------------- | ----------------------------------------------- |
-| [book]     | Small         | Will need approval for book changes.            |
-| [clippy]   | Small         | Will need approval for clippy support.          |
-| [lang]     | Small         | Will need approval for stabilization.           |
-| [libs]     | Small         | Will need approval for documentation changes.   |
-| [spec]     | Small         | Will need approval for reference changes.       |
-| [style]    | Small         | Will need approval for style guide changes.     |
-| [rustdoc]  | Small         | Will need approval for rustdoc support.         |
-| [rustfmt]  | Small         | Will need approval for rustfmt support.         |
+| Team      | Support level | Notes                                         |
+| --------- | ------------- | --------------------------------------------- |
+| [book]    | Small         | Will need approval for book changes.          |
+| [clippy]  | Small         | Will need approval for clippy support.        |
+| [lang]    | Small         | Will need approval for stabilization.         |
+| [libs]    | Small         | Will need approval for documentation changes. |
+| [spec]    | Small         | Will need approval for reference changes.     |
+| [style]   | Small         | Will need approval for style guide changes.   |
+| [rustdoc] | Small         | Will need approval for rustdoc support.       |
+| [rustfmt] | Small         | Will need approval for rustfmt support.       |

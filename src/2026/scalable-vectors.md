@@ -1,7 +1,7 @@
 # Sized Hierarchy and Scalable Vectors
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @davidtwco                         |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#270] |
@@ -111,22 +111,22 @@ the next logical step, enabling efficient matrix processing in Rust.
 
 ### Work items over the next year
 
-| Task                                          | Owner(s) or team(s) | Notes                                     |
-| --------------------------------------------- | ------------------- | ----------------------------------------- |
-| Stabilize Sized trait hierarchy               | @davidtwco          | Unblocks extern types                     |
-| Achieve RFC acceptance for [rfcs#3838]        | @davidtwco          | Scalable Vectors RFC                      |
-| Update and reopen stdarch SVE PR              | @davidtwco          | SVE types and intrinsics                  |
-| Address SVE stabilization blockers            | @davidtwco          | Identify and resolve blockers             |
-| SME design exploration                        | @davidtwco          | Understand implications for Rust          |
+| Task                                   | Owner(s) or team(s) | Notes                            |
+| -------------------------------------- | ------------------- | -------------------------------- |
+| Stabilize Sized trait hierarchy        | @davidtwco          | Unblocks extern types            |
+| Achieve RFC acceptance for [rfcs#3838] | @davidtwco          | Scalable Vectors RFC             |
+| Update and reopen stdarch SVE PR       | @davidtwco          | SVE types and intrinsics         |
+| Address SVE stabilization blockers     | @davidtwco          | Identify and resolve blockers    |
+| SME design exploration                 | @davidtwco          | Understand implications for Rust |
 
 ## Team asks
 
-| Team       | Support level | Notes                                                   |
-| ---------- | ------------- | ------------------------------------------------------- |
-| [compiler] | Medium         | Standard reviews for stabilization and SVE work         |
-| [lang]     | Medium        | RFC decision for [rfcs#3838], stabilization sign-off    |
-| [libs-api] | Medium        | Review RFC; review and approve stdarch SVE APIs         |
-| [types]    | Medium        | Type System implementation and stabilization sign-off   |
+| Team       | Support level | Notes                                                 |
+| ---------- | ------------- | ----------------------------------------------------- |
+| [compiler] | Medium        | Standard reviews for stabilization and SVE work       |
+| [lang]     | Medium        | RFC decision for [rfcs#3838], stabilization sign-off  |
+| [libs-api] | Medium        | Review RFC; review and approve stdarch SVE APIs       |
+| [types]    | Medium        | Type System implementation and stabilization sign-off |
 
 ## Frequently asked questions
 

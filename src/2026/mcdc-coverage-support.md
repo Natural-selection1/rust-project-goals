@@ -1,7 +1,7 @@
 # Implement and Maintain MC/DC Coverage Support
 
 | Metadata            |                                                                                                              |
-| :--                 | :--                                                                                                          |
+| :------------------ | :----------------------------------------------------------------------------------------------------------- |
 | Point of contact    | @RenjiSann                                                                                                   |
 | Status              | Accepted                                                                                                     |
 | What and why        | MC/DC and decision coverage in rustc, required by DO-178C, ISO 26262, and IEC 61508 for safety certification |
@@ -9,7 +9,6 @@
 | Tracking issue      | [rust-lang/rust-project-goals#638]                                                                           |
 | Zulip channel       | [mc/dc-support][mcdc-zulip]                                                                                  |
 | [compiler] champion | @davidtwco                                                                                                   |
-
 
 ## Summary
 
@@ -39,14 +38,14 @@ We acknowledge that the previous implementation was removed for valid reasons. T
 
 [Early discussions][mcdc-zulip] with both Niko Matsakis and the compiler team suggest that this effort is large enough that it should go through a [Major Change Proposal](https://github.com/rust-lang/rfcs/blob/master/text/2904-compiler-major-change-process.md) (MCP) to ensure the compiler team can validate the architectural choices prior to implementation.
 
-| Task                                              | Owner(s)              | Notes                                                        |
-| ------------------------------------------------- | --------------------- | ------------------------------------------------------------ |
-| Understand removal rationale in detail            | Consortium + compiler | Meet with coverage maintainers, e.g. @oli-obk                |
-| Investigate potential design architectures        | Adacore + Compiler team | See [Architectural options under consideration](#architectural-options-under-consideration)
-| Design revised implementation approach            | AdaCore engineer(s)   | Address code quality concerns; choose architecture based on investigation and submit a compiler MCP|
-| Implement core MC/DC for boolean expressions      | AdaCore engineer(s)   | Target: working `-Zcoverage-options=mcdc` on nightly         |
-| Establish ongoing maintenance commitment          | AdaCore engineer(s)   | Formal agreement for long-term support                       |
-| Coordinate with LLVM 20 for constant condition fixes | Compiler team      | Upstream bugs were blocking some functionality               |
+| Task                                                 | Owner(s)                | Notes                                                                                               |
+| ---------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------- |
+| Understand removal rationale in detail               | Consortium + compiler   | Meet with coverage maintainers, e.g. @oli-obk                                                       |
+| Investigate potential design architectures           | Adacore + Compiler team | See [Architectural options under consideration](#architectural-options-under-consideration)         |
+| Design revised implementation approach               | AdaCore engineer(s)     | Address code quality concerns; choose architecture based on investigation and submit a compiler MCP |
+| Implement core MC/DC for boolean expressions         | AdaCore engineer(s)     | Target: working `-Zcoverage-options=mcdc` on nightly                                                |
+| Establish ongoing maintenance commitment             | AdaCore engineer(s)     | Formal agreement for long-term support                                                              |
+| Coordinate with LLVM 20 for constant condition fixes | Compiler team           | Upstream bugs were blocking some functionality                                                      |
 
 ### The "shiny future" we are working towards
 
@@ -68,10 +67,10 @@ The [Design Document][mcdc-design-doc] provides an updated status of actual impl
 
 ## Team asks
 
-| Team       | Support level | Notes                                                        |
-| ---------- | ------------- | ------------------------------------------------------------ |
+| Team       | Support level | Notes                                                                                       |
+| ---------- | ------------- | ------------------------------------------------------------------------------------------- |
 | [compiler] | Medium        | Review of implementation PRs; guidance on architecture to avoid previous maintenance issues |
-| [infra]    | Small         | CI support for MC/DC testing                                 |
+| [infra]    | Small         | CI support for MC/DC testing                                                                |
 
 **Resources committed:** AdaCore is prepared to commit engineering resources to implementation and ongoing maintenance. We understand this was the missing piece previously.
 

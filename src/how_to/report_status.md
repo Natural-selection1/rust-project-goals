@@ -62,9 +62,9 @@ If we don't find any of the above, we will consider your issue either 0% done if
 
 We encourage you to post regular detailed updates about your progress as comments on the GitHub tracking issue. There is no strict format for these updates but we recommend including the following information:
 
-* What happened since the last update? Were any key decisions made or milestones achieved?
-* What is the next step to get done?
-* Are you blocked on anyone or anything?
+- What happened since the last update? Were any key decisions made or milestones achieved?
+- What is the next step to get done?
+- Are you blocked on anyone or anything?
 
 Status update comments will be included verbatim in a "details" section of the monthly blog post.
 

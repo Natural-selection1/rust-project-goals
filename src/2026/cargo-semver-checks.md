@@ -1,7 +1,7 @@
 # Continue resolving `cargo-semver-checks` blockers for merging into cargo
 
 | Metadata           |                                    |
-|:-------------------|------------------------------------|
+| :----------------- | ---------------------------------- |
 | Point of contact   | @obi1kenobi                        |
 | Status             | Accepted                           |
 | Tracking issue     | [rust-lang/rust-project-goals#104] |
@@ -45,7 +45,6 @@ However, many more lints remain to be written, and they will require additional 
 
 For a detailed look at the status quo, we recommend checking out [the most recent `cargo-semver-checks` annual summary](https://predr.ag/blog/cargo-semver-checks-2025-year-in-review/)
 
-
 ### What we propose to do about it
 
 The following are the largest remaining blockers for merging `cargo-semver-checks` in Cargo:
@@ -59,6 +58,7 @@ This lets us catch changes like: `pub fn example(x: i64) {}` becoming `pub fn ex
 This is our most commonly requested feature today, and will resolve the largest remaining class of false-negative (lint should fire, but doesn't) outcomes!
 
 We plan to accomplish this in two steps:
+
 - Expose additional information in rustdoc JSON to make it possible to reliably observe that something about a type has changed. This will enable some lints by itself, but is not sufficient in all cases: for example, changing `impl Display` to `String` or vice versa isn't always breaking.
 - Build out infrastructure in `cargo-semver-checks` to make it possible to generate "witness" programs: ones on which `cargo check` can be executed in order to determine whether a changed type caused breakage or not. This will allow us to rely on `rustc` to be the arbiter of breakage, instead of requiring us to reimplement the Rust type checker, trait solver, borrow checker, etc. Some of the infrastructure here was already built [as part of GSoC 2025](https://blog.rust-lang.org/2025/11/18/gsoc-2025-results/#enable-witness-generation-in-cargo-semver-checks), and we expect to continue building on top of that foundation.
 
@@ -81,18 +81,16 @@ The main blocker towards progress is funding and development capacity. `cargo-se
 I (@obi1kenobi) will be working on this effort. The only other resource request would be occasional discussions and moral support from the [cargo] and [rustdoc] teams, of which I already have the privilege as maintainer of a popular cargo plugin that makes extensive use of rustdoc JSON.
 
 | Task                                      | Owner(s)    | Notes |
-|-------------------------------------------|-------------|-------|
+| ----------------------------------------- | ----------- | ----- |
 | Audit lint contributions                  | @obi1kenobi |       |
 | Mentor GSoC participants                  | @obi1kenobi |       |
 | Implement type-checking in lints          |             |       |
 | Implement linting across crate boundaries |             |       |
 
-
 ## Team asks
 
-
 | Team      | Support level | Notes                        |
-|-----------|---------------|------------------------------|
+| --------- | ------------- | ---------------------------- |
 | [cargo]   | Small         | Discussion and moral support |
 | [rustdoc] | Small         | Discussion and moral support |
 
@@ -101,7 +99,6 @@ I (@obi1kenobi) will be working on this effort. The only other resource request 
 _This section is unchanged from [the 2024h2 goal][2024h2-goal]._
 
 [2024h2-goal]: https://rust-lang.github.io/rust-project-goals/2024h2/cargo-semver-checks.html
-
 
 ### Why not use semverver instead?
 

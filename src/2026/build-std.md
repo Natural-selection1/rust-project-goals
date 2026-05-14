@@ -1,15 +1,15 @@
 # build-std
 
-| Metadata         |                                    |
-|:-----------------|:-----------------------------------|
-| Point of contact | @davidtwco                         |
-| Status           | Accepted                           |
+| Metadata         |                                                                                          |
+| :--------------- | :--------------------------------------------------------------------------------------- |
+| Point of contact | @davidtwco                                                                               |
+| Status           | Accepted                                                                                 |
 | What and why     | Let Cargo rebuild the standard library from source for custom targets and configurations |
-| Roadmap          | Rust for Linux                     |
-| Highlight        | Build-std                          |
-| Zulip channel    | [#project-goals/build-std][zulip]  |
-| Tracking issue   | [rust-lang/rust-project-goals#274] |
-| [cargo] champion | @ehuss                             |
+| Roadmap          | Rust for Linux                                                                           |
+| Highlight        | Build-std                                                                                |
+| Zulip channel    | [#project-goals/build-std][zulip]                                                        |
+| Tracking issue   | [rust-lang/rust-project-goals#274]                                                       |
+| [cargo] champion | @ehuss                                                                                   |
 
 [zulip]: https://rust-lang.zulipchat.com/#narrow/channel/516120-project-goals.2Fbuild-std
 
@@ -71,16 +71,16 @@ There are two primary objectives of this goal in this next goal cycle:
 
 ### Work items over the next year
 
-| Task        | Owner(s) | Notes |
-| ------------------------------------------------- | ------------- | ----- |
-| Continue to run the weekly build-std sync meeting | *davidtwco*   | Invite available in Zulip for anyone interested |
-| Continue to advance build-std RFCs                | *davidtwco*   |       |
-| Implement build-std                               | *adamgemmell* | See <https://hackmd.io/BcimnLUdQ0W3kv9dd9rMUw> for a detailed breakdown of implementation required |
+| Task                                              | Owner(s)      | Notes                                                                                              |
+| ------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------- |
+| Continue to run the weekly build-std sync meeting | _davidtwco_   | Invite available in Zulip for anyone interested                                                    |
+| Continue to advance build-std RFCs                | _davidtwco_   |                                                                                                    |
+| Implement build-std                               | _adamgemmell_ | See <https://hackmd.io/BcimnLUdQ0W3kv9dd9rMUw> for a detailed breakdown of implementation required |
 
 ## Team asks
 
 | Team        | Support level | Notes                                                                                      |
-|-------------|---------------|--------------------------------------------------------------------------------------------|
+| ----------- | ------------- | ------------------------------------------------------------------------------------------ |
 | [cargo]     | Large         | Reviews of [rust-lang/rfcs#3874] and [rust-lang/rfcs#3875] and many implementation patches |
 | [compiler]  | Small         | Reviews of [rust-lang/rfcs#3874] and [rust-lang/rfcs#3875] and any implementation patches  |
 | [libs]      | Small         | Reviews of [rust-lang/rfcs#3874] and [rust-lang/rfcs#3875] and any implementation patches  |

@@ -1,11 +1,11 @@
 # Stabilize cargo-script
 
-| Metadata       |                                    |
-| ---            | ---                                |
-| Point of contact | @epage                           |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#119] |
-| Zulip channel  | N/A                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
+| Point of contact | @epage                             |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#119] |
+| Zulip channel    | N/A                                |
 
 ## Summary
 
@@ -22,6 +22,7 @@ Today, at minimum a Cargo package is at least two files (`Cargo.toml` and either
 The `Cargo.toml` has several required fields.
 
 To share this in a bug report, people resort to
+
 - Creating a repo and sharing it
 - A shell script that cats out to multiple files
 - Manually specifying each file
@@ -38,6 +39,7 @@ The goal is to stabilize support.
 With [RFC #3502] and [RFC #3503] approved, the next steps are being tracked in [rust-lang/cargo#12207].
 
 At a high-level, this is
+
 - Add support to the compiler for the frontmatter syntax
 - Add support in Cargo for scripts as a "source"
 - Polish
@@ -46,7 +48,7 @@ At a high-level, this is
 
 ## Design axioms
 
-- In the trivial case, there should be no boilerplate.  The boilerplate should scale with the application's complexity.
+- In the trivial case, there should be no boilerplate. The boilerplate should scale with the application's complexity.
 - A script with a couple of dependencies should feel pleasant to develop without copy/pasting or scaffolding generators.
 - We don't need to support everything that exists today because we have multi-file packages.
 
@@ -58,14 +60,14 @@ At a high-level, this is
 
 This section defines the specific work items that are planned and who is expected to do them. It should also include what will be needed from Rust teams.
 
-* Subgoal:
-    * Describe the work to be done and use `↳` to mark "subitems".
-* Owner(s) or team(s):
-    * List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
-    * If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
-* Status:
-    * List ![Help wanted][] if there is an owner but they need support, for example funding.
-    * Other needs (e.g., complete, in FCP, etc) are also fine.
+- Subgoal:
+  - Describe the work to be done and use `↳` to mark "subitems".
+- Owner(s) or team(s):
+  - List the owner for this item (who will do the work) or ![Help wanted][] if an owner is needed.
+  - If the item is a "team ask" (i.e., approve an RFC), put ![Team][] and the team name(s).
+- Status:
+  - List ![Help wanted][] if there is an owner but they need support, for example funding.
+  - Other needs (e.g., complete, in FCP, etc) are also fine.
 
 | Task                   | Owner(s) or team(s)      | Notes |
 | ---------------------- | ------------------------ | ----- |

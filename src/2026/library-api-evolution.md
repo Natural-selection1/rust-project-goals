@@ -1,7 +1,7 @@
 # Evolving the standard library API across editions
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @Amanieu                           |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#633] |
@@ -10,7 +10,6 @@
 | [edition] champion  | @ehuss                             |
 | [compiler] champion | @yaahc                             |
 | [rustdoc] champion  | @GuillaumeGomez                    |
-
 
 ## Summary
 

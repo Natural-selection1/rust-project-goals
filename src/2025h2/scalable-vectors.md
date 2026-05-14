@@ -1,7 +1,7 @@
 # SVE and SME on AArch64
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @davidtwco                         |
 | Status              | Proposed                           |
 | Zulip channel       | N/A                                |
@@ -144,36 +144,36 @@ Rust teams (subject to approval by the team in an RFC/FCP).
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically
+- _Discussion and moral support_ is the lowest level offering, basically
   committing the team to nothing but good vibes and general support for this
   endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document,
+- _Author RFC_ and _Implementation_ means actually writing the code, document,
   whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and
+- _Design meeting_ means holding a synchronous meeting to review a proposal and
   provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy
   matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in
   the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding
+- _Stabilizations_ means reviewing a stabilization and report and deciding
   whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs
   are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to
-  nominated issues, with the expectation that there will be *some* response from
+- _Prioritized nominations_ refers to prioritized lang-team response to
+  nominated issues, with the expectation that there will be _some_ response from
   the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals)
+- _Dedicated review_ means identifying an individual (or group of individuals)
   who will review the changes, as they're expected to require significant
   context.
-* Other kinds of decisions:
-    * [Lang team experiments][experiment] are used to add nightly features that
-      do not yet have an RFC. They are limited to trusted contributors and are
-      used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)][mcp] is used to propose a 'larger
-      than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)][acp] describes a change to the
-      standard library.
+- Other kinds of decisions:
+  - [Lang team experiments][experiment] are used to add nightly features that
+    do not yet have an RFC. They are limited to trusted contributors and are
+    used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)][mcp] is used to propose a 'larger
+    than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)][acp] describes a change to the
+    standard library.
 
 [experiment]: https://lang-team.rust-lang.org/how_to/experiment.html
 [mcp]: https://forge.rust-lang.org/compiler/mcp.html

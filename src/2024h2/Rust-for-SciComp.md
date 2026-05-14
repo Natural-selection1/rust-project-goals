@@ -1,12 +1,13 @@
 # Expose experimental LLVM features for automatic differentiation and GPU offloading
 
-| Metadata       |                                    |
-| ---            | ---                                |
-| Point of contact | @ZuseZ4                            |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#109] |
+| Metadata              |                                                  |
+| --------------------- | ------------------------------------------------ |
+| Point of contact      | @ZuseZ4                                          |
+| Status                | Accepted                                         |
+| Tracking issue        | [rust-lang/rust-project-goals#109]               |
 | Other tracking issues | [rust-lang/rust#124509], [rust-lang/rust#124509] |
-| Zulip channel  | N/A                                |
+| Zulip channel         | N/A                                              |
+
 ## Summary
 
 Expose experimental LLVM features for automatic differentiation and GPU offloading.
@@ -17,21 +18,21 @@ Scientific computing, high performance computing (HPC), and machine learning (ML
 
 ### The status quo
 
-Thanks to PyO3, Rust has excellent interoperability with Python. Conversely, C++ has a relatively weak interop story.  This can lead Python libraries to using slowed C libraries as a backend instead, just to ease bundling and integration. Fortran is mostly used in legacy places and hardly used for new projects.
+Thanks to PyO3, Rust has excellent interoperability with Python. Conversely, C++ has a relatively weak interop story. This can lead Python libraries to using slowed C libraries as a backend instead, just to ease bundling and integration. Fortran is mostly used in legacy places and hardly used for new projects.
 
 As a solution, many researchers try to limit themself to features which are offered by compilers and libraries built on top of Python, like JAX, PyTorch, or, more recently, Mojo. Rust has a lot of features which make it more suitable to develop a fast and reliable backend for performance critical software than those languages. However, it lacks two major features which developers now expect. One is high performance autodifferentiation. The other is easy use of GPU resources.
 
 Almost every language has some way of calling hand-written CUDA/ROCm/Sycl kernels, but the interesting feature of languages like Julia, or of libraries like JAX, is that they offer users the ability to write kernels in the language the users already know, or a subset of it, without having to learn anything new. Minor performance penalties are not that critical in such cases, if the alternative are a CPU-only solution. Otherwise worthwhile projects such as Rust-CUDA end up going unmaintained due to being too much effort to maintain outside of LLVM or the Rust project.
 
-*Elaborate in more detail about the problem you are trying to solve. This section is making the case for why this particular problem is worth prioritizing with project bandwidth. A strong status quo section will (a) identify the target audience and (b) give specifics about the problems they are facing today. Sometimes it may be useful to start sketching out how you think those problems will be addressed by your change, as well, though it's not necessary.*
+_Elaborate in more detail about the problem you are trying to solve. This section is making the case for why this particular problem is worth prioritizing with project bandwidth. A strong status quo section will (a) identify the target audience and (b) give specifics about the problems they are facing today. Sometimes it may be useful to start sketching out how you think those problems will be addressed by your change, as well, though it's not necessary._
 
 ### The next six months
 
 We are requesting support from the Rust project for continued experimentation:
 
-1) Merge the `#[autodiff]` fork.
-2) Expose the experimental batching feature of Enzyme, preferably by a new contributor.
-3) Merge an MVP `#[offloading]` fork which is able to run simple functions using rayon parallelism on a GPU or TPU, showing a speed-up.
+1. Merge the `#[autodiff]` fork.
+2. Expose the experimental batching feature of Enzyme, preferably by a new contributor.
+3. Merge an MVP `#[offloading]` fork which is able to run simple functions using rayon parallelism on a GPU or TPU, showing a speed-up.
 
 ### The "shiny future" we are working towards
 
@@ -43,11 +44,11 @@ The eventual goal of this experimentation is that all three proposed features (b
 There is not yet consensus amongst the relevant Rust teams as to how and/or whether this functionality should be exposed on stable.
 Some concerns that continued experimentation will hopefully help to resolve:
 
-* How effective and general purpose is this functionality?
-* How complex is this functionality to support, and how does that trade off with the value it provides? What is the right point on the spectrum of tradeoffs?
-* Can code using these Rust features still compile and run on backends other than LLVM, and on all supported targets? If not, how should we manage the backend-specific nature of it?
-* Can we avoid tying Rust features too closely to the specific properties of any backend or target, such that we're confident these features can remain stable over decades of future landscape changes?
-* Can we fully implement every feature of the provided functionality (as more than a no-op) on fully open systems, despite the heavily proprietary nature of parts of the GPU and accelerator landscape?
+- How effective and general purpose is this functionality?
+- How complex is this functionality to support, and how does that trade off with the value it provides? What is the right point on the spectrum of tradeoffs?
+- Can code using these Rust features still compile and run on backends other than LLVM, and on all supported targets? If not, how should we manage the backend-specific nature of it?
+- Can we avoid tying Rust features too closely to the specific properties of any backend or target, such that we're confident these features can remain stable over decades of future landscape changes?
+- Can we fully implement every feature of the provided functionality (as more than a no-op) on fully open systems, despite the heavily proprietary nature of parts of the GPU and accelerator landscape?
 
 ## Design axioms
 
@@ -71,7 +72,7 @@ Some concerns that continued experimentation will hopefully help to resolve:
 - We do not support differentiating inline assembly. Users are expected to write custom derivatives in such cases.
 - We might refuse to expose certain features if they are too hard to use correctly and provide little gains (e.g. derivatives with respect to global vars).
 
-*Add your [design axioms][da] here. Design axioms clarify the constraints and tradeoffs you will use as you do your design work. These are most important for project goals where the route to the solution has significant ambiguity (e.g., designing a language feature or an API), as they communicate to your reader how you plan to approach the problem. If this goal is more aimed at implementation, then design axioms are less important. [Read more about design axioms][da].*
+_Add your [design axioms][da] here. Design axioms clarify the constraints and tradeoffs you will use as you do your design work. These are most important for project goals where the route to the solution has significant ambiguity (e.g., designing a language feature or an API), as they communicate to your reader how you plan to approach the problem. If this goal is more aimed at implementation, then design axioms are less important. [Read more about design axioms][da]._
 
 [da]: ../about/design_axioms.md
 
@@ -98,6 +99,7 @@ Minimal "smoke test" reviews will be needed from the compiler-team. The Rust lan
 ### Outputs
 
 - An `#[offload]` rustc-builtin-macro which makes a function definition known to the LLVM offloading backend.
+
   - [x] Made a PR to enable LLVM's offloading runtime backend.
   - [ ] Merge the offload macro frontend
   - [ ] Merge the offload Middle-end
@@ -105,6 +107,7 @@ Minimal "smoke test" reviews will be needed from the compiler-team. The Rust lan
 - An `offload!([GPU1, GPU2, TPU1], foo(x, y,z));` macro (placeholder name) which will execute function `foo` on the specified devices.
 
 - An `#[autodiff]` rustc-builtin-macro which differentiates a given function.
+
   - [x] Merge the Autodiff macro frontend
   - [x] Merge the Autodiff Enzyme backend
   - [ ] Merge the Autodiff Middle-end

@@ -4,19 +4,20 @@
 
 Propose a slate of (((#GOALS))) project goals for 2025H1, including 3 flagship goals:
 
-* Continue making Rust easier to use for network systems by [**bringing the Async Rust experience closer to parity with sync Rust**](./async.md). In 2025H1 we plan to:
-    * tell a complete story for the use of async fn in traits, unblocking wide ecosystem adoption;
-    * improve the ergonomics of `Pin`, which is frequently used in low-level async code; and
-    * prepare to support asynchronous (and synchronous) generators in the language.
-* Continue helping Rust support low-level projects by [**stabilizing compiler options and tooling used by the Rust-for-Linux project**](./rfl.md). In 2025H1 we plan to:
-    * implement [RFC #3716] to allow stabilizing ABI-modifying compiler flags to control code generation, sanitizer integration, and so forth;
-    * taking the first step towards stabilizing [`build-std`](https://rust-lang.github.io/rust-project-goals/2025h1/https://doc.rust-lang.org/cargo/reference/unstable.html#build-std) by [creating a stable way to rebuild core with specific compiler options](./build-std.html);
-    * add rustdoc features to extract and customize rustdoc tests (`--extract-doctests`);
-    * stabilize clippy configuration like `.clippy.toml` and `CLIPPY_CONF_DIR`;
-    * stabilize compiler flags to extract dependency info (e.g., as via `-Zbinary-dep-depinfo=y`) and to configure no-std without requiring it in the source file (e.g., as via `-Zcrate-attr`);
-* Address the biggest concerns raised by Rust maintainers, lack of face-to-face interaction, by [**organizing the Rust All-Hands 2025**](./all-hands.md). In 2025H1 we plan to:
-    * convene Rust maintainers to celebrate Rust's tenth birthday at [RustWeek 2025](https://2025.rustweek.org) (co-organized with [RustNL](https://2025.rustweek.org/about/));
-    * author a first draft for a [Rust vision doc](./rust-vision-doc.md) and gather feedback.
+- Continue making Rust easier to use for network systems by [**bringing the Async Rust experience closer to parity with sync Rust**](./async.md). In 2025H1 we plan to:
+  - tell a complete story for the use of async fn in traits, unblocking wide ecosystem adoption;
+  - improve the ergonomics of `Pin`, which is frequently used in low-level async code; and
+  - prepare to support asynchronous (and synchronous) generators in the language.
+- Continue helping Rust support low-level projects by [**stabilizing compiler options and tooling used by the Rust-for-Linux project**](./rfl.md). In 2025H1 we plan to:
+  - implement [RFC #3716] to allow stabilizing ABI-modifying compiler flags to control code generation, sanitizer integration, and so forth;
+  - taking the first step towards stabilizing [`build-std`](https://rust-lang.github.io/rust-project-goals/2025h1/https://doc.rust-lang.org/cargo/reference/unstable.html#build-std) by [creating a stable way to rebuild core with specific compiler options](./build-std.html);
+  - add rustdoc features to extract and customize rustdoc tests (`--extract-doctests`);
+  - stabilize clippy configuration like `.clippy.toml` and `CLIPPY_CONF_DIR`;
+  - stabilize compiler flags to extract dependency info (e.g., as via `-Zbinary-dep-depinfo=y`) and to configure no-std without requiring it in the source file (e.g., as via `-Zcrate-attr`);
+- Address the biggest concerns raised by Rust maintainers, lack of face-to-face interaction, by [**organizing the Rust All-Hands 2025**](./all-hands.md). In 2025H1 we plan to:
+  - convene Rust maintainers to celebrate Rust's tenth birthday at [RustWeek 2025](https://2025.rustweek.org) (co-organized with [RustNL](https://2025.rustweek.org/about/));
+  - author a first draft for a [Rust vision doc](./rust-vision-doc.md) and gather feedback.
+
 ## Motivation
 
 The 2025H1 goal slate consists of (((#GOALS))) project goals, of which we have selected 3 as **flagship goals**. Flagship goals represent the goals expected to have the broadest overall impact.
@@ -33,9 +34,9 @@ Of the proposed goals, a small subset are selected by the roadmap owner as **fla
 
 Our goals are selected to further Rust's mission of **empowering everyone to build reliable and efficient software**. Rust targets programs that prioritize
 
-* reliability and robustness;
-* performance, memory usage, and resource consumption; and
-* long-term maintenance and extensibility.
+- reliability and robustness;
+- performance, memory usage, and resource consumption; and
+- long-term maintenance and extensibility.
 
 We consider "any two out of the three" as the right heuristic for projects where Rust is a strong contender or possibly the best option.
 
@@ -43,30 +44,31 @@ We consider "any two out of the three" as the right heuristic for projects where
 
 We believe that...
 
-* **Rust must deliver on its promise of peak performance and high reliability.** Rust’s maximum advantage is in applications that require peak performance or low-level systems capabilities. We must continue to innovate and support those areas above all.
-* **Rust's goals require high productivity and ergonomics.** Being attentive to ergonomics broadens Rust impact by making it more appealing for projects that value reliability and maintenance but which don't have strict performance requirements.
-* **Slow and steady wins the race.** We don't want to create stress via unrealistic, ambitious goals. We want to make steady progress each goal period on important problems.
+- **Rust must deliver on its promise of peak performance and high reliability.** Rust’s maximum advantage is in applications that require peak performance or low-level systems capabilities. We must continue to innovate and support those areas above all.
+- **Rust's goals require high productivity and ergonomics.** Being attentive to ergonomics broadens Rust impact by making it more appealing for projects that value reliability and maintenance but which don't have strict performance requirements.
+- **Slow and steady wins the race.** We don't want to create stress via unrealistic, ambitious goals. We want to make steady progress each goal period on important problems.
 
 ## Guide-level explanation
+
 [guide-level-explanation]: #guide-level-explanation
 
 ### Flagship goals
 
 The flagship goals proposed for this roadmap are as follows:
 
-* Continue making Rust easier to use for network systems by [**bringing the Async Rust experience closer to parity with sync Rust**](./async.md). In 2025H1 we plan to:
-    * tell a complete story for the use of async fn in traits, unblocking wide ecosystem adoption;
-    * improve the ergonomics of `Pin`, which is frequently used in low-level async code; and
-    * prepare to support asynchronous (and synchronous) generators in the language.
-* Continue helping Rust support low-level projects by [**stabilizing compiler options and tooling used by the Rust-for-Linux (RFL) project**](./rfl.md). In 2025H1 we plan to:
-    * implement [RFC #3716] to allow stabilizing ABI-modifying compiler flags to control code generation, sanitizer integration, and so forth;
-    * taking the first step towards stabilizing [`build-std`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std) by [creating a stable way to rebuild core with specific compiler options](./build-std.md);
-    * add rustdoc features to extract and customize rustdoc tests (`--extract-doctests`);
-    * stabilize clippy configuration like `.clippy.toml` and `CLIPPY_CONF_DIR`;
-    * stabilize compiler flags to extract dependency info (e.g., as via `-Zbinary-dep-depinfo=y`) and to configure no-std without requiring it in the source file (e.g., as via `-Zcrate-attr`);
-* Address the biggest concerns raised by Rust maintainers, lack of face-to-face interaction, by [**organizing the Rust All-Hands 2025**](./all-hands.md). In 2025H1 we plan to:
-    * convene Rust maintainers to celebrate Rust's tenth birthday at [RustWeek 2025](https://2025.rustweek.org) (co-organized with [RustNL](https://2025.rustweek.org/about/));
-    * author a first draft for a [Rust vision doc](./rust-vision-doc.md) and gather feedback.
+- Continue making Rust easier to use for network systems by [**bringing the Async Rust experience closer to parity with sync Rust**](./async.md). In 2025H1 we plan to:
+  - tell a complete story for the use of async fn in traits, unblocking wide ecosystem adoption;
+  - improve the ergonomics of `Pin`, which is frequently used in low-level async code; and
+  - prepare to support asynchronous (and synchronous) generators in the language.
+- Continue helping Rust support low-level projects by [**stabilizing compiler options and tooling used by the Rust-for-Linux (RFL) project**](./rfl.md). In 2025H1 we plan to:
+  - implement [RFC #3716] to allow stabilizing ABI-modifying compiler flags to control code generation, sanitizer integration, and so forth;
+  - taking the first step towards stabilizing [`build-std`](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std) by [creating a stable way to rebuild core with specific compiler options](./build-std.md);
+  - add rustdoc features to extract and customize rustdoc tests (`--extract-doctests`);
+  - stabilize clippy configuration like `.clippy.toml` and `CLIPPY_CONF_DIR`;
+  - stabilize compiler flags to extract dependency info (e.g., as via `-Zbinary-dep-depinfo=y`) and to configure no-std without requiring it in the source file (e.g., as via `-Zcrate-attr`);
+- Address the biggest concerns raised by Rust maintainers, lack of face-to-face interaction, by [**organizing the Rust All-Hands 2025**](./all-hands.md). In 2025H1 we plan to:
+  - convene Rust maintainers to celebrate Rust's tenth birthday at [RustWeek 2025](https://2025.rustweek.org) (co-organized with [RustNL](https://2025.rustweek.org/about/));
+  - author a first draft for a [Rust vision doc](./rust-vision-doc.md) and gather feedback.
 
 #### Why these particular flagship goals?
 
@@ -88,6 +90,7 @@ The full slate of project goals are as follows. These goals all have identified 
 (((GOALS)))
 
 # Reference-level explanation
+
 [reference-level-explanation]: #reference-level-explanation
 
 The following table highlights the asks from each affected team.
@@ -101,17 +104,17 @@ Teams often use these notes to indicate the person on the team signed up to do t
 
 Definitions for terms used above:
 
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
 
 [AGS]: ./Project-goal-slate.md
 [AMF]: ./a-mir-formality.md

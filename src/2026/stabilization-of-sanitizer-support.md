@@ -1,7 +1,7 @@
 # Stabilize MemorySanitizer and ThreadSanitizer Support
 
 | Metadata                               |                                    |
-|:---------------------------------------|:-----------------------------------|
+| :------------------------------------- | :--------------------------------- |
 | Point of contact                       | @jakos-sec                         |
 | Status                                 | Accepted                           |
 | Tracking issue                         | [rust-lang/rust-project-goals#403] |

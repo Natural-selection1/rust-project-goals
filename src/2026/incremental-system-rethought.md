@@ -1,13 +1,12 @@
 # Incremental Systems Rethought
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @blyxyas                           |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#641] |
 | [compiler] champion | @jackh726                          |
 | Zulip channel       | N/A                                |
-
 
 ## Summary
 
@@ -57,7 +56,7 @@ and hopefully get it close to the finish line. In the stabilization process, we'
 as expandable as possible to allow for granularity in the recompilation tracking.
 
 | Task            | Owner(s)           | Notes |
-|-----------------|--------------------|-------|
+| --------------- | ------------------ | ----- |
 | Design, propose | @blyxyas @jackh726 |       |
 | Implementation  | @blyxyas           |       |
 
@@ -77,7 +76,7 @@ The first step is completing the RFC and implementing it in an unstable stage.
 ## Team asks
 
 | Team       | Support level | Notes |
-|------------|---------------|-------|
+| ---------- | ------------- | ----- |
 | [compiler] | Medium        |       |
 
 ## Frequently asked questions

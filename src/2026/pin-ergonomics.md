@@ -1,7 +1,7 @@
 # Continue Experimentation with Pin Ergonomics
 
 | Metadata            |                                    |
-|:--------------------|:-----------------------------------|
+| :------------------ | :--------------------------------- |
 | Point of contact    | @frank-king                        |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#389] |
@@ -9,7 +9,6 @@
 | [compiler] champion | @oli-obk                           |
 | [lang] champion     | @traviscross                       |
 | [types] champion    | @oli-obk                           |
-
 
 ## Summary
 
@@ -34,12 +33,12 @@ But there's also broader work around describing the new borrowchk behavior and g
 
 A regular `&mut` takes a temporary exclusive access to the original place and releases it once the borrow's lifetime expired.
 
-But a `&pin mut` keeps the pinned effect *even after the borrow's lifetime expired*. Once you pin a place, it stays pinned for the duration of the program.
+But a `&pin mut` keeps the pinned effect _even after the borrow's lifetime expired_. Once you pin a place, it stays pinned for the duration of the program.
 
 This is inconsistent and user feedback will be really important here -- both in terms of exploring the impact of this fully and how teachable this is.
 
 | Task                                     | Owner(s)    | Notes               |
-|------------------------------------------|-------------|---------------------|
+| ---------------------------------------- | ----------- | ------------------- |
 | borrowchk for `&pin .. place`            | @frank-king | Is this still TODO? |
 | `Drop::pin_drop`                         | @frank-king |                     |
 | `&pin .. T <-> &[mut] T` coercion        | @frank-king |                     |
@@ -52,7 +51,7 @@ This is inconsistent and user feedback will be really important here -- both in 
 ## Team asks
 
 | Team       | Support level | Notes           |
-|------------|---------------|-----------------|
+| ---------- | ------------- | --------------- |
 | [compiler] | Medium        | Reviews         |
 | [lang]     | Medium        | Design meeting? |
 | [types]    | Medium        | Reviews         |

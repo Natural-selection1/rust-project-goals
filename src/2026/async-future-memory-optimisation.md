@@ -1,13 +1,12 @@
 # Async Future Memory Optimisation
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @dingxiangfei2009                  |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#622] |
 | Zulip channel       | N/A                                |
 | [compiler] champion | @tmandry                           |
-
 
 ## Summary
 
@@ -59,18 +58,18 @@ The proposed work also includes two further experiments as stretch goals.
 
 ### Work items over the next year
 
-| Task        | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| Polish the initial PR and merge | @dingxiangfei2009  | This is a work item that is most feasible, with work ready for upstreaming |
-| Implement the second packing scheme, removing the liveness restriction | @dingxiangfei2009 | This is a work item that can be experimental, with existing work ready for reviews |
-| Perform industry-wide survey to measure improvements | @dingxiangfei2009 et al. | This is a work item that requires collaboration with partners |
-| Implement coroutine inlining under reasonable condition | @dingxiangfei2009 | This is a stretch goal that requires design meetings |
+| Task                                                                                                                | Owner(s)                      | Notes                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------- |
+| Polish the initial PR and merge                                                                                     | @dingxiangfei2009             | This is a work item that is most feasible, with work ready for upstreaming              |
+| Implement the second packing scheme, removing the liveness restriction                                              | @dingxiangfei2009             | This is a work item that can be experimental, with existing work ready for reviews      |
+| Perform industry-wide survey to measure improvements                                                                | @dingxiangfei2009 et al.      | This is a work item that requires collaboration with partners                           |
+| Implement coroutine inlining under reasonable condition                                                             | @dingxiangfei2009             | This is a stretch goal that requires design meetings                                    |
 | Explore lowering to native LLVM coroutine, draft design documentation, liaison with LLVM on potential upstream work | Tentatively @dingxiangfei2009 | This is a work item that requires collaboration with compiler team and partners at LLVM |
 
 ## Team asks
 
 | Team       | Support level | Notes |
-|------------|---------------|-------|
+| ---------- | ------------- | ----- |
 | [compiler] | Medium        |       |
 
 ## Frequently asked questions

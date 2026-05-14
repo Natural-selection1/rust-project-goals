@@ -1,13 +1,13 @@
 # Continue resolving `cargo-semver-checks` blockers for merging into cargo
 
-| Metadata         |                                    |
-|:-----------------|------------------------------------|
-| Point of contact | @obi1kenobi                        |
-| Status           | Proposed                           |
-| Tracking issue   | [rust-lang/rust-project-goals#104] |
-| Zulip channel    | N/A                                |
-| [cargo] champion | @epage |
-| [rustdoc] champion | @adotinthevoid |
+| Metadata           |                                    |
+| :----------------- | ---------------------------------- |
+| Point of contact   | @obi1kenobi                        |
+| Status             | Proposed                           |
+| Tracking issue     | [rust-lang/rust-project-goals#104] |
+| Zulip channel      | N/A                                |
+| [cargo] champion   | @epage                             |
+| [rustdoc] champion | @adotinthevoid                     |
 
 ## Summary
 
@@ -35,6 +35,7 @@ Our goal here is to make steady progress toward resolving them.
 ### The status quo after the 2025h1 goal period
 
 The 2025h1 goal targeted work in two major areas:
+
 - Checking of cross-crate items
 - SemVer linting of type information
 
@@ -50,7 +51,7 @@ Outside of these special cases of type-checking lints, some progress was made on
 The current plan is to make use of Rust's only stable API: "please compile this program for me."
 Whenever types in any public API location might appear to have changed, `cargo-semver-checks` would generate a witness program and check it via `cargo check`, such that compilation would _only_ succeed if the type change is backward-compatible.
 This is an extension of the same technique we used several years ago in our survey of SemVer compliance and breakage in the Rust ecosystem.
-One of Rust's Google Summer of Code participants is working toward making witness generation work end-to-end, and we're thrilled to be working together! 
+One of Rust's Google Summer of Code participants is working toward making witness generation work end-to-end, and we're thrilled to be working together!
 
 As part of the All Hands at RustWeek, we also made progress toward enabling cross-crate linting.
 We identified a set of changes in Rust tooling that, when implemented, will result in `cargo-semver-checks` being able to uniquely determine which crate and version a given item came from.
@@ -68,6 +69,7 @@ This causes a massive number of false-positives ("breakage reported incorrectly"
 In excess of 90% of real-world false-positives are traceable back to a cross-crate item, as measured by our [SemVer study][semver-study]!
 
 For example, the following change is not breaking but `cargo-semver-checks` will incorrectly report it as breaking:
+
 ```rust
 // previous release:
 pub fn example() {}
@@ -75,7 +77,8 @@ pub fn example() {}
 // in the new release, imagine this function moved to `another_crate`:
 pub use another_crate::example;
 ```
-This is because the rustdoc JSON that `cargo-semver-checks` sees indeed *does not contain* a function named `example`.
+
+This is because the rustdoc JSON that `cargo-semver-checks` sees indeed _does not contain_ a function named `example`.
 Currently, `cargo-semver-checks` is incapable of following the cross-crate connection to `another_crate`, generating its rustdoc JSON, and continuing its analysis there.
 
 Resolving this limitation will require changes to how `cargo-semver-checks` generates and handles rustdoc JSON, since the set of required rustdoc JSON files will no longer be fully known ahead of time.
@@ -93,6 +96,7 @@ _This section is background information and is unchanged from [the 2024h2 goal][
 
 In general, at the moment `cargo-semver-checks` lints cannot represent or examine type information.
 For example, the following change is breaking but `cargo-semver-checks` will not detect or report it:
+
 ```rust
 // previous release:
 pub fn example(value: String) {}
@@ -100,9 +104,11 @@ pub fn example(value: String) {}
 // new release:
 pub fn example(value: i64) {}
 ```
+
 Analogous breaking changes to function return values, struct fields, and associated types would also be missed by `cargo-semver-checks` today.
 
 The main difficulty here lies with the expressiveness of the Rust type system. For example, none of the following changes are breaking:
+
 ```rust
 // previous release:
 pub fn example(value: String) {}
@@ -113,6 +119,7 @@ pub fn example(value: impl Into<String>) {}
 // subsequent release:
 pub fn example<S: Into<String>>(value: S) {}
 ```
+
 Similar challenges exist with lifetimes, variance, trait solving, `async fn` versus `fn() -> impl Future`, etc.
 
 While some promising preliminary work has been done toward resolving this challenge, more in-depth design work is necessary to determine the best path forward.
@@ -142,13 +149,13 @@ To accomplish this, `cargo-semver-checks` needs the ability to express more kind
 
 I (@obi1kenobi) will be working on this effort. The only other resource request would be occasional discussions and moral support from the [cargo] and [rustdoc] teams, of which I already have the privilege as maintainer of a popular cargo plugin that makes extensive use of rustdoc JSON.
 
-| Task                                               | Owner(s) or team(s)         | Notes |
-| -------------------------------------------------- | --------------------------- | ----- |
-| Expose precise `'static` and `?Sized` info         | @obi1kenobi  |       |
-| Lints for `'static` and `?Sized`                   | @obi1kenobi                 |       |
-| Audit lints for lifetime and trait bounds          | @obi1kenobi                 |       |
-| Support our GSoC contributor's work on witness programs and type-checking infra | @obi1kenobi |       |
-| Discussion and moral support                       | ![Team][] [cargo] [rustdoc] |       |
+| Task                                                                            | Owner(s) or team(s)         | Notes |
+| ------------------------------------------------------------------------------- | --------------------------- | ----- |
+| Expose precise `'static` and `?Sized` info                                      | @obi1kenobi                 |       |
+| Lints for `'static` and `?Sized`                                                | @obi1kenobi                 |       |
+| Audit lints for lifetime and trait bounds                                       | @obi1kenobi                 |       |
+| Support our GSoC contributor's work on witness programs and type-checking infra | @obi1kenobi                 |       |
+| Discussion and moral support                                                    | ![Team][] [cargo] [rustdoc] |       |
 
 ## Frequently asked questions
 

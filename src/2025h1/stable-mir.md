@@ -1,11 +1,11 @@
 # Publish first version of StableMIR on crates.io
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @celinval                          |
-| Status             | Accepted                           |
-| Zulip channel      | [#project-stable-mir][channel]     |
-| Tracking issue     | [rust-lang/rust-project-goals#266] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @celinval                          |
+| Status           | Accepted                           |
+| Zulip channel    | [#project-stable-mir][channel]     |
+| Tracking issue   | [rust-lang/rust-project-goals#266] |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/320896-project-stable-mir
 
@@ -68,8 +68,9 @@ fostering innovation and reducing bottlenecks.
 - Crates should follow semantic versioning.
 
 ## Ownership and team asks
+
 | Task                         | Owner(s) or team(s)            | Notes |
-|------------------------------|--------------------------------|-------|
+| ---------------------------- | ------------------------------ | ----- |
 | Discussion and moral support | ![Team][] [compiler]           |       |
 | Implementation               | @celinval                      |       |
 | Standard reviews             | ![Team][] [project-stable-mir] |       |
@@ -81,6 +82,6 @@ fostering innovation and reducing bottlenecks.
 
 Definitions for terms used above:
 
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
 
 ## Frequently asked questions

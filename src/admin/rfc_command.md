@@ -16,7 +16,7 @@ cargo rpg rfc src/2026 > /tmp/project-goals-2026.md
 
 ## What it does
 
-The goal website is an mdbook with many interlinked pages — one README per timeframe, separate pages for highlights, roadmaps, individual goals, and so on. An RFC needs to be a *single document* that can be read on its own. The `rfc` command bridges this gap by assembling the mdbook content into one flat markdown file with all internal structure preserved.
+The goal website is an mdbook with many interlinked pages — one README per timeframe, separate pages for highlights, roadmaps, individual goals, and so on. An RFC needs to be a _single document_ that can be read on its own. The `rfc` command bridges this gap by assembling the mdbook content into one flat markdown file with all internal structure preserved.
 
 At a high level, the command:
 
@@ -46,7 +46,7 @@ A link-list line looks like this:
 - [Highlights](./2026/highlights.md)
 ```
 
-These lines come from the source README's guide-level and reference-level sections. The key insight is that the mdbook preprocessor does *not* strip these lines — it passes them through as-is. This means the rendered file is both the expanded skeleton (directives resolved) and the inline map (link lines mark where to insert chapter content).
+These lines come from the source README's guide-level and reference-level sections. The key insight is that the mdbook preprocessor does _not_ strip these lines — it passes them through as-is. This means the rendered file is both the expanded skeleton (directives resolved) and the inline map (link lines mark where to insert chapter content).
 
 ### Step 3: Inline linked files
 
@@ -63,10 +63,10 @@ Files that are referenced but don't exist in the rendered output produce a warni
 
 After inlining, any remaining `.md` links in the document are rewritten to point at the GitHub Pages site. For example:
 
-| Original | Rewritten |
-|----------|-----------|
-| `./const-generics.md` | `https://rust-lang.github.io/rust-project-goals/2026/const-generics.html` |
-| `../about/roadmaps.md` | `https://rust-lang.github.io/rust-project-goals/about/roadmaps.html` |
+| Original               | Rewritten                                                                 |
+| ---------------------- | ------------------------------------------------------------------------- |
+| `./const-generics.md`  | `https://rust-lang.github.io/rust-project-goals/2026/const-generics.html` |
+| `../about/roadmaps.md` | `https://rust-lang.github.io/rust-project-goals/about/roadmaps.html`      |
 
 Links within the same timeframe directory get the timeframe prefix; links that already contain a `/` or reference a parent directory are treated as absolute paths from the site root.
 

@@ -6,10 +6,11 @@
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#107] |
 | Zulip channel    | N/A                                |
+
 ## Summary
 
-* Deliver a nightly implementation of the experimental `use` syntax for ergonomic ref-counting.
-* RFC decision on the above
+- Deliver a nightly implementation of the experimental `use` syntax for ergonomic ref-counting.
+- RFC decision on the above
 
 ## Motivation
 
@@ -51,13 +52,13 @@ tokio::spawn({
 });
 ```
 
-Whichever pattern users adopt, explicit clones of reference counted values leads to significant accidental complexity for many applications. As noted, cloning these values is both cheap at runtime and has zero semantic importance, since each clone is as good as the other. 
+Whichever pattern users adopt, explicit clones of reference counted values leads to significant accidental complexity for many applications. As noted, cloning these values is both cheap at runtime and has zero semantic importance, since each clone is as good as the other.
 
 #### Impact on new users and high-level domains
 
 The impact of this kind of friction can be severe. While experienced users have learned the workaround and consider this to be a papercut, new users can find this kind of change bewildering and a total blocker. The impact is also particularly severe on projects attempting to use Rust in domains traditionally considered "high-level" (e.g., app/game/web development, data science, scientific computing). Rust's strengths have made it a popular choice for building underlying frameworks and libraries that perform reliably and with high performance. However, thanks in large part to these kind of smaller, papercut issues, it is not a great choice for **consumption** of these libraries
 
-Users in higher-level domains are accustomed to the ergonomics of Python or TypeScript, and hence ergonomic friction can make Rust a non-starter. Those users that stick with Rust long enough to learn the workarounds, however, often find significant value in its emphasis on reliability and long-term maintenance (not to mention performance). Small changes like avoiding explicit clones for reference-counted data can both help to make Rust more appealing in these domains **and** help Rust in other domains where it is already widespead. 
+Users in higher-level domains are accustomed to the ergonomics of Python or TypeScript, and hence ergonomic friction can make Rust a non-starter. Those users that stick with Rust long enough to learn the workarounds, however, often find significant value in its emphasis on reliability and long-term maintenance (not to mention performance). Small changes like avoiding explicit clones for reference-counted data can both help to make Rust more appealing in these domains **and** help Rust in other domains where it is already widespead.
 
 ### The next 6 months
 
@@ -71,10 +72,10 @@ This goal is scoped around reducing (or eliminating entirely) the need for expli
 
 We don't have consensus around a full set of "design axioms" for this design, but we do have alignment around the following basic points:
 
-* Explicit ref-counting is a major ergonomic pain point impacting both high- and low-level, performance oriented code.
-* The worst ergonomic pain arises around closures that need to clone their upvars.
-* Some code will want the ability to precisely track reference count increments.
-* The design should allow user-defined types to "opt-in" to the lightweight cloning behavior.
+- Explicit ref-counting is a major ergonomic pain point impacting both high- and low-level, performance oriented code.
+- The worst ergonomic pain arises around closures that need to clone their upvars.
+- Some code will want the ability to precisely track reference count increments.
+- The design should allow user-defined types to "opt-in" to the lightweight cloning behavior.
 
 [da]: ../about/design_axioms.md
 
@@ -91,20 +92,20 @@ We don't have consensus around a full set of "design axioms" for this design, bu
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
 
 ## Frequently asked questions
 

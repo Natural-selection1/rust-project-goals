@@ -3,14 +3,14 @@
 > **NOTE:** This is a sample RFC you can use as a starting point.
 > To begin a new goal season (e.g., 2222), do the following:
 >
-> * Copy this file to `src/2222/README.md`.
-> * Search and replace `YYYY` with `2222` and delete this section.
-> * Look for other "TBD" sections, you'll want to replace those eventually.
-> * Customize anything else that seems relevant.
+> - Copy this file to `src/2222/README.md`.
+> - Search and replace `YYYY` with `2222` and delete this section.
+> - Look for other "TBD" sections, you'll want to replace those eventually.
+> - Customize anything else that seems relevant.
 
 ## Summary
 
-*![Status: Accepting goal proposals](https://img.shields.io/badge/Status-Accepting%20goal%20proposals-yellow) We are in the process of assembling the goal slate.*
+_![Status: Accepting goal proposals](https://img.shields.io/badge/Status-Accepting%20goal%20proposals-yellow) We are in the process of assembling the goal slate._
 
 This is a draft for the eventual RFC proposing the YYYY goals.
 
@@ -30,9 +30,9 @@ Of the proposed goals, a small subset are selected by the roadmap owner as **roa
 
 Our goals are selected to further Rust's mission of **empowering everyone to build reliable and efficient software**. Rust targets programs that prioritize
 
-* reliability and robustness;
-* performance, memory usage, and resource consumption; and
-* long-term maintenance and extensibility.
+- reliability and robustness;
+- performance, memory usage, and resource consumption; and
+- long-term maintenance and extensibility.
 
 We consider "any two out of the three" as the right heuristic for projects where Rust is a strong contender or possibly the best option.
 
@@ -40,11 +40,12 @@ We consider "any two out of the three" as the right heuristic for projects where
 
 We believe that...
 
-* **Rust must deliver on its promise of peak performance and high reliability.** Rust’s maximum advantage is in applications that require peak performance or low-level systems capabilities. We must continue to innovate and support those areas above all.
-* **Rust's goals require high productivity and ergonomics.** Being attentive to ergonomics broadens Rust impact by making it more appealing for projects that value reliability and maintenance but which don't have strict performance requirements.
-* **Slow and steady wins the race.** For this first round of goals, we want a small set that can be completed without undue stress. As the Rust open source org continues to grow, the set of goals can grow in size.
+- **Rust must deliver on its promise of peak performance and high reliability.** Rust’s maximum advantage is in applications that require peak performance or low-level systems capabilities. We must continue to innovate and support those areas above all.
+- **Rust's goals require high productivity and ergonomics.** Being attentive to ergonomics broadens Rust impact by making it more appealing for projects that value reliability and maintenance but which don't have strict performance requirements.
+- **Slow and steady wins the race.** For this first round of goals, we want a small set that can be completed without undue stress. As the Rust open source org continues to grow, the set of goals can grow in size.
 
 ## Guide-level explanation
+
 [guide-level-explanation]: #guide-level-explanation
 
 ### Roadmap goals
@@ -66,13 +67,14 @@ The full slate of project goals are as follows. These goals all have identified 
 (((GOALS)))
 
 # Reference-level explanation
+
 [reference-level-explanation]: #reference-level-explanation
 
 The following table highlights the support level requested from each affected team. Each goal specifies the level of involvement needed:
 
-* **Small**: The team only needs to do routine activities (e.g., reviewing a few small PRs).
-* **Medium**: Dedicated support from one team member, but the rest of the team doesn't need to be heavily involved.
-* **Large**: Deeper review and involvement from the entire team (e.g., design meetings, complex RFCs).
+- **Small**: The team only needs to do routine activities (e.g., reviewing a few small PRs).
+- **Medium**: Dedicated support from one team member, but the rest of the team doesn't need to be heavily involved.
+- **Large**: Deeper review and involvement from the entire team (e.g., design meetings, complex RFCs).
 
 "Small" asks require someone on the team to "second" the goal. "Medium" and "Large" asks require a dedicated champion from the team.
 

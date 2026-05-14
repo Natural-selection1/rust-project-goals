@@ -1,14 +1,13 @@
 # In-place initialization
 
 | Metadata         |                                    |
-| :--              | :--                                |
+| :--------------- | :--------------------------------- |
 | Point of contact | @Darksonn                          |
 | Status           | Proposed                           |
 | Flagship         | Unblocking dormant traits          |
 | Tracking issue   | [rust-lang/rust-project-goals#395] |
 | Zulip channel    | [#t-lang][channel]                 |
 | [lang] champion  | @cramertj                          |
-
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/213817-t-lang
 
@@ -34,15 +33,15 @@ ergonomic than what is possible in an external crate.
 
 #### Current proposals and implementations
 
-* [Init expressions] were proposed by [Alice Ryhl] based on work originally by
+- [Init expressions] were proposed by [Alice Ryhl] based on work originally by
   [Benno Lossin] and [Gary Guo].
-* [Initialization via out-ptrs] was proposed by [Taylor Cramer]. 
-* [Placing functions] were proposed by [Yoshua Wuyts].
-* The [Placement by return] RFC was opened in 2020 by [Olivier Faure].
-* For the Linux Kernel, there is the [pin-init] crate.
-* For C++ interop, there is the [moveit] crate, and the descendent [Ctor] trait
+- [Initialization via out-ptrs] was proposed by [Taylor Cramer].
+- [Placing functions] were proposed by [Yoshua Wuyts].
+- The [Placement by return] RFC was opened in 2020 by [Olivier Faure].
+- For the Linux Kernel, there is the [pin-init] crate.
+- For C++ interop, there is the [moveit] crate, and the descendent [Ctor] trait
   from Crubit.
-* There is already an [open lang experiment][lang-experiment] on init
+- There is already an [open lang experiment][lang-experiment] on init
   expressions and supporting async fn in dyn trait, which is being implemented
   by [Michael Goulet] and [Ding Xiang Fei].
 
@@ -133,7 +132,7 @@ possible only by adding a real language feature?
 ## Ownership and team asks
 
 Since the primary objective of this project goal is to choose a solution, this
-project goals asks the lang-team for *two* design meetings. There is already [a
+project goals asks the lang-team for _two_ design meetings. There is already [a
 meeting scheduled on July 30th][design-meeting], which is at the beginning of
 the goal period. This project goal asks the lang team for a second meeting near
 the end of the goal period, in addition to the one that has already been

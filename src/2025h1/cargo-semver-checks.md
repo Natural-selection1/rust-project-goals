@@ -1,11 +1,12 @@
 # Continue resolving `cargo-semver-checks` blockers for merging into cargo
 
 | Metadata         |                                    |
-|:-----------------|------------------------------------|
+| :--------------- | ---------------------------------- |
 | Point of contact | @obi1kenobi                        |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#104] |
 | Zulip channel    | N/A                                |
+
 ## Summary
 
 Design and implement `cargo-semver-checks` functionality that lies on the critical path for merging the tool into cargo itself. Continues the work of [the 2024h2 goal][2024h2-goal].
@@ -34,10 +35,12 @@ As part of [the 2024h2 goal work][2024h2-tracking], support for cargo manifest l
 This lifted [one of the blockers][merge-blockers] blocker for SemVer-checking as part of `cargo publish`.
 
 Work is still required in two major areas:
+
 - Checking of cross-crate items
 - SemVer linting of type information
 
 Some work in each of these areas [already happened in the 2024h2 goal][2024h2-tracking]:
+
 - The manifest linting work [required a significant refactor][major-refactor] of the tool's data-handling infrastructure. As part of that major refactor, we were able to also create "API space" for a future addition of cross-crate information.
 - The [compiler team MCP][compiler-mcp] required to expose cross-crate information to rustdoc was merged, and together with T-rustdoc, we now have a plan for exposing that information to `cargo-semver-checks`.
 - We have implemented a partial schema that makes available a limited subset of type information around generic parameters and trait bounds. It's sufficient to power a set of new lints, though it isn't comprehensive yet.
@@ -61,6 +64,7 @@ This causes a massive number of false-positives ("breakage reported incorrectly"
 In excess of 90% of real-world false-positives are traceable back to a cross-crate item, as measured by our [SemVer study][semver-study]!
 
 For example, the following change is not breaking but `cargo-semver-checks` will incorrectly report it as breaking:
+
 ```rust
 // previous release:
 pub fn example() {}
@@ -68,7 +72,8 @@ pub fn example() {}
 // in the new release, imagine this function moved to `another_crate`:
 pub use another_crate::example;
 ```
-This is because the rustdoc JSON that `cargo-semver-checks` sees indeed *does not contain* a function named `example`.
+
+This is because the rustdoc JSON that `cargo-semver-checks` sees indeed _does not contain_ a function named `example`.
 Currently, `cargo-semver-checks` is incapable of following the cross-crate connection to `another_crate`, generating its rustdoc JSON, and continuing its analysis there.
 
 Resolving this limitation will require changes to how `cargo-semver-checks` generates and handles rustdoc JSON, since the set of required rustdoc JSON files will no longer be fully known ahead of time.
@@ -86,6 +91,7 @@ _This section is background information and is unchanged from [the 2024h2 goal][
 
 In general, at the moment `cargo-semver-checks` lints cannot represent or examine type information.
 For example, the following change is breaking but `cargo-semver-checks` will not detect or report it:
+
 ```rust
 // previous release:
 pub fn example(value: String) {}
@@ -93,9 +99,11 @@ pub fn example(value: String) {}
 // new release:
 pub fn example(value: i64) {}
 ```
+
 Analogous breaking changes to function return values, struct fields, and associated types would also be missed by `cargo-semver-checks` today.
 
 The main difficulty here lies with the expressiveness of the Rust type system. For example, none of the following changes are breaking:
+
 ```rust
 // previous release:
 pub fn example(value: String) {}
@@ -106,6 +114,7 @@ pub fn example(value: impl Into<String>) {}
 // subsequent release:
 pub fn example<S: Into<String>>(value: S) {}
 ```
+
 Similar challenges exist with lifetimes, variance, trait solving, `async fn` versus `fn() -> impl Future`, etc.
 
 While some promising preliminary work has been done toward resolving this challenge, more in-depth design work is necessary to determine the best path forward.

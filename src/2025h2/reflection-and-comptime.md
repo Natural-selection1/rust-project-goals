@@ -1,7 +1,7 @@
 # reflection and comptime
 
 | Metadata             |                                                                                  |
-| :--                  | :--                                                                              |
+| :------------------- | :------------------------------------------------------------------------------- |
 | Point of contact     | @oli-obk                                                                         |
 | Status               | Proposed                                                                         |
 | Other Tracking issue | [rust-lang/rust#142577]                                                          |
@@ -10,7 +10,6 @@
 | [lang] champion      | @scottmcm                                                                        |
 | [libs] champion      | @joshtriplett                                                                    |
 | Tracking issue       | [rust-lang/rust-project-goals#406]                                               |
-
 
 ## Summary
 
@@ -35,18 +34,19 @@ If this experiment is successful, crates like `bevy` will be able to "just work"
 just to get the `bevy_reflect` information built at compile-time. Crates like `bevy_reflect` and `facet` will still exist, but only as different libraries with different goals and methods for exposing reflection information.
 
 Furthermore it opens up new possibilities of reflection-like behaviour by
-* specializing serialization on specific formats (e.g. serde won't support changing serialization depending on the serializer  https://github.com/serde-rs/serde/issues/2877),
-* specializing trait impl method bodies to have more performant code paths for specific types, groups of types or shapes (e.g. based on the layout) of types.
+
+- specializing serialization on specific formats (e.g. serde won't support changing serialization depending on the serializer https://github.com/serde-rs/serde/issues/2877),
+- specializing trait impl method bodies to have more performant code paths for specific types, groups of types or shapes (e.g. based on the layout) of types.
 
 I consider reflection orthogonal to derives as they solve similar problems from different directions. Reflection lets you write the logic that processes your types in a way very similar to dynamic languages, by inspecting values' types during the execution of the reflection code, while derives generate the code that processes types ahead of time. Proc macros derives have historically been shown to be fairly hard to debug and bootstrap from scratch (we should totally also improve proc macro workflows). While reflection can get similarly complex fast, it allows for a more dynamic approach where you can easily debug the state your are in, as you do not have to pair the derive logic with the consumer logic (e.g. a serializer) and are instead directly writing just the consumer logic.
 
-Reflection often is not as efficient as derives, as the derives can generate the ideal code ahead of time, but once a fully functioning reflection system has been written for a use case, and performance becomes a problem, it should be significantly easier to now write a derive for the performance critical cases than to have started doing so from the start. 
+Reflection often is not as efficient as derives, as the derives can generate the ideal code ahead of time, but once a fully functioning reflection system has been written for a use case, and performance becomes a problem, it should be significantly easier to now write a derive for the performance critical cases than to have started doing so from the start.
 
 ### The next 6 months
 
-* add an attribute for `const fn` that prevents them from being called from runtime code or `const fn` without the attribute
-    * See the FAQ for why we need `#[rustc_comptime] const fn() {}` declarations
-* add basic datastructures to libcore that represent common information about types and the APIs to obtain that information
+- add an attribute for `const fn` that prevents them from being called from runtime code or `const fn` without the attribute
+  - See the FAQ for why we need `#[rustc_comptime] const fn() {}` declarations
+- add basic datastructures to libcore that represent common information about types and the APIs to obtain that information
 
 ### The "shiny future" we are working towards
 
@@ -54,50 +54,50 @@ Create basic building blocks that allow `facet`, `bevy-reflect` and `reflect` to
 
 ## Design axioms
 
-* Prefer procedural const-eval code over associated const based designs (see also "why not uwuflection" in the FAQ).
-    * We picked `const fn` in general evaluation over associated const based designs that are equally expressive but are essentially a DSL
-* Ensure privacy is upheld, modulo things like `size_of` exposing whether new private fields have been added
-    * This is important to ensure that we cannot break abstractions. We will experiment with allowing const items in the same module to access private fields even if the access is in a comptime fn defined in another crate. Or with a comptime fn defined in the same module of a private field accessing that private field even if called in a const item outside of it.
-* Avoid new semver hazards and document any if unavoidable.
-    * e.g. do not expose private fields, methods, or types
+- Prefer procedural const-eval code over associated const based designs (see also "why not uwuflection" in the FAQ).
+  - We picked `const fn` in general evaluation over associated const based designs that are equally expressive but are essentially a DSL
+- Ensure privacy is upheld, modulo things like `size_of` exposing whether new private fields have been added
+  - This is important to ensure that we cannot break abstractions. We will experiment with allowing const items in the same module to access private fields even if the access is in a comptime fn defined in another crate. Or with a comptime fn defined in the same module of a private field accessing that private field even if called in a const item outside of it.
+- Avoid new semver hazards and document any if unavoidable.
+  - e.g. do not expose private fields, methods, or types
 
-> *This section is optional, but including [design axioms][da] can help you signal how you intend to balance constraints and tradeoffs (e.g., "prefer ease of use over performance" or vice versa). Teams should review the axioms and make sure they agree. [Read more about design axioms][da].*
+> _This section is optional, but including [design axioms][da] can help you signal how you intend to balance constraints and tradeoffs (e.g., "prefer ease of use over performance" or vice versa). Teams should review the axioms and make sure they agree. [Read more about design axioms][da]._
 
 [da]: ../about/design_axioms.md
 
 ## Ownership and team asks
 
-> *This section lists out the work to be done and the asks from Rust teams. Every row in the table should either correspond to something done by a contributor or something asked of a team.*
+> _This section lists out the work to be done and the asks from Rust teams. Every row in the table should either correspond to something done by a contributor or something asked of a team._
 >
-> *For most goals, a single table will suffice, but you can also add subsections with `###`. We give several example subsections below that also demonstrate the most common kinds of goals. Remember that the items in the table only corresponds to what you plan to do over the next 6 months.*
+> _For most goals, a single table will suffice, but you can also add subsections with `###`. We give several example subsections below that also demonstrate the most common kinds of goals. Remember that the items in the table only corresponds to what you plan to do over the next 6 months._
 >
-> *For items done by a contributor, list the contributor, or ![Heap wanted][] if you don't yet know who will do it. The owner is ideally identified as a github username like `@ghost`.*
+> _For items done by a contributor, list the contributor, or ![Heap wanted][] if you don't yet know who will do it. The owner is ideally identified as a github username like `@ghost`._
 >
-> *For items asked of teams, list ![Team][] and the name of the team, e.g. `![Team][] [compiler]` or `![Team][] [compiler], [lang]` (note the trailing `[]` in `![Team][]`, that is needed for markdown to parse correctly). For team asks, the "task" must be one of the tasks defined in [rust-project-goals.toml](../rust-project-goals.toml) or `cargo rpg check` will error.*
+> _For items asked of teams, list ![Team][] and the name of the team, e.g. `![Team][] [compiler]` or `![Team][] [compiler], [lang]` (note the trailing `[]` in `![Team][]`, that is needed for markdown to parse correctly). For team asks, the "task" must be one of the tasks defined in [rust-project-goals.toml](../rust-project-goals.toml) or `cargo rpg check` will error._
 
 | Task                         | Owner(s) or team(s) | Notes |
-|------------------------------|---------------------|-------|
+| ---------------------------- | ------------------- | ----- |
 | Discussion and moral support | ![Team][] [lang]    |       |
 | Do the work                  | oli-obk             |       |
 
 ### Design language feature to solve problem
 
-> *Some goals propose to design a feature to solve a problem. Typically the outcome from this goal is an draft or accepted RFC. If you would like to work on an experimental implementation in-tree before an RFC is accepted, you can create a [lang team experiment](https://lang-team.rust-lang.org/how_to/experiment.html), but note that a trusted contributor is required.*
+> _Some goals propose to design a feature to solve a problem. Typically the outcome from this goal is an draft or accepted RFC. If you would like to work on an experimental implementation in-tree before an RFC is accepted, you can create a [lang team experiment](https://lang-team.rust-lang.org/how_to/experiment.html), but note that a trusted contributor is required._
 
-| Task                 | Owner(s) or team(s)                | Notes                                                               |
-|----------------------|------------------------------------|---------------------------------------------------------------------|
-| Lang-team experiment | ![Team][] [lang], [libs]           | Needs libstd data structures (lang items) to make the specialization data available |
+| Task                 | Owner(s) or team(s)      | Notes                                                                               |
+| -------------------- | ------------------------ | ----------------------------------------------------------------------------------- |
+| Lang-team experiment | ![Team][] [lang], [libs] | Needs libstd data structures (lang items) to make the specialization data available |
 
 ### Implement language feature
 
-> *If there is an accepted RFC, or you are doing a [lang-team experiment](https://lang-team.rust-lang.org/how_to/experiment.html), you commonly need someone to write the code, support from the compiler to review your PRs, and possibly lang-team design meetings to review interesting design questions. Once implementation completes we recommend a call for testing blog post.*
+> _If there is an accepted RFC, or you are doing a [lang-team experiment](https://lang-team.rust-lang.org/how_to/experiment.html), you commonly need someone to write the code, support from the compiler to review your PRs, and possibly lang-team design meetings to review interesting design questions. Once implementation completes we recommend a call for testing blog post._
 
-| Task                              | Owner(s) or team(s)                | Notes |
-|-----------------------------------|------------------------------------|-------|
-| Implementation                    | oli-obk |       |
-| Standard reviews                  | ![Team][] [compiler]               |       |
-| Design meeting                    | ![Team][] [lang]                   |       |
-| Author call for testing blog post |  | Likely will just experiment with bevy or facet, no general call for testing |
+| Task                              | Owner(s) or team(s)  | Notes                                                                       |
+| --------------------------------- | -------------------- | --------------------------------------------------------------------------- |
+| Implementation                    | oli-obk              |                                                                             |
+| Standard reviews                  | ![Team][] [compiler] |                                                                             |
+| Design meeting                    | ![Team][] [lang]     |                                                                             |
+| Author call for testing blog post |                      | Likely will just experiment with bevy or facet, no general call for testing |
 
 ## Frequently asked questions
 
@@ -109,7 +109,7 @@ If we had a `bevy_reflect::Type` type in libcore and a
 const fn type_of(id: TypeId) -> &'static Type;
 ```
 
-function, that has the special requirement of, unlike every other `const fn`, not being callable at runtime, then we could work with type descriptions from normal procedural rust code. 
+function, that has the special requirement of, unlike every other `const fn`, not being callable at runtime, then we could work with type descriptions from normal procedural rust code.
 
 So for this experimental impl we would do
 
@@ -125,9 +125,10 @@ an demonstration impl (absolutely not salvageable for anything that could be lan
 ### Why not continue where uwuflection left off?
 
 See https://soasis.org/posts/a-mirror-for-rust-a-plan-for-generic-compile-time-introspection-in-rust/ for details on what uwuflection is
+
 #### Structural processing
 
-it makes procedural processing of type information very hard. E.g. to get the 3rd element of a tuple you need to 
+it makes procedural processing of type information very hard. E.g. to get the 3rd element of a tuple you need to
 
 ```rust
 <introwospect_type::<YourType> as FieldDescriptor<3>>
@@ -147,14 +148,14 @@ in order to use uwuflection in types in generic code you need to either write in
 
 zig's approach to comptime from a very high level is effectively
 
-* generate AST for all source files
-* pick the `main` function and start compiling it and looking for what it needs to be compiled
-* if a comptime function call is found, look only for what code that needs to compile, compile it and produce the resulting code of the comptime function
-* continue the main compilation, which may now invoke the generated code and start compiling that
+- generate AST for all source files
+- pick the `main` function and start compiling it and looking for what it needs to be compiled
+- if a comptime function call is found, look only for what code that needs to compile, compile it and produce the resulting code of the comptime function
+- continue the main compilation, which may now invoke the generated code and start compiling that
 
 we do not experiment with this approach at this time, because the compiler is not set up in a way to permit proc macros from accessing type information from the current crate.
 While there are ongoing refactorings that go into the direction of potentially allowing more of that in the future, that future seems to be more than 5 years away at my best guess.
 
-* the compiler is not set up to add AST nodes while type information is already available. It possibly never will, and it would be an immense amount of work to get there. I'm doing lots of refactorings that would need to be done for sth like that anyway, even if the goal is just better incremental and general compilar architecture.
-* there are too many open language questions about it that we haven't even started to discuss
-* a hacky comptime reflection prototype that works for just tuples and that works with regular const eval exists right now, so pursueing the definitely possible implementation will pay off in a shorter term.
+- the compiler is not set up to add AST nodes while type information is already available. It possibly never will, and it would be an immense amount of work to get there. I'm doing lots of refactorings that would need to be done for sth like that anyway, even if the goal is just better incremental and general compilar architecture.
+- there are too many open language questions about it that we haven't even started to discuss
+- a hacky comptime reflection prototype that works for just tuples and that works with regular const eval exists right now, so pursueing the definitely possible implementation will pay off in a shorter term.

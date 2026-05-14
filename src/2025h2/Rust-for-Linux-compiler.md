@@ -1,7 +1,7 @@
 # Getting Rust for Linux into stable Rust: compiler features
 
 | Metadata            |                                                                              |
-| :--                 | :--                                                                          |
+| :------------------ | :--------------------------------------------------------------------------- |
 | Point of contact    | @tomassedovic                                                                |
 | Status              | Proposed                                                                     |
 | Tracking issue      | [rust-lang/rust-project-goals#407]                                           |
@@ -27,31 +27,31 @@ Thus, this project goal focuses on continuing the work that has been done in the
 
 The Linux kernel, at the time of writing, relies on some Rust compiler unstable features such as:
 
-  - [`-Zbranch-protection`](https://github.com/rust-lang/rust/issues/113369) (arm64).
-  - [`-Zcf-protection`](https://github.com/rust-lang/rust/issues/93754) (x86_64).
-  - [`-Zcrate-attr`](https://github.com/rust-lang/rust/issues/138287).
-  - [`-Zdebuginfo-compression`](https://github.com/rust-lang/rust/issues/120953).
-  - [`-Zdirect-access-external-data`](https://github.com/rust-lang/rust/issues/127488) (loongarch).
-  - `-Zfixed-x18` (arm64).
-  - [`-Zfunction-return`](https://github.com/rust-lang/rust/issues/116853) (x86).
-  - `-Zfunction-sections`.
-  - [`-Zno-jump-tables`](https://github.com/rust-lang/rust/issues/116592) (x86_64).
-  - [`-Zunpretty=expanded`](https://github.com/rust-lang/rust/issues/43364).
-  - [`-Zsanitizer=kernel-address`](https://github.com/rust-lang/rust/issues/123615) (arm64, riscv64).
-  - [`-Zsanitizer=shadow-call-stack`](https://github.com/rust-lang/rust/issues/123615) (arm64, riscv64).
-  - [`-Zsanitizer=kcfi` and `-Zsanitizer-cfi-normalize-integers`](https://github.com/rust-lang/rust/issues/123479) (arm64, riscv64, x86_64).
+- [`-Zbranch-protection`](https://github.com/rust-lang/rust/issues/113369) (arm64).
+- [`-Zcf-protection`](https://github.com/rust-lang/rust/issues/93754) (x86_64).
+- [`-Zcrate-attr`](https://github.com/rust-lang/rust/issues/138287).
+- [`-Zdebuginfo-compression`](https://github.com/rust-lang/rust/issues/120953).
+- [`-Zdirect-access-external-data`](https://github.com/rust-lang/rust/issues/127488) (loongarch).
+- `-Zfixed-x18` (arm64).
+- [`-Zfunction-return`](https://github.com/rust-lang/rust/issues/116853) (x86).
+- `-Zfunction-sections`.
+- [`-Zno-jump-tables`](https://github.com/rust-lang/rust/issues/116592) (x86_64).
+- [`-Zunpretty=expanded`](https://github.com/rust-lang/rust/issues/43364).
+- [`-Zsanitizer=kernel-address`](https://github.com/rust-lang/rust/issues/123615) (arm64, riscv64).
+- [`-Zsanitizer=shadow-call-stack`](https://github.com/rust-lang/rust/issues/123615) (arm64, riscv64).
+- [`-Zsanitizer=kcfi` and `-Zsanitizer-cfi-normalize-integers`](https://github.com/rust-lang/rust/issues/123479) (arm64, riscv64, x86_64).
 
 There are others that we will want to start using in the future, such as:
 
-  - [`-Zharden-sls`](https://github.com/rust-lang/rust/issues/116851) (x86_64).
-  - [`-Zindirect-branch-cs-prefix`](https://github.com/rust-lang/rust/pull/140740) (x86).
-  - [`-Zmin-function-alignment`](https://github.com/rust-lang/rust/issues/82232).
-  - [`-Zrandomize-layout`](https://github.com/rust-lang/rust/issues/106764).
-  - [`-Zregparm`](https://github.com/rust-lang/rust/issues/131749) (x86_32).
-  - [`-Zreg-struct-return`](https://github.com/rust-lang/rust/issues/116973) (x86_32).
-  - [`-Zretpoline` and `-Zretpoline-external-thunk`](https://github.com/rust-lang/rust/pull/135927) (x86).
-  - [`-Zsanitizer=kernel-hwaddress` and `-Zsanitizer-recover=kernel-hwaddress`](https://github.com/rust-lang/rust/issues/123615) (arm64).
-  - [`-Zsanitize-kcfi-arity`](https://github.com/rust-lang/rust/issues/138311) (x86_64).
+- [`-Zharden-sls`](https://github.com/rust-lang/rust/issues/116851) (x86_64).
+- [`-Zindirect-branch-cs-prefix`](https://github.com/rust-lang/rust/pull/140740) (x86).
+- [`-Zmin-function-alignment`](https://github.com/rust-lang/rust/issues/82232).
+- [`-Zrandomize-layout`](https://github.com/rust-lang/rust/issues/106764).
+- [`-Zregparm`](https://github.com/rust-lang/rust/issues/131749) (x86_32).
+- [`-Zreg-struct-return`](https://github.com/rust-lang/rust/issues/116973) (x86_32).
+- [`-Zretpoline` and `-Zretpoline-external-thunk`](https://github.com/rust-lang/rust/pull/135927) (x86).
+- [`-Zsanitizer=kernel-hwaddress` and `-Zsanitizer-recover=kernel-hwaddress`](https://github.com/rust-lang/rust/issues/123615) (arm64).
+- [`-Zsanitize-kcfi-arity`](https://github.com/rust-lang/rust/issues/138311) (x86_64).
 
 Relatedly, there is also the [`build-std` project goal](https://github.com/rust-lang/rust-project-goals/pull/331) support that we need as well (or, rather, only "`build-core`" for the Linux kernel), and the [sanitizers project goal](https://github.com/rust-lang/rust-project-goals/pull/337).
 
@@ -65,10 +65,10 @@ In particular, finishing the work and stabilizing the features that the kernel i
 
 Longer-term, the Linux kernel does not rely on any compiler-related unstable feature anymore, except for those that may need to be added in the future for different reasons, such as:
 
-  - New hardware features.
-  - New mitigations.
-  - New sanitizers.
-  - New architectures.
+- New hardware features.
+- New mitigations.
+- New sanitizers.
+- New architectures.
 
 For that reason, this goal is conceptually never ending, even if we may reach points where no unstable compiler feature is actually used.
 

@@ -1,11 +1,12 @@
 # Provided reasons for yanked crates
 
-| Metadata       |                                    |
-|----------------|------------------------------------|
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @Rustin170506                      |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#101] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#101] |
+| Zulip channel    | N/A                                |
+
 ## Summary
 
 Over the next 6 months, we will add support to the registry yank API for providing a reason when a crate is yanked. This reason can then be displayed to users. After this feature has been up and running for a while, we'll open it up to Cargo to support filling in the reason for yanking.
@@ -25,16 +26,17 @@ This feature has the following potential use cases:
 3. If a crate is renamed (or perhaps deprecated) to another then the yank message can indicate what to do in that situation.
 
 Additionally, if we can persist this information to the crates.io index, we can make it available as meta-information to other platforms, such as security platforms like RustSec.
+
 ### The next 6 months
 
 The primary goal for the next 6 months is to add support to the registry's [yank API].
 
 After that, next steps include (these can be done in many different orders):
 
-* add support on the browser frontend for giving a reason
-* add support on the cargo CLI for giving a reason
-* add reason to the index
-* add support on the cargo CLI for showing the reason
+- add support on the browser frontend for giving a reason
+- add support on the cargo CLI for giving a reason
+- add reason to the index
+- add support on the cargo CLI for showing the reason
 
 [yank API]: https://doc.rust-lang.org/cargo/reference/registry-web-api.html#yank
 
@@ -46,11 +48,11 @@ When considering this feature, we need to balance our desire for a perfect, stru
 
 **Owner:**
 
-* @Rustin170506: wearing my crates.io team member's hat
-* @Rustin170506: wearing my Cargo regular contributor's hat
+- @Rustin170506: wearing my crates.io team member's hat
+- @Rustin170506: wearing my Cargo regular contributor's hat
 
 | Task                                    | Owner(s) or team(s)            | Notes |
-|-----------------------------------------|--------------------------------|-------|
+| --------------------------------------- | ------------------------------ | ----- |
 | Implementation                          | @Rustin170506                  |       |
 | Standard reviews                        | ![Team][] [crates-io]          |       |
 | Deploy to production                    | ![Team][] [crates-io]          |       |

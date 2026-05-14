@@ -23,6 +23,7 @@ Today, at minimum a Cargo package is at least two files (`Cargo.toml` and either
 The `Cargo.toml` has several required fields.
 
 To share this in a bug report, people resort to
+
 - Creating a repo and sharing it
 - A shell script that cats out to multiple files
 - Manually specifying each file
@@ -41,20 +42,20 @@ exists for frontmatter syntax but work is needed to finish going through that pr
 
 Work with T-lang, T-cargo, and other affected teams as we go through the stabilization process.
 
-| Task        | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| T-rustdoc decide on frontmatter in doctests | *owner*  |       |
-| Implement behavior for frontmatter in doctests | *owner*  |       |
+| Task                                           | Owner(s) | Notes |
+| ---------------------------------------------- | -------- | ----- |
+| T-rustdoc decide on frontmatter in doctests    | _owner_  |       |
+| Implement behavior for frontmatter in doctests | _owner_  |       |
 
 ### The "shiny future" we are working towards
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [cargo]    | Small         | Stabilization process                   |
-| [compiler] | Small         | Reviewing any further compiler changes  |
-| [lang]     | Small         | Stabilization discussions               |
-| [rustdoc]  | Small         | Design decision and PR review |
+| Team       | Support level | Notes                                  |
+| ---------- | ------------- | -------------------------------------- |
+| [cargo]    | Small         | Stabilization process                  |
+| [compiler] | Small         | Reviewing any further compiler changes |
+| [lang]     | Small         | Stabilization discussions              |
+| [rustdoc]  | Small         | Design decision and PR review          |
 
 ## Frequently asked questions

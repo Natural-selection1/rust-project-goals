@@ -1,14 +1,14 @@
 # Relink don't Rebuild
 
-| Metadata         |                                    |
-| :--              | :--                                |
-| Point of contact | @yaahc                             |
-| Status           | Proposed                           |
-| Tracking issue   | [rust-lang/rust-project-goals#400] |
-| Zulip channel    |                                    |
-| Flagship         | Flexible, fast(er) compilation    |
-| [cargo] champion | @weihanglo |
-| [compiler] champion | @oli-obk |
+| Metadata            |                                    |
+| :------------------ | :--------------------------------- |
+| Point of contact    | @yaahc                             |
+| Status              | Proposed                           |
+| Tracking issue      | [rust-lang/rust-project-goals#400] |
+| Zulip channel       |                                    |
+| Flagship            | Flexible, fast(er) compilation     |
+| [cargo] champion    | @weihanglo                         |
+| [compiler] champion | @oli-obk                           |
 
 ## Summary
 
@@ -62,6 +62,7 @@ As an example, consider the [`rg` binary in the `ripgrep` package][rg].
 
 Its crate dependency graph (narrowed to only include dependents of `globset`, a particular
 crate in `ripgrep`'s Cargo workspace) looks like this:
+
 ```
 ❯ cargo tree --invert globset
 globset v0.4.16
@@ -179,6 +180,7 @@ flowchart TB
 In particular, note that crate compiles use the `rmeta`s of their direct dependencies.
 
 However, in reality crate compiles need access to all _transitive_ `rmeta`s:
+
 ```mermaid
 flowchart TB
   subgraph globset[globset compile]
@@ -254,14 +256,14 @@ artifacts of dependent crates from then on (instead of continuing to rebuild the
 
 <!--*Sketch out the specific things you are trying to achieve in this goal period. This should be short and high-level -- we don't want to see the design!*-->
 
-* Identify and remove "oversensitivity" in `.rmeta`
+- Identify and remove "oversensitivity" in `.rmeta`
   - i.e. changes to spans, comments, etc. will not affect the `.rmeta`
   - coupled with cargo's unstable [`checksum-freshness` feature](https://github.com/rust-lang/cargo/issues/14136),
     this would avoid triggering rebuilds for dependent crates
-* Make `DefId`s more stable when items are added or reordered
-   - today this is a major source of differences in compiler output
-   - there are other things like `SymbolIndex`es which we may also want to stabilize
-* Work on designs for enabling "transitive" ECO
+- Make `DefId`s more stable when items are added or reordered
+  - today this is a major source of differences in compiler output
+  - there are other things like `SymbolIndex`es which we may also want to stabilize
+- Work on designs for enabling "transitive" ECO
   - i.e. the decision to rebuild should factor in what parts of a transitive crate dep are
     accessible via direct deps
 
@@ -291,26 +293,26 @@ crates to rebuild.
 
 *This section defines the specific work items that are planned and who is expected to do them. It should also include what will be needed from Rust teams. The table below shows some common sets of asks and work, but feel free to adjust it as needed. Every row in the table should either correspond to something done by a contributor or something asked of a team. For items done by a contributor, list the contributor, or ![Help wanted][] if you don't yet know who will do it. For things asked of teams, list ![Team][] and the name of the team. The things typically asked of teams are defined in the [Definitions](#definitions) section below.* -->
 
-| Task                       | Owner(s) or team(s)     | Notes |
-| ----------------------------- | ----------------------- | ----- |
-| Design meeting | ![Team][] [compiler] |       |
-| Discussion and moral support  | ![Team][] [compiler] ![Team][] [cargo]      |       |
-| Nightly experiment for RDR  |                         |       |
-| ↳ Author MCP                  | @osiewicz | [already accepted](https://github.com/rust-lang/compiler-team/issues/790)  |
-| ↳ Rustc Implementation        | | [WIP](https://github.com/osiewicz/rust/tree/api-fingerprinting) |
-| ↳ Cargo Implementation        | | [WIP](https://github.com/osiewicz/cargo/tree/api-fingerprinting) |
-| Improve DefId stability       | @dropbear32 | |
-| Standard reviews              | ![Team][] [compiler] [cargo]    |       |
+| Task                         | Owner(s) or team(s)                    | Notes                                                                     |
+| ---------------------------- | -------------------------------------- | ------------------------------------------------------------------------- |
+| Design meeting               | ![Team][] [compiler]                   |                                                                           |
+| Discussion and moral support | ![Team][] [compiler] ![Team][] [cargo] |                                                                           |
+| Nightly experiment for RDR   |                                        |                                                                           |
+| ↳ Author MCP                 | @osiewicz                              | [already accepted](https://github.com/rust-lang/compiler-team/issues/790) |
+| ↳ Rustc Implementation       |                                        | [WIP](https://github.com/osiewicz/rust/tree/api-fingerprinting)           |
+| ↳ Cargo Implementation       |                                        | [WIP](https://github.com/osiewicz/cargo/tree/api-fingerprinting)          |
+| Improve DefId stability      | @dropbear32                            |                                                                           |
+| Standard reviews             | ![Team][] [compiler] [cargo]           |                                                                           |
 
 ### Definitions
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* Other kinds of decisions:
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- Other kinds of decisions:
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
 
 ## Frequently asked questions
 

@@ -3,9 +3,9 @@
 > **NOTE:** This is a sample blog post you can use as a starting point.
 > To begin a new goal season (e.g., 2222H1), do the following:
 >
-> * Copy this file to to the `blog.rust-lang.org` repository as a new post.
-> * Search and replace `YYYYHN` with `2222H1` and delete this section.
-> * Look for other "TBD" sections, you'll want to replace those eventually.
+> - Copy this file to to the `blog.rust-lang.org` repository as a new post.
+> - Search and replace `YYYYHN` with `2222H1` and delete this section.
+> - Look for other "TBD" sections, you'll want to replace those eventually.
 
 **As of today, we are officially accepting proposals for Rust Project Goals targeting YYYYHN (the (TBD) half of YYYY).** If you'd like to participate in the process, or just to follow along, please check out the [YYYYHN goal page][YYYYHN]. It includes listings of the goals currently under consideration , more details about the goals program, and instructions for how to submit a goal.
 
@@ -15,9 +15,9 @@
 
 Every six months, the Rust project commits to a set of goals for the upcoming half-year. The process involves:
 
-* the owner of the goal program (currently me) posts a call for proposals (this post);
-* would-be goal points of contact [open PRs][] against the [rust-project-goals] repository;
-* the goal-program owner gathers feedback on these goals and chooses some of them to be included in the RFC proposing the final slate of goals.
+- the owner of the goal program (currently me) posts a call for proposals (this post);
+- would-be goal points of contact [open PRs][] against the [rust-project-goals] repository;
+- the goal-program owner gathers feedback on these goals and chooses some of them to be included in the RFC proposing the final slate of goals.
 
 To get an idea what the final slate of goals looks like, check out the RFC from the previous round of goals, [RFC (TBD)][]. The RFC describes a set of goals, designates a few of them as roadmap goals, and summarizes the work expected from each team. The RFC is approved by (at least) the leads of each team, effectively committing their team to prove the support that is described.
 
@@ -30,7 +30,7 @@ To get an idea what the final slate of goals looks like, check out the RFC from 
 
 ## Should I submit a goal?
 
-Opening a goal is an indication that you (or your company, etc) is willing to put up the resources needed to make it happen, at least if you get the indicated support from the teams. These resources are typically development time and effort, but they could be funding (in that case, we'd want to identify someone to take up the goal). If you pass that bar, then by all means, yes, open a goal. 
+Opening a goal is an indication that you (or your company, etc) is willing to put up the resources needed to make it happen, at least if you get the indicated support from the teams. These resources are typically development time and effort, but they could be funding (in that case, we'd want to identify someone to take up the goal). If you pass that bar, then by all means, yes, open a goal.
 
 Note though that controversial goals are likely to not be accepted. If you have an idea that you think people won't like, then you should find ways to lower the ask of the teams. For example, maybe the goal should be to perform experiments to help make the case for the idea, rather than jumping straight to implementation.
 

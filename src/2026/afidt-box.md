@@ -1,7 +1,7 @@
 # Box notation for dyn async trait
 
 | Metadata            |                                                          |
-| :--                 | :--                                                      |
+| :------------------ | :------------------------------------------------------- |
 | Point of contact    | @nikomatsakis                                            |
 | Status              | Accepted                                                 |
 | What and why        | Enable dyn dispatch for async traits via `.box` notation |
@@ -13,7 +13,6 @@
 | Zulip channel       | [#wg-async][channel]                                     |
 | [lang] champion     | @nikomatsakis                                            |
 | [compiler] champion | @TaKO8Ki                                                 |
-
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/187312-wg-async/
 
@@ -38,6 +37,7 @@ trait HttpClient {
 You cannot use `&dyn HttpClient`. The compiler rejects it because async methods return opaque future types whose size isn't known at compile time, and dyn dispatch requires the caller to allocate space for the return value without knowing the concrete type.
 
 Today, developers work around this by:
+
 - **Using static dispatch only**: Generics everywhere, increasing compile times and binary size
 - **Manual desugaring**: Write `-> Pin<Box<dyn Future<Output = Response> + Send + '_>>` and lose the ergonomics of `async fn`
 - **Proc macros**: Use crates like [async-trait] or [dynosaur] that transform your code
@@ -47,7 +47,7 @@ Today, developers work around this by:
 
 #### The broader problem is complex
 
-Making `dyn Trait` work with unsized return types is a deep problem that has been [explored extensively][dyn-async-series]. The caller must provide storage for the returned value, but doesn't know its size. There are many options one might wish to use, with stack allocation and boxing being the most obvious. The [in-place initialization goal](./in-place-init.md) is exploring the design space here for a fully general solution that allows the caller to have total control. But that design work requires time, and the goal for 2026 is only to settle on a *specific design*, not necessarily to implement it or even stabilize it! In the meantime, Rust's support for async-fn-in-trait is only usable in narrow circumstances.
+Making `dyn Trait` work with unsized return types is a deep problem that has been [explored extensively][dyn-async-series]. The caller must provide storage for the returned value, but doesn't know its size. There are many options one might wish to use, with stack allocation and boxing being the most obvious. The [in-place initialization goal](./in-place-init.md) is exploring the design space here for a fully general solution that allows the caller to have total control. But that design work requires time, and the goal for 2026 is only to settle on a _specific design_, not necessarily to implement it or even stabilize it! In the meantime, Rust's support for async-fn-in-trait is only usable in narrow circumstances.
 
 [dyn-async-series]: https://smallcultfollowing.com/babysteps/series/dyn-async-traits/
 
@@ -55,9 +55,9 @@ Making `dyn Trait` work with unsized return types is a deep problem that has bee
 
 The widespread use of the [async-trait] crate demonstrates that boxing is perfectly acceptable for many applications. `async-trait` transforms `async fn` into a fn that returns `Pin<Box<dyn Future + Send>>`, allocating on every call. Despite this cost, the crate has been downloaded millions of times because for most server and application code, the allocation overhead is negligible compared to the I/O being performed.
 
-The problem with `async-trait` isn't that it boxes. It's that it modifies the *trait definition*, forcing all implementors to box on every call. This means library authors can't use it for public traits where some users need static dispatch (no allocation) while others want dyn dispatch.
+The problem with `async-trait` isn't that it boxes. It's that it modifies the _trait definition_, forcing all implementors to box on every call. This means library authors can't use it for public traits where some users need static dispatch (no allocation) while others want dyn dispatch.
 
-What we want is for the *call site* to decide whether to box. A library like Tower could define its `Service` trait using native `async fn`, implementors would write normal async code without any boxing, and generic code using `T: Service` would have zero allocation overhead. But users who need `dyn Service` could opt into boxing at the call site. Once the in-place initialization work proceeds, that same trait would support other allocation strategies too. But boxing unblocks the ecosystem now.
+What we want is for the _call site_ to decide whether to box. A library like Tower could define its `Service` trait using native `async fn`, implementors would write normal async code without any boxing, and generic code using `T: Service` would have zero allocation overhead. But users who need `dyn Service` could opt into boxing at the call site. Once the in-place initialization work proceeds, that same trait would support other allocation strategies too. But boxing unblocks the ecosystem now.
 
 ### What we propose to do about it
 
@@ -74,7 +74,7 @@ async fn fetch_data(client: &dyn HttpClient) -> Response {
 
 For the purposes of this goal, `.box` would only be usable when calling a trait method where the trait definition returns `-> impl SomeTrait`. We expect it would be generalized in the future to serve as a replacement for `Box::new` but the details of that will depend on the outcome from the [in-place initialization](./in-place-init.md) exploration currently taking place.
 
-**Method-scope dyn compatibility.** An implication of the `.box` design is that we need to make the definition of dyn-compatibility more fine-grained. Today, a trait is only "dyn compatible" if *all* of its methods are dyn-safe -- that is, can be used *in the same way* whether through `dyn` or not. But `async fn` (and `-> impl Trait` methods in general) are not dyn-safe in this way: they can only be used if the user specifies a memory allocation strategy (with `.box` being the first example).
+**Method-scope dyn compatibility.** An implication of the `.box` design is that we need to make the definition of dyn-compatibility more fine-grained. Today, a trait is only "dyn compatible" if _all_ of its methods are dyn-safe -- that is, can be used _in the same way_ whether through `dyn` or not. But `async fn` (and `-> impl Trait` methods in general) are not dyn-safe in this way: they can only be used if the user specifies a memory allocation strategy (with `.box` being the first example).
 
 For more details and a broader look, see the [box, box, box][box-post] blog post.
 
@@ -82,12 +82,12 @@ For more details and a broader look, see the [box, box, box][box-post] blog post
 
 ### Work items over the next year
 
-| Task                               | Owner(s)         | Notes                                    |
-| ---------------------------------- | ---------------- | ---------------------------------------- |
-| RFC for method-scope dyn compat    | @nikomatsakis    |                                          |
-| RFC for `.box` notation            | @nikomatsakis    | Scoped to RPITIT/async returns initially |
-| Implementation                     | ![Help Wanted][] | Nightly experiment                       |
-| Documentation                      | ![Help Wanted][] |                                          |
+| Task                            | Owner(s)         | Notes                                    |
+| ------------------------------- | ---------------- | ---------------------------------------- |
+| RFC for method-scope dyn compat | @nikomatsakis    |                                          |
+| RFC for `.box` notation         | @nikomatsakis    | Scoped to RPITIT/async returns initially |
+| Implementation                  | ![Help Wanted][] | Nightly experiment                       |
+| Documentation                   | ![Help Wanted][] |                                          |
 
 ## Team asks
 
@@ -116,6 +116,7 @@ Yes. The notation could potentially work anywhere you would use `Box::new`, but 
 ### Why not just use the dynosaur crate?
 
 The dynosaur crate is a good workaround, but native language support would:
+
 - Avoid proc macro complexity and compile-time overhead
 - Provide better error messages
 - Enable optimizations the compiler can't do through macro-generated code

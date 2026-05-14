@@ -8,9 +8,9 @@
 | Zulip channel    | N/A                                |
 | Tracking issue   | [rust-lang/rust-project-goals#270] |
 
-*Arm's Rust team is @davidtwco, @adamgemmell, @jacobbramley, @JamieCunliffe and @Jamesbarford, as
+_Arm's Rust team is @davidtwco, @adamgemmell, @jacobbramley, @JamieCunliffe and @Jamesbarford, as
 well as @mrkajetanp and @harmou01 as graduates on rotation. This goal will be primarily worked on
-by @davidtwco and @JamieCunliffe.*
+by @davidtwco and @JamieCunliffe._
 
 ## Summary
 
@@ -138,13 +138,13 @@ team in an RFC/FCP).
 
 ### Extending type system to support scalable vectors
 
-| Task                                              | Owner(s) or team(s)       | Notes      |
-| ------------------------------------------------- | ------------------------- | ---------- |
-| Extending type system to support scalable vectors | @davidtwco                |            |
-| Author RFC                                        |                           |            |
-| RFC decision                                      | ![Team][] [types], [lang] |            |
-| Implementation                                    |                           |            |
-| Standard reviews                                  | ![Team][] [compiler]      |            |
+| Task                                              | Owner(s) or team(s)       | Notes |
+| ------------------------------------------------- | ------------------------- | ----- |
+| Extending type system to support scalable vectors | @davidtwco                |       |
+| Author RFC                                        |                           |       |
+| RFC decision                                      | ![Team][] [types], [lang] |       |
+| Implementation                                    |                           |       |
+| Standard reviews                                  | ![Team][] [compiler]      |       |
 
 ### Investigate SME support
 
@@ -158,30 +158,30 @@ team in an RFC/FCP).
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to
   nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback
   (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should
   be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected
   to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the
-  expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the
+  expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the
   changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to
-      add nightly features that do not yet have an RFC. They are limited to trusted contributors and
-      are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used
-      to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html)
-      describes a change to the standard library.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to
+    add nightly features that do not yet have an RFC. They are limited to trusted contributors and
+    are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used
+    to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html)
+    describes a change to the standard library.
 
 ## Frequently asked questions
 

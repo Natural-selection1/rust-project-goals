@@ -1,11 +1,11 @@
 # Implement restrictions, prepare for stabilization
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @jhpratt                           |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#257] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @jhpratt                           |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#257] |
 
 [rfc]: https://rust-lang.github.io/rfcs/3323-restrictions.html
 [pr]: https://github.com/rust-lang/rust/pull/106074
@@ -42,7 +42,7 @@ high level, but are not the focus of this project goal.
 **Owner:** @jhpratt
 
 | Task                                    | Owner(s) or team(s)   | Notes                                   |
-|-----------------------------------------|-----------------------|-----------------------------------------|
+| --------------------------------------- | --------------------- | --------------------------------------- |
 | Discussion and moral support            | ![Team][] [lang]      |                                         |
 | Implementation                          | @jhpratt              | [old PR][pr] is plausibly workable      |
 | Standard reviews                        | ![Team][] [compiler]  |                                         |

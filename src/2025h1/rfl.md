@@ -1,14 +1,16 @@
 # Stabilize tooling needed by Rust for Linux
 
 | Metadata         |                                    |
-|:-----------------|------------------------------------|
+| :--------------- | ---------------------------------- |
 | Short title      | Rust-for-Linux                     |
 | Point of contact | @nikomatsakis                      |
 | Status           | Accepted                           |
 | Flagship         | Yes                                |
 | Tracking issue   | [rust-lang/rust-project-goals#116] |
 | Zulip channel    | [#rust-for-linux][channel]         |
+
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/425075-rust-for-linux/
+
 ## Summary
 
 Continue working towards Rust for Linux on stable, turning focus to compiler and tooling.
@@ -40,22 +42,22 @@ Longer term, having Rust in the Linux kernel is an opportunity to expose more C 
 
 For deeper background, please refer to these materials:
 
-* The article on the latest Maintainers Summit: [Committing to Rust in the kernel](https://lwn.net/Articles/991062/)
-* The [LWN index on articles related to Rust in the kernel](https://lwn.net/Kernel/Index/#Development_tools-Rust)
-* [The latest status update at LPC](https://www.youtube.com/watch?v=tamydDnWoLs).
-* [Linus talking about Rust](https://www.youtube.com/watch?v=OvuEYtkOH88&t=335s).
-* [Rust in the linux kernel, by Alice Ryhl](https://www.youtube.com/watch?v=CEznkXjYFb4)
-* [Using Rust in the binder driver, by Alice Ryhl](https://www.youtube.com/watch?v=Kt3hpvMZv8o)
+- The article on the latest Maintainers Summit: [Committing to Rust in the kernel](https://lwn.net/Articles/991062/)
+- The [LWN index on articles related to Rust in the kernel](https://lwn.net/Kernel/Index/#Development_tools-Rust)
+- [The latest status update at LPC](https://www.youtube.com/watch?v=tamydDnWoLs).
+- [Linus talking about Rust](https://www.youtube.com/watch?v=OvuEYtkOH88&t=335s).
+- [Rust in the linux kernel, by Alice Ryhl](https://www.youtube.com/watch?v=CEznkXjYFb4)
+- [Using Rust in the binder driver, by Alice Ryhl](https://www.youtube.com/watch?v=Kt3hpvMZv8o)
 
 ### What we have done so far
 
 We began the push towards stable support for RFL in 2024H2 with [a project goal focused on language features](https://github.com/rust-lang/rust-project-goals/issues/116). Over the course of those six months we:
 
-* Stabilized the `CoercePointee` derive, supporting the kernel's use of smart pointers to model intrusive linked lists.
-* Stabilized basic usage of `asm_goto`. Based on a survey of the kernel's usage, we [modified the existing design](https://github.com/rust-lang/rust/issues/132078) and also proposed [two](https://github.com/rust-lang/rust/issues/128464) [extensions](https://github.com/rust-lang/rust/pull/131523).
-* Stabilized `offset_of` syntax applied to structs.
-* Added Rust-for-Linux to the Rust CI to avoid accidental breakage.
-* Stabilized support for pointers to static in constants.
+- Stabilized the `CoercePointee` derive, supporting the kernel's use of smart pointers to model intrusive linked lists.
+- Stabilized basic usage of `asm_goto`. Based on a survey of the kernel's usage, we [modified the existing design](https://github.com/rust-lang/rust/issues/132078) and also proposed [two](https://github.com/rust-lang/rust/issues/128464) [extensions](https://github.com/rust-lang/rust/pull/131523).
+- Stabilized `offset_of` syntax applied to structs.
+- Added Rust-for-Linux to the Rust CI to avoid accidental breakage.
+- Stabilized support for pointers to static in constants.
 
 The one feature which was not stabilized yet is [arbitrary self types v2][astv2], which reached "feature complete" status in its implementation. Stabilization is expected in early 2025.
 
@@ -65,12 +67,12 @@ We also began work on tooling stabilization with an [RFC proposing an approach t
 
 Over the next six months our goal is to stabilize the major bits of tooling used by the Rust for Linux project. Some of these work items are complex enough to be tracked independently as their own project goals, in which case they are linked.
 
-* implementing [RFC #3716] to allow stabilizing ABI-modifying compiler flags to control code generation, sanitizer integration, and so forth
-* the ability to extract dependency info and to configure no-std without requiring it in the source file:
-    * currently using `-Zbinary_dep_depinfo=y` and `-Zcrate-attr`
-* stable rustdoc features allowing the RFL project to extract and customize rustdoc tests (`--extract-doctests`);
-* clippy configuration (possibly `.clippy.toml` and `CLIPPY_CONF_DIR`);
-* [a blessed way to rebuild std](./build-std.md): RFL needs a way to rebuild the standard library using stable calls to rustc. Currently building the standard library with rustc is not supported. This is a precursor to what is commonly called `-Zbuild-std`; it is also a blocker to making full use of API-modifying compiler flags and similar features, since they can't be used effectively unless the kernel is rebuilt.
+- implementing [RFC #3716] to allow stabilizing ABI-modifying compiler flags to control code generation, sanitizer integration, and so forth
+- the ability to extract dependency info and to configure no-std without requiring it in the source file:
+  - currently using `-Zbinary_dep_depinfo=y` and `-Zcrate-attr`
+- stable rustdoc features allowing the RFL project to extract and customize rustdoc tests (`--extract-doctests`);
+- clippy configuration (possibly `.clippy.toml` and `CLIPPY_CONF_DIR`);
+- [a blessed way to rebuild std](./build-std.md): RFL needs a way to rebuild the standard library using stable calls to rustc. Currently building the standard library with rustc is not supported. This is a precursor to what is commonly called `-Zbuild-std`; it is also a blocker to making full use of API-modifying compiler flags and similar features, since they can't be used effectively unless the kernel is rebuilt.
 
 In addition, as follow-up from 2024H2, we wish to complete [arbitrary self types v2][astv2] stabilization.
 
@@ -84,17 +86,17 @@ Looking past the bare minimum, the next target would be making "quality of life"
 
 ## Design axioms
 
-* **First, do no harm.** If we want to make a good first impression on kernel developers, the minimum we can do is fit comfortably within their existing workflows so that people not using Rust don't have to do extra work to support it. So long as Linux relies on unstable features, users will have to ensure they have the correct version of Rust installed, which means imposing labor on all Kernel developers.
-* **Don't let perfect be the enemy of good.** The primary goal is to offer stable support for the particular use cases that the Linux kernel requires. Wherever possible we aim to stabilize features completely, but if necessary, we can try to stabilize a subset of functionality that meets the kernel developers' needs while leaving other aspects unstable.
+- **First, do no harm.** If we want to make a good first impression on kernel developers, the minimum we can do is fit comfortably within their existing workflows so that people not using Rust don't have to do extra work to support it. So long as Linux relies on unstable features, users will have to ensure they have the correct version of Rust installed, which means imposing labor on all Kernel developers.
+- **Don't let perfect be the enemy of good.** The primary goal is to offer stable support for the particular use cases that the Linux kernel requires. Wherever possible we aim to stabilize features completely, but if necessary, we can try to stabilize a subset of functionality that meets the kernel developers' needs while leaving other aspects unstable.
 
 ## Ownership and team asks
 
 Here is a detailed list of the work to be done and who is expected to do it. This table includes the work to be done by owners and the work to be done by Rust teams (subject to approval by the team in an RFC/FCP).
 
-* The ![Team][] badge indicates a requirement where Team support is needed.
+- The ![Team][] badge indicates a requirement where Team support is needed.
 
 | Task                         | Owner(s) or team(s)                          | Notes |
-|------------------------------|----------------------------------------------|-------|
+| ---------------------------- | -------------------------------------------- | ----- |
 | Discussion and moral support | ![Team][] [compiler][] [rustdoc][] [cargo][] |       |
 | Overall program management   | @nikomatsakis                                |       |
 
@@ -103,7 +105,7 @@ Here is a detailed list of the work to be done and who is expected to do it. Thi
 Goal: stabilizing various ABI-modifying flags such as `-Zbranch-protection` and friends.
 
 | Task                   | Owner(s) or team(s)    | Notes                                                   |
-|------------------------|------------------------|---------------------------------------------------------|
+| ---------------------- | ---------------------- | ------------------------------------------------------- |
 | Author RFC             | @darksonn              | ![Completed][]                                          |
 | RFC decision           | ![Team][] [compiler][] | [RFC #3716], currently in PFCP                          |
 | Implementation         | ![Help Wanted][]       | For each flag, need to move flags from `-Z` to `-C` etc |
@@ -117,7 +119,7 @@ Goal: support extraction of dependency information (similar to `-Zbinary_dep_dep
 Right now there is no plan for how to approach this. This task needs an owner to pick it up, make a plan, and execute.
 
 | Task                   | Owner(s) or team(s)    | Notes |
-|------------------------|------------------------|-------|
+| ---------------------- | ---------------------- | ----- |
 | Author a plan          | ![Help Wanted][]       |       |
 | Implementation         | ![Help Wanted][]       |       |
 | Standard reviews       | ![Team][] [compiler]   |       |
@@ -128,7 +130,7 @@ Right now there is no plan for how to approach this. This task needs an owner to
 Goal: stable rustdoc features sufficient to extract doc tests without hacky regular expressions
 
 | Task                   | Owner(s) or team(s)   | Notes |
-|------------------------|-----------------------|-------|
+| ---------------------- | --------------------- | ----- |
 | Author RFC             | ![Help Wanted][]      |       |
 | RFC decision           | ![Team][] [rustdoc][] |       |
 | Implementation         | ![Help Wanted][]      |       |
@@ -142,7 +144,7 @@ Goal: stabilized approach to customizing clippy (like `.clippy.toml` and `CLIPPY
 As discussed on [Zulip](https://rust-lang.zulipchat.com/#narrow/channel/257328-clippy/topic/stablization.20of.20clippy.2Etoml.20a), the relevant policy is already correct, but documentation is needed.
 
 | Task                   | Owner(s) or team(s)  | Notes |
-|------------------------|----------------------|-------|
+| ---------------------- | -------------------- | ----- |
 | Author documentation   | ![Help Wanted][]     |       |
 | Stabilization decision | ![Team][] [clippy][] |       |
 
@@ -156,10 +158,10 @@ See [build-std](./build-std.md) goal.
 
 Implementing [RFC #3716], coupled with a [blessed way to build std](./build-std.md), will allow the full use of flags that modify the ABI. We will need to ultimately stabilize the full set of flags used by RFL, which include at least the following:
 
-* arm64: `-Zbranch-protection`, `-Zfixed-x18`, `-Zuse-sync-unwind`.
-* x86: `-Zcf-protection`, `-Zfunction-return`, `-Zno-jump-tables`, `-Zpatchable-function-entry`, retpoline (`+retpoline-external-thunk,+retpoline-indirect-branches,+retpoline-indirect-calls`), SLS (`+harden-sls-ijmp,+harden-sls-ret`).
-* x86 32-bit: `-Zregparm=3`, `-Zreg-struct-return`.
-* LoongArch: `-Zdirect-access-external-data`.
-* production sanitizer flags: `-Zsanitizer=shadow-call-stack`, `-Zsanitizer=kcfi`, `-Zsanitizer-cfi-normalize-integer`.
+- arm64: `-Zbranch-protection`, `-Zfixed-x18`, `-Zuse-sync-unwind`.
+- x86: `-Zcf-protection`, `-Zfunction-return`, `-Zno-jump-tables`, `-Zpatchable-function-entry`, retpoline (`+retpoline-external-thunk,+retpoline-indirect-branches,+retpoline-indirect-calls`), SLS (`+harden-sls-ijmp,+harden-sls-ret`).
+- x86 32-bit: `-Zregparm=3`, `-Zreg-struct-return`.
+- LoongArch: `-Zdirect-access-external-data`.
+- production sanitizer flags: `-Zsanitizer=shadow-call-stack`, `-Zsanitizer=kcfi`, `-Zsanitizer-cfi-normalize-integer`.
 
 Stabilization decisions for each flag will be made independently. We will likely take a future goal to drive some percentage of them to stabilization once [RFC #3716] is implemented.

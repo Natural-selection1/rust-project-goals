@@ -1,15 +1,15 @@
 # build-std
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @davidtwco                         |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#274] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @davidtwco                         |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#274] |
 
-*Arm's Rust team is @davidtwco, @adamgemmell, @jacobbramley, @JamieCunliffe and @Jamesbarford. This
+_Arm's Rust team is @davidtwco, @adamgemmell, @jacobbramley, @JamieCunliffe and @Jamesbarford. This
 goal will be primarily worked on by @adamgemmell, but @davidtwco can always be contacted for
-updates.*
+updates._
 
 ## Summary
 
@@ -64,7 +64,7 @@ build-std is currently an unstable feature in Cargo which hasn't seen much devel
 since its initial development in 2019/2020. There are a variety of issues in the
 [wg-cargo-std-aware][wg-cargo-std-aware] repository which vary from concrete bugs in the current
 experimental implementation to vague "investigate and think about this" issues, which make the
-feature difficult to make progress on. 
+feature difficult to make progress on.
 
 Some of the work required for this exists in the current perma-unstable `-Zbuild-std`
 implementation, which may be re-used if appropriate.
@@ -117,7 +117,7 @@ which can be designed and implemented to complete the build-std feature.
 ## Ownership and team asks
 
 | Task                         | Owner(s) or team(s) | Notes |
-|------------------------------|---------------------|-------|
+| ---------------------------- | ------------------- | ----- |
 | Discussion and moral support | ![Team][] [cargo]   |       |
 | Author RFC                   | @adamgemmell        |       |
 | Implementation               | @adamgemmell        |       |
@@ -127,20 +127,20 @@ which can be designed and implemented to complete the build-std feature.
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
 
 ## Frequently asked questions
 

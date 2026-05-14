@@ -1,11 +1,11 @@
 # Research: How to achieve safety when linking separately compiled code
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @m-ou-se                           |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#267] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @m-ou-se                           |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#267] |
 
 ## Summary
 
@@ -103,7 +103,7 @@ safe cross-language linking.
 **Owner:** @m-ou-se and/or @Jdonszelmann
 
 | Task                                        | Owner(s) or team(s)                          | Notes                          |
-|---------------------------------------------|----------------------------------------------|--------------------------------|
+| ------------------------------------------- | -------------------------------------------- | ------------------------------ |
 | Discussion and moral support                | ![Team][] [lang]                             |                                |
 | Coordination with university                | @Jdonszelmann                                | Delft University of Technology |
 | Acquire funding                             | Hexcat (= @m-ou-se + @Jdonszelmann)          |                                |

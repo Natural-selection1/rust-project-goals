@@ -1,17 +1,17 @@
 # rustc-perf improvements
 
-| Metadata           |                                                          |
-| :--                | :--                                                      |
-| Point of contact   | @davidtwco                                               |
-| Status             | Accepted                                                 |
-| Zulip channel      | [#project-goals/2025h1/rustc-perf-improvements][channel] |
-| Tracking issue     | [rust-lang/rust-project-goals#275]                       |
+| Metadata         |                                                          |
+| :--------------- | :------------------------------------------------------- |
+| Point of contact | @davidtwco                                               |
+| Status           | Accepted                                                 |
+| Zulip channel    | [#project-goals/2025h1/rustc-perf-improvements][channel] |
+| Tracking issue   | [rust-lang/rust-project-goals#275]                       |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/478771-project-goals.2F2025h1.2Frustc-perf-improvements
 
-*Arm's Rust team is @davidtwco, @adamgemmell, @jacobbramley, @JamieCunliffe and @Jamesbarford.
+_Arm's Rust team is @davidtwco, @adamgemmell, @jacobbramley, @JamieCunliffe and @Jamesbarford.
 This goal will be primarily worked on by @Jamesbarford, but @davidtwco can always be contacted for
-updates.*
+updates._
 
 ## Summary
 
@@ -59,7 +59,7 @@ the infra team as possible, the work will largely consist of:
 As this work nears completion, this goal's owners will collaborate with the compiler team and its
 performance working group to extend and update the compiler team's triage and regression handling
 policies. It is important that there are clear guidelines and procedures for circumstances where a
- benchmark improves on one platform and regresses on another, or how to weigh benchmark results
+benchmark improves on one platform and regresses on another, or how to weigh benchmark results
 from unstable features or configurations (e.g. `-Zthreads=2`) vs the primary benchmarking platforms
 and configurations.
 
@@ -71,7 +71,7 @@ will be added to rustc-perf, but this is unlikely to warrant further goals.
 ## Ownership and team asks
 
 | Task                                          | Owner(s) or team(s)    | Notes                                           |
-|-----------------------------------------------|------------------------|-------------------------------------------------|
+| --------------------------------------------- | ---------------------- | ----------------------------------------------- |
 | Discussion and moral support                  | ![Team][] [infra]      |                                                 |
 | Improve rustc-perf implementation work        | @Jamesbarford, @Kobzol |                                                 |
 | Standard reviews                              | ![Team][] [infra]      |                                                 |
@@ -84,30 +84,30 @@ will be added to rustc-perf, but this is unlikely to warrant further goals.
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to
   nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback
   (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and
   should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected
   to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with
-  the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with
+  the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the
   changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used
-      to add nightly features that do not yet have an RFC. They are limited to trusted contributors
-      and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is
-      used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html)
-      describes a change to the standard library.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used
+    to add nightly features that do not yet have an RFC. They are limited to trusted contributors
+    and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is
+    used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html)
+    describes a change to the standard library.
 
 ## Frequently asked questions
 

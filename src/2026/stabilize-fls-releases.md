@@ -1,7 +1,7 @@
 # Stabilize FLS Release Cadence
 
 | Metadata         |                                                                                                                |
-| :--              | :--                                                                                                            |
+| :--------------- | :------------------------------------------------------------------------------------------------------------- |
 | Point of contact | @PLeVasseur                                                                                                    |
 | Status           | Accepted                                                                                                       |
 | What and why     | Predictable FLS releases within six weeks of each Rust stable release, so safety assessors have a current spec |
@@ -9,7 +9,6 @@
 | Tracking issue   | [rust-lang/rust-project-goals#651]                                                                             |
 | Zulip channel    | [#t-lang/fls](https://rust-lang.zulipchat.com/#narrow/channel/520710-t-lang.2Ffls)                             |
 | [fls] champion   | @PLeVasseur                                                                                                    |
-
 
 ## Summary
 
@@ -65,19 +64,19 @@ When we begin having 12-week lookback to Beta, it's possible we'll have multiple
 
 ### Work items over the next year
 
-| Task                            | Owner(s)    | Notes |
-| ------------------------------- | ----------- | ----- |
-| Overall coordination            | @PLeVasseur |       |
-| FLS authoring and review        | ![Team][] [fls] |       |
-| Ship FLS 1.93 through 1.101     | [Team][] [fls] | Each within 6 weeks of corresponding Rust stable |
-| Investigate work of Beta release issues lookback | @PLeVasseur | Learn how Reference writers approach, apply best practices |
+| Task                                             | Owner(s)        | Notes                                                      |
+| ------------------------------------------------ | --------------- | ---------------------------------------------------------- |
+| Overall coordination                             | @PLeVasseur     |                                                            |
+| FLS authoring and review                         | ![Team][] [fls] |                                                            |
+| Ship FLS 1.93 through 1.101                      | [Team][] [fls]  | Each within 6 weeks of corresponding Rust stable           |
+| Investigate work of Beta release issues lookback | @PLeVasseur     | Learn how Reference writers approach, apply best practices |
 
 ## Team asks
 
-| Team   | Support level | Notes |
-| ------ | ------------- | ----- |
-| [spec] | Small         | Alignment on release cadence goal |
-| [fls]  | Large        | Core work of authoring and releasing FLS versions on schedule |
+| Team   | Support level | Notes                                                         |
+| ------ | ------------- | ------------------------------------------------------------- |
+| [spec] | Small         | Alignment on release cadence goal                             |
+| [fls]  | Large         | Core work of authoring and releasing FLS versions on schedule |
 
 ## Frequently asked questions
 

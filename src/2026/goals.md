@@ -34,9 +34,9 @@ Small goals are covered by standard team processes and do not require dedicated 
 
 The following table highlights the support level requested from each affected team. Each goal specifies the level of involvement needed:
 
-* **Small**: The team only needs to do routine activities (e.g., reviewing a few small PRs).
-* **Medium**: Dedicated support from one team member, but the rest of the team doesn't need to be heavily involved.
-* **Large**: Deeper review and involvement from the entire team (e.g., design meetings, complex RFCs).
+- **Small**: The team only needs to do routine activities (e.g., reviewing a few small PRs).
+- **Medium**: Dedicated support from one team member, but the rest of the team doesn't need to be heavily involved.
+- **Large**: Deeper review and involvement from the entire team (e.g., design meetings, complex RFCs).
 
 "Small" asks require someone on the team to "second" the goal. "Medium" and "Large" asks require a dedicated champion from the team.
 

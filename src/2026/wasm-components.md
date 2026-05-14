@@ -1,13 +1,12 @@
 # Wasm Components
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @yoshuawuyts                       |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#656] |
 | Zulip channel       | N/A                                |
 | [compiler] champion | @WesleyWiser                       |
-
 
 ## Summary
 
@@ -46,7 +45,7 @@ There are a number of things with WebAssembly in Rust that are not ideal:
 
 ### The next 12 months
 
-> *Sketch out the specific things you are trying to achieve in this goal period. This should be short and high-level -- we don't want to see the design!*
+> _Sketch out the specific things you are trying to achieve in this goal period. This should be short and high-level -- we don't want to see the design!_
 
 | Task                                                | Owner(s)      | Notes                                                                                                                                                          |
 | --------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -81,7 +80,7 @@ from Rust.
 ## Team asks
 
 | Team       | Support level | Notes                                                                                                                  |
-|------------|---------------|------------------------------------------------------------------------------------------------------------------------|
+| ---------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | [compiler] | Medium        | Targets are small but `async fn` is not                                                                                |
 | [lang]     | small         | Experimentation with native Wasm features will need approval. May become "medium" if we are somehow really successful. |
 | [libs]     | small         | Threading support will need review                                                                                     |
@@ -90,4 +89,4 @@ from Rust.
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._

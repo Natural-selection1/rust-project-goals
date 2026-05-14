@@ -1,7 +1,7 @@
 # Normative Documentation for Sound `unsafe` Rust
 
 | Metadata         |                                                                                                                |
-| :--              | :--                                                                                                            |
+| :--------------- | :------------------------------------------------------------------------------------------------------------- |
 | Point of contact | @PLeVasseur                                                                                                    |
 | Status           | Accepted                                                                                                       |
 | What and why     | Normative documentation for common `unsafe` patterns so safety-critical developers have authoritative guidance |
@@ -9,7 +9,6 @@
 | Tracking issue   | [rust-lang/rust-project-goals#644]                                                                             |
 | Zulip channel    | N/A                                                                                                            |
 | [opsem] champion | @RalfJung                                                                                                      |
-
 
 ## Summary
 
@@ -43,7 +42,7 @@ Developers writing `unsafe` code can cite authoritative documentation for safety
 ## Team asks
 
 | Team        | Support level | Notes                                                                   |
-|-------------|---------------|-------------------------------------------------------------------------|
+| ----------- | ------------- | ----------------------------------------------------------------------- |
 | [opsem]     | Large         | Review unsafe patterns, establish safety contracts, guide documentation |
 | [libs-api]  | Small         | PR reviews for core/std public documentation; feedback on approach.     |
 | [lang]      | Small         | Feedback on language semantics questions as needed                      |

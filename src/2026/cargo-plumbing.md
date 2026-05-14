@@ -1,7 +1,7 @@
 # Prototype a new set of Cargo "plumbing" commands
 
 | Metadata         |                                                                                  |
-|:-----------------|----------------------------------------------------------------------------------|
+| :--------------- | -------------------------------------------------------------------------------- |
 | Point of contact | @epage                                                                           |
 | Status           | Accepted                                                                         |
 | Needs            | Contributor                                                                      |
@@ -11,8 +11,8 @@
 ## Summary
 
 1. Refactor Cargo to allow hacks in
-[proposed cargo-plumbing commands](https://github.com/crate-ci/cargo-plumbing)
-to be removed ([cargo-plumbing#82](https://github.com/crate-ci/cargo-plumbing/issues/82)).
+   [proposed cargo-plumbing commands](https://github.com/crate-ci/cargo-plumbing)
+   to be removed ([cargo-plumbing#82](https://github.com/crate-ci/cargo-plumbing/issues/82)).
 2. Round out proposed commands ([issues](https://github.com/crate-ci/cargo-plumbing/issues?q=is%3Aissue%20state%3Aopen%20label%3AA-new-subcommand))
 3. Finalize the message formats ([cargo-plumbing#18](https://github.com/crate-ci/cargo-plumbing/discussions/18))
 
@@ -27,6 +27,7 @@ However, as Cargo scales into larger applications, users need the ability to ada
 
 While most Cargo commands can be used programmatically, they still only operate at the porcelain level.
 Currently, Cargo's plumbing commands are
+
 - `cargo read-manifest`:
   - works off of a `Cargo.toml` file on disk
   - uses a custom json schema
@@ -52,6 +53,7 @@ Currently, Cargo's plumbing commands are
   - deprecated
 
 There have been experiments for a plumbing for builds
+
 - [`--build-plan`](https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#build-plan) attempts to report what commands will be run so external build tools can manage them.
   - The actual commands to be run is dynamic, based on the output of build scripts from build graph dependencies
   - Difficulty in supporting build pipelining
@@ -64,12 +66,12 @@ Thanks to GSoC, we now have [prototypes for some plumbing commands](https://gith
 
 Continue on the third-party subcommand to experiment with plumbing commands ([source](https://github.com/crate-ci/cargo-plumbing)).
 
-| Task                                    | Owner(s) or team(s)      | Notes |
-|-----------------------------------------|--------------------------|-------|
-| Refactor cargo                          | ![Help wanted][]         |       |
-| Implement remaining commands            | ![Help wanted][]         |       |
-| Inside Rust blog post inviting feedback | @epage                   |       |
-| Optimizing Cargo                        | ![Help wanted][], @epage |       |
+| Task                                               | Owner(s) or team(s)      | Notes |
+| -------------------------------------------------- | ------------------------ | ----- |
+| Refactor cargo                                     | ![Help wanted][]         |       |
+| Implement remaining commands                       | ![Help wanted][]         |       |
+| Inside Rust blog post inviting feedback            | @epage                   |       |
+| Optimizing Cargo                                   | ![Help wanted][], @epage |       |
 | Iterate on schemas including schema evolution plan | ![Help wanted][]         |       |
 
 See [2025h2 goal](../2025h2/cargo-plumbing.md) for more background.
@@ -82,8 +84,8 @@ See [2025h2 goal](../2025h2/cargo-plumbing.md) for more background.
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [cargo]    | Small         | PR reviews for Cargo changes; design discussions |
+| Team    | Support level | Notes                                            |
+| ------- | ------------- | ------------------------------------------------ |
+| [cargo] | Small         | PR reviews for Cargo changes; design discussions |
 
 ## Frequently asked questions

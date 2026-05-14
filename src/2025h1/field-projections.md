@@ -1,10 +1,11 @@
 # Field Projections
 
-| Metadata         |                            |
-|:-----------------|----------------------------|
-| Point of contact | @y86-dev                   |
-| Status           | Not accepted                   |
-| Zulip channel    | N/A                        |
+| Metadata         |              |
+| :--------------- | ------------ |
+| Point of contact | @y86-dev     |
+| Status           | Not accepted |
+| Zulip channel    | N/A          |
+
 ## Summary
 
 Finalize the [Field Projections RFC] and implement it for use in nightly.
@@ -21,6 +22,7 @@ operate on fields of the contained types compared to references.
 ### The status quo
 
 Field projections are a unifying solution to several problems:
+
 - [pin projections],
 - ergonomic pointer-to-field access operations for pointer-types (`*const T`, `&mut MaybeUninit<T>`,
   `NonNull<T>`, `&UnsafeCell<T>`, etc.),
@@ -81,6 +83,7 @@ impl Foo {
 ```
 
 There are a lot of types that can benefit from this operation:
+
 - `NonNull<T>`
 - `*const T`, `*mut T`
 - `&T`, `&mut T`
@@ -113,6 +116,7 @@ struct FairRaceFuture<F1, F2> {
 ```
 
 One can utilize the following projections when given `fut: Pin<&mut FairRaceFuture<F1, F2>>`:
+
 - `fut->fut1: Pin<&mut F1>`
 - `fut->fut2: Pin<&mut F2>`
 - `fut->fair: &mut bool`
@@ -183,7 +187,7 @@ feel similar to using field access today.
 **Owner:** @y86-dev
 
 | Task             | Owner(s) or team(s)        | Notes |
-|------------------|----------------------------|-------|
+| ---------------- | -------------------------- | ----- |
 | Design meeting   | ![Team][] [lang]           |       |
 | RFC decision     | ![Team][] [lang]           |       |
 | Implementation   | ![Help wanted][], @y86-dev |       |
@@ -193,37 +197,37 @@ feel similar to using field access today.
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to
   nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no
   decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should
   be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to
   be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the
-  expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the
+  expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the
   changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to
-      add nightly features that do not yet have an RFC. They are limited to trusted contributors and
-      are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used
-      to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal
-      (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a
-      change to the standard library.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to
+    add nightly features that do not yet have an RFC. They are limited to trusted contributors and
+    are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used
+    to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal
+    (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a
+    change to the standard library.
 
 ## Frequently asked questions
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the
 design axioms in the order that you did? It's also a good place to put the answers to any questions
 that come up during discussion. The expectation is that this FAQ section will grow as the goal is
-discussed and eventually should contain a complete summary of the points raised along the way.*
+discussed and eventually should contain a complete summary of the points raised along the way._

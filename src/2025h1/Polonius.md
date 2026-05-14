@@ -1,12 +1,14 @@
 # Scalable Polonius support on nightly
 
 | Metadata         |                                    |
-|:-----------------|------------------------------------|
+| :--------------- | ---------------------------------- |
 | Point of contact | @lqd                               |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#118] |
 | Zulip channel    | [#t-types/polonius][channel]       |
+
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/186049-t-types.2Fpolonius
+
 ## Summary
 
 Keep working on implementing a native rustc version of the [Polonius][pc3] next generation borrow checking algorithm, that would scale better than the previous [datalog] implementation, continuing from the [2024h2 goal](https://rust-lang.github.io/rust-project-goals/2024h2/Polonius.html).
@@ -23,7 +25,7 @@ Some support exists on nightly, but this [older prototype][datalog] has no path 
 
 ### The next six months
 
-* Complete the ongoing work to land polonius on nightly
+- Complete the ongoing work to land polonius on nightly
 
 ### The "shiny future" we are working towards
 
@@ -61,20 +63,20 @@ As our model is a superset of NLLs, we expect little to no diagnostics regressio
 
 Note: some of these are currently being worked on as part of the 2024h2 goal, and could be completed before the 2025h1 period.
 
-| Milestone                                                                          | Contributor    | Notes |
-| ---------------------------------------------------------------------------------- | -------------- | ----- |
-| Factoring out higher-ranked concerns from the main path                            | @amandasystems |       |
-| ↳ [x] rewrite invalid universe constraints with outlives `'static` constraints     |                | [PR 123720](https://github.com/rust-lang/rust/pull/123720) | 
-| ↳ [ ] completely remove placeholders                                               |                | in progress [PR 130227](https://github.com/rust-lang/rust/pull/130227) | 
-| Location-sensitive prototype on nightly                                            | @lqd           | in progress |
-| ↳ [x] create structures for location-dependent outlives constraints                |                |             |
-| ↳ [x] build new constraint graph from typeck constraints and liveness constraints  |                |             |
-| ↳ [x] update NLLs for required changes to local & region liveness, loan liveness & loan scopes, (possibly unreachable) kills, bidirectional traversal & active loans | | |
-| ↳ [ ] limit regressions about diagnostics when using the new constraints on diagnostics tailored to the old constraints  | | |
-| ↳ [ ] land on nightly under a `-Z`  flag                                           |                     |             |
-| [x] Debugging / dump tool for analysis of location-sensitive analysis              | @lqd                |             |
-| [ ] Tests and validation of location-sensitive Polonius                            | @lqd                |             |
-| ↳ [ ] make the full test suite pass                                                |                     | in progress |
-| ↳ [ ] do a crater run for assertions and backwards-compatibility                   |                     |             |
-| ↳ [ ] expand test suite with tests about the new capabilities                      |                     |             |
-| [ ] Location-sensitive pass on nightly, tested on CI                               | @lqd                |             |
+| Milestone                                                                                                                                                            | Contributor    | Notes                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------- |
+| Factoring out higher-ranked concerns from the main path                                                                                                              | @amandasystems |                                                                        |
+| ↳ [x] rewrite invalid universe constraints with outlives `'static` constraints                                                                                       |                | [PR 123720](https://github.com/rust-lang/rust/pull/123720)             |
+| ↳ [ ] completely remove placeholders                                                                                                                                 |                | in progress [PR 130227](https://github.com/rust-lang/rust/pull/130227) |
+| Location-sensitive prototype on nightly                                                                                                                              | @lqd           | in progress                                                            |
+| ↳ [x] create structures for location-dependent outlives constraints                                                                                                  |                |                                                                        |
+| ↳ [x] build new constraint graph from typeck constraints and liveness constraints                                                                                    |                |                                                                        |
+| ↳ [x] update NLLs for required changes to local & region liveness, loan liveness & loan scopes, (possibly unreachable) kills, bidirectional traversal & active loans |                |                                                                        |
+| ↳ [ ] limit regressions about diagnostics when using the new constraints on diagnostics tailored to the old constraints                                              |                |                                                                        |
+| ↳ [ ] land on nightly under a `-Z` flag                                                                                                                              |                |                                                                        |
+| [x] Debugging / dump tool for analysis of location-sensitive analysis                                                                                                | @lqd           |                                                                        |
+| [ ] Tests and validation of location-sensitive Polonius                                                                                                              | @lqd           |                                                                        |
+| ↳ [ ] make the full test suite pass                                                                                                                                  |                | in progress                                                            |
+| ↳ [ ] do a crater run for assertions and backwards-compatibility                                                                                                     |                |                                                                        |
+| ↳ [ ] expand test suite with tests about the new capabilities                                                                                                        |                |                                                                        |
+| [ ] Location-sensitive pass on nightly, tested on CI                                                                                                                 | @lqd           |                                                                        |

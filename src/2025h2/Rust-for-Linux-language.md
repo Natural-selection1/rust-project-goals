@@ -1,13 +1,13 @@
 # Getting Rust for Linux into stable Rust: language features
 
-| Metadata         |                                                                                  |
-|:-----------------|----------------------------------------------------------------------------------|
-| Point of contact | @tomassedovic                                                                    |
-| Status           | Proposed                                                                         |
-| Tracking issue   | [rust-lang/rust-project-goals#116]                                               |
-| Zulip channel    | [#t-lang][channel-t-lang], [#rust-for-linux][channel-rust-for-linux]             |
-| [lang] champion | @joshtriplett |
-| [lang-docs] champion | @traviscross |
+| Metadata             |                                                                      |
+| :------------------- | -------------------------------------------------------------------- |
+| Point of contact     | @tomassedovic                                                        |
+| Status               | Proposed                                                             |
+| Tracking issue       | [rust-lang/rust-project-goals#116]                                   |
+| Zulip channel        | [#t-lang][channel-t-lang], [#rust-for-linux][channel-rust-for-linux] |
+| [lang] champion      | @joshtriplett                                                        |
+| [lang-docs] champion | @traviscross                                                         |
 
 [channel-t-lang]: https://rust-lang.zulipchat.com/#narrow/channel/213817-t-lang
 [channel-rust-for-linux]: https://rust-lang.zulipchat.com/#narrow/channel/425075-rust-for-linux
@@ -28,24 +28,24 @@ Thus, this project goal focuses on continuing the work that has been done in the
 
 The Linux kernel, at the time of writing, relies on a few Rust language unstable features:
 
-  - [`arbitrary_self_types`](https://github.com/rust-lang/rust/issues/44874).
-  - [`derive_coerce_pointee`](https://github.com/rust-lang/rust/issues/123430).
+- [`arbitrary_self_types`](https://github.com/rust-lang/rust/issues/44874).
+- [`derive_coerce_pointee`](https://github.com/rust-lang/rust/issues/123430).
 
 In addition, there are others that we will likely want to start using in the future, such as:
 
-  - [`asm_const_ptr`](https://github.com/rust-lang/rust/issues/128464).
-  - Field projections: [project goal](https://github.com/rust-lang/rust-project-goals/pull/329).
-  - In-place initialization / Emplacement / ...: [project goal](https://github.com/rust-lang/rust-project-goals/pull/344).
+- [`asm_const_ptr`](https://github.com/rust-lang/rust/issues/128464).
+- Field projections: [project goal](https://github.com/rust-lang/rust-project-goals/pull/329).
+- In-place initialization / Emplacement / ...: [project goal](https://github.com/rust-lang/rust-project-goals/pull/344).
 
 For completeness, on the library side, we use:
 
-  - [`cfg(no_fp_fmt_parse)`](https://github.com/rust-lang/rust/pull/86048).
-  - [`file_with_nul`](https://github.com/rust-lang/rust/issues/141727).
+- [`cfg(no_fp_fmt_parse)`](https://github.com/rust-lang/rust/pull/86048).
+- [`file_with_nul`](https://github.com/rust-lang/rust/issues/141727).
 
 Furthermore, on the compiler side, we use:
 
-  - `compiler_builtins`.
-  - [`used_with_arg`](https://github.com/rust-lang/rust/issues/93798).
+- `compiler_builtins`.
+- [`used_with_arg`](https://github.com/rust-lang/rust/issues/93798).
 
 As well as a set of compiler flags and other features which have their own [project goal](https://github.com/rust-lang/rust-project-goals/pull/346).
 
@@ -66,7 +66,7 @@ An important design axiom that still applies from previous iterations is "**Don'
 ## Ownership and team asks
 
 | Task                         | Owner(s) or team(s) | Notes                                      |
-|------------------------------|---------------------|--------------------------------------------|
+| ---------------------------- | ------------------- | ------------------------------------------ |
 | Discussion and moral support | ![Team][] [lang]    | Continue the Rust for Linux <-> Rust calls |
 
 Which features get finished and stabilized depends on bandwidth and other constraints on both the Rust and the Rust for Linux sides, but generally we expect they will follow the usual pattern as we have done before.
@@ -74,7 +74,7 @@ Which features get finished and stabilized depends on bandwidth and other constr
 ### Finish and stabilize `arbitrary_self_types` and `derive_coerce_pointee`
 
 | Task                         | Owner(s) or team(s)   | Notes |
-|------------------------------|-----------------------|-------|
+| ---------------------------- | --------------------- | ----- |
 | Discussion and moral support | ![Team][] [lang]      |       |
 | Finalize remaining work      | @dingxiangfei2009     |       |
 | Author Reference PR          | @dingxiangfei2009     |       |

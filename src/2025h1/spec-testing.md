@@ -1,10 +1,11 @@
 # Rust Specification Testing
 
 | Metadata         |                    |
-|:-----------------|--------------------|
+| :--------------- | ------------------ |
 | Point of contact | @chorman0773       |
-| Status           | Not accepted           |
+| Status           | Not accepted       |
 | Zulip channel    | [#t-spec][channel] |
+
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/399173-t-spec
 
 ## Summary
@@ -26,20 +27,22 @@ New and existing tests will be integrated with the specification through tagging
 ### The "shiny future" we are working towards
 
 The integration of testing into the specification should:
-* Aid Review of the Reference and Specification, by being able to read Rust code that demonstrates and validates the text of those documents,
-* Likewise assist readers who may wish to view the implications of a given paragraph in a programmatic manner,
-* Aid the development of the Rust Language, and to assist improvements to the processes being considered by the Language Team,
-* Aid the development of the Rust Compiler and its test suite as a whole, by improving organization of the test suite, including differentiating between tests of language-level guaranteed behaviour and tests of implementation-specific behaviour, and
-* Aid in the use of the Rust Specification in the context of safety-critical development, by providing traceability for the content of the Specification. 
+
+- Aid Review of the Reference and Specification, by being able to read Rust code that demonstrates and validates the text of those documents,
+- Likewise assist readers who may wish to view the implications of a given paragraph in a programmatic manner,
+- Aid the development of the Rust Language, and to assist improvements to the processes being considered by the Language Team,
+- Aid the development of the Rust Compiler and its test suite as a whole, by improving organization of the test suite, including differentiating between tests of language-level guaranteed behaviour and tests of implementation-specific behaviour, and
+- Aid in the use of the Rust Specification in the context of safety-critical development, by providing traceability for the content of the Specification.
+
 ## Ownership and team asks
 
 **Owner:** Connor Horman
-| Task                 | Owner(s) or team(s)                                    | Notes     |
+| Task | Owner(s) or team(s) | Notes |
 |----------------------|--------------------------------------------------------|-----------|
-| Author RFC           | @chorman0773                                           |           |
-| RFC decision         | ![Team][] [spec][] [compiler][] [bootstrap][] [lang][] |           |
-| Move/Extract Tests   | @chorman0773                                           | As Needed |
-| Annotate Moved Tests |                                                        |           |
-| Author new tests     | @chorman0773                                           |           |
+| Author RFC | @chorman0773 | |
+| RFC decision | ![Team][] [spec][] [compiler][] [bootstrap][] [lang][] | |
+| Move/Extract Tests | @chorman0773 | As Needed |
+| Annotate Moved Tests | | |
+| Author new tests | @chorman0773 | |
 
 ## Frequently asked questions

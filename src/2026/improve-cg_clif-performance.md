@@ -1,14 +1,13 @@
 # Improve `rustc_codegen_cranelift` performance
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @bjorn3                            |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#639] |
 | Zulip channel       | N/A                                |
 | Needs               | Funding                            |
 | [compiler] champion | @bjorn3                            |
-
 
 ## Summary
 

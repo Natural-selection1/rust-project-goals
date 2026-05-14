@@ -1,12 +1,12 @@
 # Borrow checking in a-mir-formality
 
 | Metadata         |                                                                                  |
-|:-----------------|----------------------------------------------------------------------------------|
+| :--------------- | -------------------------------------------------------------------------------- |
 | Point of contact | @nikomatsakis                                                                    |
 | Status           | Proposed                                                                         |
 | Tracking issue   | [rust-lang/rust-project-goals#122]                                               |
 | Zulip channel    | N/A (an existing stream can be re-used or new streams can be created on request) |
-| [types] champion | @nikomatsakis |
+| [types] champion | @nikomatsakis                                                                    |
 
 ## Summary
 
@@ -55,9 +55,9 @@ The long-term vision for a-mir-formality is to develop a comprehensive formal mo
 
 The goal of a-mir-formality is to be a step in between a high-level, mathematical description of Rust's system (as one might find when doing proofs) and the full details of the compiler (which include significant additional complexity for performance, diagnostics, etc). It should be reasonable to assert that if a-mir-formality is sound, then the compiler is sound modulo small implementation bugs.
 
-* **Recognizably the compiler.** The goal of a-mir-formality is that the algorithms can be mapped to the compiler's algorithms in a fairly straightforward way (though the compiler will have additional optimizations, caching, and all kinds of concerns that don't matter to a-mir-formality).
-* **Capture what's essential.** a-mir-formality doesn't need to cover every detail of Rust but it should capture the ones that are important when reasoning about soundness and safety or the type system.
-* **The compiler should be a sound, but incomplete version of a-mir-formality.** Given some program P that falls within the scope of what a-mir-formality models, if the compiler accepts P, then a-mir-formality should accept P. But there may be some programs that the compiler refuses to accept because of implementation limitations that a-mir-formality would accept because it is willing to (for example) explore a larger search space.
+- **Recognizably the compiler.** The goal of a-mir-formality is that the algorithms can be mapped to the compiler's algorithms in a fairly straightforward way (though the compiler will have additional optimizations, caching, and all kinds of concerns that don't matter to a-mir-formality).
+- **Capture what's essential.** a-mir-formality doesn't need to cover every detail of Rust but it should capture the ones that are important when reasoning about soundness and safety or the type system.
+- **The compiler should be a sound, but incomplete version of a-mir-formality.** Given some program P that falls within the scope of what a-mir-formality models, if the compiler accepts P, then a-mir-formality should accept P. But there may be some programs that the compiler refuses to accept because of implementation limitations that a-mir-formality would accept because it is willing to (for example) explore a larger search space.
 
 [da]: ../about/design_axioms.md
 
@@ -65,21 +65,21 @@ The goal of a-mir-formality is to be a step in between a high-level, mathematica
 
 This section outlines the work to be done and the specific asks from Rust teams. A key challenge we face is limited knowledge and understanding of a-mir-formality's setup. To address this, we're asking for standard reviews from types team members and dedicated review for Polonius-related work.
 
-| Task                                      | Owner(s) or team(s)                | Notes |
-|-------------------------------------------|-----------------------------------|-------|
-| Implementation of MiniRust integration    | @tiif                             | Extending a-mir-formality to represent function bodies as MiniRust programs |
-| Implementation of MIR type checker        | @tiif                             | Creating a type checker based on the compiler's MIR type checker |
-| Implementation of Polonius Alpha model    | @tiif                             | Modeling key parts of the Polonius Alpha proposal |
-| Standard reviews                          | ![Team][] [types]                 | Help familiarize more people with the a-mir-formality setup through PR reviews |
-| Dedicated reviewer                        | ![Team][] [types]                 | Assign specific reviewers for Polonius Alpha model implementation (@lqd) |
-| Mentorship                                | @nikomatsakis                     | Providing guidance and mentorship for the implementation work |
+| Task                                   | Owner(s) or team(s) | Notes                                                                          |
+| -------------------------------------- | ------------------- | ------------------------------------------------------------------------------ |
+| Implementation of MiniRust integration | @tiif               | Extending a-mir-formality to represent function bodies as MiniRust programs    |
+| Implementation of MIR type checker     | @tiif               | Creating a type checker based on the compiler's MIR type checker               |
+| Implementation of Polonius Alpha model | @tiif               | Modeling key parts of the Polonius Alpha proposal                              |
+| Standard reviews                       | ![Team][] [types]   | Help familiarize more people with the a-mir-formality setup through PR reviews |
+| Dedicated reviewer                     | ![Team][] [types]   | Assign specific reviewers for Polonius Alpha model implementation (@lqd)       |
+| Mentorship                             | @nikomatsakis       | Providing guidance and mentorship for the implementation work                  |
 
 ### Definitions
 
 For definitions for terms used above, see the [About > Team Asks](https://rust-lang.github.io/rust-project-goals/about/team_asks.html) page.
 
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
 
 ## Frequently asked questions
 

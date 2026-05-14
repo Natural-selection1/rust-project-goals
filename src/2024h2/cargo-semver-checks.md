@@ -1,11 +1,12 @@
 # Begin resolving `cargo-semver-checks` blockers for merging into cargo
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @obi1kenobi                        |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#104] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#104] |
+| Zulip channel    | N/A                                |
+
 ## Summary
 
 Design and implement `cargo-semver-checks` functionality that lies on the critical path for merging the tool into cargo itself.
@@ -29,6 +30,7 @@ Our goal here is to resolve one of those blockers (cargo manifest linting), and 
 ### The status quo
 
 Work in three major areas is required to resolve the [blockers][merge-blockers] for running `cargo-semver-checks` as part of `cargo publish`:
+
 - Support for cargo manifest linting, and associated CLI changes
 - Checking of cross-crate items
 - SemVer linting of type information
@@ -60,6 +62,7 @@ This causes a massive number of false-positives ("breakage reported incorrectly"
 In excess of 90% of real-world false-positives are traceable back to a cross-crate item, as measured by our [SemVer study][semver-study]!
 
 For example, the following change is not breaking but `cargo-semver-checks` will incorrectly report it as breaking:
+
 ```rust
 // previous release:
 pub fn example() {}
@@ -67,7 +70,8 @@ pub fn example() {}
 // in the new release, imagine this function moved to `another_crate`:
 pub use another_crate::example;
 ```
-This is because the rustdoc JSON that `cargo-semver-checks` sees indeed *does not contain* a function named `example`.
+
+This is because the rustdoc JSON that `cargo-semver-checks` sees indeed _does not contain_ a function named `example`.
 Currently, `cargo-semver-checks` is incapable of following the cross-crate connection to `another_crate`, generating its rustdoc JSON, and continuing its analysis there.
 
 Resolving this limitation will require changes to how `cargo-semver-checks` generates and handles rustdoc JSON, since the set of required rustdoc JSON files will no longer be fully known ahead of time.
@@ -83,6 +87,7 @@ The goal here is for `cargo-semver-checks` to have its own story straight and do
 
 Currently, `cargo-semver-checks` lints cannot represent or examine type information.
 For example, the following change is breaking but `cargo-semver-checks` will not detect or report it:
+
 ```rust
 // previous release:
 pub fn example(value: String) {}
@@ -90,9 +95,11 @@ pub fn example(value: String) {}
 // new release:
 pub fn example(value: i64) {}
 ```
+
 Analogous breaking changes to function return values, struct fields, and associated types would also be missed by `cargo-semver-checks` today.
 
 The main difficulty here lies with the expressiveness of the Rust type system. For example, none of the following changes are breaking:
+
 ```rust
 // previous release:
 pub fn example(value: String) {}
@@ -103,6 +110,7 @@ pub fn example(value: impl Into<String>) {}
 // subsequent release:
 pub fn example<S: Into<String>>(value: S) {}
 ```
+
 Similar challenges exist with lifetimes, variance, trait solving, `async fn` versus `fn() -> impl Future`, etc.
 
 While there are some promising preliminary ideas for resolving this challenge, more in-depth design work is necessary to determine the best path forward.
@@ -110,6 +118,7 @@ While there are some promising preliminary ideas for resolving this challenge, m
 ### The next 6 months
 
 Three things:
+
 - Implement cargo manifest linting
 - Implement CLI future-proofing changes, with manifest linting and cross-crate analysis in mind
 - Flesh out a design for supporting cross-crate analysis and type information linting in the future
@@ -130,12 +139,12 @@ To accomplish this, `cargo-semver-checks` needs the ability to express more kind
 
 I (@obi1kenobi) will be working on this effort. The only other resource request would be occasional discussions and moral support from the [cargo] team, of which I already have the privilege as maintainer of a popular cargo plugin.
 
-| Task                                             | Owner(s) or team(s)     | Notes |
-| ------------------------------------------------ | ----------------------- | ----- |
-| Implementation of cargo manifest linting + CLI   | @obi1kenobi             |       |
-| Initial design for cross-crate checking          | @obi1kenobi             |       |
-| Initial design for type-checking lints           | @obi1kenobi             |       |
-| Discussion and moral support                     | ![Team][] [cargo]       |       |
+| Task                                           | Owner(s) or team(s) | Notes |
+| ---------------------------------------------- | ------------------- | ----- |
+| Implementation of cargo manifest linting + CLI | @obi1kenobi         |       |
+| Initial design for cross-crate checking        | @obi1kenobi         |       |
+| Initial design for type-checking lints         | @obi1kenobi         |       |
+| Discussion and moral support                   | ![Team][] [cargo]   |       |
 
 ## Frequently asked questions
 

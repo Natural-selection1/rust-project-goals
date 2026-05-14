@@ -1,7 +1,7 @@
 # Async statemachine optimisation
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @diondokter                        |
 | Status              | Accepted                           |
 | Needs               | Funding                            |
@@ -10,15 +10,14 @@
 | Needs               | Funding                            |
 | [compiler] champion | @eholk                             |
 
-
 ## Summary
 
 Add optimisations to the coroutine MIR transform to elide or simplify the generated statemachines.
 
 This will help both async futures and generators.
 
-*Note: This has some overlap with [this other proposal](./async-future-memory-optimisation.md).
-I'm not trying to usurp the issue. I was working on it incidentally at the same time and noticed very late that proposal already existed.*
+_Note: This has some overlap with [this other proposal](./async-future-memory-optimisation.md).
+I'm not trying to usurp the issue. I was working on it incidentally at the same time and noticed very late that proposal already existed._
 
 ## Motivation
 
@@ -85,8 +84,8 @@ I've got 3 optimisations on my list so far. You can see them in the work items a
 
 ## Team asks
 
-| Team       | Support level | Notes                                                                                                           |
-| ---------- | ------------- | --------------------------------------------------------------------------------------------------------------- |
+| Team       | Support level | Notes                                                                                                                                |
+| ---------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [compiler] | Medium        | Most will be review work, but pushing optimisations to the max will possibly touch on some controversial points that need discussion |
 
 ## Frequently asked questions
@@ -116,11 +115,13 @@ With funding we can make it a real project and we (Tweede golf) can bring in mor
 We have similar goals, but a different philosofy.
 
 I want to tackle the problem at the front:
+
 - Stop generating statemachines that don't have to be there
 - Make the compiler's job easier by removing panic paths and branches
 - Make statemachines smaller
 
 The other proposal tackles the problem at the back:
+
 - Given there are statemachines, make them interact better with each other (real proper inlining)
 - Research the options LLVM now provides
 

@@ -11,15 +11,15 @@
 
 ## Summary
 
-This project aims to get the rust cranelift codegen backend to a production-ready state. Specifically, with this work completed, we'd be confident to recommend it as the default for local development, e.g. with `cargo test` or `cargo run`. 
+This project aims to get the rust cranelift codegen backend to a production-ready state. Specifically, with this work completed, we'd be confident to recommend it as the default for local development, e.g. with `cargo test` or `cargo run`.
 
 ## Motivation
 
-Compile-time performance consistently comes up as a limiting factor in the use and enjoyment of rust. Through extensive tracking and the hard work of T-perf and others, performance has gradually improved over the years. However, in practical terms, a 1% improvement here and there is not sufficient to truly improve users' workflows.  
+Compile-time performance consistently comes up as a limiting factor in the use and enjoyment of rust. Through extensive tracking and the hard work of T-perf and others, performance has gradually improved over the years. However, in practical terms, a 1% improvement here and there is not sufficient to truly improve users' workflows.
 
-The cranelift codegen backend (`rustc_codegen_cranelift`) is one of the most concrete ways we have to deliver a serious improvement to compile times in the typical development cycle.  In our measurements on larger projects (e.g. Zed, Tauri, hickory-dns), we currently see roughly a 20% reduction of code generation time, translating to around 5% speedup of total compilation time for clean builds.
+The cranelift codegen backend (`rustc_codegen_cranelift`) is one of the most concrete ways we have to deliver a serious improvement to compile times in the typical development cycle. In our measurements on larger projects (e.g. Zed, Tauri, hickory-dns), we currently see roughly a 20% reduction of code generation time, translating to around 5% speedup of total compilation time for clean builds.
 
-Currently, this backend still has some serious limitations that real-world code bases run into. This project goal aims to get the `rustc_codegen_cranelift` to a state where we can confidently recommend it for local development. 
+Currently, this backend still has some serious limitations that real-world code bases run into. This project goal aims to get the `rustc_codegen_cranelift` to a state where we can confidently recommend it for local development.
 
 ## Status quo
 
@@ -68,8 +68,9 @@ More long-term we see the cranelift backend as an extremely promising approach f
 | Do the work          | @bjorn3, @folkertdev                |                                                                                                                                      |
 
 Note: the `wg-compiler-performance` ask is a nice to have, and it is clear to both the goal owners and the working group that:
+
 - it depends on [another goal][rustc-perf infra] for the technical ability to exist in the first place, with its own requirements and timeline
-- and when it's possible to handle `rustc_codegen_cranelift` in `rustc-perf`, deployment and availability could *also* have practical requirements like funding
+- and when it's possible to handle `rustc_codegen_cranelift` in `rustc-perf`, deployment and availability could _also_ have practical requirements like funding
 - and that `wg-compiler-performance` can accept the ask conditionally on the above external requirements it doesn't control
 
 [Trifecta Tech Foundation]: https://github.com/trifectatechfoundation

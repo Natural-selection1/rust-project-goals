@@ -1,14 +1,13 @@
 # Design a language feature to solve Field Projections
 
 | Metadata         |                                    |
-| :--              | :--                                |
+| :--------------- | :--------------------------------- |
 | Point of contact | @BennoLossin                       |
 | Status           | Proposed                           |
 | Flagship         | Beyond the `&`                     |
 | Tracking issue   | [rust-lang/rust-project-goals#390] |
 | Zulip channel    | N/A                                |
 | [lang] champion  | @tmandry                           |
-
 
 ## Summary
 
@@ -23,7 +22,7 @@ Rust makes extensive use of smart pointers (`Box<T>`, `Rc<T>`, `Arc<T>`), modifi
 MaybeUninit<T>`, `Pin<&mut T>`) and custom pointer types (`NonNull<T>`).
 
 Some of these types implement the `Deref[Mut]` trait(s) allowing one to access fields of the type
-`T`. But not all of them can implement it due to various reasons. However, they often *can* support
+`T`. But not all of them can implement it due to various reasons. However, they often _can_ support
 operations that "index" into the fields of the type `T`. For example `&mut MaybeUninit<Struct>`
 conceptually has fields of type `&mut MaybeUninit<Field>`.
 
@@ -31,12 +30,14 @@ conceptually has fields of type `&mut MaybeUninit<Field>`.
 
 Rust has a lot of container types that make it difficult to directly interact with fields of structs
 that they wrap. For example:
+
 - `MaybeUninit<T>`,
 - `UnsafeCell<T>`,
 - `Cell<T>`
 
 It also has several pointer-like types that could support a natural pointer-to-field operation. For
 example:
+
 - `NonNull<T>`,
 - `*const T` / `*mut T`,
 - `cell::Ref<'_, T>` / `cell::RefMut<'_, T>`

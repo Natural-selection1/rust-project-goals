@@ -1,10 +1,10 @@
 # Instructions for rust-project-goals work
 
-This file provides instructions for contributing to the `rust-project-goals` repository.  It is intended to be self-contained: everything needed to work effectively in this repository is documented here or cited with a precise path.
+This file provides instructions for contributing to the `rust-project-goals` repository. It is intended to be self-contained: everything needed to work effectively in this repository is documented here or cited with a precise path.
 
 ## Repository overview
 
-This repository hosts the Rust project's **goal proposals** -- a bottom-up process where contributors propose goals, Rust teams review them, and accepted goals are tracked to completion.  The repository is published as an mdBook site at <https://rust-lang.github.io/rust-project-goals/>.
+This repository hosts the Rust project's **goal proposals** -- a bottom-up process where contributors propose goals, Rust teams review them, and accepted goals are tracked to completion. The repository is published as an mdBook site at <https://rust-lang.github.io/rust-project-goals/>.
 
 There are two kinds of content:
 
@@ -12,7 +12,7 @@ There are two kinds of content:
 
 - **Roadmap documents** (`src/<milestone>/roadmap-<theme>.md`) -- narrative pages that group related goals under a unifying theme.
 
-Milestone directories follow the pattern `YYYY` or `YYYYhN` (e.g., `2024h2`, `2025h1`, `2026`).  Starting with 2026, goals are annual rather than semiannual.
+Milestone directories follow the pattern `YYYY` or `YYYYhN` (e.g., `2024h2`, `2025h1`, `2026`). Starting with 2026, goals are annual rather than semiannual.
 
 ## Repository structure
 
@@ -49,7 +49,7 @@ cargo rpg <command>   # shorthand for: cargo run -q --bin rust-project-goals-cli
 The commands you need most often:
 
 | Command                   | Action                                                  |
-|---------------------------|---------------------------------------------------------|
+| ------------------------- | ------------------------------------------------------- |
 | `cargo check --workspace` | Verify all Rust code compiles                           |
 | `cargo rpg check`         | Validate all goal and roadmap documents parse correctly |
 | `cargo test --workspace`  | Run unit tests                                          |
@@ -64,22 +64,22 @@ The commands you need most often:
 
 Both of these run in CI (via `.github/workflows/compile.yml` and `.github/workflows/check.yml`).
 
-Note: `cargo rpg check` validates all milestone directories.  A failure in a preexisting file (not one you touched) is not your problem, but you should be aware of it and not mistake it for a regression you introduced.
+Note: `cargo rpg check` validates all milestone directories. A failure in a preexisting file (not one you touched) is not your problem, but you should be aware of it and not mistake it for a regression you introduced.
 
 ## Goal document format
 
-Goal documents live at `src/<milestone>/<name>.md`.  The canonical template is `src/TEMPLATE.md`.  Here is the structure:
+Goal documents live at `src/<milestone>/<name>.md`. The canonical template is `src/TEMPLATE.md`. Here is the structure:
 
 ### Title
 
-The first line must be a level-1 heading (`#`).  This becomes the goal's title.
+The first line must be a level-1 heading (`#`). This becomes the goal's title.
 
 ### Metadata table
 
-Immediately after the title, a two-column markdown table with the header `| Metadata | |`.  The rows below are recognized.  Rows marked "parsed" are extracted by the parser and validated; rows marked "conventional" are used by humans and the preprocessor but the parser does not reject typos in their names.
+Immediately after the title, a two-column markdown table with the header `| Metadata | |`. The rows below are recognized. Rows marked "parsed" are extracted by the parser and validated; rows marked "conventional" are used by humans and the preprocessor but the parser does not reject typos in their names.
 
 | Row name                | Required | Kind         | Notes                                                                           |
-|-------------------------|----------|--------------|---------------------------------------------------------------------------------|
+| ----------------------- | -------- | ------------ | ------------------------------------------------------------------------------- |
 | `Point of contact`      | Yes      | Parsed       | Single GitHub `@username`                                                       |
 | `Status`                | Yes      | Parsed       | `Proposed`, `Invited`, `Accepted`, `Proposed for mentorship`, or `Not accepted` |
 | `Short title`           | No       | Parsed       | Alternate short title for tables; defaults to the `#` heading                   |
@@ -93,11 +93,11 @@ Immediately after the title, a two-column markdown table with the header `| Meta
 
 [1] Required when Status is `Accepted`; blank for `Proposed` goals.
 
-[2] Required when the corresponding team ask is Medium or Large.  The team name must be a valid Rust team (validated against the `rust-lang/team` repository at runtime).
+[2] Required when the corresponding team ask is Medium or Large. The team name must be a valid Rust team (validated against the `rust-lang/team` repository at runtime).
 
 **Legacy note:** The row name `Flagship` is accepted as a synonym for `Roadmap` for backward compatibility with pre-2026 documents.
 
-**Auto-injected rows:** The mdBook preprocessor automatically appends `Teams` and `Task owners` rows during rendering.  Do not add these manually.
+**Auto-injected rows:** The mdBook preprocessor automatically appends `Teams` and `Task owners` rows during rendering. Do not add these manually.
 
 ### Required sections
 
@@ -112,39 +112,39 @@ Every goal document must contain:
 ### Team asks table
 
 ```markdown
-| Team       | Support level | Notes                          |
-| ---------- | ------------- | ------------------------------ |
-| [compiler] | Small         |                                |
-| [lang]     | Medium        | Design meeting needed          |
-| [types]    | Large         | Soundness review               |
-| [libs]     | Vibes         |                                |
+| Team       | Support level | Notes                 |
+| ---------- | ------------- | --------------------- |
+| [compiler] | Small         |                       |
+| [lang]     | Medium        | Design meeting needed |
+| [types]    | Large         | Soundness review      |
+| [libs]     | Vibes         |                       |
 ```
 
-Team names use markdown link-reference syntax: `[cargo]`, `[compiler]`, `[lang]`, `[libs]`, `[opsem]`, `[types]`, etc.  These are resolved to team pages by the preprocessor.
+Team names use markdown link-reference syntax: `[cargo]`, `[compiler]`, `[lang]`, `[libs]`, `[opsem]`, `[types]`, etc. These are resolved to team pages by the preprocessor.
 
 Valid support levels:
 
 | Level    | Meaning                                                |
-|----------|--------------------------------------------------------|
+| -------- | ------------------------------------------------------ |
 | `Vibes`  | No action needed; just want to know the team likes it  |
 | `Small`  | Only routine activities (e.g., reviewing a few PRs)    |
 | `Medium` | Dedicated support from one person; requires a champion |
 | `Large`  | Deeper review from the full team; requires a champion  |
 
-**Pre-2026 format:** Milestones before 2026 use a different team asks structure.  The section is named `## Ownership and team asks` and the table has columns `| Task | Owner(s) or team(s) | Notes |`.  Rows that represent team asks (as opposed to personal work items) are marked with `![Team][]` before the team name.  When editing pre-2026 goal files, preserve the existing format.
+**Pre-2026 format:** Milestones before 2026 use a different team asks structure. The section is named `## Ownership and team asks` and the table has columns `| Task | Owner(s) or team(s) | Notes |`. Rows that represent team asks (as opposed to personal work items) are marked with `![Team][]` before the team name. When editing pre-2026 goal files, preserve the existing format.
 
 ### Other tracking issue format
 
-When referencing tracking issues in other repositories, prefer the explicit `org/repo#NNN` format (e.g., `rust-lang/rust#31844`).  A bare `#NNN` is ambiguous because it resolves to this repository.
+When referencing tracking issues in other repositories, prefer the explicit `org/repo#NNN` format (e.g., `rust-lang/rust#31844`). A bare `#NNN` is ambiguous because it resolves to this repository.
 
 ## Roadmap document format
 
-Roadmap documents must be named `roadmap-<theme-slug>.md` and live alongside goal documents in the milestone directory.  The structural template is `src/ROADMAP_TEMPLATE.md`, but note that the template is currently out of date: it claims roadmaps have no metadata table, whereas all actual roadmap files do.  Use an existing roadmap in `src/2026/` (e.g., `roadmap-beyond-the-ampersand.md`) as a model.
+Roadmap documents must be named `roadmap-<theme-slug>.md` and live alongside goal documents in the milestone directory. The structural template is `src/ROADMAP_TEMPLATE.md`, but note that the template is currently out of date: it claims roadmaps have no metadata table, whereas all actual roadmap files do. Use an existing roadmap in `src/2026/` (e.g., `roadmap-beyond-the-ampersand.md`) as a model.
 
 Roadmaps have a simpler metadata table:
 
 | Row name           | Required | Notes                                           |
-|--------------------|----------|-------------------------------------------------|
+| ------------------ | -------- | ----------------------------------------------- |
 | `Short title`      | No       | Used to match goals' `Roadmap` rows             |
 | `What and why`     | Yes      | One-line summary                                |
 | `Point of contact` | Yes      | `@username` or "TBD"                            |
@@ -152,14 +152,14 @@ Roadmaps have a simpler metadata table:
 
 Roadmaps must contain `## Summary`, `## Motivation` (with `### The status quo`, `### What we are shooting for`, `### Key use cases`, `### Design axioms`), `## 2026 goals` (containing a `(((ROADMAP GOALS: Theme name)))` directive), and `## Frequently asked questions`.
 
-Goals reference roadmaps by adding a `| Roadmap | Theme name |` row to their metadata table, where "Theme name" matches the roadmap's `Short title` (or its `#` heading if no short title is set).  A goal may belong to multiple roadmaps.
+Goals reference roadmaps by adding a `| Roadmap | Theme name |` row to their metadata table, where "Theme name" matches the roadmap's `Short title` (or its `#` heading if no short title is set). A goal may belong to multiple roadmaps.
 
 ## mdBook preprocessor directives
 
-The preprocessor replaces `(((DIRECTIVE)))` markers in markdown files with generated content.  The most common directives:
+The preprocessor replaces `(((DIRECTIVE)))` markers in markdown files with generated content. The most common directives:
 
 | Directive                      | Generates                                           |
-|--------------------------------|-----------------------------------------------------|
+| ------------------------------ | --------------------------------------------------- |
 | `(((GOALS)))`                  | Table of all accepted/proposed goals                |
 | `(((ROADMAP GOALS)))`          | Table of goals tagged with any roadmap              |
 | `(((ROADMAP GOALS: Theme)))`   | Table filtered to a specific roadmap theme          |
@@ -183,15 +183,15 @@ The preprocessor replaces `(((DIRECTIVE)))` markers in markdown files with gener
 
 **Legacy synonyms:** For backward compatibility with pre-2026 files, `FLAGSHIP GOALS` is accepted wherever `ROADMAP GOALS` appears (including the filtered and count variants).
 
-Individual goal files are **not** listed in `SUMMARY.md`.  They are discovered automatically by scanning the milestone directory.  The `(((GOAL CHAPTERS)))` directive creates book subchapters for them dynamically.
+Individual goal files are **not** listed in `SUMMARY.md`. They are discovered automatically by scanning the milestone directory. The `(((GOAL CHAPTERS)))` directive creates book subchapters for them dynamically.
 
 ## Crate architecture
 
 - **`rust-project-goals`** (library): Core parsing (`goal.rs`, `markwaydown.rs`), formatting (`format_team_ask.rs`, `format_team_support.rs`, `format_champions.rs`), markdown link/team processing (`markdown_processor.rs`), GitHub API (`gh/`), configuration (`config.rs`), regex patterns (`re.rs`), team data (`team.rs`), and utilities (`util.rs`).
 
-- **`rust-project-goals-cli`**: The `cargo rpg` CLI.  Entry point is `crates/rust-project-goals-cli/src/main.rs`.
+- **`rust-project-goals-cli`**: The `cargo rpg` CLI. Entry point is `crates/rust-project-goals-cli/src/main.rs`.
 
-- **`mdbook-goals`**: The mdBook preprocessor.  The core logic is in `crates/mdbook-goals/src/goal_preprocessor.rs`.
+- **`mdbook-goals`**: The mdBook preprocessor. The core logic is in `crates/mdbook-goals/src/goal_preprocessor.rs`.
 
 - **`rust-project-goals-json`**: Small crate defining the external JSON API types for tracking issue data.
 
@@ -215,13 +215,13 @@ When adding or editing a goal document:
 
 6. Run `cargo rpg check` to validate the document parses.
 
-7. The preprocessor and book build require a `GH_TOKEN` environment variable for some operations (e.g., fetching team data, milestone issues).  For offline work, `cargo rpg check` and `cargo check --workspace` are sufficient.
+7. The preprocessor and book build require a `GH_TOKEN` environment variable for some operations (e.g., fetching team data, milestone issues). For offline work, `cargo rpg check` and `cargo check --workspace` are sufficient.
 
 ### Roadmap documents
 
 When adding or editing a roadmap document:
 
-1. Use an existing roadmap in `src/2026/` as a model (e.g., `roadmap-beyond-the-ampersand.md`).  The file must be named `roadmap-<theme-slug>.md`.
+1. Use an existing roadmap in `src/2026/` as a model (e.g., `roadmap-beyond-the-ampersand.md`). The file must be named `roadmap-<theme-slug>.md`.
 
 2. Include the metadata table with at least `What and why` and `Point of contact`.
 
@@ -240,12 +240,12 @@ When adding or editing a roadmap document:
 
 ## CI checks
 
-Three GitHub Actions workflows are defined.  The first two run on pushes and PRs to `main`; the third runs only on pushes to `main` (and on a cron schedule):
+Three GitHub Actions workflows are defined. The first two run on pushes and PRs to `main`; the third runs only on pushes to `main` (and on a cron schedule):
 
-| Workflow           | File              | What it runs                    | Trigger            |
-| ------------------ | ----------------- | ------------------------------- | ------------------ |
-| Validate markdown  | `check.yml`       | `just check`                    | push, PR           |
-| Compile Rust code  | `compile.yml`     | `cargo check --workspace`       | push, PR           |
-| Deploy mdBook      | `mdbook.yml`      | `just build` + deploy to Pages  | push, cron, manual |
+| Workflow          | File          | What it runs                   | Trigger            |
+| ----------------- | ------------- | ------------------------------ | ------------------ |
+| Validate markdown | `check.yml`   | `just check`                   | push, PR           |
+| Compile Rust code | `compile.yml` | `cargo check --workspace`      | push, PR           |
+| Deploy mdBook     | `mdbook.yml`  | `just build` + deploy to Pages | push, cron, manual |
 
-The first two are the gate checks for pull requests.  The `just check` command is equivalent to `cargo rpg check` (see the commands table above).
+The first two are the gate checks for pull requests. The `just check` command is equivalent to `cargo rpg check` (see the commands table above).

@@ -1,17 +1,17 @@
 # Const Traits
 
-| Metadata         |                                    |
-| :--------------- | ---------------------------------- |
-| Point of contact | @fee1-dead                         |
-| Status           | Accepted                           |
+| Metadata         |                                                                                                     |
+| :--------------- | --------------------------------------------------------------------------------------------------- |
+| Point of contact | @fee1-dead                                                                                          |
+| Status           | Accepted                                                                                            |
 | What and why     | Let `const fn` call trait methods so compile-time code can use generics and standard library traits |
-| Tracking issue   | [rust-lang/rust-project-goals#106] |
-| Zulip channel    | #t-compiler/project-const-traits   |
-| Highlight        | Const and reflection               |
-| Roadmap          | Constify all the things            |
-| Roadmap          | Rust for Linux                     |
-| [types] champion | @oli-obk                           |
-| [lang] champion  | @traviscross                       |
+| Tracking issue   | [rust-lang/rust-project-goals#106]                                                                  |
+| Zulip channel    | #t-compiler/project-const-traits                                                                    |
+| Highlight        | Const and reflection                                                                                |
+| Roadmap          | Constify all the things                                                                             |
+| Roadmap          | Rust for Linux                                                                                      |
+| [types] champion | @oli-obk                                                                                            |
+| [lang] champion  | @traviscross                                                                                        |
 
 ## Summary
 
@@ -51,15 +51,14 @@ Finalize the RFC, complete the compiler implementation, and stabilize so `const 
 
 ## Team asks
 
-
-| Team       | Support level | Notes                                            |
-| ---------- | ------------- | ------------------------------------------------ |
-| [lang]     | Large         | Semantics, syntax, and stabilization decisions   |
-| [types]    | Large         | Implementation design and sign-off               |
-| [compiler] | Small         | Code reviews                                     |
+| Team       | Support level | Notes                                          |
+| ---------- | ------------- | ---------------------------------------------- |
+| [lang]     | Large         | Semantics, syntax, and stabilization decisions |
+| [types]    | Large         | Implementation design and sign-off             |
+| [compiler] | Small         | Code reviews                                   |
 
 ## Frequently asked questions
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._

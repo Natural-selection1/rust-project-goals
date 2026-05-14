@@ -1,14 +1,13 @@
 # Expand the Rust Reference to specify more aspects of the Rust language
 
 | Metadata             |                                    |
-| :--                  | :--                                |
+| :------------------- | :--------------------------------- |
 | Point of contact     | @joshtriplett                      |
 | Status               | Proposed                           |
 | Zulip channel        | [#t-spec][channel]                 |
 | Tracking issue       | [rust-lang/rust-project-goals#394] |
 | [lang-docs] champion | @joshtriplett                      |
 | [spec] champion      | @joshtriplett                      |
-
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/399173-t-spec
 
@@ -54,7 +53,7 @@ specifies) are:
 
 - The behavior of type inference, including both when the language can infer
   types and the boundaries and limitations of when it cannot.
-- The trait solver (up to date with the new solver work by @lcnr). 
+- The trait solver (up to date with the new solver work by @lcnr).
 - More details on macros and expansion, in general. Macros-by-example
   (declarative `macro_rules!` macros) are mostly covered, but not things like
   the exact behavior of proc macros and the general process such as cfg
@@ -77,7 +76,7 @@ Other items, which are out of the scope of this project goal:
   successor to the previous Stacked Borrows model. Specifying this will also
   carefully distinguish between description of the current behavior and
   bounds on future behavior, as the borrow checker likely will improve further
-  in the future. 
+  in the future.
 - The operational semantics of the Rust language, which includes the work
   formerly described as "unsafe code guidelines". This has been the focus of
   the opsem team (<https://github.com/rust-lang/opsem-team>).
@@ -124,17 +123,18 @@ and the operational semantics.
 ## Design axioms
 
 The following [design axioms][da] apply:
-* Some documentation may be better suited for the rustc-dev-guide rather than the Rust Reference. If we find ourselves with material better suited for the rustc-dev-guide, we can submit it there, and submit appropriate user-focused subsets of it to the Rust Reference.
-* Large changes all at once can be harder to review. When possible, we should endeavor to share outlines of new material in advance, and make sure we're broadly aligned, before writing and submitting full prose. And when feasible and appropriate, we should break up changes into easier-to-review chunks (e.g. individual commits).
-* When writing down descriptions of Rust based on the observed current behavior of `rustc`, we sometimes encounter areas where we're not entirely sure whether we want to guarantee the observed behavior as the behavior of Rust. There are two cases:  
+
+- Some documentation may be better suited for the rustc-dev-guide rather than the Rust Reference. If we find ourselves with material better suited for the rustc-dev-guide, we can submit it there, and submit appropriate user-focused subsets of it to the Rust Reference.
+- Large changes all at once can be harder to review. When possible, we should endeavor to share outlines of new material in advance, and make sure we're broadly aligned, before writing and submitting full prose. And when feasible and appropriate, we should break up changes into easier-to-review chunks (e.g. individual commits).
+- When writing down descriptions of Rust based on the observed current behavior of `rustc`, we sometimes encounter areas where we're not entirely sure whether we want to guarantee the observed behavior as the behavior of Rust. There are two cases:
   1. We're unhappy with the current behavior of some edge cases. Here, we will prefer to document the current user-visible behavior while leaving an appropriate disclaimer in the Reference (following conventions of the Reference) that there are open questions about whether we may wish to change this behavior.
   2. We're uncertain about whether the behavior represents a stable guarantee or simply a description of one of many behaviors that Rust could validly exhibit. Here, we will describe the current behavior in an explicitly non-normative fashion (following conventions of the Reference), noting specifically that this does not represent a Rust language guarantee and that other behaviors are possible.
-* Sometimes, writing things down may uncover behaviors that are clearly bugs in `rustc` (e.g., because those behaviors would be unsound, would contradict other settled language in the Reference, or are otherwise just obviously wrong) and where the correct behavior is obvious (e.g. because it's implied by other text in the Reference, by existing lang RFCs, due to being the only choice, etc.). In these cases, we'll prefer to normatively document the correct behavior, to file the relevant bug report in `rust-lang/rust`, and if appropriate (e.g. because we expect the bug to be longstanding) to add a disclaimer in the Reference (in the standard format) describing the incorrect behavior and citing the bug report.
-* Other times, we'll uncover behaviors where either 1) it's unclear whether or not the behavior represents a bug in `rustc` or 2) it probably does represent a bug in `rustc` but it's unclear what the correct behavior is. In these cases, we'll prefer to non-normatively document the current behavior (in the standard way for the Reference), to file an issue in `rust-lang/rust` asking the lang team (potentially along with one of its subteams, as appropriate) to make a decision about what the correct behavior is, and to cite that issue in the Reference.
-* Tests demonstrating the behavior being documented, whether as `rust-lang/rust` tests or as tested reference examples, can provide value in making a change easier to review and validate.
-* We should be explicit about any material that is primarily descriptive rather than normative.
-* We should keep an eye out for potential process improvements that may make it easier to maintain the Reference in the future.
-  * Jack Huey (@jackh726) will work with T-types and T-compiler on potential process improvements to loop in the Reference when making relevant changes as part of those teams.
+- Sometimes, writing things down may uncover behaviors that are clearly bugs in `rustc` (e.g., because those behaviors would be unsound, would contradict other settled language in the Reference, or are otherwise just obviously wrong) and where the correct behavior is obvious (e.g. because it's implied by other text in the Reference, by existing lang RFCs, due to being the only choice, etc.). In these cases, we'll prefer to normatively document the correct behavior, to file the relevant bug report in `rust-lang/rust`, and if appropriate (e.g. because we expect the bug to be longstanding) to add a disclaimer in the Reference (in the standard format) describing the incorrect behavior and citing the bug report.
+- Other times, we'll uncover behaviors where either 1) it's unclear whether or not the behavior represents a bug in `rustc` or 2) it probably does represent a bug in `rustc` but it's unclear what the correct behavior is. In these cases, we'll prefer to non-normatively document the current behavior (in the standard way for the Reference), to file an issue in `rust-lang/rust` asking the lang team (potentially along with one of its subteams, as appropriate) to make a decision about what the correct behavior is, and to cite that issue in the Reference.
+- Tests demonstrating the behavior being documented, whether as `rust-lang/rust` tests or as tested reference examples, can provide value in making a change easier to review and validate.
+- We should be explicit about any material that is primarily descriptive rather than normative.
+- We should keep an eye out for potential process improvements that may make it easier to maintain the Reference in the future.
+  - Jack Huey (@jackh726) will work with T-types and T-compiler on potential process improvements to loop in the Reference when making relevant changes as part of those teams.
 
 [da]: ../about/design_axioms.md
 
@@ -143,11 +143,11 @@ The following [design axioms][da] apply:
 **Owner:** @joshtriplett, in his capacity as `t-lang` and `t-spec` team member,
 will lead this project goal. @jackh726 will co-lead this goal.
 
-| Task                               | Owner(s) or team(s)            | Notes                           |
-|------------------------------------|--------------------------------|---------------------------------|
-| Discussion and moral support       | ![Team][] [spec][]             | |
-| New reference chapters             | @lcnr, @jackh726, @Amanieu, @GuillaumeGomez, @yaahc | |
-| Standard reviews                   | @joshtriplett, @lcnr, @jackh726, @Amanieu, @GuillaumeGomez, @m-ou-se, @petrochenkov, @yaahc | |
-| Standard reviews                   | ![Team][] [spec][] [lang-docs][]            | |
+| Task                         | Owner(s) or team(s)                                                                         | Notes |
+| ---------------------------- | ------------------------------------------------------------------------------------------- | ----- |
+| Discussion and moral support | ![Team][] [spec][]                                                                          |       |
+| New reference chapters       | @lcnr, @jackh726, @Amanieu, @GuillaumeGomez, @yaahc                                         |       |
+| Standard reviews             | @joshtriplett, @lcnr, @jackh726, @Amanieu, @GuillaumeGomez, @m-ou-se, @petrochenkov, @yaahc |       |
+| Standard reviews             | ![Team][] [spec][] [lang-docs][]                                                            |       |
 
 ## Frequently asked questions

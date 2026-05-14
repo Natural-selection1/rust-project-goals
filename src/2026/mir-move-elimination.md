@@ -1,7 +1,7 @@
 # MIR move elimination
 
 | Metadata         |                                    |
-|:-----------------|:-----------------------------------|
+| :--------------- | :--------------------------------- |
 | Point of contact | @Amanieu                           |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#396] |
@@ -10,7 +10,6 @@
 | [opsem] champion | @RalfJung                          |
 | [compiler]       | @dianqk                            |
 | [wg-mir-opt]     | @dianqk                            |
-
 
 ## Summary
 
@@ -48,10 +47,9 @@ fn example2() {
 }
 ```
 
-In `example1`, our current MIR semantics forbid `a` and `b` from being at the same address: this is because the *storage* lifetime of `a` extends to the end of its scope and therefore overlaps with that of `b`. This means that, according to the current tree borrows model, `observe` is still allowed to access the underlying allocation even after the value is moved.
+In `example1`, our current MIR semantics forbid `a` and `b` from being at the same address: this is because the _storage_ lifetime of `a` extends to the end of its scope and therefore overlaps with that of `b`. This means that, according to the current tree borrows model, `observe` is still allowed to access the underlying allocation even after the value is moved.
 
 `example2` shows the same issue, but with partially-moved values. This is more complex since even though the first half of `a` has been moved, the second half must remain accessible at its current address while `b` is live.
-
 
 ### What we propose to do about it
 
@@ -64,6 +62,7 @@ The primary goal is to nail down the new semantics for MIR that will enable move
 Once the new semantics are accepted then these would need to be implemented in Miri for checking. Finally, the new MIR optimization pass can be implemented in the compiler.
 
 The end goal of this proposal is to be able to soundly perform move elimination as a MIR optimization. This will have the following effects:
+
 - Better optimized code due to the eliminated copies.
 - Shorter allocation lifetimes will mean that less state needs to be preserved at async yield points, which reduces the size of futures.
 - This RFC will address some long-standing unresolved issues around the MIR semantics of `move` ([1] [2] [3] [4]).
@@ -80,18 +79,17 @@ The end goal of this proposal is to be able to soundly perform move elimination 
 - **Checkable**: the new semantics should remain deterministically checkable by Miri.
 - **Efficient**: the new MIR optimizations should not overly affect compilation time, or if they do, it should be at least justified with a significant increase in the performance of generated code.
 
-
 ### Work items over the next year
 
 | Task           | Owner(s) | Notes |
-|----------------|----------|-------|
-| Author RFC     | @Amanieu  |       |
-| Implementation | @Amanieu  |       |
+| -------------- | -------- | ----- |
+| Author RFC     | @Amanieu |       |
+| Implementation | @Amanieu |       |
 
 ## Team asks
 
 | Team         | Support level | Notes          |
-|--------------|---------------|----------------|
+| ------------ | ------------- | -------------- |
 | [lang]       | Small         | RFC decision   |
 | [compiler]   | Medium        | RFC decision   |
 | [opsem]      | Large         | Design meeting |

@@ -1,7 +1,7 @@
 # Open Enums
 
 | Metadata            |                                    |
-| :--                 | :--                                |
+| :------------------ | :--------------------------------- |
 | Point of contact    | @kupiakos                          |
 | Status              | Accepted                           |
 | Tracking issue      | [rust-lang/rust-project-goals#645] |
@@ -10,13 +10,12 @@
 | [compiler] champion | @madsmtm                           |
 | [opsem] champion    | @chorman0773                       |
 
-
 @joshtriplett can serve as the lang champion do it if Scott can't.
 
 ## Summary
 
 Merge and implement the [unnamed enum variants RFC][enum-rfc] to enable
-ergonomic *open enums* in the language.
+ergonomic _open enums_ in the language.
 
 [enum-rfc]: https://github.com/rust-lang/rfcs/pull/3894
 
@@ -40,15 +39,15 @@ types:
 - `#[unsafe(no_mangle)]` and `unsafe extern {…}` controls the symbols used for
   linking.
 
-These focus on providing stability when the *same type definition* is separately
+These focus on providing stability when the _same type definition_ is separately
 compiled with different versions of rustc. This includes the initial
 [proposed][crabi] `extern "crabi" fn` and `repr(crabi)`, which provides
 versioned stable layout algorithms and calling conventions.
 
 [crabi]: https://github.com/rust-lang/rust/pull/105586
 
-However, these do not consider stability between separately-compiled units *when
-a type is extended*. While `#[non_exhaustive]` prevents breakage due to
+However, these do not consider stability between separately-compiled units _when
+a type is extended_. While `#[non_exhaustive]` prevents breakage due to
 non-exhaustive `match`es when types compile together, it does nothing to prevent
 ABI breakage (and accidental UB) when a type is extended in one compiled unit
 and not the other.
@@ -62,12 +61,12 @@ Consider `bindgen`, which has [4 different ways] to interoperate with a C enum:
 
 [4 different ways]: https://docs.rs/bindgen/latest/bindgen/enum.EnumVariation.html
 
-| Variation | Description | Drawback |
-| --------- | ----------- | -------- |
-| Constants | Exports named integers | No strong typing or grouping - the same as `#define` |
-| Module constants | The same as above but grouped in a module; `use enum_name::*` brings its values into scope | No strong typing |
-| Newtype | `#[repr(transparent)] struct EnumName(Int)` | Harder to read, loses Rust enum features |
-| Rust | A closed Rust `enum` with explicit `repr` | Undefined Behavior when an invalid value is trivially produced by C |
+| Variation        | Description                                                                                | Drawback                                                            |
+| ---------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| Constants        | Exports named integers                                                                     | No strong typing or grouping - the same as `#define`                |
+| Module constants | The same as above but grouped in a module; `use enum_name::*` brings its values into scope | No strong typing                                                    |
+| Newtype          | `#[repr(transparent)] struct EnumName(Int)`                                                | Harder to read, loses Rust enum features                            |
+| Rust             | A closed Rust `enum` with explicit `repr`                                                  | Undefined Behavior when an invalid value is trivially produced by C |
 
 These all have their own serious drawbacks. While a newtype integer is a fine
 enough way to represent an open C enum, it is no longer treated as an enum by
@@ -107,7 +106,7 @@ propose to merge and implement the the [unnamed enum variants RFC][enum-rfc].
 
 This allows discriminants to be declared as valid before they are represented by
 a named variant in the future. By adding `_ = ..` to a field-less `repr(C)`
-enum, it becomes an *open enum* and can now be safely used with C and
+enum, it becomes an _open enum_ and can now be safely used with C and
 (ordinarily) `as` cast from `c_int`.
 
 #### Design axioms
@@ -140,20 +139,20 @@ enum, it becomes an *open enum* and can now be safely used with C and
 
 ### Work items over the next year
 
-| Task | Owner(s) | Notes |
-| ----------- | -------- | ----- |
-| Integrate feedback and merge unnamed variants RFC | @kupiakos | |
-| Implement and merge nightly implementation | @kupiakos | |
+| Task                                              | Owner(s)  | Notes |
+| ------------------------------------------------- | --------- | ----- |
+| Integrate feedback and merge unnamed variants RFC | @kupiakos |       |
+| Implement and merge nightly implementation        | @kupiakos |       |
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [compiler] | Medium        | Implementation reviews                  |
-| [lang]     | Medium        | Champion and (ideally) a lang meeting   |
-| [libs]     | Small         | Changes to `derive`                     |
-| [opsem]    | Small         | Doc changes if necessary                |
-| [types]    | Small         |                                         |
+| Team       | Support level | Notes                                 |
+| ---------- | ------------- | ------------------------------------- |
+| [compiler] | Medium        | Implementation reviews                |
+| [lang]     | Medium        | Champion and (ideally) a lang meeting |
+| [libs]     | Small         | Changes to `derive`                   |
+| [opsem]    | Small         | Doc changes if necessary              |
+| [types]    | Small         |                                       |
 
 ## Frequently asked questions
 

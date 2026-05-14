@@ -1,15 +1,15 @@
 # Making compiletest more maintainable: reworking directive handling
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @jieyouxu                          |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#259] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @jieyouxu                          |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#259] |
 
 ## Summary
 
-*Short description of what you will do over the next 6 months.*
+_Short description of what you will do over the next 6 months._
 
 Rework [`compiletest`]'s directive handling to make it more maintainable, have better UX for
 compiler contributors, and fix some long-standing issues.
@@ -51,12 +51,12 @@ The key changes I want to achieve:
 3. Directives are **well-documented**. Move directive documentation close to directives themselves
    and make it possible to be generated alongside tool docs for `compiletest`, so it's less likely
    to become outdated and to enable documentation coverage enforcement.
-    - Also, make sure that we have robust *self* documentation so it's not only one or two
-      contributors who understands how things work inside `compiletest`...
+   - Also, make sure that we have robust _self_ documentation so it's not only one or two
+     contributors who understands how things work inside `compiletest`...
 4. Generally improve directive handling **robustness**. Examples: fixing argument splitting in
    `compile-flags`, fix paths related to `aux-build`, etc.
 5. Test writers and reviewers can receive **better diagnostics**, for things like a directive is not
-   accepted in a given test suite or *why* something in `compiletest` failed.
+   accepted in a given test suite or _why_ something in `compiletest` failed.
 
 ### The "shiny future" we are working towards
 
@@ -66,7 +66,7 @@ documentation. Hopefully, by being more maintainable, we are able to attract mor
 from both bootstrap and compiler teams and make the code base significantly more pleasant to work
 on.
 
-For directive handling *specifically*, it should mean that:
+For directive handling _specifically_, it should mean that:
 
 - It's relatively straightforward and low friction to implement new directives, including test
   coverage and documentation. It should be easy to do the right thing.
@@ -96,14 +96,15 @@ team asks are probably mostly [compiler] for feedback on their use cases (as a t
 and [bootstrap] for implementation review.
 
 | Task                                                 | Owner(s) or team(s)                          | Notes                                                                                          |
-|------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------|
+| ---------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Discussion and moral support                         | ![Team][] [bootstrap], [compiler], [rustdoc] | including consultations for desired test behaviors and testing infra consumers                 |
 | Experimental prototype implementation[^1]            | @jieyouxu                                    | to see how approaches look like and gain experience/feedback                                   |
 | [`compiletest`] changes w/ experience from prototype | @jieyouxu                                    |                                                                                                |
 | Standard reviews                                     | ![Team][] [bootstrap], [compiler]            | Probably mostly [bootstrap] or whoever is more interested in reviewing [`compiletest`] changes |
 | Inside Rust blog post for project outcome            | @jieyouxu                                    |                                                                                                |
 
-[^1]: I want to start with an out-of-tree experimental prototype to see how the pieces are fit
+[^1]:
+    I want to start with an out-of-tree experimental prototype to see how the pieces are fit
     together to make it easier to rapidly iterate and receive feedback without having to mess with
     the "live" [`compiletest`] that does not have sufficient test coverage.
 
@@ -111,20 +112,20 @@ and [bootstrap] for implementation review.
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
 
 ## Frequently asked questions
 

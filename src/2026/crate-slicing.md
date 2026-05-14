@@ -1,10 +1,10 @@
 # Crate Slicing for Faster Fresh Builds
 
-| Metadata |  |
-| --- | --- |
-| Point of contact | @yijunyu |
-| Status | Not accepted |
-| Zulip channel | TBD |
+| Metadata         |              |
+| ---------------- | ------------ |
+| Point of contact | @yijunyu     |
+| Status           | Not accepted |
+| Zulip channel    | TBD          |
 
 ## Summary
 
@@ -25,25 +25,25 @@ The normal Rust compilation pipeline for each crate is:
 Type-checking happens when generating THIR; borrow-checking happens on MIR.
 Every dependency crate goes through all these stages regardless of how much of it
 is actually used by the downstream consumer. We call the difference between what
-the compiler *must* process and what is *actually reachable* from the final
+the compiler _must_ process and what is _actually reachable_ from the final
 binary's entry points the **separate compilation gap**.
 
 Measurements across real Rust projects (see [5]) show this gap ranges from under
 1% to 37% of total CPU instructions:
 
-| Project | Baseline (s) | PRECC-Rust (s) | Speedup | Gap |
-|---------|-------------|----------------|---------|-----|
-| zed (500K+ LOC) | 1,012 | 719 | **−29%** | 37% |
-| rustc | 135.8 | 112.4 | **−17%** | 26% |
-| zeroclaw (AI agent) | 192.9 | 170.4 | **−12%** | 13% |
-| helix | 71.2 | 66.6 | **−6%** | 11% |
-| ripgrep | 11.1 | 10.7 | **−4%** | 5% |
-| nushell | 106.5 | 108.9 | +2.3% | 0.4% (overhead > savings) |
-| bevy | 81.8 | 85.4 | +4.4% | 0.4% (overhead > savings) |
+| Project             | Baseline (s) | PRECC-Rust (s) | Speedup  | Gap                       |
+| ------------------- | ------------ | -------------- | -------- | ------------------------- |
+| zed (500K+ LOC)     | 1,012        | 719            | **−29%** | 37%                       |
+| rustc               | 135.8        | 112.4          | **−17%** | 26%                       |
+| zeroclaw (AI agent) | 192.9        | 170.4          | **−12%** | 13%                       |
+| helix               | 71.2         | 66.6           | **−6%**  | 11%                       |
+| ripgrep             | 11.1         | 10.7           | **−4%**  | 5%                        |
+| nushell             | 106.5        | 108.9          | +2.3%    | 0.4% (overhead > savings) |
+| bevy                | 81.8         | 85.4           | +4.4%    | 0.4% (overhead > savings) |
 
 The nushell and bevy results are equally important: when the gap is small,
 analysis overhead exceeds savings. A production implementation must apply this
-*selectively*, only where predicted benefit exceeds cost.
+_selectively_, only where predicted benefit exceeds cost.
 
 As the [parallel-rustc blog post](https://blog.rust-lang.org/2023/11/09/parallel-rustc/)
 shows, there are often idle cores during normal Rust compilation. The key insight
@@ -66,8 +66,8 @@ Two prototypes establish the feasibility:
   from dependency crates and generates minimal sliced versions. Validates that
   sliced major ecosystem crates (tokio, axum, hyper, reqwest, syn, rand, regex)
   still compile correctly.
-- **PRECC-Rust** [5]: operates as a `RUSTC_WRAPPER`, hooking into rustc *after
-  type checking* to replace unreachable function bodies with MIR abort stubs,
+- **PRECC-Rust** [5]: operates as a `RUSTC_WRAPPER`, hooking into rustc _after
+  type checking_ to replace unreachable function bodies with MIR abort stubs,
   eliminating downstream codegen work without modifying source code. Produces the
   measured results in the table above.
 
@@ -81,7 +81,7 @@ Neither prototype is suitable for direct adoption:
 - PRECC-Rust's `syn`-based call graph is an approximation; the design described
   below is architecturally cleaner and does not require Cargo involvement.
 
-A robust solution requires a full-time engineer working *inside* rustc. The
+A robust solution requires a full-time engineer working _inside_ rustc. The
 proposed architecture (informed by compiler team feedback) is:
 
 1. **Stub rlibs**: rustc compiles each dependency crate only to `AST → HIR`,
@@ -136,12 +136,12 @@ The source-level approach has fundamental limitations:
 
 The proposed rustc-native design is analogous to LTO but defers work even earlier:
 
-| Phase | Normal compilation | LTO | Stub rlib approach |
-|-------|--------------------|-----|--------------------|
-| AST → HIR | per crate | per crate | per crate (stub rlib emitted here) |
-| HIR → THIR (type-check) | per crate | per crate | deferred to root crate |
-| THIR → MIR (borrow-check) | per crate | per crate | deferred to root crate |
-| MIR → LLVM IR (codegen) | per crate | deferred to link | deferred to root crate |
+| Phase                     | Normal compilation | LTO              | Stub rlib approach                 |
+| ------------------------- | ------------------ | ---------------- | ---------------------------------- |
+| AST → HIR                 | per crate          | per crate        | per crate (stub rlib emitted here) |
+| HIR → THIR (type-check)   | per crate          | per crate        | deferred to root crate             |
+| THIR → MIR (borrow-check) | per crate          | per crate        | deferred to root crate             |
+| MIR → LLVM IR (codegen)   | per crate          | deferred to link | deferred to root crate             |
 
 Dependencies emit stub rlibs after `AST → HIR`: names, signatures, and trait
 definitions, but no function bodies. The root binary crate then loads these stub
@@ -151,37 +151,37 @@ rustc process. This exploits the idle cores visible in the
 [parallel-rustc measurements](https://blog.rust-lang.org/2023/11/09/parallel-rustc/).
 
 Note: the total THIR/MIR/codegen work for reachable functions is unchanged —
-the benefit comes from *parallelism*, not from eliminating work.
+the benefit comes from _parallelism_, not from eliminating work.
 
 ### Rust-specific challenges
 
-| Challenge | Notes |
-|-----------|-------|
-| Trait coherence | All impls for used types must be included |
-| Generics / monomorphization | Analysis may miss instantiation paths |
-| Proc-macro crates | Execute at compile time; preserve as-is |
-| `build.rs` generators | Code invisible to static analysis; fall back to full crate |
-| Blanket impls | `impl<T> Trait for T` required if `Trait` is used |
+| Challenge                   | Notes                                                      |
+| --------------------------- | ---------------------------------------------------------- |
+| Trait coherence             | All impls for used types must be included                  |
+| Generics / monomorphization | Analysis may miss instantiation paths                      |
+| Proc-macro crates           | Execute at compile time; preserve as-is                    |
+| `build.rs` generators       | Code invisible to static analysis; fall back to full crate |
+| Blanket impls               | `impl<T> Trait for T` required if `Trait` is used          |
 
 ## Task list
 
-| Task | Owner | Status |
-|------|-------|--------|
-| Prototype cargo-slicer and PRECC-Rust | @yijunyu | Done |
-| Measure separate compilation gap across 8 projects | @yijunyu | Done |
-| Write technical paper (ASE 2026 submission) | @yijunyu | In Progress |
+| Task                                                      | Owner    | Status      |
+| --------------------------------------------------------- | -------- | ----------- |
+| Prototype cargo-slicer and PRECC-Rust                     | @yijunyu | Done        |
+| Measure separate compilation gap across 8 projects        | @yijunyu | Done        |
+| Write technical paper (ASE 2026 submission)               | @yijunyu | In Progress |
 | Formalize soundness requirements for deferred compilation | @yijunyu | Not started |
-| Design stub rlib emission in rustc | TBD | Not started |
-| Prototype deferred root-crate compilation pass | TBD | Not started |
-| Present findings to compiler team | TBD | Not started |
+| Design stub rlib emission in rustc                        | TBD      | Not started |
+| Prototype deferred root-crate compilation pass            | TBD      | Not started |
+| Present findings to compiler team                         | TBD      | Not started |
 
 ## Team asks
 
-| Team | Support level | Notes |
-|------|---------------|-------|
-| compiler | Medium | Collaborate on stub rlib design and deferred compilation pass; consult on soundness and rustc internals |
-| types | Small | Consultation on trait coherence requirements for deferred type-checking |
-| cargo | Small | Feedback on integration with the cargo polyfill toolchain |
+| Team     | Support level | Notes                                                                                                   |
+| -------- | ------------- | ------------------------------------------------------------------------------------------------------- |
+| compiler | Medium        | Collaborate on stub rlib design and deferred compilation pass; consult on soundness and rustc internals |
+| types    | Small         | Consultation on trait coherence requirements for deferred type-checking                                 |
+| cargo    | Small         | Feedback on integration with the cargo polyfill toolchain                                               |
 
 ## Frequently asked questions
 
@@ -201,7 +201,7 @@ run concurrently with other work on idle cores, reducing wall-clock time.
 ### How is this different from dead code elimination?
 
 DCE operates after full compilation. The stub rlib approach defers
-type-checking and borrow-checking *before* codegen — it is closer to LTO
+type-checking and borrow-checking _before_ codegen — it is closer to LTO
 (which defers LLVM IR generation) but stops even earlier in the pipeline.
 
 ### How is this different from feature flags?

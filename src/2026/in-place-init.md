@@ -1,16 +1,16 @@
 # In-place initialization
 
-| Metadata         |                                    |
-|:-----------------|------------------------------------|
-| Point of contact | @Darksonn                          |
-| Status           | Accepted                           |
+| Metadata         |                                                                                                  |
+| :--------------- | ------------------------------------------------------------------------------------------------ |
+| Point of contact | @Darksonn                                                                                        |
+| Status           | Accepted                                                                                         |
 | What and why     | Align on a language approach for creating values directly at their final location without moving |
-| Timespan         | 2026-2028                          |
-| Roadmap          | Beyond the `&`                     |
-| Roadmap          | Rust for Linux                     |
-| Tracking issue   | [rust-lang/rust-project-goals#395] |
-| Zulip channel    | [#t-lang/in-place-init][channel]   |
-| [lang] champion  | @Darksonn                          |
+| Timespan         | 2026-2028                                                                                        |
+| Roadmap          | Beyond the `&`                                                                                   |
+| Roadmap          | Rust for Linux                                                                                   |
+| Tracking issue   | [rust-lang/rust-project-goals#395]                                                               |
+| Zulip channel    | [#t-lang/in-place-init][channel]                                                                 |
+| [lang] champion  | @Darksonn                                                                                        |
 
 [channel]: https://rust-lang.zulipchat.com/#narrow/channel/528918-t-lang.2Fin-place-init
 
@@ -62,10 +62,10 @@ required.
 | --------------------------------------------------------- | ------------------------------------- | ----- |
 | Prepare design RFC                                        | @Darksonn, @BennoLossin, @yoshuawuyts |       |
 | Organize all-hands workshop                               | @BennoLossin                          |       |
-| Lang experiment: phased initialization of local variables | @dingxiangfei2009                                   |       |
+| Lang experiment: phased initialization of local variables | @dingxiangfei2009                     |       |
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [lang]     | Medium        | Review and accept a design space RFC    |
+| Team   | Support level | Notes                                |
+| ------ | ------------- | ------------------------------------ |
+| [lang] | Medium        | Review and accept a design space RFC |

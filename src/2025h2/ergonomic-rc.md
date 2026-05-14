@@ -1,14 +1,14 @@
 # Ergonomic ref-counting: RFC decision and preview
 
-| Metadata         |                                    |
-| :--------------- | ---------------------------------- |
-| Point of contact | @nikomatsakis                      |
-| Status           | Proposed                           |
-| Flagship         | Higher-level Rust                  |
-| Tracking issue   | [rust-lang/rust-project-goals#107] |
-| Zulip channel    | N/A                                |
-| [compiler] champion | @spastorino |
-| [lang] champion | @nikomatsakis |
+| Metadata            |                                    |
+| :------------------ | ---------------------------------- |
+| Point of contact    | @nikomatsakis                      |
+| Status              | Proposed                           |
+| Flagship            | Higher-level Rust                  |
+| Tracking issue      | [rust-lang/rust-project-goals#107] |
+| Zulip channel       | N/A                                |
+| [compiler] champion | @spastorino                        |
+| [lang] champion     | @nikomatsakis                      |
 
 ## Summary
 
@@ -31,7 +31,7 @@ let database = Arc::new(connect_db());
 let metrics = Arc::new(MetricsCollector::new());
 
 let config_clone = config.clone();
-let database_clone = database.clone(); 
+let database_clone = database.clone();
 let metrics_clone = metrics.clone();
 spawn(async move {
     process_request(config_clone, database_clone, metrics_clone).await;
@@ -61,7 +61,7 @@ Explicit cloning friction affects all kinds of Rust projects. This is most appar
 > tokio::task::spawn(async move {
 >   	// do something with all the values
 > });
->```
+> ```
 >
 > Working on this codebase was demoralizing. We could think of no better way to architect things - we needed listeners for basically everything that filtered their updates based on the state of the app. You could say “lol get gud,” but the engineers on this team were the sharpest people I’ve ever worked with. Cloudflare is all-in on Rust. They’re willing to throw money at codebases like this. Nuclear fusion won’t be solved with Rust if this is how sharing state works.
 
@@ -118,14 +118,14 @@ This critique suggests that if the goal is ergonomics, requiring more explicit s
 
 To explore the automatic alternative, we will:
 
-* Author an alternative RFC that avoids new keywords and includes a lint of help catch potentially incorrect usage.
-* Implement the new design (feature-gated, natch) to support experimentation and measure compilation overhead.
-* Estimate the prevalence of code that benefits or is complicated by this change using Crater runs or other experiments.
-* Conduct design reviews with the lang team to compare/contrast the two approaches.
+- Author an alternative RFC that avoids new keywords and includes a lint of help catch potentially incorrect usage.
+- Implement the new design (feature-gated, natch) to support experimentation and measure compilation overhead.
+- Estimate the prevalence of code that benefits or is complicated by this change using Crater runs or other experiments.
+- Conduct design reviews with the lang team to compare/contrast the two approaches.
 
 ### The "shiny future" we are working towards
 
-Ergonomic ref-counting represents a friction point in multiple domains. Async Rust programs frequently have context shared across multiple tasks (e.g., server state) that is managed via reference counting. GUI applications also have callbacks and data patterns that do not correlate well to the stack. In these domains, the existence of `.clone()` calls (or `.use` notation) represents syntactic noise that distracts from the essential data flow patterns. 
+Ergonomic ref-counting represents a friction point in multiple domains. Async Rust programs frequently have context shared across multiple tasks (e.g., server state) that is managed via reference counting. GUI applications also have callbacks and data patterns that do not correlate well to the stack. In these domains, the existence of `.clone()` calls (or `.use` notation) represents syntactic noise that distracts from the essential data flow patterns.
 
 **Removing barriers in existing domains:** In network services and async applications where Rust already excels, eliminating explicit cloning friction will make complex architectures more maintainable and readable. Developers won't need to choose between ergonomic APIs and performance, or resort to arena allocation patterns primarily for ergonomic reasons.
 
@@ -139,8 +139,8 @@ This isn't about making Rust easier for beginners (though it will) - it's about 
 
 The design axioms for this alternative RFC are as follows:
 
-* **Clarity of purpose.** Although experienced users have learned to live with it, we believe that the current copy/clone introduces noise that distracts from being able to read the code (and, along the way, blocks new user adoption). Our top goal is to encourage Rust code that is clearer of purpose, no matters its domain. 
-* **Competitive or improved performance.** Using this feature should lead to code which is either as efficient or, in some cases, more efficient that you get today.
+- **Clarity of purpose.** Although experienced users have learned to live with it, we believe that the current copy/clone introduces noise that distracts from being able to read the code (and, along the way, blocks new user adoption). Our top goal is to encourage Rust code that is clearer of purpose, no matters its domain.
+- **Competitive or improved performance.** Using this feature should lead to code which is either as efficient or, in some cases, more efficient that you get today.
 
 ## Ownership and team asks
 
@@ -156,20 +156,20 @@ The design axioms for this alternative RFC are as follows:
 
 Definitions for terms used above:
 
-* *Discussion and moral support* is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
-* *Author RFC* and *Implementation* means actually writing the code, document, whatever.
-* *Design meeting* means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
-* *RFC decisions* means reviewing an RFC and deciding whether to accept.
-* *Org decisions* means reaching a decision on an organizational or policy matter.
-* *Secondary review* of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
-* *Stabilizations* means reviewing a stabilization and report and deciding whether to stabilize.
-* *Standard reviews* refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
-* *Prioritized nominations* refers to prioritized lang-team response to nominated issues, with the expectation that there will be *some* response from the next weekly triage meeting.
-* *Dedicated review* means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
-* Other kinds of decisions:
-    * [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
-    * Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
-    * Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
+- _Discussion and moral support_ is the lowest level offering, basically committing the team to nothing but good vibes and general support for this endeavor.
+- _Author RFC_ and _Implementation_ means actually writing the code, document, whatever.
+- _Design meeting_ means holding a synchronous meeting to review a proposal and provide feedback (no decision expected).
+- _RFC decisions_ means reviewing an RFC and deciding whether to accept.
+- _Org decisions_ means reaching a decision on an organizational or policy matter.
+- _Secondary review_ of an RFC means that the team is "tangentially" involved in the RFC and should be expected to briefly review.
+- _Stabilizations_ means reviewing a stabilization and report and deciding whether to stabilize.
+- _Standard reviews_ refers to reviews for PRs against the repository; these PRs are not expected to be unduly large or complicated.
+- _Prioritized nominations_ refers to prioritized lang-team response to nominated issues, with the expectation that there will be _some_ response from the next weekly triage meeting.
+- _Dedicated review_ means identifying an individual (or group of individuals) who will review the changes, as they're expected to require significant context.
+- Other kinds of decisions:
+  - [Lang team experiments](https://lang-team.rust-lang.org/how_to/experiment.html) are used to add nightly features that do not yet have an RFC. They are limited to trusted contributors and are used to resolve design details such that an RFC can be written.
+  - Compiler [Major Change Proposal (MCP)](https://forge.rust-lang.org/compiler/mcp.html) is used to propose a 'larger than average' change and get feedback from the compiler team.
+  - Library [API Change Proposal (ACP)](https://std-dev-guide.rust-lang.org/development/feature-lifecycle.html) describes a change to the standard library.
 
 ## Frequently asked questions
 
@@ -177,32 +177,32 @@ Definitions for terms used above:
 
 The implementation plan for the feature gate `ergonomic_clones` (experimental version of RFC #3680) is as follows. The following steps are considered required for the basic feature functionality. A step is checked if it is present in nightly.
 
-* [x] Introduce a `UseCloned` type implemented for `Rc` and `Arc` and possibly other types
-    * The RFC called this trait `Use`; the names will have to be reconciled. We deviated because `x.use` can be applies to values of any type, including things that do not implement this trait, so the previous name felt confusing. The intention of `UseCloned` is "when a value of this type is `use`d, it will (if necessary) be cloned".
-* [x] Introduce the `use` keyword as an operator on places, e.g., `some_place.use`
-* [x] Introduce `use || /* body */` closures. These are equivalent to `move` closures except that, where each captured place `place` is stored into a move closure with an initializer like `f: place`, `use` closures contain fields initialized with `f: place.use`.
-* [x] In MIR Build, `place.use` is compiled as a call to `clone` with a [`call_source`](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/mir/enum.TerminatorKind.html#variant.Call.field.call_source) of [`CallSource::Use`](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/mir/enum.CallSource.html#variant.Use):
-    * As a compile-time optimization, the MIR build for `place.use` depends on the traits implemented by the type `T` of `place`:
-        * If the type `T` is known to implement `Copy` (modulo regions), then we compile `place.use` to a copy like `place`.
-        * If the type `T` is known to implement `UseCloned` (modulo regions), then we compile it to a call with `call_source` as described above.
-        * Otherwise, `place.use` is compiled to a move.
-        * This is a compile-time optimization because, if we didn't do this, it would be optimized later by the monorphization-time optimization, but we would spend more effort in the meantime.
-    * If the type of `x` is NOT known to implement `UseCloned`, then `x` will be compiled as a move.
-* [x] Integrate `some_place.use` into borrow check (fairly trivial)
-* [ ] Identity candidates for "last-use" optimization (`some_place.use` is a *last use* if `some_place` is never used again)
-* [x] At code generation time, the semantics of `some_place.use` depends on the type `T` of `some_place`:
-    * If `T` implements `Copy`, then `some_place.use` is a copy
-    * If `T` implements `UseCloned` (and is not a last-use), then `some_place.use` is compiled as a call to `some_place.clone()`
-    * Otherwise, `some_place.use` is a move.
+- [x] Introduce a `UseCloned` type implemented for `Rc` and `Arc` and possibly other types
+  - The RFC called this trait `Use`; the names will have to be reconciled. We deviated because `x.use` can be applies to values of any type, including things that do not implement this trait, so the previous name felt confusing. The intention of `UseCloned` is "when a value of this type is `use`d, it will (if necessary) be cloned".
+- [x] Introduce the `use` keyword as an operator on places, e.g., `some_place.use`
+- [x] Introduce `use || /* body */` closures. These are equivalent to `move` closures except that, where each captured place `place` is stored into a move closure with an initializer like `f: place`, `use` closures contain fields initialized with `f: place.use`.
+- [x] In MIR Build, `place.use` is compiled as a call to `clone` with a [`call_source`](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/mir/enum.TerminatorKind.html#variant.Call.field.call_source) of [`CallSource::Use`](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/mir/enum.CallSource.html#variant.Use):
+  - As a compile-time optimization, the MIR build for `place.use` depends on the traits implemented by the type `T` of `place`:
+    - If the type `T` is known to implement `Copy` (modulo regions), then we compile `place.use` to a copy like `place`.
+    - If the type `T` is known to implement `UseCloned` (modulo regions), then we compile it to a call with `call_source` as described above.
+    - Otherwise, `place.use` is compiled to a move.
+    - This is a compile-time optimization because, if we didn't do this, it would be optimized later by the monorphization-time optimization, but we would spend more effort in the meantime.
+  - If the type of `x` is NOT known to implement `UseCloned`, then `x` will be compiled as a move.
+- [x] Integrate `some_place.use` into borrow check (fairly trivial)
+- [ ] Identity candidates for "last-use" optimization (`some_place.use` is a _last use_ if `some_place` is never used again)
+- [x] At code generation time, the semantics of `some_place.use` depends on the type `T` of `some_place`:
+  - If `T` implements `Copy`, then `some_place.use` is a copy
+  - If `T` implements `UseCloned` (and is not a last-use), then `some_place.use` is compiled as a call to `some_place.clone()`
+  - Otherwise, `some_place.use` is a move.
 
 The following features are not planned for implementation until the future; they are a "nice to have":
 
-* [ ] Implement `use`-elision and inter-procedural optimization
-    * If `some_place.use` never escapes the current stack frame and no mutation is occurring, we can forego the call to `clone()`.
+- [ ] Implement `use`-elision and inter-procedural optimization
+  - If `some_place.use` never escapes the current stack frame and no mutation is occurring, we can forego the call to `clone()`.
 
 ### How does this goal relate to stabilization?
 
-This goal is explicitly *not* about stabilization - it's about getting to a clear decision point. The chosen approach and its implementation will represent a step toward eventual stabilization, but the focus here is on resolving the fundamental design question that emerged from 2025H1.
+This goal is explicitly _not_ about stabilization - it's about getting to a clear decision point. The chosen approach and its implementation will represent a step toward eventual stabilization, but the focus here is on resolving the fundamental design question that emerged from 2025H1.
 
 Once the lang team chooses a direction, subsequent work can focus on refinement, community testing, and the stabilization process without the uncertainty of fundamental design questions.
 

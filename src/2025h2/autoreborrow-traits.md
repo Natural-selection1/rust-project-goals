@@ -1,7 +1,7 @@
 # Reborrow traits
 
 | Metadata            |                                                                                  |
-| :--                 | :--                                                                              |
+| :------------------ | :------------------------------------------------------------------------------- |
 | Point of contact    | @aapoalas                                                                        |
 | Status              | Proposed                                                                         |
 | Flagship            | Beyond the `&`                                                                   |
@@ -9,7 +9,6 @@
 | Zulip channel       | N/A (an existing stream can be re-used or new streams can be created on request) |
 | [compiler] champion | @oli-obk                                                                         |
 | [lang] champion     | @tmandry                                                                         |
-
 
 ## Summary
 
@@ -61,7 +60,6 @@ An improvement is needed.
 - Gather feedback from users, especially `reborrow` crate users.
 - Implement nightly support for recursive reborrowing.
 
-
 The basic idea of autoreborrowing is simple enough: when a reborrowable type is encountered at a coercion
 site, attempt a reborrow operation. The `Pin<&mut T>` special-case in the
 compiler already exists and could probably be reimagined to rely on a `Reborrow` trait.
@@ -109,7 +107,6 @@ Users of `reborrow` crate and similar should be enabled to move to core solution
   - Autoreborrowing at coercion sites should not dovetail into eg. an `Into::into` call.
 
 ## Ownership and team asks
-
 
 | Task                         | Owner(s) or team(s)  | Notes                                                              |
 | ---------------------------- | -------------------- | ------------------------------------------------------------------ |

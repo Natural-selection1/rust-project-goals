@@ -1,7 +1,7 @@
 # Stabilize the Try trait
 
 | Metadata              |                                    |
-| :--                   | :--                                |
+| :-------------------- | :--------------------------------- |
 | Point of contact      | @tmandry                           |
 | Status                | Accepted                           |
 | Needs                 | Funding                            |
@@ -11,7 +11,6 @@
 | [lang] champion       | @tmandry                           |
 | [libs-api] champion   | @Amanieu                           |
 | Tracking issue        | [rust-lang/rust-project-goals#654] |
-
 
 ## Summary
 
@@ -92,8 +91,8 @@ Stabilize the `Try` trait, which has been in its current form since 2021.
 
 Because there are open design questions that haven't yet been resolved, we should either
 
-* Find a way to resolve them, or
-* Stabilize in a limited way, unblocking the basic use case while leaving our options open for the future.
+- Find a way to resolve them, or
+- Stabilize in a limited way, unblocking the basic use case while leaving our options open for the future.
 
 ### Work items over the next year
 
@@ -105,11 +104,11 @@ Because there are open design questions that haven't yet been resolved, we shoul
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [compiler] | Small         |                                         |
-| [lang]     | Medium        |                                         |
-| [libs-api] | Medium        |                                         |
-| [types]    | Small         |                                         |
+| Team       | Support level | Notes |
+| ---------- | ------------- | ----- |
+| [compiler] | Small         |       |
+| [lang]     | Medium        |       |
+| [libs-api] | Medium        |       |
+| [types]    | Small         |       |
 
 ## Frequently asked questions

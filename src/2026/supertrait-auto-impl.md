@@ -1,7 +1,7 @@
 # Implement Supertrait `auto impl`
 
 | Metadata              |                                                                                                          |
-| :--                   | :--                                                                                                      |
+| :-------------------- | :------------------------------------------------------------------------------------------------------- |
 | Point of contact      | @dingxiangfei2009                                                                                        |
 | Status                | Accepted                                                                                                 |
 | What and why          | Automatically implement supertraits when a subtrait is implemented, enabling trait hierarchy refactoring |
@@ -12,10 +12,10 @@
 | Other tracking issues | rust-lang/rust#149556                                                                                    |
 | Zulip channel         | N/A                                                                                                      |
 
-
 ## Summary
 
 Within the 2026 goal period we strive for completion of the following items.
+
 - Implementation of the core language features stipulated by the RFC 3851. See rust-lang/rfcs#3851.
 - Continuous update on the RFC for errata to reflect necessary changes as implementation moves along.
 - Resolve the `impl` overlapping question, possibly as an optional feature behind an associated feature gate.
@@ -60,24 +60,24 @@ impl BigTrait for MyType {
 
 ### The status quo
 
-> *Elaborate in more detail about the problem you are trying to solve. This section is making the case for why this particular problem is worth prioritizing with project bandwidth. A strong status quo section will (a) identify the target audience and (b) give specifics about the problems they are facing today. Sometimes it may be useful to start sketching out how you think those problems will be addressed by your change, as well, though it's not necessary.*
+> _Elaborate in more detail about the problem you are trying to solve. This section is making the case for why this particular problem is worth prioritizing with project bandwidth. A strong status quo section will (a) identify the target audience and (b) give specifics about the problems they are facing today. Sometimes it may be useful to start sketching out how you think those problems will be addressed by your change, as well, though it's not necessary._
 
 Supertrait `auto impl` targets library authors who needs to refactor traits or design a trait hierarchy. A recurring topic arising from this activity is that with refined trait granularity, or smaller traits in other words, also comes many required `impl`s. The problem exacerbates when it is an upstream trait receiving a refactor. While this is rightfully a breaking change, downstream crates would also have to move trait items into new `impl` blocks as the original trait is broken into smaller supertraits. This major rewrite is often undesirable for library authors as this would discourage downstream users to upgrade the library. For standard library, this often means that the changes can only land on an Edition boundary.
 
 ### The next 6 months
 
 | Task                                   | Owner(s)          | Notes |
-|----------------------------------------|-------------------|-------|
+| -------------------------------------- | ----------------- | ----- |
 | Implementation of the language feature | @dingxiangfei2009 |       |
 | ...                                    |                   |       |
 
 ### The "shiny future" we are working towards
 
-> *If this goal is part of a larger plan that will extend beyond this goal period, sketch out the goal you are working towards. It may be worth adding some text about why these particular goals were chosen as the next logical step to focus on.*
+> _If this goal is part of a larger plan that will extend beyond this goal period, sketch out the goal you are working towards. It may be worth adding some text about why these particular goals were chosen as the next logical step to focus on._
 >
-> *This text is NORMATIVE, in the sense that teams should review this and make sure they are aligned. If not, then the shiny future should be moved to frequently asked questions with a title like "what might we do next".*
+> _This text is NORMATIVE, in the sense that teams should review this and make sure they are aligned. If not, then the shiny future should be moved to frequently asked questions with a title like "what might we do next"._
 
-*However, for most proposals, alignment on exact syntax should not be required to start a goal, only alignment on the problem and the general sketch of the solution. This may vary for goals that are specifically about syntax, such as ergonomic improvements.*
+_However, for most proposals, alignment on exact syntax should not be required to start a goal, only alignment on the problem and the general sketch of the solution. This may vary for goals that are specifically about syntax, such as ergonomic improvements._
 
 We would like to establish a mechanism in the language to automatically derive the required supertrait implementation using the items available in the subtrait implementation. The first step is to enable the resolution of the supertrait associated items in the subtrait implementation block to the corresponding supertraits when there is no risk of ambiguity.
 
@@ -85,15 +85,15 @@ We would like to establish a mechanism in the language to automatically derive t
 
 ## Team asks
 
-| Team       | Support level | Notes                                   |
-| ---------- | ------------- | --------------------------------------- |
-| [cargo]    |               |                                         |
-| [compiler] |               |                                         |
-| [infra]    |               |                                         |
-| [lang]     |  Medium | Team aligned already on the shape of the feature |
-| [libs-api]     |               |                                         |
-| [opsem]    |               |                                         |
-| [types]    | Small | `r? types` when touching the type system. Expect that anything beyond "simple" types changes may be rejected or de-prioritized. [^types-small] |
+| Team       | Support level | Notes                                                                                                                                          |
+| ---------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [cargo]    |               |                                                                                                                                                |
+| [compiler] |               |                                                                                                                                                |
+| [infra]    |               |                                                                                                                                                |
+| [lang]     | Medium        | Team aligned already on the shape of the feature                                                                                               |
+| [libs-api] |               |                                                                                                                                                |
+| [opsem]    |               |                                                                                                                                                |
+| [types]    | Small         | `r? types` when touching the type system. Expect that anything beyond "simple" types changes may be rejected or de-prioritized. [^types-small] |
 
 [^types-small]: [See discussion.](https://rust-lang.zulipchat.com/#narrow/channel/144729-t-types/topic/2026.20Project.20Goals/near/573917638)
 

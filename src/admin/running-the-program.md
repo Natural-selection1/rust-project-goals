@@ -12,8 +12,8 @@ Each of the calendars has someoverlap with the previous and next previous.
 
 ### H1 calendar
 
-| Task      | *Nov–Dec <br> (prev. H2)* | Jan | Feb–Jun         | *Jul <br> (next H2*) |
-|-----------|---------------------------|-----|-----------------|----------------------|
+| Task      | _Nov–Dec <br> (prev. H2)_ | Jan | Feb–Jun         | _Jul <br> (next H2_) |
+| --------- | ------------------------- | --- | --------------- | -------------------- |
 | [CFP]     | ██████                    | ░░░ |                 |                      |
 | [RFC]     |                           | ███ |                 |                      |
 | [Updates] |                           |     | ███████████████ |                      |
@@ -21,12 +21,13 @@ Each of the calendars has someoverlap with the previous and next previous.
 
 ### H2 calendar
 
-| Task      | *May–Jun <br> (prev. H1)* | Jul | Aug–Dec         | *Jan <br> (next H1)* |
-|-----------|---------------------------|-----|-----------------|----------------------|
+| Task      | _May–Jun <br> (prev. H1)_ | Jul | Aug–Dec         | _Jan <br> (next H1)_ |
+| --------- | ------------------------- | --- | --------------- | -------------------- |
 | [CFP]     | ██████                    | ░░░ |                 |                      |
 | [RFC]     |                           | ███ |                 |                      |
 | [Updates] |                           |     | ███████████████ |                      |
 | [Retro]   |                           |     |                 | ███                  |
+
 [CFP]: ./cfp.md
 [RFC]: ./prepare_rfc.md
 [Updates]: ./author_updates.md

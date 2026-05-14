@@ -1,11 +1,11 @@
 # Metrics Initiative
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @yaahc                             |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#260] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @yaahc                             |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#260] |
 
 ## Summary
 
@@ -19,7 +19,7 @@ We're envisioning three use cases for the Metrics Initiative:
 2. Guiding improvements to User Experience, e.g. knowing which compiler errors are causing the most confusion or are hit the most frequently, focusing on improving those first, and verifying that the improvements help.
 3. Improving perf feedback loops and insight, e.g. helping identify pathological edge cases, similar to work @nnethercote has done manually in the past
 
-We're focusing initially on the first use case since we see that as the most likely to have a significant impact. 
+We're focusing initially on the first use case since we see that as the most likely to have a significant impact.
 
 ### The status quo
 
@@ -33,13 +33,13 @@ All together these tools give us the ability to gather information about the inn
 
 ### The next 6 months
 
-*Sketch out the specific things you are trying to achieve in this goal period. This should be short and high-level -- we don't want to see the design!*
+_Sketch out the specific things you are trying to achieve in this goal period. This should be short and high-level -- we don't want to see the design!_
 
-* Initial prototypes and proof of concept impls
-    * initial metrics dumping in compiler e.g. unstable feature usage info
-    * backend to store metrics
-    * enable metrics dumping on existing project infra for open source crates (e.g. docs.rs or crater) and send metrics to backend
-    * proof of concept dashboard for viewing metrics
+- Initial prototypes and proof of concept impls
+  - initial metrics dumping in compiler e.g. unstable feature usage info
+  - backend to store metrics
+  - enable metrics dumping on existing project infra for open source crates (e.g. docs.rs or crater) and send metrics to backend
+  - proof of concept dashboard for viewing metrics
 
 ### The "shiny future" we are working towards
 
@@ -56,14 +56,14 @@ We'd like to get to the point where lang and libs can pull up a simple dashboard
   - answer questions from real production environments in a privacy-preserving way
   - improve legibility of rare or intermittent issues
   - earlier warnings for ICEs and other major issues on nightly, improving the likelihood that we'd catch them before they hit stable.
-	  - https://blog.rust-lang.org/2021/05/10/Rust-1.52.1.html
+    - https://blog.rust-lang.org/2021/05/10/Rust-1.52.1.html
 - **Performance impact**
   - leave no trace (minimize performance impact, particularly for default-enabled metrics)
-- **Extensible**: 
+- **Extensible**:
   - it should be easy to add new metrics as needed
   - Only add metrics as a way to answer a specific question in mind, with an explicitly documented rationale
   - machine readable, it should be easy to leverage metrics for analysis with other tools
-- **User experience**: 
+- **User experience**:
   - improving user experience of reporting issues to the project
   - improving the user experience of using the compiler, measuring the impact of changes to user experience
 
@@ -72,11 +72,12 @@ We'd like to get to the point where lang and libs can pull up a simple dashboard
 ## Ownership and team asks
 
 | Task                                                                                   | Owner(s) or team(s)           | Notes |
-|----------------------------------------------------------------------------------------|-------------------------------|-------|
+| -------------------------------------------------------------------------------------- | ----------------------------- | ----- |
 | Discussion and moral support                                                           | ![Team][] [compiler], [infra] |       |
 | Implementation                                                                         | @yaahc                        |       |
 | backend for storing metrics                                                            | @estebank                     |       |
 | integration with docs.rs or crates.io to gather metrics from open source rust projects | @yaahc                        |       |
 | proof of concept dashboard visualizing unstable feature usage data                     | ![Help Wanted][]              |       |
 | Standard reviews                                                                       | ![Team][] [compiler]          |       |
+
 ## Frequently asked questions

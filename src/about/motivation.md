@@ -8,8 +8,8 @@ This is a kind of summary that helps the reader to get oriented.
 The **status quo** section then goes into deeper detail on the problem and how things work today.
 It should answer the following questions
 
-* Who is the **target audience**? Is it a particular group of Rust users, such as those working in a specific domain? Contributors? 
-* What do these users do now when they have this problem, and what are the shortcomings of that?
+- Who is the **target audience**? Is it a particular group of Rust users, such as those working in a specific domain? Contributors?
+- What do these users do now when they have this problem, and what are the shortcomings of that?
 
 The **next few steps** can explain how you plan to change that and why these are the right next steps to take.
 

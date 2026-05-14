@@ -6,10 +6,10 @@ Before opening the RFC it is best to review its current state with teams that ha
 
 Encourage teams to read over the list of asks assigned to them and answer questions like
 
-* Are there any goals that you are not aligned with? (i.e., work that you do not think should happen, or do not think should happen now)
-* Is there important work not represented here? Should that work have a project goal?
-* Is the team capable of following through on the total asks, or will that exceed team capacity?
-* If [roadmap goals](../about/roadmaps.md) have been decided, are there any concerns with those goals? Any suggestions for changes or alternatives?
+- Are there any goals that you are not aligned with? (i.e., work that you do not think should happen, or do not think should happen now)
+- Is there important work not represented here? Should that work have a project goal?
+- Is the team capable of following through on the total asks, or will that exceed team capacity?
+- If [roadmap goals](../about/roadmaps.md) have been decided, are there any concerns with those goals? Any suggestions for changes or alternatives?
 
 ## Select roadmap goals
 

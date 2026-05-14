@@ -1,13 +1,12 @@
 # Nightly support for function overloading in FFI bindings
 
 | Metadata         |                                    |
-| :--              | :--                                |
+| :--------------- | :--------------------------------- |
 | Point of contact | @ssbr                              |
 | Status           | Accepted                           |
 | Tracking issue   | [rust-lang/rust-project-goals#643] |
 | Zulip channel    | N/A                                |
 | [lang] champion  | @tmandry                           |
-
 
 ## Summary
 
@@ -105,13 +104,12 @@ It is **not** a goal to match C++'s resolution rules exactly. Many languages imp
 
 ## Team asks
 
-| Team    | Support level | Notes                                                                                                                                  |
-| ------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| [lang]  | Medium         | Design meeting Experiment                                                                                                              |
-| [libs-api]  | Small         | Would like to know if they have use cases for overloading in standard Rust, or if there are certain approaches they would like better. May be involved if experiment involves library surface area (e.g. `Fn` traits) |
-| [types] | Small        | No dedicated reviewer needed/given, but tracking issue should note the needed for dedicated types review prior to stabilization |
-| [compiler] | Small        | Most complexity is in the type system                                                                                                |
-
+| Team       | Support level | Notes                                                                                                                                                                                                                 |
+| ---------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [lang]     | Medium        | Design meeting Experiment                                                                                                                                                                                             |
+| [libs-api] | Small         | Would like to know if they have use cases for overloading in standard Rust, or if there are certain approaches they would like better. May be involved if experiment involves library surface area (e.g. `Fn` traits) |
+| [types]    | Small         | No dedicated reviewer needed/given, but tracking issue should note the needed for dedicated types review prior to stabilization                                                                                       |
+| [compiler] | Small         | Most complexity is in the type system                                                                                                                                                                                 |
 
 ## Frequently asked questions
 

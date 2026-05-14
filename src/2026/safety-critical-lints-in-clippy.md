@@ -1,14 +1,13 @@
 # Establish a Spot for Safety-Critical Lints in Clippy
 
 | Metadata         |                                                                                            |
-| :--              | :--                                                                                        |
+| :--------------- | :----------------------------------------------------------------------------------------- |
 | Point of contact | @PLeVasseur                                                                                |
 | Status           | Accepted                                                                                   |
 | What and why     | A sustainable home in Clippy for safety-critical coding standard lints from the Consortium |
 | Roadmap          | Safety-Critical Rust                                                                       |
 | Tracking issue   | [rust-lang/rust-project-goals#631]                                                         |
 | Zulip channel    | N/A                                                                                        |
-
 
 ## Summary
 
@@ -37,12 +36,12 @@ As an exploratory measure, a mapping of 223 MISRA C:2025 guidelines to the Ferro
 
 The mapping reveals the scope of potential lint needs:
 
-| Category | Count | Notes |
-|----------|-------|-------|
-| Total guidelines | 223 | MISRA C:2025 |
-| Directly applicable to Rust | 68 | Need some form of enforcement |
-| Already covered by rustc/Clippy | 13 | `dead_code`, `unreachable_code`, etc. |
-| Requiring custom lint support | ~50 | Beyond current Clippy coverage |
+| Category                        | Count | Notes                                 |
+| ------------------------------- | ----- | ------------------------------------- |
+| Total guidelines                | 223   | MISRA C:2025                          |
+| Directly applicable to Rust     | 68    | Need some form of enforcement         |
+| Already covered by rustc/Clippy | 13    | `dead_code`, `unreachable_code`, etc. |
+| Requiring custom lint support   | ~50   | Beyond current Clippy coverage        |
 
 That's leaving aside the other [mapping being done to CERT C][rust-cert-c] and the coding guidelines which may apply only to Rust.
 
@@ -58,14 +57,14 @@ The Clippy team has offered mentorship and onboarding support to help SCRC contr
 
 3. **Steady state:** SCRC maintains its lints with minimal ongoing burden on the Clippy team. SCRC reviewers are members adding to general Clippy review capacity, with a focus point, as all other members.
 
-| Task                                              | Owner(s)            | Notes                                                     |
-| ------------------------------------------------- | ------------------- | --------------------------------------------------------- |
-| Finalize arrangement for SCRC lints in Clippy     | Clippy              | Determine crate/group structure (see options below)       |
-| Identify initial SCRC lint developers             | Consortium          | 2–3 people to receive initial mentorship                  |
-| Onboarding and mentorship period                  | Clippy + Consortium | ~1–2 months of active guidance                            |
-| Implement initial set of safety-critical lints    | Consortium          | Starting with highest-priority coding guidelines          |
-| Establish SCRC review capacity                    | Consortium          | Enable self-sufficient lint review over time              |
-| Document lint design patterns for safety-critical use cases | Consortium + Clippy | Capture lessons learned for future contributors    |
+| Task                                                        | Owner(s)            | Notes                                               |
+| ----------------------------------------------------------- | ------------------- | --------------------------------------------------- |
+| Finalize arrangement for SCRC lints in Clippy               | Clippy              | Determine crate/group structure (see options below) |
+| Identify initial SCRC lint developers                       | Consortium          | 2–3 people to receive initial mentorship            |
+| Onboarding and mentorship period                            | Clippy + Consortium | ~1–2 months of active guidance                      |
+| Implement initial set of safety-critical lints              | Consortium          | Starting with highest-priority coding guidelines    |
+| Establish SCRC review capacity                              | Consortium          | Enable self-sufficient lint review over time        |
+| Document lint design patterns for safety-critical use cases | Consortium + Clippy | Capture lessons learned for future contributors     |
 
 ### Possible arrangements
 
@@ -74,6 +73,7 @@ The specific structure for SCRC lints within Clippy is still under discussion. T
 **Option A: Separate crate for SCRC lints**
 
 A dedicated crate within the Clippy repository for safety-critical lints. This approach:
+
 - Provides a clear boundary for SCRC-maintained code
 - Allows experimentation without affecting existing Clippy lints
 - Lints could be organized as a dedicated lint group that users can enable/disable
@@ -82,6 +82,7 @@ A dedicated crate within the Clippy repository for safety-critical lints. This a
 **Option B: Direct integration into Clippy**
 
 SCRC lints go directly into Clippy, potentially starting in a separate lint group (e.g., `restriction` or a new `safety-critical` group). This approach:
+
 - Integrates safety-critical lints into the standard tool from the start
 - Leverages existing Clippy infrastructure without additional crate boundaries
 - Lints that make sense for general use can be promoted to other groups over time
@@ -114,9 +115,9 @@ The original goal proposal focused on investigating stable APIs for custom lints
 
 ## Team asks
 
-| Team       | Support level | Notes                                           |
-| ---------- | ------------- | ----------------------------------------------- |
-| [clippy]   | Small         | Initial onboarding support for SCRC contributors; guidance on lint design |
+| Team     | Support level | Notes                                                                     |
+| -------- | ------------- | ------------------------------------------------------------------------- |
+| [clippy] | Small         | Initial onboarding support for SCRC contributors; guidance on lint design |
 
 **Resources committed:** The Consortium will commit engineering time for lint development, with the goal of becoming self-sufficient in review capacity over time.
 **Members committment:** Consortium members are willing to bring staff with experience in mentoring.

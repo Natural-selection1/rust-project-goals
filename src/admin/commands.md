@@ -20,11 +20,13 @@ cargo rpg cfp <timeframe> --dry-run  # Don't make any changes, just show what wo
 ```
 
 Example:
+
 ```bash
 cargo rpg cfp 2025h2
 ```
 
 Note that after running this command, you'll still need to manually:
+
 1. Prepare and publish a blog post on the Inside Rust blog
 2. Send an email to the `all@rust-lang.org` mailing list
 
@@ -40,6 +42,7 @@ cargo rpg csv champions <milestone>
 ```
 
 Example:
+
 ```bash
 cargo rpg csv champions 2025h2
 ```
@@ -57,11 +60,13 @@ The `champions` subcommand generates a CSV report showing the champion assignmen
 - **URL**: Link to the goal document on GitHub
 
 This report is useful for:
+
 - Tracking champion coverage across teams
 - Identifying goals that need champion assignments
 - Understanding team involvement across the milestone
 
 The CSV output can be redirected to a file or piped to other tools for further analysis:
+
 ```bash
 cargo rpg csv champions 2025h2 > champions.csv
 ```

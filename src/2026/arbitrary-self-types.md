@@ -1,7 +1,7 @@
 # Arbitrary Self Types
 
 | Metadata              |                                                                                           |
-| :--                   | :--                                                                                       |
+| :-------------------- | :---------------------------------------------------------------------------------------- |
 | Point of contact      | @dingxiangfei2009                                                                         |
 | Status                | Accepted                                                                                  |
 | What and why          | Let user-defined smart pointers work as method receivers and support `dyn Trait` coercion |
@@ -14,7 +14,6 @@
 | [lang] champion       | @tmandry                                                                                  |
 | [types] champion      | @jackh726                                                                                 |
 | [lang-docs] champion  | @traviscross                                                                              |
-
 
 ## Summary
 
@@ -111,7 +110,6 @@ For `derive(CoercePointee)`:
 
 The implementation is largely done, but the stabilization is blocked on `arbitrary_self_types`. Once that feature is stabilized, we can proceed with stabilizing `derive(CoercePointee)` too.
 
-
 ### Work items over the next year
 
 #### Arbitrary self types
@@ -119,7 +117,7 @@ The implementation is largely done, but the stabilization is blocked on `arbitra
 Let user-defined smart pointers work as method receivers, stabilizing the `arbitrary_self_types` feature.
 
 | Task                                        | Owner(s)          | Notes |
-|---------------------------------------------|-------------------|-------|
+| ------------------------------------------- | ----------------- | ----- |
 | Implementation of `Deref` decoupling        | @dingxiangfei2009 |       |
 | (de-)RFC raw pointer receivers              | @dingxiangfei2009 |       |
 | Update `arbitrary_self_types` documentation | @dingxiangfei2009 |       |
@@ -130,35 +128,34 @@ Let user-defined smart pointers work as method receivers, stabilizing the `arbit
 
 Experiment with letting `Receiver::Target` and `Deref::Target` diverge, collecting data on utility and use cases.
 
-| Task                                        | Owner(s)          | Notes |
-|---------------------------------------------|-------------------|-------|
-| `Deref`/`Receiver` Implementation           | @dingxiangfei2009 |       |
-| `Deref`/`Receiver` Community engagement     | @dingxiangfei2009 |       |
-| `Deref`/`Receiver` Stabilization PR         | @dingxiangfei2009 |       |
-| `Deref`/`Receiver` Reference PR             | @dingxiangfei2009 |       |
+| Task                                    | Owner(s)          | Notes |
+| --------------------------------------- | ----------------- | ----- |
+| `Deref`/`Receiver` Implementation       | @dingxiangfei2009 |       |
+| `Deref`/`Receiver` Community engagement | @dingxiangfei2009 |       |
+| `Deref`/`Receiver` Stabilization PR     | @dingxiangfei2009 |       |
+| `Deref`/`Receiver` Reference PR         | @dingxiangfei2009 |       |
 
 #### `derive(CoercePointee)`
 
 Support `dyn Trait` coercion for user-defined smart pointers.
 
-| Task                                        | Owner(s)          | Notes |
-|---------------------------------------------|-------------------|-------|
-| `derive(CoercePointee)` Reference PR        | @Darksonn         | Blocked on `arbitrary_self_types` |
-| `derive(CoercePointee)` Stabilization PR    | @Darksonn         | Blocked on `arbitrary_self_types` |
-
+| Task                                     | Owner(s)  | Notes                             |
+| ---------------------------------------- | --------- | --------------------------------- |
+| `derive(CoercePointee)` Reference PR     | @Darksonn | Blocked on `arbitrary_self_types` |
+| `derive(CoercePointee)` Stabilization PR | @Darksonn | Blocked on `arbitrary_self_types` |
 
 ## Team asks
 
-| Team        | Support level | Notes                      |
-|-------------|---------------|----------------------------|
-| [lang]      | Medium        | Reviews, Lang/RfL meetings |
-| [lang-docs] | Medium        | Reviews, Lang/RfL meetings |
-| [libs]      | Small         | Reviews                    |
-| [libs-api]  | Small         | Stabilizations             |
+| Team        | Support level | Notes                                              |
+| ----------- | ------------- | -------------------------------------------------- |
+| [lang]      | Medium        | Reviews, Lang/RfL meetings                         |
+| [lang-docs] | Medium        | Reviews, Lang/RfL meetings                         |
+| [libs]      | Small         | Reviews                                            |
+| [libs-api]  | Small         | Stabilizations                                     |
 | [types]     | Large         | Review of type-system stabilization/implementation |
 
 ## Frequently asked questions
 
 ### What do I do with this space?
 
-*This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way.*
+_This is a good place to elaborate on your reasoning above -- for example, why did you put the design axioms in the order that you did? It's also a good place to put the answers to any questions that come up during discussion. The expectation is that this FAQ section will grow as the goal is discussed and eventually should contain a complete summary of the points raised along the way._

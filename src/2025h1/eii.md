@@ -1,11 +1,11 @@
 # Externally Implementable Items
 
-| Metadata           |                                    |
-| :--                | :--                                |
-| Point of contact   | @m-ou-se                           |
-| Status             | Accepted                           |
-| Zulip channel      | N/A                                |
-| Tracking issue     | [rust-lang/rust-project-goals#254] |
+| Metadata         |                                    |
+| :--------------- | :--------------------------------- |
+| Point of contact | @m-ou-se                           |
+| Status           | Accepted                           |
+| Zulip channel    | N/A                                |
+| Tracking issue   | [rust-lang/rust-project-goals#254] |
 
 ## Summary
 
@@ -33,7 +33,9 @@ Additionally, making externally implementable items a language feature makes it 
 They can become part of the public api of a crate.
 
 [^1]: https://github.com/rust-lang/rfcs/pull/3632
+
 [^2]: https://github.com/rust-lang/rfcs/pull/3635
+
 [^3]: https://github.com/rust-lang/rfcs/pull/3645
 
 ### The status quo
@@ -57,8 +59,11 @@ refactoring how attributes are implemented and handled in rustc.[^6]
 The main part of that is now merged[^7], allowing us to finally continue on implementing the externally implementable items experiment itself.
 
 [^4]: https://github.com/rust-lang/rfcs/pull/3632#issuecomment-2125488373
+
 [^5]: https://github.com/rust-lang/rust/issues/125418#issuecomment-2360542039
+
 [^6]: https://github.com/rust-lang/rust/issues/131229
+
 [^7]: https://github.com/rust-lang/rust/pull/131808
 
 ### The next 6 months
@@ -103,15 +108,15 @@ The experimental feature we implement should:
 **Owner:** @Jdonszelmann and @m-ou-se
 
 | Task                             | Owner(s) or team(s)  | Notes                        |
-|----------------------------------|----------------------|------------------------------|
+| -------------------------------- | -------------------- | ---------------------------- |
 | Discussion and moral support     | [compiler], [lang]   |                              |
-| Lang-team experiment             | ![Team][] [lang]     | ![Complete][]             |
-| Design experiment (syntax, etc.) | *Jana and Mara*      | Done                         |
-| Refactor attributes in rustc     | *Jana*               | In progress, refactor merged |
-| Implement experiment             | *Jana and Mara*      |                              |
+| Lang-team experiment             | ![Team][] [lang]     | ![Complete][]                |
+| Design experiment (syntax, etc.) | _Jana and Mara_      | Done                         |
+| Refactor attributes in rustc     | _Jana_               | In progress, refactor merged |
+| Implement experiment             | _Jana and Mara_      |                              |
 | Standard reviews                 | ![Team][] [compiler] |                              |
-| Blog post inviting feedback      | *Jana and Mara*      |                              |
-| Update RFC with new findings     | *Jana and Mara*      |                              |
+| Blog post inviting feedback      | _Jana and Mara_      |                              |
+| Update RFC with new findings     | _Jana and Mara_      |                              |
 
 ## Frequently asked questions
 

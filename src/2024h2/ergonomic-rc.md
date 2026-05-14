@@ -1,11 +1,12 @@
 # Ergonomic ref-counting
 
-| Metadata       |                                    |
-| ---            | ---                                |
+| Metadata         |                                    |
+| ---------------- | ---------------------------------- |
 | Point of contact | @jkelleyrtp                        |
-| Status         | Accepted                           |
-| Tracking issue | [rust-lang/rust-project-goals#107] |
-| Zulip channel  | N/A                                |
+| Status           | Accepted                           |
+| Tracking issue   | [rust-lang/rust-project-goals#107] |
+| Zulip channel    | N/A                                |
+
 ## Summary
 
 Deliver nightly support some solution to reduce the ergonomic pain of working with ref-counted and cheaply cloneable types.
@@ -48,20 +49,20 @@ tokio::spawn({
 });
 ```
 
-Whichever pattern users adopt, explicit clones of reference counted values leads to significant accidental complexity for many applications. As noted, cloning these values is both cheap at runtime and has zero semantic importance, since each clone is as good as the other. 
+Whichever pattern users adopt, explicit clones of reference counted values leads to significant accidental complexity for many applications. As noted, cloning these values is both cheap at runtime and has zero semantic importance, since each clone is as good as the other.
 
 #### Impact on new users and high-level domains
 
 The impact of this kind of friction can be severe. While experienced users have learned the workaround and consider this to be a papercut, new users can find this kind of change bewildering and a total blocker. The impact is also particularly severe on projects attempting to use Rust in domains traditionally considered "high-level" (e.g., app/game/web development, data science, scientific computing). Rust's strengths have made it a popular choice for building underlying frameworks and libraries that perform reliably and with high performance. However, thanks in large part to these kind of smaller, papercut issues, it is not a great choice for **consumption** of these libraries
 
-Users in higher-level domains are accustomed to the ergonomics of Python or TypeScript, and hence ergonomic friction can make Rust a non-starter. Those users that stick with Rust long enough to learn the workarounds, however, often find significant value in its emphasis on reliability and long-term maintenance (not to mention performance). Small changes like avoiding explicit clones for reference-counted data can both help to make Rust more appealing in these domains **and** help Rust in other domains where it is already widespead. 
+Users in higher-level domains are accustomed to the ergonomics of Python or TypeScript, and hence ergonomic friction can make Rust a non-starter. Those users that stick with Rust long enough to learn the workarounds, however, often find significant value in its emphasis on reliability and long-term maintenance (not to mention performance). Small changes like avoiding explicit clones for reference-counted data can both help to make Rust more appealing in these domains **and** help Rust in other domains where it is already widespead.
 
 ### The next six months
 
-The goal for the next six months is to 
+The goal for the next six months is to
 
-* author and accept an RFC that reduces the burden of working with clone, particularly around closures
-* land a prototype nightly implementation.
+- author and accept an RFC that reduces the burden of working with clone, particularly around closures
+- land a prototype nightly implementation.
 
 ### The "shiny future" we are working towards
 
@@ -71,10 +72,10 @@ This goal is scoped around reducing (or eliminating entirely) the need for expli
 
 We don't have consensus around a full set of "design axioms" for this design, but we do have alignment around the following basic points:
 
-* Explicit ref-counting is a major ergonomic pain point impacting both high- and low-level, performance oriented code.
-* The worst ergonomic pain arises around closures that need to clone their upvars.
-* Some code will want the ability to precisely track reference count increments.
-* The design should allow user-defined types to "opt-in" to the lightweight cloning behavior.
+- Explicit ref-counting is a major ergonomic pain point impacting both high- and low-level, performance oriented code.
+- The worst ergonomic pain arises around closures that need to clone their upvars.
+- Some code will want the ability to precisely track reference count increments.
+- The design should allow user-defined types to "opt-in" to the lightweight cloning behavior.
 
 ## Ownership and team asks
 
@@ -87,10 +88,10 @@ The work here is proposed by @jkelleyrtp on behalf of Dioxus Labs. We have fundi
 | Design meeting             | ![Team][] [lang]            | 2 meetings expected |
 | RFC decision               | ![Team][] [lang] [libs-api] |                     |
 | Nightly implementation     | @spastorino                 |                     |
-| Standard reviews           | ![Team]  [compiler]         |                     |
+| Standard reviews           | ![Team] [compiler]          |                     |
 | Blog post on Inside Rust   |                             |                     |
 
-* The ![Team][] badge indicates a requirement where Team support is needed.
+- The ![Team][] badge indicates a requirement where Team support is needed.
 
 [Not funded]: https://img.shields.io/badge/Not%20yet%20funded-red
 [Approved]: https://img.shields.io/badge/Approved-green
@@ -114,11 +115,11 @@ The primary project support will be design bandwidth from the [lang team].
 
 ### Outputs
 
-*Final outputs that will be produced*
+_Final outputs that will be produced_
 
 ### Milestones
 
-*Milestones you will reach along the way*
+_Milestones you will reach along the way_
 
 ## Frequently asked questions
 
