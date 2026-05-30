@@ -4,8 +4,10 @@ members = [
     "crates/rust-project-goals",
     "crates/rust-project-goals-cli",
     "crates/rust-project-goals-json",
+    "demo"
 ]
 resolver = "2"
 
 [profile.dev]
 opt-level = 1
+
