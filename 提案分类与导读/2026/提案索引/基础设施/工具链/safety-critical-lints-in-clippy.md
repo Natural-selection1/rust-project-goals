@@ -1,0 +1,1 @@
+../../../../../src/2026/safety-critical-lints-in-clippy.md
