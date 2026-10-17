@@ -1,0 +1,1 @@
+../../../../../src/2026/ergonomic-rc.md

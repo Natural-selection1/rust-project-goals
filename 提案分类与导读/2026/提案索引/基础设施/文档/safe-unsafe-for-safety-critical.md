@@ -1,0 +1,1 @@
+../../../../../src/2026/safe-unsafe-for-safety-critical.md
